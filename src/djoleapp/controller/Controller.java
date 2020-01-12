@@ -1,5 +1,6 @@
 package djoleapp.controller;
 
+import djoleapp.controller.event.ManagerEvent;
 import djoleapp.gui.LoginPane;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -10,6 +11,7 @@ public class Controller {
     private Stage primaryStage;
     private Scene loginScene;
     private LoginPane loginPane;
+    private final ManagerEvent managerEvent = new ManagerEvent();
     
     public Controller(){    
     }
@@ -45,7 +47,9 @@ public class Controller {
     public void setLoginScene(Scene loginScene) {
         this.loginScene = loginScene;
     }
-    
-    
-    
+
+    public ManagerEvent getManagerEvent() {
+        return managerEvent;
+    }
+
 }
