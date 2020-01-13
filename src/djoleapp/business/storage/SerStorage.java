@@ -10,10 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 import javafx.scene.control.Alert.AlertType;
 
-/**
- *
- * @author perica.simic
- */
+
 public class SerStorage implements Storage {
     
     @Override

@@ -1,22 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package djoleapp.controller.event.adminevent;
 
 import djoleapp.business.Factory;
+import djoleapp.business.storage.TemporaryList;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.controller.util.Message;
+import djoleapp.gui.admingui.AddAdminPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 
-/**
- *
- * @author perica.simic
- */
 public class LoginEvent implements EventHandler<ActionEvent> {
 
     @Override
@@ -30,7 +24,7 @@ public class LoginEvent implements EventHandler<ActionEvent> {
         Controller.getInstance().getLoginPane().getUsernameFld().setText(null);
 
         String checkPassword = Controller.getInstance().getLoginPane().getPasswordFld().getText();
-        Controller.getInstance().getLoginPane().getUsernameFld().setText(null);
+        Controller.getInstance().getLoginPane().getPasswordFld().setText(null);
 
         if (checkUsername == null || checkPassword == null || checkUsername.isEmpty() || checkPassword.isEmpty()) {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
@@ -38,12 +32,21 @@ public class LoginEvent implements EventHandler<ActionEvent> {
         }
 
         if (checkUsername.equals(Constants.ADMIN) && checkPassword.equals(Constants.ADMIN) && Factory.getStorage().loadAdmin().size() == 1) {
-            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, "1");
+            AddAdminPane aap = new AddAdminPane();
+            Controller.getInstance().setAddAdminPane(aap);
+            Scene scena = new Scene(aap, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
+            Controller.getInstance().getPrimaryStage().setScene(scena);
             return;
         }
-        
-        Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, "2");
-    }
+        if (checkUsername.equals(Constants.ADMIN) && checkPassword.equals(Constants.ADMIN) && Factory.getStorage().loadAdmin().size() != 1){
+            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ADMIN_EXISTS);
+            return;
+        }
 
+        TemporaryList tl = new TemporaryList();
+        Controller.getInstance().setTemporaryList(tl);
+        
+        Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, "...main strana...");
+    }
 
 }

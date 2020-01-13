@@ -1,7 +1,9 @@
 package djoleapp.controller;
 
+import djoleapp.business.storage.TemporaryList;
 import djoleapp.controller.event.ManagerEvent;
 import djoleapp.gui.LoginPane;
+import djoleapp.gui.admingui.AddAdminPane;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -11,6 +13,8 @@ public class Controller {
     private Stage primaryStage;
     private Scene loginScene;
     private LoginPane loginPane;
+    private AddAdminPane addAdminPane;
+    private TemporaryList temporaryList;
     private final ManagerEvent managerEvent = new ManagerEvent();
     
     public Controller(){    
@@ -26,6 +30,14 @@ public class Controller {
 
     public Stage getPrimaryStage() {
         return primaryStage;
+    }
+
+    public AddAdminPane getAddAdminPane() {
+        return addAdminPane;
+    }
+
+    public void setAddAdminPane(AddAdminPane addAdminPane) {
+        this.addAdminPane = addAdminPane;
     }
 
     public void setPrimaryStage(Stage primaryStage) {
@@ -51,5 +63,15 @@ public class Controller {
     public ManagerEvent getManagerEvent() {
         return managerEvent;
     }
+
+    public TemporaryList getTemporaryList() {
+        return temporaryList;
+    }
+
+    public void setTemporaryList(TemporaryList temporaryList) {
+        this.temporaryList = temporaryList;
+    }
+    
+    
 
 }
