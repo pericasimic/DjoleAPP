@@ -5,6 +5,11 @@
  */
 package djoleapp.business.facade;
 
+import djoleapp.business.Factory;
+import djoleapp.business.model.Administrator;
+import djoleapp.controller.Controller;
+import java.util.List;
+
 /**
  *
  * @author perica.simic
@@ -13,7 +18,13 @@ public class FacadeSER implements Facade{
 
     @Override
     public boolean loginAdminCheck(String username, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Administrator> list = Factory.getStorage().loadAdmin();
+        for(Administrator a: list){
+            if(username.equals(a.getUsername()) && password.equals(a.getPassword())){
+                return true;
+            }
+        }
+        return false;
     }
     
 }

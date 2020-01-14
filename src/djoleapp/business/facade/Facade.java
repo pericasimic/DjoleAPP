@@ -7,5 +7,6 @@ package djoleapp.business.facade;
 public interface Facade {
     
     public boolean loginAdminCheck(final String username, final String password);
+  
     
 }

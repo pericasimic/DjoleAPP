@@ -27,5 +27,14 @@ public class Constants {
     public static final String ALERT_PASSWORD_NOT_SAME = "Lozinke se ne poklapaju";
     public static final String ADMIN_DENY = "Uneto korisnicko ime nije dozvoljeno";
     public static final String ADMIN_EXISTS = "Kreiran je novi administrator";
+    public static final String ADMIN_LOGIN_FAILD = "Pogresno korisnicko ime ili lozinka";
+    public static final String FILE = "Fajl";
+    public static final String BUILDINGS = "Zgrade";
+    public static final String OCCUPANTS = "Stanari";
+    public static final String ACCOUNTS = "Racuni";
+    public static final String STATEMENTS = "Izvodi";
+    public static final String ABOUT = "O programu";
+    
+    
 
 }

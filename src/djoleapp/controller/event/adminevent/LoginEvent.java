@@ -6,6 +6,7 @@ import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.controller.util.Message;
 import djoleapp.gui.admingui.AddAdminPane;
+import djoleapp.gui.maingui.MainPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -42,11 +43,20 @@ public class LoginEvent implements EventHandler<ActionEvent> {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ADMIN_EXISTS);
             return;
         }
+        
+        if(!Factory.getFacade().loginAdminCheck(checkUsername, checkPassword)){
+            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ADMIN_LOGIN_FAILD);
+            return;
+        }
 
         TemporaryList tl = new TemporaryList();
         Controller.getInstance().setTemporaryList(tl);
         
-        Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, "...main strana...");
-    }
+        MainPane gp = new MainPane();
+        Controller.getInstance().setMainPane(gp);
+        Scene scena = new Scene(gp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
+        Controller.getInstance().getPrimaryStage().setScene(scena);
 
-}
+        }
+        
+    }
