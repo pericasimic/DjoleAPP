@@ -1,9 +1,14 @@
 package djoleapp.gui.maingui;
 
+import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import javafx.scene.Node;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 
 public class MainPane extends BorderPane {
@@ -21,6 +26,20 @@ public class MainPane extends BorderPane {
         MenuBar menuBar = new MenuBar();
         
         Menu files = new Menu(Constants.FILE);
+        
+        MenuItem print = new MenuItem(Constants.PRINT);
+        print.setAccelerator(new KeyCodeCombination(KeyCode.P, KeyCombination.CONTROL_DOWN));
+        
+        MenuItem save = new MenuItem(Constants.SAVE);
+        save.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
+        save.setOnAction(Controller.getInstance().getManagerEvent().getSaveEvent());
+        
+        MenuItem exit = new MenuItem(Constants.EXIT);
+        exit.setAccelerator(new KeyCodeCombination(KeyCode.E, KeyCombination.CONTROL_DOWN));
+        exit.setOnAction(Controller.getInstance().getManagerEvent().getLogoutEvent());
+        
+        files.getItems().addAll(print, save, exit);
+        
         Menu buildings = new Menu(Constants.BUILDINGS);
         Menu occupants = new Menu(Constants.OCCUPANTS);
         Menu accounts = new Menu(Constants.ACCOUNTS);

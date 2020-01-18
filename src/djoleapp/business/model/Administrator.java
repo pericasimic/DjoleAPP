@@ -2,10 +2,6 @@ package djoleapp.business.model;
 
 import java.io.Serializable;
 
-/**
- *
- * @author perica.simic
- */
 public class Administrator implements Serializable {
 
     private String username;

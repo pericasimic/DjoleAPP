@@ -20,5 +20,7 @@ public class TemporaryList {
         this.administrators = administrators;
     }
     
-    
+    public void saveTemporaryLists(){
+        Factory.getStorage().writeAdmin(administrators);
+    }
 }

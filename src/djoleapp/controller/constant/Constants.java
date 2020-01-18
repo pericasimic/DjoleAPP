@@ -3,8 +3,8 @@ package djoleapp.controller.constant;
 public class Constants {
 
     public static final String TITLE_LOGIN = "Prijava na aplikaciju";
-    public static final int SCENE_WIDTH = 1024;
-    public static final int SCENE_HEIGHT = 768;
+    public static final int SCENE_WIDTH = 960;
+    public static final int SCENE_HEIGHT = 640;
     public static final String PRIMARY_STAGE_TITLE = "Aplikacija - Stambeni objekti";
     public static final String USERNAME_LBL = "Korisnicko ime:";
     public static final String PASSWORD_LBL = "Lozinka:";
@@ -34,7 +34,10 @@ public class Constants {
     public static final String ACCOUNTS = "Racuni";
     public static final String STATEMENTS = "Izvodi";
     public static final String ABOUT = "O programu";
+    public static final String SAVE = "Snimi";
+    public static final String EXIT = "Izlaz";
+    public static final String PRINT = "Stampaj";
+    public static final String SUCCESS_SAVE = "Uspesno je sacuvano";
+    public static final String EMPTY_STRING = "Stampaj";
     
-    
-
 }

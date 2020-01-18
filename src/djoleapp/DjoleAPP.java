@@ -5,6 +5,7 @@
  */
 package djoleapp;
 
+import djoleapp.business.model.BusinessSpace;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.gui.LoginPane;
@@ -35,6 +36,7 @@ public class DjoleAPP extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        
     }
     
 }
