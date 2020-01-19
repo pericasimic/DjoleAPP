@@ -9,11 +9,11 @@ public abstract class SeparateSection {
     private int number;
     private double surfaceArea;
     private Text note;
-    private boolean isExist;
+    private double debit = 0;
+    private boolean isExist = true;
 
     public SeparateSection(long id) {
         this.id = id;
-        this.isExist = true;
     }
 
     public SeparateSection(long id, Occupant occupant, int number, double surfaceArea, Text note) {
@@ -22,7 +22,6 @@ public abstract class SeparateSection {
         this.number = number;
         this.surfaceArea = surfaceArea;
         this.note = note;
-        this.isExist = true;
 
     }
 

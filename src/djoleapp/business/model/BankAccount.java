@@ -5,13 +5,12 @@ public class BankAccount {
     private long id;
     private String bankName;
     private String bankAccountNumber;
-    private boolean isExist;
+    private boolean isExist = true;
 
     public BankAccount(long id, String bankName, String bankAccountNumber) {
         this.id = id;
         this.bankName = bankName;
         this.bankAccountNumber = bankAccountNumber;
-        this.isExist = true;
     }
 
     public String getBankName() {

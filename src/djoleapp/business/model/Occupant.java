@@ -1,29 +1,34 @@
 package djoleapp.business.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.scene.text.Text;
 
 public class Occupant {
-    
+
+    private long id;
     private String firstNameOccupant;
     private String lastNameOccupant;
     private String identificationNumber;
     private String phoneNumber;
     private String mail;
     private Text note;
-    private boolean isExist;
+    private List<AccountCalculation> listAccountCalc = new ArrayList<>();
+    private List<BankingStatement> listStatements = new ArrayList<>();
+    private boolean isExist = true;
 
-    public Occupant() {
-        this.isExist = true;
+    public Occupant(long id) {
+        this.id = id;
     }
 
-    public Occupant(String firstNameOccupant, String lastNameOccupant, String identificationNumber, String phoneNumber, String mail, Text note) {
+    public Occupant(long id, String firstNameOccupant, String lastNameOccupant, String identificationNumber, String phoneNumber, String mail, Text note) {
+        this.id = id;
         this.firstNameOccupant = firstNameOccupant;
         this.lastNameOccupant = lastNameOccupant;
         this.identificationNumber = identificationNumber;
         this.phoneNumber = phoneNumber;
         this.mail = mail;
         this.note = note;
-        this.isExist = true;
     }
 
     public String getFirstNameOccupant() {
@@ -82,7 +87,29 @@ public class Occupant {
         this.isExist = isExist;
     }
 
-    
-    
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public List<AccountCalculation> getListAccountCalc() {
+        return listAccountCalc;
+    }
+
+    public void setListAccountCalc(List<AccountCalculation> listAccountCalc) {
+        this.listAccountCalc = listAccountCalc;
+    }
+
+    public List<BankingStatement> getListStatements() {
+        return listStatements;
+    }
+
+    public void setListStatements(List<BankingStatement> listStatements) {
+        this.listStatements = listStatements;
+    }
+
     
 }

@@ -29,7 +29,7 @@ public class Constants {
     public static final String ADMIN_EXISTS = "Kreiran je novi administrator";
     public static final String ADMIN_LOGIN_FAILD = "Pogresno korisnicko ime ili lozinka";
     public static final String FILE = "Fajl";
-    public static final String BUILDINGS = "Zgrade";
+    public static final String BUILDINGS = "Stambene zajednice";
     public static final String OCCUPANTS = "Stanari";
     public static final String ACCOUNTS = "Racuni";
     public static final String STATEMENTS = "Izvodi";
@@ -39,5 +39,7 @@ public class Constants {
     public static final String PRINT = "Stampaj";
     public static final String SUCCESS_SAVE = "Uspesno je sacuvano";
     public static final String EMPTY_STRING = "Stampaj";
+    public static final String DEBIT = "Zaduzenje";
+    public static final String FROM_PREVIOUS_PERIOD = "iz prethodnog perioda";
     
 }
