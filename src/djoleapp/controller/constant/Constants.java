@@ -15,9 +15,13 @@ public class Constants {
     public static final String ALERT_ERROR_DIALOG = "Greska";
     public static final String ALERT_INFORMATION_DIALOG = "Informacija";
     public static final String ALERT_EMPTY_INPUT_TEXT = "Polja moraju biti popunjena";
-    public static final String ERROR_STORAGE = "package djoleapp.business.storage";
+    public static final String ERROR_STORAGE_LOAD_ADMIN = "package djoleapp.business.storage.loadAdmin";
+    public static final String ERROR_STORAGE_WRITE_ADMIN = "package djoleapp.business.storage.writeAdmin";
+    public static final String ERROR_STORAGE_LOAD_BUILDING = "package djoleapp.business.storage.loadBuildings";
+    public static final String ERROR_STORAGE_WRITE_BUILDING = "package djoleapp.business.storage.writeBuildings";
     public static final String ADMIN = "admin";
     public static final String ADMIN_DAT = "admin.dat";
+    public static final String BUILDINGS_DAT = "buildings.dat";
     public static final String TITLE_ADD_ADMIN = "Dodavanje administratora";
     public static final String ADD_ADMIN = "Novi administrator je dodat";
     public static final String ADD_ADMIN_LABEL_PASSWORD_CONFIRM = "Potvrdi lozinku:";
@@ -41,5 +45,20 @@ public class Constants {
     public static final String EMPTY_STRING = "Stampaj";
     public static final String DEBIT = "Zaduzenje";
     public static final String FROM_PREVIOUS_PERIOD = "iz prethodnog perioda";
+    public static final String MENU_ITEM_BUILDING_LIST = "Lista stambenih zajednica";
+    public static final String BUTTON_ADD = "Dodaj";
+    public static final String BUTTON_REMOVE = "Obrisi";
+    public static final String BUTTON_EDIT = "Izmeni";
+    public static final String BUTTON_LIST = "Prikazi";
+    public static final String BUTTON_SEARCH = "Pretraga";
+    public static final String NAME_OF_BUILDING = "Naziv zgrade";
+    public static final String ID_NUM_BUILDING = "Maticni broj";
+    public static final String TAX_NUM_BUILDING = "PIB";
+    public static final String MAIL_BUILDING = "Mejl adresa";
+    public static final String BANK_ACCOUNT = "Tekuci racun";
+    
+    
+    
+    
     
 }
