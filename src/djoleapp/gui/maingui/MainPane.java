@@ -41,6 +41,13 @@ public class MainPane extends BorderPane {
         files.getItems().addAll(print, save, exit);
         
         Menu buildings = new Menu(Constants.BUILDINGS);
+        
+        MenuItem buildingList = new MenuItem(Constants.BUILDINGS_LIST);
+        buildingList.setAccelerator(new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN));
+        buildingList.setOnAction(Controller.getInstance().getManagerEvent().getListBuildingEvent());
+        
+        buildings.getItems().addAll(buildingList);
+        
         Menu occupants = new Menu(Constants.OCCUPANTS);
         Menu accounts = new Menu(Constants.ACCOUNTS);
         Menu statements = new Menu(Constants.STATEMENTS);

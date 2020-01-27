@@ -17,8 +17,8 @@ public class Constants {
     public static final String ALERT_EMPTY_INPUT_TEXT = "Polja moraju biti popunjena";
     public static final String ERROR_STORAGE_LOAD_ADMIN = "package djoleapp.business.storage.loadAdmin";
     public static final String ERROR_STORAGE_WRITE_ADMIN = "package djoleapp.business.storage.writeAdmin";
-    public static final String ERROR_STORAGE_LOAD_BUILDING = "package djoleapp.business.storage.loadBuildings";
-    public static final String ERROR_STORAGE_WRITE_BUILDING = "package djoleapp.business.storage.writeBuildings";
+    public static final String ERROR_STORAGE_LOAD_BUILDING = "package djoleapp.business.storage.loadResidentialCommunity";
+    public static final String ERROR_STORAGE_WRITE_BUILDING = "package djoleapp.business.storage.writeResidentialCommunity";
     public static final String ADMIN = "admin";
     public static final String ADMIN_DAT = "admin.dat";
     public static final String BUILDINGS_DAT = "buildings.dat";
@@ -34,6 +34,7 @@ public class Constants {
     public static final String ADMIN_LOGIN_FAILD = "Pogresno korisnicko ime ili lozinka";
     public static final String FILE = "Fajl";
     public static final String BUILDINGS = "Stambene zajednice";
+    public static final String BUILDINGS_LIST = "Lista zajednica";
     public static final String OCCUPANTS = "Stanari";
     public static final String ACCOUNTS = "Racuni";
     public static final String STATEMENTS = "Izvodi";
@@ -42,7 +43,7 @@ public class Constants {
     public static final String EXIT = "Izlaz";
     public static final String PRINT = "Stampaj";
     public static final String SUCCESS_SAVE = "Uspesno je sacuvano";
-    public static final String EMPTY_STRING = "Stampaj";
+    public static final String EMPTY_STRING = "";
     public static final String DEBIT = "Zaduzenje";
     public static final String FROM_PREVIOUS_PERIOD = "iz prethodnog perioda";
     public static final String MENU_ITEM_BUILDING_LIST = "Lista stambenih zajednica";
@@ -52,13 +53,13 @@ public class Constants {
     public static final String BUTTON_LIST = "Prikazi";
     public static final String BUTTON_SEARCH = "Pretraga";
     public static final String NAME_OF_BUILDING = "Naziv zgrade";
+    public static final String ID = "ID";
     public static final String ID_NUM_BUILDING = "Maticni broj";
     public static final String TAX_NUM_BUILDING = "PIB";
     public static final String MAIL_BUILDING = "Mejl adresa";
     public static final String BANK_ACCOUNT = "Tekuci racun";
-    
-    
-    
+    public static final String ADD_BUILDING = "Stambena zajednica je dodata";
+    public static final String NOT_ADD_BUILDING = "Stambena zajednica nije dodata";
     
     
 }

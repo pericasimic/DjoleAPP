@@ -1,11 +1,12 @@
 package djoleapp.business.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResidentialCommunity {
+public class ResidentialCommunity implements Serializable{
     
-    private long id;
+    private int id;
     private String name;
     private String identificationNumber;
     private String taxIdentificationNumber;
@@ -17,11 +18,11 @@ public class ResidentialCommunity {
     private List<AccountCalculation> listCalculations = new ArrayList<>();
     private boolean isExist = true;
 
-    public ResidentialCommunity(long id) {
+    public ResidentialCommunity(int id) {
         this.id = id;
     }
     
-    public ResidentialCommunity(long id, String name, String identificationNumber, String taxIdentificationNumber, String mail) {
+    public ResidentialCommunity(int id, String name, String identificationNumber, String taxIdentificationNumber, String mail) {
         this.id = id;
         this.name = name;
         this.identificationNumber = identificationNumber;
@@ -33,7 +34,7 @@ public class ResidentialCommunity {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
