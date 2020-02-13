@@ -5,6 +5,7 @@ import djoleapp.controller.event.ManagerEvent;
 import djoleapp.gui.LoginPane;
 import djoleapp.gui.admingui.AddAdminPane;
 import djoleapp.gui.maingui.MainPane;
+import djoleapp.gui.maingui.buildinggui.BankDetailsBildingPane;
 import djoleapp.gui.maingui.buildinggui.ListBuildingsPane;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -18,6 +19,7 @@ public class Controller {
     private AddAdminPane addAdminPane;
     private MainPane mainPane;
     private ListBuildingsPane listBuildingsPane;
+    private BankDetailsBildingPane listBankAccountBuildingPane;
     private TemporaryList temporaryList;
     private final ManagerEvent managerEvent = new ManagerEvent();
     
@@ -90,6 +92,14 @@ public class Controller {
 
     public void setListBuildingsPane(ListBuildingsPane listBuildingsPane) {
         this.listBuildingsPane = listBuildingsPane;
+    }
+
+    public BankDetailsBildingPane getListBankAccountBuildingPane() {
+        return listBankAccountBuildingPane;
+    }
+
+    public void setListBankAccountBuildingPane(BankDetailsBildingPane listBankAccountBuildingPane) {
+        this.listBankAccountBuildingPane = listBankAccountBuildingPane;
     }
     
     

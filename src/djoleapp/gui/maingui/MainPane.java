@@ -42,11 +42,14 @@ public class MainPane extends BorderPane {
         
         Menu buildings = new Menu(Constants.BUILDINGS);
         
-        MenuItem buildingList = new MenuItem(Constants.BUILDINGS_LIST);
+        MenuItem buildingList = new MenuItem(Constants.MENU_ITEM_BUILDING_LIST);
         buildingList.setAccelerator(new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN));
         buildingList.setOnAction(Controller.getInstance().getManagerEvent().getListBuildingEvent());
+        MenuItem bankAccountList = new MenuItem(Constants.MENU_ITEM_BANK_ACCOUNT_LIST);
+        bankAccountList.setAccelerator(new KeyCodeCombination(KeyCode.B, KeyCombination.CONTROL_DOWN));
+        bankAccountList.setOnAction(Controller.getInstance().getManagerEvent().getBankDetailsBuildingEvent());
         
-        buildings.getItems().addAll(buildingList);
+        buildings.getItems().addAll(buildingList, bankAccountList);
         
         Menu occupants = new Menu(Constants.OCCUPANTS);
         Menu accounts = new Menu(Constants.ACCOUNTS);

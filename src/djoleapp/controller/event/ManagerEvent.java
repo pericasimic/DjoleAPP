@@ -5,6 +5,7 @@ import djoleapp.controller.event.adminevent.LoginEvent;
 import djoleapp.controller.event.adminevent.LogoutEvent;
 import djoleapp.controller.event.adminevent.SaveEvent;
 import djoleapp.controller.event.buildingevent.AddBuildingEvent;
+import djoleapp.controller.event.buildingevent.BankDetailsBuildingEvent;
 import djoleapp.controller.event.buildingevent.ListBuildingEvent;
 
 /**
@@ -19,6 +20,7 @@ public class ManagerEvent {
     private SaveEvent saveEvent = null;
     private AddBuildingEvent addBuildingEvent = null;
     private ListBuildingEvent listBuildingEvent = null;
+    private BankDetailsBuildingEvent bankDetailsBuildingEvent = null;
     
 
     public ManagerEvent() {
@@ -29,6 +31,7 @@ public class ManagerEvent {
         saveEvent = new SaveEvent();
         addBuildingEvent = new AddBuildingEvent();
         listBuildingEvent = new ListBuildingEvent();
+        bankDetailsBuildingEvent = new BankDetailsBuildingEvent();
     }
 
     public ListBuildingEvent getListBuildingEvent() {
@@ -54,6 +57,11 @@ public class ManagerEvent {
     public AddBuildingEvent getAddBuildingEvent() {
         return addBuildingEvent;
     }
+
+    public BankDetailsBuildingEvent getBankDetailsBuildingEvent() {
+        return bankDetailsBuildingEvent;
+    }
+    
     
     
     

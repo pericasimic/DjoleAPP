@@ -21,7 +21,7 @@ import javafx.scene.text.Font;
 
 public class ListBuildingsPane extends VBox {
 
-    private Label titleLbl = new Label(Constants.MENU_ITEM_BUILDING_LIST);
+    private Label titleLbl = new Label(Constants.BUILDINGS_LIST_TITLE);
     private TableView<ResidentialCommunity> tableBuildings = new TableView<>();
     private List<ResidentialCommunity> listBuildings = null;
 

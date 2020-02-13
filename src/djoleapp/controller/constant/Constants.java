@@ -34,7 +34,7 @@ public class Constants {
     public static final String ADMIN_LOGIN_FAILD = "Pogresno korisnicko ime ili lozinka";
     public static final String FILE = "Fajl";
     public static final String BUILDINGS = "Stambene zajednice";
-    public static final String BUILDINGS_LIST = "Lista zajednica";
+    public static final String BUILDINGS_LIST_TITLE = "Lista stambenih zajednica";
     public static final String OCCUPANTS = "Stanari";
     public static final String ACCOUNTS = "Racuni";
     public static final String STATEMENTS = "Izvodi";
@@ -46,11 +46,12 @@ public class Constants {
     public static final String EMPTY_STRING = "";
     public static final String DEBIT = "Zaduzenje";
     public static final String FROM_PREVIOUS_PERIOD = "iz prethodnog perioda";
-    public static final String MENU_ITEM_BUILDING_LIST = "Lista stambenih zajednica";
+    public static final String MENU_ITEM_BUILDING_LIST = "Lista zgrada...";
+    public static final String MENU_ITEM_BANK_ACCOUNT_LIST = "Bankovni računi zgrade...";
     public static final String BUTTON_ADD = "Dodaj";
     public static final String BUTTON_REMOVE = "Obrisi";
     public static final String BUTTON_EDIT = "Izmeni";
-    public static final String BUTTON_LIST = "Prikazi";
+    public static final String BUTTON_SHOW = "Prikazi";
     public static final String BUTTON_SEARCH = "Pretraga";
     public static final String NAME_OF_BUILDING = "Naziv zgrade";
     public static final String ID = "ID";
@@ -60,6 +61,8 @@ public class Constants {
     public static final String BANK_ACCOUNT = "Tekuci racun";
     public static final String ADD_BUILDING = "Stambena zajednica je dodata";
     public static final String NOT_ADD_BUILDING = "Stambena zajednica nije dodata";
+    public static final String SELECT_BUILDINGS = "Izaberi zgradu:";
+    public static final String SELECT_ITEM = "Izaberi stavku:";
     
     
 }

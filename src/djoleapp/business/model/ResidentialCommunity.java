@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResidentialCommunity implements Serializable{
-    
+public class ResidentialCommunity implements Serializable {
+
     private int id;
     private String name;
     private String identificationNumber;
@@ -21,7 +21,7 @@ public class ResidentialCommunity implements Serializable{
     public ResidentialCommunity(int id) {
         this.id = id;
     }
-    
+
     public ResidentialCommunity(int id, String name, String identificationNumber, String taxIdentificationNumber, String mail) {
         this.id = id;
         this.name = name;
@@ -118,6 +118,9 @@ public class ResidentialCommunity implements Serializable{
         this.isExist = isExist;
     }
 
-    
-    
+//    @Override
+//    public String toString() {
+//        return id + ". " + name;
+//    }
+
 }
