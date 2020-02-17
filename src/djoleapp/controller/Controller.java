@@ -19,7 +19,7 @@ public class Controller {
     private AddAdminPane addAdminPane;
     private MainPane mainPane;
     private ListBuildingsPane listBuildingsPane;
-    private BankDetailsBildingPane listBankAccountBuildingPane;
+    private BankDetailsBildingPane bankDetailsBildingPane;
     private TemporaryList temporaryList;
     private final ManagerEvent managerEvent = new ManagerEvent();
     
@@ -94,13 +94,15 @@ public class Controller {
         this.listBuildingsPane = listBuildingsPane;
     }
 
-    public BankDetailsBildingPane getListBankAccountBuildingPane() {
-        return listBankAccountBuildingPane;
+    public BankDetailsBildingPane getBankDetailsBildingPane() {
+        return bankDetailsBildingPane;
     }
 
-    public void setListBankAccountBuildingPane(BankDetailsBildingPane listBankAccountBuildingPane) {
-        this.listBankAccountBuildingPane = listBankAccountBuildingPane;
+    public void setBankDetailsBildingPane(BankDetailsBildingPane bankDetailsBildingPane) {
+        this.bankDetailsBildingPane = bankDetailsBildingPane;
     }
+
+    
     
     
 

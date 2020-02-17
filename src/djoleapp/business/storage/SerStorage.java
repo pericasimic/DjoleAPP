@@ -1,6 +1,7 @@
 package djoleapp.business.storage;
 
 import djoleapp.business.model.Administrator;
+import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.constant.Constants;
 import djoleapp.controller.util.Message;
@@ -23,7 +24,7 @@ public class SerStorage implements Storage {
             ois.close();
             return list;
         } catch (IOException ex) {
-            return new ArrayList<>(); 
+            return new ArrayList<>();
         } catch (ClassNotFoundException ex) {
             Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_LOAD_ADMIN);
             System.exit(0);
@@ -52,7 +53,7 @@ public class SerStorage implements Storage {
             ois.close();
             return list;
         } catch (IOException ex) {
-            return new ArrayList<>(); 
+            return new ArrayList<>();
         } catch (ClassNotFoundException ex) {
             Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_LOAD_BUILDING);
             System.exit(0);
@@ -61,8 +62,7 @@ public class SerStorage implements Storage {
     }
 
     @Override
-    public void writeResidentialCommunities(List<ResidentialCommunity> list
-    ) {
+    public void writeResidentialCommunities(List<ResidentialCommunity> list) {
 
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Constants.BUILDINGS_DAT));
@@ -75,4 +75,5 @@ public class SerStorage implements Storage {
 
     }
 
+    
 }

@@ -118,9 +118,9 @@ public class ResidentialCommunity implements Serializable {
         this.isExist = isExist;
     }
 
-//    @Override
-//    public String toString() {
-//        return id + ". " + name;
-//    }
+    @Override
+    public String toString() {
+        return id + ". " + name;
+    }
 
 }

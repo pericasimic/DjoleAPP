@@ -19,9 +19,12 @@ public class Constants {
     public static final String ERROR_STORAGE_WRITE_ADMIN = "package djoleapp.business.storage.writeAdmin";
     public static final String ERROR_STORAGE_LOAD_BUILDING = "package djoleapp.business.storage.loadResidentialCommunity";
     public static final String ERROR_STORAGE_WRITE_BUILDING = "package djoleapp.business.storage.writeResidentialCommunity";
+    public static final String ERROR_STORAGE_LOAD_BANK_ACCOUNT = "package djoleapp.business.storage.loadBankAccounts";
+    public static final String ERROR_STORAGE_WRITE_BANK_ACCOUNT = "package djoleapp.business.storage.writeBankAccounts";
     public static final String ADMIN = "admin";
     public static final String ADMIN_DAT = "admin.dat";
     public static final String BUILDINGS_DAT = "buildings.dat";
+    public static final String BANK_ACCOUNTS_DAT = "bankaccounts.dat";
     public static final String TITLE_ADD_ADMIN = "Dodavanje administratora";
     public static final String ADD_ADMIN = "Novi administrator je dodat";
     public static final String ADD_ADMIN_LABEL_PASSWORD_CONFIRM = "Potvrdi lozinku:";
@@ -59,10 +62,11 @@ public class Constants {
     public static final String TAX_NUM_BUILDING = "PIB";
     public static final String MAIL_BUILDING = "Mejl adresa";
     public static final String BANK_ACCOUNT = "Tekuci racun";
+    public static final String BANK = "Naziv banke";
     public static final String ADD_BUILDING = "Stambena zajednica je dodata";
     public static final String NOT_ADD_BUILDING = "Stambena zajednica nije dodata";
     public static final String SELECT_BUILDINGS = "Izaberi zgradu:";
     public static final String SELECT_ITEM = "Izaberi stavku:";
-    
+    public static final String ACCOUNT_CALCULATION = "Racuni i obracuni";
     
 }

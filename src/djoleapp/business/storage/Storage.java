@@ -1,6 +1,7 @@
 package djoleapp.business.storage;
 
 import djoleapp.business.model.Administrator;
+import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.ResidentialCommunity;
 import java.util.List;
 

@@ -15,7 +15,7 @@ public class BankDetailsBuildingEvent implements EventHandler<ActionEvent>{
     public void handle(ActionEvent event) {
         
         BankDetailsBildingPane lbabp = new BankDetailsBildingPane();
-        Controller.getInstance().setListBankAccountBuildingPane(lbabp);
+        Controller.getInstance().setBankDetailsBildingPane(lbabp);
         MainPane mp = new MainPane(lbabp);
         Scene scena = new Scene(mp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
         Controller.getInstance().getPrimaryStage().setScene(scena);
