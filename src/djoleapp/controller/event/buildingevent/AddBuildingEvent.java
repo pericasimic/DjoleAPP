@@ -17,9 +17,9 @@ public class AddBuildingEvent implements EventHandler<ActionEvent> {
     }
 
     public void addBuildingEvent() {
-        
+
         ListBuildingsPane lp = Controller.getInstance().getListBuildingsPane();
-        
+
         String name = lp.getNameBuildingFld().getText();
         String idNumber = lp.getIdNumBuildingFld().getText();
         String taxNumber = lp.getTidNumBuildingFld().getText();
@@ -31,16 +31,12 @@ public class AddBuildingEvent implements EventHandler<ActionEvent> {
             return;
         }
 
-        try {
-            int id = Controller.getInstance().getTemporaryList().getResidentialCommunitys().size() + 1;
-            ResidentialCommunity rc = new ResidentialCommunity(id, name, idNumber, taxNumber, mail);
-            Controller.getInstance().getTemporaryList().getResidentialCommunitys().add(rc);
-            Message.info(Alert.AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_BUILDING);
-            lp.clearAllFields();
-            lp.reload();
-        } catch (Exception e) {
-            Message.info(Alert.AlertType.ERROR, Constants.ALERT_WARNING_DIALOG, Constants.NOT_ADD_BUILDING);
-        }
+        int id = Controller.getInstance().getTemporaryList().getResidentialCommunitys().size() + 1;
+        ResidentialCommunity rc = new ResidentialCommunity(id, name, idNumber, taxNumber, mail);
+        Controller.getInstance().getTemporaryList().getResidentialCommunitys().add(rc);
+        Message.info(Alert.AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_BUILDING);
+        lp.clearAllFields();
+        lp.reload();
     }
 
 }

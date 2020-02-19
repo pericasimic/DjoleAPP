@@ -45,7 +45,7 @@ public class MainPane extends BorderPane {
         MenuItem buildingList = new MenuItem(Constants.MENU_ITEM_BUILDING_LIST);
         buildingList.setAccelerator(new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN));
         buildingList.setOnAction(Controller.getInstance().getManagerEvent().getListBuildingEvent());
-        MenuItem bankAccountList = new MenuItem(Constants.MENU_ITEM_BANK_ACCOUNT_LIST);
+        MenuItem bankAccountList = new MenuItem(Constants.MENU_ITEM_BUILDING_DETAILS);
         bankAccountList.setAccelerator(new KeyCodeCombination(KeyCode.B, KeyCombination.CONTROL_DOWN));
         bankAccountList.setOnAction(Controller.getInstance().getManagerEvent().getBankDetailsBuildingEvent());
         

@@ -10,15 +10,18 @@ public class TemporaryList {
 
     List<Administrator> administrators;
     List<ResidentialCommunity> residentialCommunitys;
+    List<BankAccount> bankAccounts;
 
     public TemporaryList() {
         administrators = Factory.getStorage().loadAdmin();
         residentialCommunitys = Factory.getStorage().loadResidentialCommunities();
+        bankAccounts = Factory.getStorage().loadBAnkAccounts();
     }
 
     public void saveTemporaryLists() {
-        Factory.getStorage().writeAdmin(administrators);
+        Factory.getStorage().writeAdmins(administrators);
         Factory.getStorage().writeResidentialCommunities(residentialCommunitys);
+        Factory.getStorage().writeBankAccounts(bankAccounts);
     }
 
     public List<Administrator> getAdministrators() {
@@ -37,4 +40,12 @@ public class TemporaryList {
         this.residentialCommunitys = residentialCommunitys;
     }
 
+    public List<BankAccount> getBankAccounts() {
+        return bankAccounts;
+    }
+
+    public void setBankAccounts(List<BankAccount> bankAccounts) {
+        this.bankAccounts = bankAccounts;
+    }
+    
 }

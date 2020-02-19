@@ -33,7 +33,7 @@ public class SerStorage implements Storage {
     }
 
     @Override
-    public void writeAdmin(List<Administrator> list) {
+    public void writeAdmins(List<Administrator> list) {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Constants.ADMIN_DAT));
             oos.writeObject(list);
@@ -73,6 +73,34 @@ public class SerStorage implements Storage {
             System.exit(0);
         }
 
+    }
+
+    @Override
+    public List<BankAccount> loadBAnkAccounts() {
+        try {
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Constants.BANK_ACCOUNTS_DAT));
+            List<BankAccount> list = (List<BankAccount>) ois.readObject();
+            ois.close();
+            return list;
+        } catch (IOException ex) {
+            return new ArrayList<>();
+        } catch (ClassNotFoundException ex) {
+            Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_LOAD_BANK_ACCOUNT);
+            System.exit(0);
+            return null;
+        }
+    }
+
+    @Override
+    public void writeBankAccounts(List<BankAccount> list) {
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Constants.BANK_ACCOUNTS_DAT));
+            oos.writeObject(list);
+            oos.close();
+        } catch (Exception ex) {
+            Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_WRITE_BANK_ACCOUNT);
+            System.exit(0);
+        }
     }
 
     

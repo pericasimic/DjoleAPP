@@ -26,12 +26,12 @@ public class AddAdminEvent implements EventHandler<ActionEvent> {
         Controller.getInstance().getAddAdminPane().getAddPasswordFld().setText(null);
         String conPass = Controller.getInstance().getAddAdminPane().getConfirmPasswordFld().getText();
         Controller.getInstance().getAddAdminPane().getConfirmPasswordFld().setText(null);
-        
+
         if (username == null || password == null || conPass == null || username.isEmpty() || password.isEmpty() || conPass.isEmpty()) {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
             return;
         }
-        if(username.equalsIgnoreCase(Constants.ADMIN)){
+        if (username.equalsIgnoreCase(Constants.ADMIN)) {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ADMIN_DENY);
             return;
         }
@@ -39,13 +39,13 @@ public class AddAdminEvent implements EventHandler<ActionEvent> {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_PASSWORD_NOT_SAME);
             return;
         }
-        
+
         Administrator a = new Administrator(username, password);
-        List<Administrator>list = Factory.getStorage().loadAdmin();
+        List<Administrator> list = Factory.getStorage().loadAdmin();
         list.add(a);
-        Factory.getStorage().writeAdmin(list);
+        Factory.getStorage().writeAdmins(list);
         Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_ADMIN);
-        
+
         LoginPane lp = new LoginPane();
         Controller.getInstance().setLoginPane(lp);
         Scene scena = new Scene(lp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);

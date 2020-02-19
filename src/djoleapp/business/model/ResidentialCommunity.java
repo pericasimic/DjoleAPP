@@ -14,8 +14,6 @@ public class ResidentialCommunity implements Serializable {
     private List<Occupant> listOccupants = new ArrayList<>();
     private List<BankAccount> bankAccounts = new ArrayList<>();
     private List<SeparateSection> listSeparationSection = new ArrayList<>();
-    private List<BankingStatement> listStatements = new ArrayList<>();
-    private List<AccountCalculation> listCalculations = new ArrayList<>();
     private boolean isExist = true;
 
     public ResidentialCommunity(int id) {
@@ -92,22 +90,6 @@ public class ResidentialCommunity implements Serializable {
 
     public void setListSeparationSection(List<SeparateSection> listSeparationSection) {
         this.listSeparationSection = listSeparationSection;
-    }
-
-    public List<BankingStatement> getListStatements() {
-        return listStatements;
-    }
-
-    public void setListStatements(List<BankingStatement> listStatements) {
-        this.listStatements = listStatements;
-    }
-
-    public List<AccountCalculation> getListCalculations() {
-        return listCalculations;
-    }
-
-    public void setListCalculations(List<AccountCalculation> listCalculations) {
-        this.listCalculations = listCalculations;
     }
 
     public boolean isIsExist() {

@@ -24,6 +24,7 @@ public class Constants {
     public static final String ADMIN = "admin";
     public static final String ADMIN_DAT = "admin.dat";
     public static final String BUILDINGS_DAT = "buildings.dat";
+    public static final String ADMIN_DAT_PATH = "C:\\Users\\perica.simic\\Documents\\NetBeansProjects\\DjoleAPP\\admin";
     public static final String BANK_ACCOUNTS_DAT = "bankaccounts.dat";
     public static final String TITLE_ADD_ADMIN = "Dodavanje administratora";
     public static final String ADD_ADMIN = "Novi administrator je dodat";
@@ -50,7 +51,8 @@ public class Constants {
     public static final String DEBIT = "Zaduzenje";
     public static final String FROM_PREVIOUS_PERIOD = "iz prethodnog perioda";
     public static final String MENU_ITEM_BUILDING_LIST = "Lista zgrada...";
-    public static final String MENU_ITEM_BANK_ACCOUNT_LIST = "Bankovni računi zgrade...";
+    public static final String MENU_ITEM_BUILDING_DETAILS = "Detalji o zgradi...";
+    public static final String MENU_ITEM_BUILDING_UNITS = "Delovi zgrade";
     public static final String BUTTON_ADD = "Dodaj";
     public static final String BUTTON_REMOVE = "Obrisi";
     public static final String BUTTON_EDIT = "Izmeni";
@@ -64,6 +66,7 @@ public class Constants {
     public static final String BANK_ACCOUNT = "Tekuci racun";
     public static final String BANK = "Naziv banke";
     public static final String ADD_BUILDING = "Stambena zajednica je dodata";
+    public static final String ADD_BANK_ACCOUNT_SUCCESS = "Bankovni racun je dodat";
     public static final String NOT_ADD_BUILDING = "Stambena zajednica nije dodata";
     public static final String SELECT_BUILDINGS = "Izaberi zgradu:";
     public static final String SELECT_ITEM = "Izaberi stavku:";

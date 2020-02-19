@@ -13,10 +13,14 @@ public interface Storage {
 
     public List<Administrator> loadAdmin();
 
-    public void writeAdmin(List<Administrator> list);
+    public void writeAdmins(List<Administrator> list);
 
     public List<ResidentialCommunity> loadResidentialCommunities();
 
     public void writeResidentialCommunities(List<ResidentialCommunity> list);
+    
+    public List<BankAccount> loadBAnkAccounts();
+
+    public void writeBankAccounts(List<BankAccount> list);
 
 }

@@ -13,6 +13,7 @@ public class Occupant {
     private String phoneNumber;
     private String mail;
     private Text note;
+    private List<SeparateSection> listSeparateSections = new ArrayList<>();
     private List<AccountCalculation> listAccountCalc = new ArrayList<>();
     private List<BankingStatement> listStatements = new ArrayList<>();
     private boolean isExist = true;
@@ -21,14 +22,13 @@ public class Occupant {
         this.id = id;
     }
 
-    public Occupant(long id, String firstNameOccupant, String lastNameOccupant, String identificationNumber, String phoneNumber, String mail, Text note) {
+    public Occupant(long id, String firstNameOccupant, String lastNameOccupant, String identificationNumber, String phoneNumber, String mail) {
         this.id = id;
         this.firstNameOccupant = firstNameOccupant;
         this.lastNameOccupant = lastNameOccupant;
         this.identificationNumber = identificationNumber;
         this.phoneNumber = phoneNumber;
         this.mail = mail;
-        this.note = note;
     }
 
     public String getFirstNameOccupant() {
@@ -111,5 +111,4 @@ public class Occupant {
         this.listStatements = listStatements;
     }
 
-    
 }

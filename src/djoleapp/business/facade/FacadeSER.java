@@ -14,17 +14,17 @@ import java.util.List;
  *
  * @author perica.simic
  */
-public class FacadeSER implements Facade{
+public class FacadeSER implements Facade {
 
     @Override
     public boolean loginAdminCheck(String username, String password) {
         List<Administrator> list = Factory.getStorage().loadAdmin();
-        for(Administrator a: list){
-            if(username.equals(a.getUsername()) && password.equals(a.getPassword())){
+        for (Administrator a : list) {
+            if (username.equals(a.getUsername()) && password.equals(a.getPassword())) {
                 return true;
             }
         }
         return false;
     }
-    
+
 }

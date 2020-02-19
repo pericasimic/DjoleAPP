@@ -1,10 +1,11 @@
 package djoleapp.business.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class AccountCalculation {
+public class AccountCalculation implements Serializable {
     
     private long id;
     private ResidentialCommunity residentialCommunity;
