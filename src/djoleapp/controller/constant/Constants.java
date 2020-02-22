@@ -39,7 +39,9 @@ public class Constants {
     public static final String FILE = "Fajl";
     public static final String BUILDINGS = "Stambene zajednice";
     public static final String BUILDINGS_LIST_TITLE = "Lista stambenih zajednica";
+    public static final String OCCUPANT_LIST_TITLE = "Lista stanara";
     public static final String OCCUPANTS = "Stanari";
+    public static final String OCCUPANT_COLON = "Stanar:";
     public static final String ACCOUNTS = "Racuni";
     public static final String STATEMENTS = "Izvodi";
     public static final String ABOUT = "O programu";
@@ -52,6 +54,8 @@ public class Constants {
     public static final String FROM_PREVIOUS_PERIOD = "iz prethodnog perioda";
     public static final String MENU_ITEM_BUILDING_LIST = "Lista zgrada...";
     public static final String MENU_ITEM_BUILDING_DETAILS = "Detalji o zgradi...";
+    public static final String MENU_ITEM_OCCUPANT_DETAILS = "Detalji o stanarima...";
+    public static final String MENU_ITEM_OCCUPANT_LIST = "Lista stanara...";
     public static final String MENU_ITEM_BUILDING_UNITS = "Delovi zgrade";
     public static final String BUTTON_ADD = "Dodaj";
     public static final String BUTTON_REMOVE = "Obrisi";
@@ -60,9 +64,9 @@ public class Constants {
     public static final String BUTTON_SEARCH = "Pretraga";
     public static final String NAME_OF_BUILDING = "Naziv zgrade";
     public static final String ID = "ID";
-    public static final String ID_NUM_BUILDING = "Maticni broj";
+    public static final String ID_NUM = "Maticni broj";
     public static final String TAX_NUM_BUILDING = "PIB";
-    public static final String MAIL_BUILDING = "Mejl adresa";
+    public static final String MAIL = "Mejl adresa";
     public static final String BANK_ACCOUNT = "Tekuci racun";
     public static final String BANK = "Naziv banke";
     public static final String ADD_BUILDING = "Stambena zajednica je dodata";
@@ -70,6 +74,9 @@ public class Constants {
     public static final String NOT_ADD_BUILDING = "Stambena zajednica nije dodata";
     public static final String SELECT_BUILDINGS = "Izaberi zgradu:";
     public static final String SELECT_ITEM = "Izaberi stavku:";
-    public static final String ACCOUNT_CALCULATION = "Racuni i obracuni";
+    public static final String FIRST_NAME = "Ime";
+    public static final String LAST_NAME = "Prezime";
+    public static final String PHONE_NUMBER = "Broj telefona";
+    public static final String HASH_KEY = "#";
     
 }

@@ -6,9 +6,12 @@ import djoleapp.controller.event.adminevent.LogoutEvent;
 import djoleapp.controller.event.adminevent.SaveEvent;
 import djoleapp.controller.event.buildingevent.AddBankAccountBuildEvent;
 import djoleapp.controller.event.buildingevent.AddBuildingEvent;
+import djoleapp.controller.event.buildingevent.AddOccupantBuildingEvent;
 import djoleapp.controller.event.buildingevent.BankDetailsBuildingEvent;
 import djoleapp.controller.event.buildingevent.ListBuildingEvent;
 import djoleapp.controller.event.buildingevent.ShowSelectBuildTableEvent;
+import djoleapp.controller.event.occupantevent.DetailsOccupantEvent;
+import djoleapp.controller.event.occupantevent.ListOccupantEvent;
 
 /**
  *
@@ -25,6 +28,9 @@ public class ManagerEvent {
     private BankDetailsBuildingEvent bankDetailsBuildingEvent = null;
     private ShowSelectBuildTableEvent showSelectBuildTableEvent = null;
     private AddBankAccountBuildEvent addBankAccountBuildEvent = null;
+    private ListOccupantEvent listOccupantEvent = null;
+    private DetailsOccupantEvent detailsOccupantEvent = null;
+    private AddOccupantBuildingEvent addOccupantBuildingEvent = null;
 
     public ManagerEvent() {
 
@@ -37,11 +43,28 @@ public class ManagerEvent {
         bankDetailsBuildingEvent = new BankDetailsBuildingEvent();
         showSelectBuildTableEvent = new ShowSelectBuildTableEvent();
         addBankAccountBuildEvent = new AddBankAccountBuildEvent();
+        listOccupantEvent = new ListOccupantEvent();
+        detailsOccupantEvent = new DetailsOccupantEvent();
+        addOccupantBuildingEvent = new AddOccupantBuildingEvent();
     }
 
     public ListBuildingEvent getListBuildingEvent() {
         return listBuildingEvent;
     }
+
+    public AddOccupantBuildingEvent getAddOccupantBuildingEvent() {
+        return addOccupantBuildingEvent;
+    }
+
+    
+    public DetailsOccupantEvent getDetailsOccupantEvent() {
+        return detailsOccupantEvent;
+    }
+
+    public ListOccupantEvent getListOccupantEvent() {
+        return listOccupantEvent;
+    }
+    
 
     public LoginEvent getLoginEvent() {
         return loginEvent;

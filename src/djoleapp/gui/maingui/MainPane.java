@@ -45,13 +45,23 @@ public class MainPane extends BorderPane {
         MenuItem buildingList = new MenuItem(Constants.MENU_ITEM_BUILDING_LIST);
         buildingList.setAccelerator(new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN));
         buildingList.setOnAction(Controller.getInstance().getManagerEvent().getListBuildingEvent());
-        MenuItem bankAccountList = new MenuItem(Constants.MENU_ITEM_BUILDING_DETAILS);
-        bankAccountList.setAccelerator(new KeyCodeCombination(KeyCode.B, KeyCombination.CONTROL_DOWN));
-        bankAccountList.setOnAction(Controller.getInstance().getManagerEvent().getBankDetailsBuildingEvent());
+        MenuItem detailsBuilding = new MenuItem(Constants.MENU_ITEM_BUILDING_DETAILS);
+        detailsBuilding.setAccelerator(new KeyCodeCombination(KeyCode.B, KeyCombination.CONTROL_DOWN));
+        detailsBuilding.setOnAction(Controller.getInstance().getManagerEvent().getBankDetailsBuildingEvent());
         
-        buildings.getItems().addAll(buildingList, bankAccountList);
+        buildings.getItems().addAll(buildingList, detailsBuilding);
         
         Menu occupants = new Menu(Constants.OCCUPANTS);
+        
+        MenuItem occupantsList = new MenuItem(Constants.MENU_ITEM_OCCUPANT_LIST);
+        occupantsList.setAccelerator(new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN));
+        occupantsList.setOnAction(Controller.getInstance().getManagerEvent().getListOccupantEvent());
+        MenuItem detailsOccupant = new MenuItem(Constants.MENU_ITEM_OCCUPANT_DETAILS);
+        detailsOccupant.setAccelerator(new KeyCodeCombination(KeyCode.D, KeyCombination.CONTROL_DOWN));
+        detailsOccupant.setOnAction(Controller.getInstance().getManagerEvent().getDetailsOccupantEvent());
+        
+        occupants.getItems().addAll(occupantsList, detailsOccupant);
+        
         Menu accounts = new Menu(Constants.ACCOUNTS);
         Menu statements = new Menu(Constants.STATEMENTS);
         Menu about = new Menu(Constants.ABOUT);

@@ -48,7 +48,7 @@ public class ListBuildingsPane extends VBox {
         nameBuildingCol.setMinWidth(150);
         nameBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("name"));
 
-        TableColumn idNumBuildingCol = new TableColumn(Constants.ID_NUM_BUILDING);
+        TableColumn idNumBuildingCol = new TableColumn(Constants.ID_NUM);
         idNumBuildingCol.setMinWidth(150);
         idNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("identificationNumber"));
 
@@ -56,7 +56,7 @@ public class ListBuildingsPane extends VBox {
         taxNumBuildingCol.setMinWidth(150);
         taxNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("taxIdentificationNumber"));
 
-        TableColumn mailNumBuildingCol = new TableColumn(Constants.MAIL_BUILDING);
+        TableColumn mailNumBuildingCol = new TableColumn(Constants.MAIL);
         mailNumBuildingCol.setMinWidth(150);
         mailNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("mail"));
 
@@ -98,13 +98,13 @@ public class ListBuildingsPane extends VBox {
         nameBuildingFld.setPromptText(Constants.NAME_OF_BUILDING);
 
         idNumBuildingFld.setMaxWidth(USE_PREF_SIZE);
-        idNumBuildingFld.setPromptText(Constants.ID_NUM_BUILDING);
+        idNumBuildingFld.setPromptText(Constants.ID_NUM);
 
         tidNumBuildingFld.setMaxWidth(USE_PREF_SIZE);
         tidNumBuildingFld.setPromptText(Constants.TAX_NUM_BUILDING);
 
         mailBuildingFld.setMaxWidth(USE_PREF_SIZE);
-        mailBuildingFld.setPromptText(Constants.MAIL_BUILDING);
+        mailBuildingFld.setPromptText(Constants.MAIL);
 
         addBuildingBtn.setOnAction(Controller.getInstance().getManagerEvent().getAddBuildingEvent());
         addBuildingBtn.setOnKeyPressed(e -> {
@@ -138,9 +138,6 @@ public class ListBuildingsPane extends VBox {
         tableBuildings.setItems(FXCollections.observableArrayList(listBuildings));
     }
     
-    public TableView<ResidentialCommunity> getTableBuildings() {
-        return tableBuildings;
-    }
 
     public TextField getNameBuildingFld() {
         return nameBuildingFld;
@@ -162,8 +159,5 @@ public class ListBuildingsPane extends VBox {
         return searchBuildingFld;
     }
 
-    public List<ResidentialCommunity> getListBuildings() {
-        return listBuildings;
-    }
 
 }

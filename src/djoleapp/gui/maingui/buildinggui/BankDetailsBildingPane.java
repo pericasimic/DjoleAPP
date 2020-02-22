@@ -65,10 +65,6 @@ public class BankDetailsBildingPane extends VBox {
         bankAccountTable.setItems(FXCollections.observableArrayList(list));
     }
 
-    public void setBankAccountTable(TableView<BankAccount> bankAccountTable) {
-        this.bankAccountTable = bankAccountTable;
-    }
-
     public TextField getNameBankFld() {
         return nameBankFld;
     }
