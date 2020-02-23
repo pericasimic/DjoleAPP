@@ -1,10 +1,11 @@
 package djoleapp.business.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.text.Text;
 
-public class Occupant {
+public class Occupant implements Serializable {
 
     private long id;
     private String firstNameOccupant;

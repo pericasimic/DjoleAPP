@@ -2,6 +2,7 @@ package djoleapp.business.storage;
 
 import djoleapp.business.model.Administrator;
 import djoleapp.business.model.BankAccount;
+import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ResidentialCommunity;
 import java.util.List;
 
@@ -19,8 +20,12 @@ public interface Storage {
 
     public void writeResidentialCommunities(List<ResidentialCommunity> list);
     
-    public List<BankAccount> loadBAnkAccounts();
+    public List<BankAccount> loadBankAccounts();
 
     public void writeBankAccounts(List<BankAccount> list);
+    
+    public List<Occupant> loadOccupants();
+
+    public void writeOccupants(List<Occupant> list);
 
 }

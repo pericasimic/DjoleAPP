@@ -12,6 +12,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
 public class TableOccupant extends TableView<Occupant> {
+
+    public TableOccupant() {
+    }
     
     public TableOccupant(List<Occupant> list){
         TableColumn numOrder = new TableColumn(Constants.HASH_KEY);
