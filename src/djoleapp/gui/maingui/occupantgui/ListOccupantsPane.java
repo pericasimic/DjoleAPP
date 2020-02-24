@@ -25,8 +25,7 @@ import javafx.scene.text.Text;
 public class ListOccupantsPane extends VBox {
 
     private Label titleLbl = new Label(Constants.OCCUPANT_LIST_TITLE);
-    private List<Occupant> listOccupants;
-    private TableOccupant tableOccupant;
+    private TableOccupant tableOccupant = new TableOccupant();
 
     private TextField searchOccupantFld = new TextField();
 
@@ -39,7 +38,7 @@ public class ListOccupantsPane extends VBox {
         setSpacing(5);
         setPadding(new Insets(10, 10, 10, 10));
         
-        tableOccupant = new TableOccupant(listOccupants);
+        tableOccupant = new TableOccupant(Controller.getInstance().getTemporaryList().getOccupants());
         Controller.getInstance().setTableOccupant(tableOccupant);
 
         getChildren().addAll(titleLbl, getSearch(), tableOccupant, getForm());
@@ -73,10 +72,10 @@ public class ListOccupantsPane extends VBox {
         hbox.setPadding(new Insets(10, 10, 10, 10));
         hbox.setAlignment(Pos.CENTER);
 
-        addOccupantBtn.setOnAction(Controller.getInstance().getManagerEvent().getAddBuildingEvent());
+        addOccupantBtn.setOnAction(Controller.getInstance().getManagerEvent().getAddOccupantEvent());
         addOccupantBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getAddBuildingEvent().addBuildingEvent();
+                Controller.getInstance().getManagerEvent().getAddOccupantEvent().addOccupantEvent();
             }
 
         });
@@ -100,8 +99,8 @@ public class ListOccupantsPane extends VBox {
 //    }
 //
 
-    public void reload(List<Occupant> list) {
-        tableOccupant.setItems(FXCollections.observableArrayList(list));
+    public void reload() {
+        tableOccupant.setItems(FXCollections.observableArrayList(Controller.getInstance().getTemporaryList().getOccupants()));
     }
-//    
+
 }

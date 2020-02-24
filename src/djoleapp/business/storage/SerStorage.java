@@ -127,6 +127,7 @@ public class SerStorage implements Storage {
             oos.writeObject(list);
             oos.close();
         } catch (Exception ex) {
+            ex.printStackTrace();
             Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_WRITE_OCCUPANT);
             System.exit(0);
         }

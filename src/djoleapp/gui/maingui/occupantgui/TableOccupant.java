@@ -15,13 +15,13 @@ public class TableOccupant extends TableView<Occupant> {
 
     public TableOccupant() {
     }
-    
-    public TableOccupant(List<Occupant> list){
+
+    public TableOccupant(List<Occupant> list) {
         TableColumn numOrder = new TableColumn(Constants.HASH_KEY);
         numOrder.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Occupant, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Occupant, String> o) {
-                return new ReadOnlyObjectWrapper(getItems().indexOf(o.getValue()) + "");
+                return new ReadOnlyObjectWrapper(getItems().indexOf(o.getValue()) + 1 + "");
             }
         });
         numOrder.setSortable(false);
@@ -49,11 +49,5 @@ public class TableOccupant extends TableView<Occupant> {
         this.setItems(FXCollections.observableArrayList(list));
         this.getColumns().addAll(numOrder, firstNameCol, lastNameCol, idNumberCol, phoneNumberCol, mailCol);
     }
-    
-    
-    public void reloadOccupantTable(List<Occupant> list) {
-        setItems(FXCollections.observableArrayList(list));
-    }
 
-    
 }

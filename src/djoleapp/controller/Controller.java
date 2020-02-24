@@ -10,6 +10,7 @@ import djoleapp.gui.maingui.buildinggui.OccupantDetailsBuildingPane;
 import djoleapp.gui.maingui.buildinggui.BuildingDetailsPane;
 import djoleapp.gui.maingui.buildinggui.ListBuildingsPane;
 import djoleapp.gui.maingui.buildinggui.TopHBoxBuildingPane;
+import djoleapp.gui.maingui.occupantgui.AddOccupantPane;
 import djoleapp.gui.maingui.occupantgui.ListOccupantsPane;
 import djoleapp.gui.maingui.occupantgui.TableOccupant;
 import javafx.scene.Scene;
@@ -31,6 +32,7 @@ public class Controller {
     private ListOccupantsPane listOccupantsPane;
     private TableOccupant tableOccupant;
     private TemporaryList temporaryList;
+    private AddOccupantPane addOccupantPane;
     private final ManagerEvent managerEvent = new ManagerEvent();
     
     public Controller(){    
@@ -48,6 +50,14 @@ public class Controller {
         return primaryStage;
     }
 
+    public void setAddOccupantPane(AddOccupantPane addOccupantPane) {
+        this.addOccupantPane = addOccupantPane;
+    }
+
+    public AddOccupantPane getAddOccupantPane() {
+        return addOccupantPane;
+    }
+
     public AddAdminPane getAddAdminPane() {
         return addAdminPane;
     }
@@ -61,7 +71,6 @@ public class Controller {
     }
     
     
-
     public void setTableOccupant(TableOccupant tableOccupant) {
         this.tableOccupant = tableOccupant;
     }

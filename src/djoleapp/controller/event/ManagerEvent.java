@@ -10,6 +10,8 @@ import djoleapp.controller.event.buildingevent.AddOccupantBuildingEvent;
 import djoleapp.controller.event.buildingevent.BankDetailsBuildingEvent;
 import djoleapp.controller.event.buildingevent.ListBuildingEvent;
 import djoleapp.controller.event.buildingevent.ShowSelectBuildTableEvent;
+import djoleapp.controller.event.occupantevent.AddOccupantEvent;
+import djoleapp.controller.event.occupantevent.ConfirmAddOcupantEvent;
 import djoleapp.controller.event.occupantevent.DetailsOccupantEvent;
 import djoleapp.controller.event.occupantevent.ListOccupantEvent;
 
@@ -31,6 +33,8 @@ public class ManagerEvent {
     private ListOccupantEvent listOccupantEvent = null;
     private DetailsOccupantEvent detailsOccupantEvent = null;
     private AddOccupantBuildingEvent addOccupantBuildingEvent = null;
+    private AddOccupantEvent addOccupantEvent = null;
+    private ConfirmAddOcupantEvent confirmAddOcupantEvent = null;
 
     public ManagerEvent() {
 
@@ -46,6 +50,16 @@ public class ManagerEvent {
         listOccupantEvent = new ListOccupantEvent();
         detailsOccupantEvent = new DetailsOccupantEvent();
         addOccupantBuildingEvent = new AddOccupantBuildingEvent();
+        addOccupantEvent = new AddOccupantEvent();
+        confirmAddOcupantEvent = new ConfirmAddOcupantEvent();
+    }
+
+    public ConfirmAddOcupantEvent getConfirmAddOcupantEvent() {
+        return confirmAddOcupantEvent;
+    }
+
+    public AddOccupantEvent getAddOccupantEvent() {
+        return addOccupantEvent;
     }
 
     public ListBuildingEvent getListBuildingEvent() {

@@ -26,6 +26,8 @@ public class OccupantDetailsBuildingPane extends VBox {
 
         this.setPadding(new Insets(10, 10, 10, 10));
 
+        reloadBox();
+
         tableOccupant = new TableOccupant(list);
         Controller.getInstance().setTableOccupant(tableOccupant);
 
@@ -54,6 +56,11 @@ public class OccupantDetailsBuildingPane extends VBox {
 
     public void reload(List<Occupant> list) {
         tableOccupant.setItems(FXCollections.observableArrayList(list));
+
+    }
+
+    public void reloadBox() {
+        occupantsBox.setItems(FXCollections.observableArrayList(Controller.getInstance().getTemporaryList().getOccupants()));
     }
 
 }

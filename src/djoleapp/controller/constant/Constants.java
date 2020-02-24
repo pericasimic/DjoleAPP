@@ -30,6 +30,7 @@ public class Constants {
     public static final String BANK_ACCOUNTS_DAT = "bankaccounts.dat";
     public static final String OCCUPANTS_DAT = "occupants.dat";
     public static final String TITLE_ADD_ADMIN = "Dodavanje administratora";
+    public static final String TITLE_ADD_OCCUPANT = "Dodavanje stanara";
     public static final String ADD_ADMIN = "Novi administrator je dodat";
     public static final String ADD_ADMIN_LABEL_PASSWORD_CONFIRM = "Potvrdi lozinku:";
     public static final String FONT_COMIC_SANS = "Comic Sans";

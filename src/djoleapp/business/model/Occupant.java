@@ -3,7 +3,6 @@ package djoleapp.business.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.text.Text;
 
 public class Occupant implements Serializable {
 
@@ -13,10 +12,11 @@ public class Occupant implements Serializable {
     private String identificationNumber;
     private String phoneNumber;
     private String mail;
-    private Text note;
+    private String note;
     private List<SeparateSection> listSeparateSections = new ArrayList<>();
     private List<AccountCalculation> listAccountCalc = new ArrayList<>();
     private List<BankingStatement> listStatements = new ArrayList<>();
+    private boolean isAdding = false;
     private boolean isExist = true;
 
     public Occupant(long id) {
@@ -72,11 +72,11 @@ public class Occupant implements Serializable {
         this.mail = mail;
     }
 
-    public Text getNote() {
+    public String getNote() {
         return note;
     }
 
-    public void setNote(Text note) {
+    public void setNote(String note) {
         this.note = note;
     }
 
@@ -110,6 +110,19 @@ public class Occupant implements Serializable {
 
     public void setListStatements(List<BankingStatement> listStatements) {
         this.listStatements = listStatements;
+    }
+
+    public boolean isIsAdding() {
+        return isAdding;
+    }
+
+    public void setIsAdding(boolean isAdding) {
+        this.isAdding = isAdding;
+    }
+
+    @Override
+    public String toString() {
+        return id + ". " + firstNameOccupant + " " + lastNameOccupant;
     }
 
 }
