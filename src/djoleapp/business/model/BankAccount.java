@@ -3,7 +3,7 @@ package djoleapp.business.model;
 import java.io.Serializable;
 
 public class BankAccount implements Serializable {
-    
+
     private long id;
     private String bankName;
     private String bankAccountNumber;
@@ -46,6 +46,10 @@ public class BankAccount implements Serializable {
     public void setId(long id) {
         this.id = id;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return bankName + ": " + bankAccountNumber;
+    }
+
 }

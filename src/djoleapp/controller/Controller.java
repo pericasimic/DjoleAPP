@@ -1,5 +1,6 @@
 package djoleapp.controller;
 
+import djoleapp.business.model.Occupant;
 import djoleapp.business.storage.TemporaryList;
 import djoleapp.controller.event.ManagerEvent;
 import djoleapp.gui.LoginPane;
@@ -10,8 +11,10 @@ import djoleapp.gui.maingui.buildinggui.OccupantDetailsBuildingPane;
 import djoleapp.gui.maingui.buildinggui.BuildingDetailsPane;
 import djoleapp.gui.maingui.buildinggui.ListBuildingsPane;
 import djoleapp.gui.maingui.buildinggui.TopHBoxBuildingPane;
+import djoleapp.gui.maingui.occupantgui.AddAccountOccupantPane;
 import djoleapp.gui.maingui.occupantgui.AddOccupantPane;
 import djoleapp.gui.maingui.occupantgui.ListOccupantsPane;
+import djoleapp.gui.maingui.occupantgui.SelectOcupantPane;
 import djoleapp.gui.maingui.occupantgui.TableOccupant;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -20,6 +23,7 @@ public class Controller {
     
     private static Controller instance = null;
     private Stage primaryStage;
+    private Stage temporaryStage;
     private Scene loginScene;
     private LoginPane loginPane;
     private AddAdminPane addAdminPane;
@@ -33,6 +37,9 @@ public class Controller {
     private TableOccupant tableOccupant;
     private TemporaryList temporaryList;
     private AddOccupantPane addOccupantPane;
+    private AddAccountOccupantPane addAccountOccupantPane;
+    private SelectOcupantPane selectOcupantPane;
+    private Occupant temporaryOccupant;
     private final ManagerEvent managerEvent = new ManagerEvent();
     
     public Controller(){    
@@ -46,8 +53,34 @@ public class Controller {
         return instance;
     }
 
+    public AddAccountOccupantPane getAddAccountOccupantPane() {
+        return addAccountOccupantPane;
+    }
+
+    public void setAddAccountOccupantPane(AddAccountOccupantPane addAccountOccupantPane) {
+        this.addAccountOccupantPane = addAccountOccupantPane;
+    }
+
+    
     public Stage getPrimaryStage() {
         return primaryStage;
+    }
+
+    public Stage getTemporaryStage() {
+        return temporaryStage;
+    }
+
+    public void setTemporaryStage(Stage temporaryStage) {
+        this.temporaryStage = temporaryStage;
+    }
+    
+
+    public void setSelectOcupantPane(SelectOcupantPane selectOcupantPane) {
+        this.selectOcupantPane = selectOcupantPane;
+    }
+
+    public SelectOcupantPane getSelectOcupantPane() {
+        return selectOcupantPane;
     }
 
     public void setAddOccupantPane(AddOccupantPane addOccupantPane) {
@@ -161,6 +194,14 @@ public class Controller {
 
     public void setOccupantDetailsBuildingPane(OccupantDetailsBuildingPane occupantDetailsBuildingPane) {
         this.occupantDetailsBuildingPane = occupantDetailsBuildingPane;
+    }
+
+    public Occupant getTemporaryOccupant() {
+        return temporaryOccupant;
+    }
+
+    public void setTemporaryOccupant(Occupant temporaryOccupant) {
+        this.temporaryOccupant = temporaryOccupant;
     }
 
     

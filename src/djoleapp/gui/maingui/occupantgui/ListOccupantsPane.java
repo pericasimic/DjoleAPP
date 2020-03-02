@@ -12,6 +12,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -37,8 +38,20 @@ public class ListOccupantsPane extends VBox {
         titleLbl.setFont(new Font(Constants.FONT_ARIAL, 20));
         setSpacing(5);
         setPadding(new Insets(10, 10, 10, 10));
-        
+
         tableOccupant = new TableOccupant(Controller.getInstance().getTemporaryList().getOccupants());
+
+        tableOccupant.setRowFactory(tv -> {
+            TableRow<Occupant> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    Occupant rowData = row.getItem();
+                    Controller.getInstance().getManagerEvent().getSelectOccupantEvent().selectOccupantEvent(rowData);
+                }
+            });
+            return row;
+        });
+
         Controller.getInstance().setTableOccupant(tableOccupant);
 
         getChildren().addAll(titleLbl, getSearch(), tableOccupant, getForm());

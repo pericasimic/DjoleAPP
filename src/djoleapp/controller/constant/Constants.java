@@ -5,6 +5,8 @@ public class Constants {
     public static final String TITLE_LOGIN = "Prijava na aplikaciju";
     public static final int SCENE_WIDTH = 960;
     public static final int SCENE_HEIGHT = 640;
+    public static final int SCENE_WIDTH_TEMP = 400;
+    public static final int SCENE_HEIGHT_TEMP = 600;
     public static final String PRIMARY_STAGE_TITLE = "Aplikacija - Stambeni objekti";
     public static final String USERNAME_LBL = "Korisnicko ime:";
     public static final String PASSWORD_LBL = "Lozinka:";
@@ -31,6 +33,7 @@ public class Constants {
     public static final String OCCUPANTS_DAT = "occupants.dat";
     public static final String TITLE_ADD_ADMIN = "Dodavanje administratora";
     public static final String TITLE_ADD_OCCUPANT = "Dodavanje stanara";
+    public static final String INFO_OCCUPANT = "Informacije o korisniku: ";
     public static final String ADD_ADMIN = "Novi administrator je dodat";
     public static final String ADD_ADMIN_LABEL_PASSWORD_CONFIRM = "Potvrdi lozinku:";
     public static final String FONT_COMIC_SANS = "Comic Sans";
@@ -65,6 +68,7 @@ public class Constants {
     public static final String BUTTON_REMOVE = "Obrisi";
     public static final String BUTTON_EDIT = "Izmeni";
     public static final String BUTTON_SHOW = "Prikazi";
+    public static final String BUTTON_BACK = "Nazad";
     public static final String BUTTON_SEARCH = "Pretraga";
     public static final String BUTTON_CANCEL = "Otkazi";
     public static final String NAME_OF_BUILDING = "Naziv zgrade";
@@ -80,9 +84,12 @@ public class Constants {
     public static final String NOT_ADD_BUILDING = "Stambena zajednica nije dodata";
     public static final String SELECT_BUILDINGS = "Izaberi zgradu:";
     public static final String SELECT_ITEM = "Izaberi stavku:";
+    public static final String SELECT_LIST = "Izaberi listu:";
     public static final String FIRST_NAME = "Ime";
     public static final String LAST_NAME = "Prezime";
     public static final String PHONE_NUMBER = "Broj telefona";
     public static final String HASH_KEY = "#";
-    
+    public static final String BUTTON_ADD_ACCOUNT = "Dodaj racun";
+    public static final String SEPARATE_SECTIONS = "Posebni delovi";
+
 }

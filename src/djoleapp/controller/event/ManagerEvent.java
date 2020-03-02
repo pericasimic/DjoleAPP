@@ -10,10 +10,15 @@ import djoleapp.controller.event.buildingevent.AddOccupantBuildingEvent;
 import djoleapp.controller.event.buildingevent.BankDetailsBuildingEvent;
 import djoleapp.controller.event.buildingevent.ListBuildingEvent;
 import djoleapp.controller.event.buildingevent.ShowSelectBuildTableEvent;
+import djoleapp.controller.event.occupantevent.AddAccountOccupantEvent;
 import djoleapp.controller.event.occupantevent.AddOccupantEvent;
+import djoleapp.controller.event.occupantevent.BackAddAccountOccupantEvent;
+import djoleapp.controller.event.occupantevent.BackListOccupant;
+import djoleapp.controller.event.occupantevent.ConfirmAddAccountOccupantEvent;
 import djoleapp.controller.event.occupantevent.ConfirmAddOcupantEvent;
 import djoleapp.controller.event.occupantevent.DetailsOccupantEvent;
 import djoleapp.controller.event.occupantevent.ListOccupantEvent;
+import djoleapp.controller.event.occupantevent.SelectOccupantEvent;
 
 /**
  *
@@ -35,6 +40,11 @@ public class ManagerEvent {
     private AddOccupantBuildingEvent addOccupantBuildingEvent = null;
     private AddOccupantEvent addOccupantEvent = null;
     private ConfirmAddOcupantEvent confirmAddOcupantEvent = null;
+    private SelectOccupantEvent selectOccupantEvent = null;
+    private BackListOccupant backListOccupant = null;
+    private AddAccountOccupantEvent addAccountOccupantEvent = null;
+    private BackAddAccountOccupantEvent backAddAccountOccupantEvent = null;
+    private ConfirmAddAccountOccupantEvent confirmAddAccountOccupantEvent = null;
 
     public ManagerEvent() {
 
@@ -52,6 +62,35 @@ public class ManagerEvent {
         addOccupantBuildingEvent = new AddOccupantBuildingEvent();
         addOccupantEvent = new AddOccupantEvent();
         confirmAddOcupantEvent = new ConfirmAddOcupantEvent();
+        selectOccupantEvent = new SelectOccupantEvent();
+        backListOccupant = new BackListOccupant();
+        addAccountOccupantEvent = new AddAccountOccupantEvent();
+        backAddAccountOccupantEvent = new BackAddAccountOccupantEvent();
+        confirmAddAccountOccupantEvent = new ConfirmAddAccountOccupantEvent();
+        
+                
+    }
+
+    public ConfirmAddAccountOccupantEvent getConfirmAddAccountOccupantEvent() {
+        return confirmAddAccountOccupantEvent;
+    }
+
+    
+    public BackAddAccountOccupantEvent getBackAddAccountOccupantEvent() {
+        return backAddAccountOccupantEvent;
+    }
+
+    
+    public AddAccountOccupantEvent getAddAccountOccupantEvent() {
+        return addAccountOccupantEvent;
+    }
+
+    public BackListOccupant getBackListOccupant() {
+        return backListOccupant;
+    }
+    
+    public SelectOccupantEvent getSelectOccupantEvent() {
+        return selectOccupantEvent;
     }
 
     public ConfirmAddOcupantEvent getConfirmAddOcupantEvent() {

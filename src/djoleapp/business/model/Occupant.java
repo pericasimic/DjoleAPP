@@ -13,10 +13,13 @@ public class Occupant implements Serializable {
     private String phoneNumber;
     private String mail;
     private String note;
+    private double sum = 0;
+    private List<IndependentSection> independents = new ArrayList<>();
+    private List<ResidentialCommunity> residentials = new ArrayList<>();
+    private List<BankAccount> bankAccounts = new ArrayList<>();
     private List<SeparateSection> listSeparateSections = new ArrayList<>();
     private List<AccountCalculation> listAccountCalc = new ArrayList<>();
     private List<BankingStatement> listStatements = new ArrayList<>();
-    private boolean isAdding = false;
     private boolean isExist = true;
 
     public Occupant(long id) {
@@ -112,17 +115,48 @@ public class Occupant implements Serializable {
         this.listStatements = listStatements;
     }
 
-    public boolean isIsAdding() {
-        return isAdding;
+    public void setBankAccounts(List<BankAccount> bankAccounts) {
+        this.bankAccounts = bankAccounts;
     }
 
-    public void setIsAdding(boolean isAdding) {
-        this.isAdding = isAdding;
+    public List<BankAccount> getBankAccounts() {
+        return bankAccounts;
+    }
+
+    public List<IndependentSection> getIndependents() {
+        return independents;
+    }
+
+    public void setIndependents(List<IndependentSection> independents) {
+        this.independents = independents;
+    }
+
+    public double getSum() {
+        return sum;
+    }
+
+    public void setSum(double sum) {
+        this.sum = sum;
+    }
+
+    public List<SeparateSection> getListSeparateSections() {
+        return listSeparateSections;
+    }
+
+    public void setListSeparateSections(List<SeparateSection> listSeparateSections) {
+        this.listSeparateSections = listSeparateSections;
+    }
+
+    public List<ResidentialCommunity> getResidentials() {
+        return residentials;
+    }
+
+    public void setResidentials(List<ResidentialCommunity> residentials) {
+        this.residentials = residentials;
     }
 
     @Override
     public String toString() {
         return id + ". " + firstNameOccupant + " " + lastNameOccupant;
     }
-
 }
