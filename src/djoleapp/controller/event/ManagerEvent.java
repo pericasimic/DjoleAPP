@@ -7,8 +7,11 @@ import djoleapp.controller.event.adminevent.SaveEvent;
 import djoleapp.controller.event.buildingevent.AddBankAccountBuildEvent;
 import djoleapp.controller.event.buildingevent.AddBuildingEvent;
 import djoleapp.controller.event.buildingevent.AddOccupantBuildingEvent;
+import djoleapp.controller.event.buildingevent.AddSectionEvent;
 import djoleapp.controller.event.buildingevent.BankDetailsBuildingEvent;
+import djoleapp.controller.event.buildingevent.ConfirmAddSeparateEvent;
 import djoleapp.controller.event.buildingevent.ListBuildingEvent;
+import djoleapp.controller.event.buildingevent.ShowAllOccupants;
 import djoleapp.controller.event.buildingevent.ShowSelectBuildTableEvent;
 import djoleapp.controller.event.occupantevent.AddAccountOccupantEvent;
 import djoleapp.controller.event.occupantevent.AddOccupantEvent;
@@ -45,6 +48,9 @@ public class ManagerEvent {
     private AddAccountOccupantEvent addAccountOccupantEvent = null;
     private BackAddAccountOccupantEvent backAddAccountOccupantEvent = null;
     private ConfirmAddAccountOccupantEvent confirmAddAccountOccupantEvent = null;
+    private AddSectionEvent addSectionEvent = null;
+    private ShowAllOccupants showAllOccupants = null;
+    private ConfirmAddSeparateEvent confirmAddSeparateEvent = null;
 
     public ManagerEvent() {
 
@@ -67,20 +73,32 @@ public class ManagerEvent {
         addAccountOccupantEvent = new AddAccountOccupantEvent();
         backAddAccountOccupantEvent = new BackAddAccountOccupantEvent();
         confirmAddAccountOccupantEvent = new ConfirmAddAccountOccupantEvent();
-        
-                
+        showAllOccupants = new ShowAllOccupants();
+        addSectionEvent = new AddSectionEvent();
+        confirmAddSeparateEvent = new ConfirmAddSeparateEvent();
+
+    }
+
+    public ConfirmAddSeparateEvent getConfirmAddSeparateEvent() {
+        return confirmAddSeparateEvent;
+    }
+
+    public ShowAllOccupants getShowAllOccupants() {
+        return showAllOccupants;
+    }
+
+    public AddSectionEvent getAddSectionEvent() {
+        return addSectionEvent;
     }
 
     public ConfirmAddAccountOccupantEvent getConfirmAddAccountOccupantEvent() {
         return confirmAddAccountOccupantEvent;
     }
 
-    
     public BackAddAccountOccupantEvent getBackAddAccountOccupantEvent() {
         return backAddAccountOccupantEvent;
     }
 
-    
     public AddAccountOccupantEvent getAddAccountOccupantEvent() {
         return addAccountOccupantEvent;
     }
@@ -88,7 +106,7 @@ public class ManagerEvent {
     public BackListOccupant getBackListOccupant() {
         return backListOccupant;
     }
-    
+
     public SelectOccupantEvent getSelectOccupantEvent() {
         return selectOccupantEvent;
     }
@@ -109,7 +127,6 @@ public class ManagerEvent {
         return addOccupantBuildingEvent;
     }
 
-    
     public DetailsOccupantEvent getDetailsOccupantEvent() {
         return detailsOccupantEvent;
     }
@@ -117,7 +134,6 @@ public class ManagerEvent {
     public ListOccupantEvent getListOccupantEvent() {
         return listOccupantEvent;
     }
-    
 
     public LoginEvent getLoginEvent() {
         return loginEvent;
@@ -150,6 +166,5 @@ public class ManagerEvent {
     public AddBankAccountBuildEvent getAddBankAccountBuildEvent() {
         return addBankAccountBuildEvent;
     }
-    
-    
+
 }

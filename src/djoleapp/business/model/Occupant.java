@@ -20,6 +20,7 @@ public class Occupant implements Serializable {
     private List<SeparateSection> listSeparateSections = new ArrayList<>();
     private List<AccountCalculation> listAccountCalc = new ArrayList<>();
     private List<BankingStatement> listStatements = new ArrayList<>();
+    private boolean isAdd = false;
     private boolean isExist = true;
 
     public Occupant(long id) {
@@ -154,6 +155,16 @@ public class Occupant implements Serializable {
     public void setResidentials(List<ResidentialCommunity> residentials) {
         this.residentials = residentials;
     }
+
+    public boolean isIsAdd() {
+        return isAdd;
+    }
+
+    public void setIsAdd(boolean isAdd) {
+        this.isAdd = isAdd;
+    }
+    
+    
 
     @Override
     public String toString() {

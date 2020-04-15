@@ -5,7 +5,7 @@ public class Constants {
     public static final String TITLE_LOGIN = "Prijava na aplikaciju";
     public static final int SCENE_WIDTH = 960;
     public static final int SCENE_HEIGHT = 640;
-    public static final int SCENE_WIDTH_TEMP = 400;
+    public static final int SCENE_WIDTH_TEMP = 800;
     public static final int SCENE_HEIGHT_TEMP = 600;
     public static final String PRIMARY_STAGE_TITLE = "Aplikacija - Stambeni objekti";
     public static final String USERNAME_LBL = "Korisnicko ime:";
@@ -25,16 +25,21 @@ public class Constants {
     public static final String ERROR_STORAGE_WRITE_BANK_ACCOUNT = "package djoleapp.business.storage.writeBankAccounts";
     public static final String ERROR_STORAGE_LOAD_OCCUPANT = "package djoleapp.business.storage.loadOccupant";
     public static final String ERROR_STORAGE_WRITE_OCCUPANT = "package djoleapp.business.storage.writeOccupant";
+    public static final String ERROR_STORAGE_LOAD_SEPARATE_SECTIONS = "package djoleapp.business.storage.loadSeparateSections";
+    public static final String ERROR_STORAGE_WRITE_SEPARATE_SECTIONS = "package djoleapp.business.storage.writeSeparateSections";
     public static final String ADMIN = "admin";
     public static final String ADMIN_DAT = "admin.dat";
     public static final String BUILDINGS_DAT = "buildings.dat";
     public static final String ADMIN_DAT_PATH = "C:\\Users\\perica.simic\\Documents\\NetBeansProjects\\DjoleAPP\\admin";
     public static final String BANK_ACCOUNTS_DAT = "bankaccounts.dat";
     public static final String OCCUPANTS_DAT = "occupants.dat";
+    public static final String SEPARATE_SECTION_DAT = "separate_sections.dat";
     public static final String TITLE_ADD_ADMIN = "Dodavanje administratora";
     public static final String TITLE_ADD_OCCUPANT = "Dodavanje stanara";
+    public static final String TITLE_ADD_SECTION = "Dodavanje sekcije";
     public static final String INFO_OCCUPANT = "Informacije o korisniku: ";
     public static final String ADD_ADMIN = "Novi administrator je dodat";
+    public static final String ADD_NEW_SECTION = "Nova sekcija je dodata";
     public static final String ADD_ADMIN_LABEL_PASSWORD_CONFIRM = "Potvrdi lozinku:";
     public static final String FONT_COMIC_SANS = "Comic Sans";
     public static final String FONT_ARIAL = "Arial";
@@ -50,6 +55,7 @@ public class Constants {
     public static final String OCCUPANTS = "Stanari";
     public static final String OCCUPANT_COLON = "Stanar:";
     public static final String ACCOUNTS = "Racuni";
+    public static final String FINANCE = "Finansije";
     public static final String STATEMENTS = "Izvodi";
     public static final String ABOUT = "O programu";
     public static final String SAVE = "Snimi";
@@ -63,7 +69,6 @@ public class Constants {
     public static final String MENU_ITEM_BUILDING_DETAILS = "Detalji o zgradi...";
     public static final String MENU_ITEM_OCCUPANT_DETAILS = "Detalji o stanarima...";
     public static final String MENU_ITEM_OCCUPANT_LIST = "Lista stanara...";
-    public static final String MENU_ITEM_BUILDING_UNITS = "Delovi zgrade";
     public static final String BUTTON_ADD = "Dodaj";
     public static final String BUTTON_REMOVE = "Obrisi";
     public static final String BUTTON_EDIT = "Izmeni";
@@ -88,8 +93,26 @@ public class Constants {
     public static final String FIRST_NAME = "Ime";
     public static final String LAST_NAME = "Prezime";
     public static final String PHONE_NUMBER = "Broj telefona";
+    public static final String NUMBER = "Broj";
+    public static final String FLAT_AREA = "Povrsina stana(m2)";
+    public static final String OWNER = "Vlasnik";
+    public static final String KIND_SECTION = "Vrsta posebnog dela";
     public static final String HASH_KEY = "#";
     public static final String BUTTON_ADD_ACCOUNT = "Dodaj racun";
     public static final String SEPARATE_SECTIONS = "Posebni delovi";
-
+    public static final String INDEPENDENT_SECTIONS = "Samostalni delovi";
+    public static final String COMMON_SECTIONS = "Zajednicki delovi";
+    public static final String SHOW_ALL_OCCUPANTS = "Prikazi sve stanare u listi";
+    public static final String PAYMENT_ITEM_STRING_I = "Investiciono odrzavanje za (";
+    public static final String PAYMENT_ITEM_STRING_II = "din./m2)";
+    public static final double PARKING_BOX_PRICE = 4.69;
+    public static final double PARKING_SPACE_PRICE = 5.69;
+    public static final double GARAGE_PRICE = 10;
+    public static final double FLAT_PRICE = 7.82;
+    public static final double BUSINESS_PRICE = 6.82;
+    public static final String FLAT = "Stan";
+    public static final String GARAGE = "Garaza";
+    public static final String GARAGE_SPACE = "Garazno mesto";
+    public static final String GARAGE_BOX = "Garazni boks";
+    public static final String BUSINESS_SPACE = "Poslovni prostor";
 }

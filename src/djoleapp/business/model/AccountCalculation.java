@@ -8,14 +8,12 @@ import java.util.List;
 public class AccountCalculation implements Serializable {
     
     private long id;
-    private ResidentialCommunity residentialCommunity;
-    private SeparateSection separateSection;
+    private Occupant occupant;
     private String title;
     private String titleNumber;
     private Date dateOfDelivery;
     private Date paymentDeadline;
-    private String accountRecipient;
-    private List<PurposeOfPayment> listPurposes = new ArrayList<>();
+    private List<PaymentItems> paymentItemses = new ArrayList<>();
     private double debitCurentMonth;
     private double previousMonth;
     private double sum;
@@ -28,13 +26,10 @@ public class AccountCalculation implements Serializable {
 
     public AccountCalculation(long id, ResidentialCommunity residentialCommunity, SeparateSection separateSection, String title, String titleNumber, Date dateOfDelivery, Date paymentDeadline, String accountRecipient, double debitCurentMonth, double previousMonth, double sum) {
         this.id = id;
-        this.residentialCommunity = residentialCommunity;
-        this.separateSection = separateSection;
         this.title = title;
         this.titleNumber = titleNumber;
         this.dateOfDelivery = dateOfDelivery;
         this.paymentDeadline = paymentDeadline;
-        this.accountRecipient = accountRecipient;
         this.debitCurentMonth = debitCurentMonth;
         this.previousMonth = previousMonth;
         this.sum = sum;
@@ -48,21 +43,6 @@ public class AccountCalculation implements Serializable {
         this.id = id;
     }
 
-    public ResidentialCommunity getResidentialCommunity() {
-        return residentialCommunity;
-    }
-
-    public void setResidentialCommunity(ResidentialCommunity residentialCommunity) {
-        this.residentialCommunity = residentialCommunity;
-    }
-
-    public SeparateSection getSeparateSection() {
-        return separateSection;
-    }
-
-    public void setSeparateSection(SeparateSection separateSection) {
-        this.separateSection = separateSection;
-    }
 
     public String getTitle() {
         return title;
@@ -95,23 +75,7 @@ public class AccountCalculation implements Serializable {
     public void setPaymentDeadline(Date paymentDeadline) {
         this.paymentDeadline = paymentDeadline;
     }
-
-    public String getAccountRecipient() {
-        return accountRecipient;
-    }
-
-    public void setAccountRecipient(String accountRecipient) {
-        this.accountRecipient = accountRecipient;
-    }
-
-    public List<PurposeOfPayment> getListPurposes() {
-        return listPurposes;
-    }
-
-    public void setListPurposes(List<PurposeOfPayment> listPurposes) {
-        this.listPurposes = listPurposes;
-    }
-
+    
     public double getDebitCurentMonth() {
         return debitCurentMonth;
     }

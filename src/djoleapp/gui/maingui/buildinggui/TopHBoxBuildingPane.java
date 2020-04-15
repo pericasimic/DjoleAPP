@@ -49,7 +49,7 @@ public class TopHBoxBuildingPane extends HBox {
         buildingsBox.setItems(FXCollections.observableArrayList(Controller.getInstance().getTemporaryList().getResidentialCommunitys()));
 
         selectItemBox.setMaxWidth(USE_PREF_SIZE);
-        selectItemBox.getItems().addAll(Constants.BANK_ACCOUNT, Constants.OCCUPANTS, Constants.MENU_ITEM_BUILDING_UNITS);
+        selectItemBox.getItems().addAll(Constants.BANK_ACCOUNT, Constants.OCCUPANTS, Constants.SEPARATE_SECTIONS, Constants.INDEPENDENT_SECTIONS, Constants.COMMON_SECTIONS);
 
         showBtn.setMaxWidth(USE_PREF_SIZE);
 

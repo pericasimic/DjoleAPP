@@ -5,12 +5,15 @@
  */
 package djoleapp;
 
-import djoleapp.business.model.BusinessSpace;
+import djoleapp.business.model.Flat;
+import djoleapp.business.model.ParkingBox;
+import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.gui.LoginPane;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -31,7 +34,7 @@ public class DjoleAPP extends Application {
         primaryStage.setResizable(false);
         primaryStage.centerOnScreen();
         primaryStage.show();
-        
+       
     }
 
     public static void main(String[] args) {

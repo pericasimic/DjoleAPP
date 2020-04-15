@@ -62,11 +62,20 @@ public class MainPane extends BorderPane {
         
         occupants.getItems().addAll(occupantsList, detailsOccupant);
         
-        Menu accounts = new Menu(Constants.ACCOUNTS);
-        Menu statements = new Menu(Constants.STATEMENTS);
+        Menu finance = new Menu(Constants.FINANCE);
+        
+        MenuItem accounts = new MenuItem(Constants.ACCOUNTS);
+        accounts.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCombination.CONTROL_DOWN));
+        accounts.setOnAction(Controller.getInstance().getManagerEvent().getListOccupantEvent());
+        MenuItem statements = new MenuItem(Constants.STATEMENTS);
+        statements.setAccelerator(new KeyCodeCombination(KeyCode.I, KeyCombination.CONTROL_DOWN));
+        statements.setOnAction(Controller.getInstance().getManagerEvent().getDetailsOccupantEvent());
+        
+        finance.getItems().addAll(accounts, statements);
+        
         Menu about = new Menu(Constants.ABOUT);
         
-        menuBar.getMenus().addAll(files, buildings, occupants, accounts, statements, about);
+        menuBar.getMenus().addAll(files, buildings, occupants, finance, about);
         return menuBar;
     }
     

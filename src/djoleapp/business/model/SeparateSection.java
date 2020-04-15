@@ -1,44 +1,47 @@
 package djoleapp.business.model;
 
+import java.io.Serializable;
+import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 
-public abstract class SeparateSection {
+public abstract class SeparateSection implements Serializable {
 
     private long id;
-    private Occupant occupant;
-    private int number;
+    private Occupant owner;
+    private ResidentialCommunity residentialCommunity;
+    private String number;
     private double surfaceArea;
-    private Text note;
-    private double debit = 0;
+    private String note;
+    private boolean hasOwner = false;
     private boolean isExist = true;
 
     public SeparateSection(long id) {
         this.id = id;
     }
 
-    public SeparateSection(long id, Occupant occupant, int number, double surfaceArea, Text note) {
+    public SeparateSection(long id, ResidentialCommunity residentialCommunity, String number, double surfaceArea, String note) {
         this.id = id;
-        this.occupant = occupant;
+        this.residentialCommunity = residentialCommunity;
         this.number = number;
         this.surfaceArea = surfaceArea;
         this.note = note;
 
     }
 
-    public Text getNote() {
+    public String getNote() {
         return note;
     }
 
-    public void setNote(Text note) {
+    public void setNote(String note) {
         this.note = note;
     }
 
-    public Occupant getOccupant() {
-        return occupant;
+    public Occupant getOwner() {
+        return owner;
     }
 
-    public void setOccupant(Occupant occupant) {
-        this.occupant = occupant;
+    public void setOccupant(Occupant owner) {
+        this.owner = owner;
     }
 
     public double getSurfaceArea() {
@@ -57,11 +60,11 @@ public abstract class SeparateSection {
         this.isExist = isExist;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
@@ -71,6 +74,22 @@ public abstract class SeparateSection {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public ResidentialCommunity getResidentialCommunity() {
+        return residentialCommunity;
+    }
+
+    public void setResidentialCommunity(ResidentialCommunity residentialCommunity) {
+        this.residentialCommunity = residentialCommunity;
+    }
+
+    public boolean isHasOwner() {
+        return hasOwner;
+    }
+
+    public void setHasOwner(boolean hasOwner) {
+        this.hasOwner = hasOwner;
     }
 
     

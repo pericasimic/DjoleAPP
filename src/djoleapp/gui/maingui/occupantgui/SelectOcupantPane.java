@@ -2,6 +2,7 @@ package djoleapp.gui.maingui.occupantgui;
 
 import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.Occupant;
+import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import javafx.collections.FXCollections;
@@ -26,6 +27,7 @@ public class SelectOcupantPane extends BorderPane {
     private TextField idNumberFld = new TextField();
     private TextField phoneFld = new TextField();
     private TextField mailFld = new TextField();
+    private TextField debitFld = new TextField();
     private TextArea noteFld = new TextArea();
 
     private Label id = new Label(Constants.ID);
@@ -35,8 +37,11 @@ public class SelectOcupantPane extends BorderPane {
     private Label noteLbl = new Label(Constants.NOTE);
     private Label bankAccountsLbl = new Label(Constants.BANK_ACCOUNT);
     private Label selectListLbl = new Label(Constants.SELECT_LIST);
+    private Label listBuildingsLbl = new Label(Constants.BUILDINGS_LIST_TITLE);
+    private Label debitLbl = new Label(Constants.DEBIT);
 
     private ComboBox<BankAccount> accountsBox = new ComboBox<>();
+    private ComboBox<ResidentialCommunity> residentialBox = new ComboBox<>();
     private ComboBox<String> selctBox = new ComboBox<>();
 
     private Button selectListBtn = new Button(Constants.BUTTON_SHOW);
@@ -62,23 +67,29 @@ public class SelectOcupantPane extends BorderPane {
 
         gp.add(id, 0, 0);
         gp.add(idFld, 1, 0);
-        gp.add(idNumberLbl, 0, 1);
-        gp.add(idNumberFld, 1, 1);
-        gp.add(phoneLbl, 0, 2);
-        gp.add(phoneFld, 1, 2);
-        gp.add(mailLbl, 0, 3);
-        gp.add(mailFld, 1, 3);
-        gp.add(noteLbl, 0, 4);
-        gp.add(noteFld, 1, 4);
-        gp.add(bankAccountsLbl, 0, 5);
-        gp.add(accountsBox, 1, 5);
-        gp.add(addAccountBtn, 1, 6);
-        gp.add(selectListLbl, 0, 7);
-        gp.add(selctBox, 1, 7);
-        gp.add(selectListBtn, 1, 8);
+        gp.add(debitLbl, 0, 1);
+        gp.add(debitFld, 1, 1);
+        gp.add(idNumberLbl, 0, 2);
+        gp.add(idNumberFld, 1, 2);
+        gp.add(phoneLbl, 0, 3);
+        gp.add(phoneFld, 1, 3);
+        gp.add(mailLbl, 0, 4);
+        gp.add(mailFld, 1, 4);
+        gp.add(noteLbl, 0, 5);
+        gp.add(noteFld, 1, 5);
+        gp.add(listBuildingsLbl, 0, 6);
+        gp.add(residentialBox, 1, 6);
+        gp.add(bankAccountsLbl, 0, 7);
+        gp.add(accountsBox, 1, 7);
+        gp.add(addAccountBtn, 1, 8);
+        gp.add(selectListLbl, 0, 9);
+        gp.add(selctBox, 1, 9);
+        gp.add(selectListBtn, 1, 10);
 
         idFld.setText(Long.toString(o.getId()));
         idFld.setEditable(false);
+        debitFld.setText(Double.toString(o.getSum()));
+        debitFld.setEditable(false);
         idNumberFld.setText(o.getIdentificationNumber());
         idNumberFld.setEditable(false);
         phoneFld.setText(o.getPhoneNumber());
@@ -94,6 +105,7 @@ public class SelectOcupantPane extends BorderPane {
         hBox.setPadding(new Insets(10, 10, 10, 10));
 
         selctBox.getItems().addAll(Constants.SEPARATE_SECTIONS, Constants.STATEMENTS, Constants.ACCOUNTS);
+        residentialBox.setItems(FXCollections.observableArrayList(o.getResidentials()));
 
         reloadList();
 
@@ -152,6 +164,16 @@ public class SelectOcupantPane extends BorderPane {
         return idNumberFld;
     }
 
+    public TextField getDebitFld() {
+        return debitFld;
+    }
+
+    public void setDebitFld(TextField debitFld) {
+        this.debitFld = debitFld;
+    }
+
+    
+    
     public void setIdNumberFld(TextField idNumberFld) {
         this.idNumberFld = idNumberFld;
     }

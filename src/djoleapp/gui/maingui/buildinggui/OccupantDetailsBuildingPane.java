@@ -1,5 +1,6 @@
 package djoleapp.gui.maingui.buildinggui;
 
+import djoleapp.business.Factory;
 import djoleapp.business.model.Occupant;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
@@ -20,6 +21,7 @@ public class OccupantDetailsBuildingPane extends VBox {
     private Label occupantLbl = new Label(Constants.OCCUPANT_COLON);
     private ComboBox<Occupant> occupantsBox = new ComboBox<>();
     private Button addOccupant = new Button(Constants.BUTTON_ADD);
+    private Button showAll = new Button(Constants.SHOW_ALL_OCCUPANTS);
     private TableOccupant tableOccupant;
 
     public OccupantDetailsBuildingPane(List<Occupant> list, HBox hBox) {
@@ -43,14 +45,27 @@ public class OccupantDetailsBuildingPane extends VBox {
             }
 
         });
+        
+        showAll.setOnAction(Controller.getInstance().getManagerEvent().getShowAllOccupants());
+        showAll.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                Controller.getInstance().getManagerEvent().getShowAllOccupants().showAllOccupant();
+            }
+
+        });
 
         Button b = new Button();
         Button b2 = new Button();
         b.setVisible(false);
         b2.setVisible(false);
-        box.getChildren().addAll(occupantLbl, occupantsBox, b, b2, addOccupant);
+        box.getChildren().addAll(occupantLbl, occupantsBox, b, b2, showAll);
+        
+        HBox hBox2 = new HBox();
+        hBox2.setAlignment(Pos.CENTER);
+        hBox2.getChildren().add(addOccupant);
+        
 
-        this.getChildren().addAll(hBox, tableOccupant, box);
+        this.getChildren().addAll(hBox, tableOccupant, box, hBox2);
 
     }
 
@@ -58,9 +73,19 @@ public class OccupantDetailsBuildingPane extends VBox {
         tableOccupant.setItems(FXCollections.observableArrayList(list));
 
     }
+    
 
     public void reloadBox() {
+        occupantsBox.setItems(FXCollections.observableArrayList(Factory.getFacade().getListfreeOccupants()));
+    }
+    
+    public void reloadBoxAll() {
         occupantsBox.setItems(FXCollections.observableArrayList(Controller.getInstance().getTemporaryList().getOccupants()));
     }
+
+    public ComboBox<Occupant> getOccupantsBox() {
+        return occupantsBox;
+    }
+       
 
 }

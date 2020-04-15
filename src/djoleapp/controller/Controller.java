@@ -6,10 +6,13 @@ import djoleapp.controller.event.ManagerEvent;
 import djoleapp.gui.LoginPane;
 import djoleapp.gui.admingui.AddAdminPane;
 import djoleapp.gui.maingui.MainPane;
+import djoleapp.gui.maingui.buildinggui.AddSeparatePane;
 import djoleapp.gui.maingui.buildinggui.BankDetailsBildingPane;
 import djoleapp.gui.maingui.buildinggui.OccupantDetailsBuildingPane;
 import djoleapp.gui.maingui.buildinggui.BuildingDetailsPane;
 import djoleapp.gui.maingui.buildinggui.ListBuildingsPane;
+import djoleapp.gui.maingui.buildinggui.ListSeparateSectionsPane;
+import djoleapp.gui.maingui.buildinggui.TableSection;
 import djoleapp.gui.maingui.buildinggui.TopHBoxBuildingPane;
 import djoleapp.gui.maingui.occupantgui.AddAccountOccupantPane;
 import djoleapp.gui.maingui.occupantgui.AddOccupantPane;
@@ -35,10 +38,13 @@ public class Controller {
     private OccupantDetailsBuildingPane occupantDetailsBuildingPane;
     private ListOccupantsPane listOccupantsPane;
     private TableOccupant tableOccupant;
+    private TableSection tableSection;
     private TemporaryList temporaryList;
     private AddOccupantPane addOccupantPane;
     private AddAccountOccupantPane addAccountOccupantPane;
     private SelectOcupantPane selectOcupantPane;
+    private ListSeparateSectionsPane listSeparateSectionsPane;
+    private AddSeparatePane addSeparatePane;
     private Occupant temporaryOccupant;
     private final ManagerEvent managerEvent = new ManagerEvent();
     
@@ -53,6 +59,14 @@ public class Controller {
         return instance;
     }
 
+    public AddSeparatePane getAddSeparatePane() {
+        return addSeparatePane;
+    }
+
+    public void setAddSeparatePane(AddSeparatePane addSeparatePane) {
+        this.addSeparatePane = addSeparatePane;
+    }
+
     public AddAccountOccupantPane getAddAccountOccupantPane() {
         return addAccountOccupantPane;
     }
@@ -60,6 +74,24 @@ public class Controller {
     public void setAddAccountOccupantPane(AddAccountOccupantPane addAccountOccupantPane) {
         this.addAccountOccupantPane = addAccountOccupantPane;
     }
+
+    public ListSeparateSectionsPane getListSeparateSectionsPane() {
+        return listSeparateSectionsPane;
+    }
+
+    public void setListSeparateSectionsPane(ListSeparateSectionsPane listSeparateSectionsPane) {
+        this.listSeparateSectionsPane = listSeparateSectionsPane;
+    }
+    
+
+    public TableSection getTableSection() {
+        return tableSection;
+    }
+
+    public void setTableSection(TableSection tableSection) {
+        this.tableSection = tableSection;
+    }
+    
 
     
     public Stage getPrimaryStage() {

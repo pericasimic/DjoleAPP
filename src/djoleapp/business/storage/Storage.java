@@ -4,6 +4,7 @@ import djoleapp.business.model.Administrator;
 import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ResidentialCommunity;
+import djoleapp.business.model.SeparateSection;
 import java.util.List;
 
 /**
@@ -27,5 +28,9 @@ public interface Storage {
     public List<Occupant> loadOccupants();
 
     public void writeOccupants(List<Occupant> list);
+    
+    public List<SeparateSection> loadSeparateSections();
+
+    public void writeSeparateSections(List<SeparateSection> list);
 
 }
