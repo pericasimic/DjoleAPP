@@ -17,6 +17,7 @@ public class Constants {
     public static final String ALERT_ERROR_DIALOG = "Greska";
     public static final String ALERT_INFORMATION_DIALOG = "Informacija";
     public static final String ALERT_EMPTY_INPUT_TEXT = "Polja moraju biti popunjena";
+    public static final String ALERT_BUILDING_EXIST = "Zgrada vec postoji u bazi";
     public static final String ERROR_STORAGE_LOAD_ADMIN = "package djoleapp.business.storage.loadAdmin";
     public static final String ERROR_STORAGE_WRITE_ADMIN = "package djoleapp.business.storage.writeAdmin";
     public static final String ERROR_STORAGE_LOAD_BUILDING = "package djoleapp.business.storage.loadResidentialCommunity";
@@ -68,6 +69,9 @@ public class Constants {
     public static final String MENU_ITEM_BUILDING_LIST = "Lista zgrada...";
     public static final String MENU_ITEM_BUILDING_DETAILS = "Detalji o zgradi...";
     public static final String MENU_ITEM_OCCUPANT_DETAILS = "Detalji o stanarima...";
+    public static final String SECTION_DETAILS = "Detalji o sekciji...";
+    public static final String SECTION_DETAILS_TITLE = "Detalji o sekciji";
+    public static final String SECTION_EDIT_TITLE = "Izmena sekcije";
     public static final String MENU_ITEM_OCCUPANT_LIST = "Lista stanara...";
     public static final String BUTTON_ADD = "Dodaj";
     public static final String BUTTON_REMOVE = "Obrisi";
@@ -99,6 +103,7 @@ public class Constants {
     public static final String KIND_SECTION = "Vrsta posebnog dela";
     public static final String HASH_KEY = "#";
     public static final String BUTTON_ADD_ACCOUNT = "Dodaj racun";
+    public static final String BUTTON_ADD_OCCUPANT = "Dodaj stanara";
     public static final String SEPARATE_SECTIONS = "Posebni delovi";
     public static final String INDEPENDENT_SECTIONS = "Samostalni delovi";
     public static final String COMMON_SECTIONS = "Zajednicki delovi";

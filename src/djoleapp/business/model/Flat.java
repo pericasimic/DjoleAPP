@@ -22,4 +22,9 @@ public class Flat extends SeparateSection {
         this.listOccupants = listOccupants;
     }
 
+    @Override
+    public String toString() {
+        return super.getId() + super.getNumber() + super.getSurfaceArea() + super.getNote();
+    }
+
 }

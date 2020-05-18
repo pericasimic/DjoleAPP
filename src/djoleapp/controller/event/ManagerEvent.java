@@ -10,7 +10,11 @@ import djoleapp.controller.event.buildingevent.AddOccupantBuildingEvent;
 import djoleapp.controller.event.buildingevent.AddSectionEvent;
 import djoleapp.controller.event.buildingevent.BankDetailsBuildingEvent;
 import djoleapp.controller.event.buildingevent.ConfirmAddSeparateEvent;
+import djoleapp.controller.event.buildingevent.DetailsSeparateEvent;
+import djoleapp.controller.event.buildingevent.EditSeparationEvent;
 import djoleapp.controller.event.buildingevent.ListBuildingEvent;
+import djoleapp.controller.event.buildingevent.ReloadListOwnerBuildingEvent;
+import djoleapp.controller.event.buildingevent.SearchBuildingEvent;
 import djoleapp.controller.event.buildingevent.ShowAllOccupants;
 import djoleapp.controller.event.buildingevent.ShowSelectBuildTableEvent;
 import djoleapp.controller.event.occupantevent.AddAccountOccupantEvent;
@@ -51,6 +55,10 @@ public class ManagerEvent {
     private AddSectionEvent addSectionEvent = null;
     private ShowAllOccupants showAllOccupants = null;
     private ConfirmAddSeparateEvent confirmAddSeparateEvent = null;
+    private ReloadListOwnerBuildingEvent reloadListOwnerBuildingEvent = null;
+    private DetailsSeparateEvent detailsSeparateEvent = null;
+    private EditSeparationEvent editSeparationEvent = null;
+    private SearchBuildingEvent searchBuildingEvent = null;
 
     public ManagerEvent() {
 
@@ -76,7 +84,26 @@ public class ManagerEvent {
         showAllOccupants = new ShowAllOccupants();
         addSectionEvent = new AddSectionEvent();
         confirmAddSeparateEvent = new ConfirmAddSeparateEvent();
+        reloadListOwnerBuildingEvent = new ReloadListOwnerBuildingEvent();
+        detailsSeparateEvent = new DetailsSeparateEvent();
+        editSeparationEvent = new EditSeparationEvent();
+        searchBuildingEvent = new SearchBuildingEvent();
+    }
 
+    public SearchBuildingEvent getSearchBuildingEvent() {
+        return searchBuildingEvent;
+    }
+
+    public EditSeparationEvent getEditSeparationEvent() {
+        return editSeparationEvent;
+    }
+
+    public DetailsSeparateEvent getDetailsSeparateEvent() {
+        return detailsSeparateEvent;
+    }
+
+    public ReloadListOwnerBuildingEvent getReloadListOwnerBuildingEvent() {
+        return reloadListOwnerBuildingEvent;
     }
 
     public ConfirmAddSeparateEvent getConfirmAddSeparateEvent() {

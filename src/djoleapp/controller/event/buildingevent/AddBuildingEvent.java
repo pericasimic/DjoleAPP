@@ -1,10 +1,12 @@
 package djoleapp.controller.event.buildingevent;
 
+import djoleapp.business.Factory;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.controller.util.Message;
 import djoleapp.gui.maingui.buildinggui.ListBuildingsPane;
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -24,9 +26,14 @@ public class AddBuildingEvent implements EventHandler<ActionEvent> {
         String idNumber = lp.getIdNumBuildingFld().getText();
         String taxNumber = lp.getTidNumBuildingFld().getText();
         String mail = lp.getMailBuildingFld().getText();
+        List<ResidentialCommunity> list = Controller.getInstance().getTemporaryList().getResidentialCommunitys();
 
-        if (name.isEmpty() || name == null || idNumber.isEmpty() || idNumber == null || taxNumber.isEmpty() || taxNumber == null || mail.isEmpty() || mail == null) {
-            Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
+        if (Factory.getFacade().checkAddBuildingFieldsEmpty(name, idNumber, taxNumber, mail)) {
+            lp.clearAllFields();
+            return;
+        }
+
+        if (Factory.getFacade().checkAddBuildingFieldExist(name, idNumber, taxNumber, mail)) {
             lp.clearAllFields();
             return;
         }

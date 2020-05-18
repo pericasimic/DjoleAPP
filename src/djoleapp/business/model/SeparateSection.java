@@ -15,6 +15,10 @@ public abstract class SeparateSection implements Serializable {
     private boolean hasOwner = false;
     private boolean isExist = true;
 
+  
+    public SeparateSection() {
+    }
+    
     public SeparateSection(long id) {
         this.id = id;
     }

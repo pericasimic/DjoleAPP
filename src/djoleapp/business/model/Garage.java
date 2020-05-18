@@ -9,4 +9,8 @@ public class Garage extends SeparateSection {
         super(id, residentialCommunity, number, surfaceArea, note);
     }
 
+    @Override
+    public String toString() {
+        return super.getId() + super.getNumber() + super.getSurfaceArea() + super.getNote();
+    }
 }

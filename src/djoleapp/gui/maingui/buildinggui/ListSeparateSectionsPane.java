@@ -1,5 +1,6 @@
 package djoleapp.gui.maingui.buildinggui;
 
+
 import djoleapp.business.model.SeparateSection;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
@@ -8,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableRow;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -16,7 +18,6 @@ public class ListSeparateSectionsPane extends VBox {
 
     private TableSection tableSection;
     private Button addBtn = new Button(Constants.BUTTON_ADD);
-    private Button editBtn = new Button(Constants.BUTTON_EDIT);
     private Button deleteBtn = new Button(Constants.BUTTON_REMOVE);
 
     public ListSeparateSectionsPane(List<SeparateSection> list, HBox hBox) {
@@ -30,18 +31,21 @@ public class ListSeparateSectionsPane extends VBox {
         hBox1.setSpacing(10);
         hBox1.setPadding(new Insets(10, 10, 10, 10));
         hBox1.setAlignment(Pos.CENTER);
-        hBox1.getChildren().addAll(deleteBtn, editBtn, addBtn);
+        hBox1.getChildren().addAll(deleteBtn, addBtn);
 
-        deleteBtn.setOnAction(Controller.getInstance().getManagerEvent().getAddOccupantBuildingEvent());
-        deleteBtn.setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getAddOccupantBuildingEvent().addOccupantBuildingEvent();
-            }
+        tableSection.setRowFactory(tv -> {
+            TableRow<SeparateSection> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    Controller.getInstance().getManagerEvent().getDetailsSeparateEvent().detailsSeparateEvent(row.getItem());
+                }
+            });
+            return row;
 
         });
 
-        editBtn.setOnAction(Controller.getInstance().getManagerEvent().getAddOccupantBuildingEvent());
-        editBtn.setOnKeyPressed(e -> {
+        deleteBtn.setOnAction(Controller.getInstance().getManagerEvent().getAddOccupantBuildingEvent());
+        deleteBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 Controller.getInstance().getManagerEvent().getAddOccupantBuildingEvent().addOccupantBuildingEvent();
             }
@@ -64,4 +68,5 @@ public class ListSeparateSectionsPane extends VBox {
         tableSection.setItems(FXCollections.observableArrayList(list));
 
     }
+
 }

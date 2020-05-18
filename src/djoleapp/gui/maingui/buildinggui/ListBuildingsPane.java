@@ -35,6 +35,8 @@ public class ListBuildingsPane extends VBox {
     private Button removeBuildingBtn = new Button(Constants.BUTTON_REMOVE);
     private Button searchBuildingBtn = new Button(Constants.BUTTON_SEARCH);
 
+    private boolean isSearch = false;
+
     public ListBuildingsPane() {
         titleLbl.setFont(new Font(Constants.FONT_ARIAL, 20));
         setSpacing(5);
@@ -65,9 +67,9 @@ public class ListBuildingsPane extends VBox {
         getChildren().addAll(titleLbl, getSearch(), tableBuildings, getForm());
 
     }
-    
-    private HBox getSearch(){
-        
+
+    private HBox getSearch() {
+
         HBox hSearch = new HBox();
         hSearch.setSpacing(3);
         hSearch.setPadding(new Insets(10, 10, 10, 10));
@@ -75,18 +77,17 @@ public class ListBuildingsPane extends VBox {
 
         searchBuildingFld.setMaxWidth(USE_PREF_SIZE);
 
-//        searchBuildingBtn.setOnAction(Controller.getInstance().getManagerEvent().getSearchUserEvent());
-//        searchBuildingBtn.setOnKeyPressed(e -> {
-//            if (e.getCode() == KeyCode.ENTER) {
-//                Controller.getInstance().getManagerEvent().getSearchUserEvent().searchUserEvent();
-//            }
-//        });
-
+        searchBuildingBtn.setOnAction(Controller.getInstance().getManagerEvent().getSearchBuildingEvent());
+        searchBuildingBtn.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                Controller.getInstance().getManagerEvent().getSearchBuildingEvent().searchBuildingEvent();
+            }
+        });
         hSearch.getChildren().addAll(searchBuildingFld, searchBuildingBtn);
         return hSearch;
-        
+
     }
-    
+
     private HBox getForm() {
 
         HBox hbox = new HBox();
@@ -114,18 +115,18 @@ public class ListBuildingsPane extends VBox {
 
         });
 
-//        removeBtn.setOnAction(Controller.getInstance().getManagerEvent().getRemoveUserEvent());
-//        removeBtn.setOnKeyPressed(e -> {
+//        removeBuildingBtn.setOnAction(Controller.getInstance().getManagerEvent().getRemoveUserEvent());
+//        removeBuildingBtn.setOnKeyPressed(e -> {
 //            if (e.getCode() == KeyCode.ENTER) {
 //                Controller.getInstance().getManagerEvent().getRemoveUserEvent().removeUserEvent();
 //            }
 //
 //        });
-
+        
         hbox.getChildren().addAll(nameBuildingFld, idNumBuildingFld, tidNumBuildingFld, mailBuildingFld, removeBuildingBtn, addBuildingBtn);
         return hbox;
     }
-    
+
     public void clearAllFields() {
         nameBuildingFld.setText(Constants.EMPTY_STRING);
         idNumBuildingFld.setText(Constants.EMPTY_STRING);
@@ -133,11 +134,12 @@ public class ListBuildingsPane extends VBox {
         mailBuildingFld.setText(Constants.EMPTY_STRING);
     }
 
-    public void reload(){
-        listBuildings = Controller.getInstance().getTemporaryList().getResidentialCommunitys();
+    public void reload() {
+        if (!isSearch) {
+            listBuildings = Controller.getInstance().getTemporaryList().getResidentialCommunitys();
+        }
         tableBuildings.setItems(FXCollections.observableArrayList(listBuildings));
     }
-    
 
     public TextField getNameBuildingFld() {
         return nameBuildingFld;
@@ -159,5 +161,27 @@ public class ListBuildingsPane extends VBox {
         return searchBuildingFld;
     }
 
+    public boolean isIsSearch() {
+        return isSearch;
+    }
+
+    public void setIsSearch(boolean isSearch) {
+        this.isSearch = isSearch;
+    }
+
+
+    public void setListBuildings(List<ResidentialCommunity> listBuildings) {
+        this.listBuildings = listBuildings;
+    }
+
+    public List<ResidentialCommunity> getListBuildings() {
+        return listBuildings;
+    }
+
+    public TableView<ResidentialCommunity> getTableBuildings() {
+        return tableBuildings;
+    }
+    
+    
 
 }

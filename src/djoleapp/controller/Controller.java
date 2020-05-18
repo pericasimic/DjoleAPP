@@ -1,6 +1,12 @@
 package djoleapp.controller;
 
+import djoleapp.business.model.BusinessSpace;
+import djoleapp.business.model.Flat;
+import djoleapp.business.model.Garage;
 import djoleapp.business.model.Occupant;
+import djoleapp.business.model.ParkingBox;
+import djoleapp.business.model.ParkingSpace;
+import djoleapp.business.model.SeparateSection;
 import djoleapp.business.storage.TemporaryList;
 import djoleapp.controller.event.ManagerEvent;
 import djoleapp.gui.LoginPane;
@@ -10,6 +16,8 @@ import djoleapp.gui.maingui.buildinggui.AddSeparatePane;
 import djoleapp.gui.maingui.buildinggui.BankDetailsBildingPane;
 import djoleapp.gui.maingui.buildinggui.OccupantDetailsBuildingPane;
 import djoleapp.gui.maingui.buildinggui.BuildingDetailsPane;
+import djoleapp.gui.maingui.buildinggui.DetailsSeparatePane;
+import djoleapp.gui.maingui.buildinggui.EditSeparatePane;
 import djoleapp.gui.maingui.buildinggui.ListBuildingsPane;
 import djoleapp.gui.maingui.buildinggui.ListSeparateSectionsPane;
 import djoleapp.gui.maingui.buildinggui.TableSection;
@@ -46,6 +54,14 @@ public class Controller {
     private ListSeparateSectionsPane listSeparateSectionsPane;
     private AddSeparatePane addSeparatePane;
     private Occupant temporaryOccupant;
+    private Flat temporaryFlat;
+    private ParkingBox temporaryParkingBox;
+    private ParkingSpace temporaryParkingSpace;
+    private Garage temporaryGarage;
+    private BusinessSpace temporaryBusinesssSpace;
+    private SeparateSection temporarySeparateSection;
+    private DetailsSeparatePane detailsSeparatePane;
+    private EditSeparatePane editSeparatePane;
     private final ManagerEvent managerEvent = new ManagerEvent();
     
     public Controller(){    
@@ -59,6 +75,75 @@ public class Controller {
         return instance;
     }
 
+    public void setEditSeparatePane(EditSeparatePane editSeparatePane) {
+        this.editSeparatePane = editSeparatePane;
+    }
+
+    public EditSeparatePane getEditSeparatePane() {
+        return editSeparatePane;
+    }
+
+    public DetailsSeparatePane getDetailsSeparatePane() {
+        return detailsSeparatePane;
+    }
+
+    public ParkingSpace getTemporaryParkingSpace() {
+        return temporaryParkingSpace;
+    }
+
+    public void setTemporaryParkingSpace(ParkingSpace temporaryParkingSpace) {
+        this.temporaryParkingSpace = temporaryParkingSpace;
+    }
+
+    public SeparateSection getTemporarySeparateSection() {
+        return temporarySeparateSection;
+    }
+
+    public void setTemporarySeparateSection(SeparateSection temporarySeparateSection) {
+        this.temporarySeparateSection = temporarySeparateSection;
+    }
+
+    
+    public Garage getTemporaryGarage() {
+        return temporaryGarage;
+    }
+
+    public void setTemporaryGarage(Garage temporaryGarage) {
+        this.temporaryGarage = temporaryGarage;
+    }
+
+    public BusinessSpace getTemporaryBusinesssSpace() {
+        return temporaryBusinesssSpace;
+    }
+
+    public void setTemporaryBusinesssSpace(BusinessSpace temporaryBusinesssSpace) {
+        this.temporaryBusinesssSpace = temporaryBusinesssSpace;
+    }
+
+    public void setDetailsSeparatePane(DetailsSeparatePane detailsSeparatePane) {
+        this.detailsSeparatePane = detailsSeparatePane;
+    }
+
+    public Flat getTemporaryFlat() {
+        return temporaryFlat;
+    }
+
+    public void setTemporaryFlat(Flat temporaryFlat) {
+        this.temporaryFlat = temporaryFlat;
+    }
+
+    public ParkingBox getTemporaryParkingBox() {
+        return temporaryParkingBox;
+    }
+
+    public void setTemporaryParkingBox(ParkingBox temporaryParkingBox) {
+        this.temporaryParkingBox = temporaryParkingBox;
+    }
+
+    
+
+    
+    
     public AddSeparatePane getAddSeparatePane() {
         return addSeparatePane;
     }

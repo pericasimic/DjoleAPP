@@ -45,14 +45,25 @@ public class ConfirmAddSeparateEvent implements EventHandler<ActionEvent> {
 
         if (section.equals(Constants.FLAT)) {
             SeparateSection ss = new Flat(sectionsList.size() + 1, rc, number, area, note);
-            Controller.getInstance().getTemporaryList().getSeparateSections().add(ss);
+            ss.setResidentialCommunity(asp.getBuildingsBox().getValue());
             asp.getBuildingsBox().getValue().getListSeparationSection().add(ss);
+            if (asp.getOwnerBox().getValue() != null) {
+                asp.getOwnerBox().getValue().getListSeparateSections().add(ss);
+                ss.setOccupant(asp.getOwnerBox().getValue());
+            }
+            Controller.getInstance().getTemporaryList().getSeparateSections().add(ss);
+            
         }
-        
+
         if (section.equals(Constants.GARAGE)) {
             SeparateSection ss = new Garage(sectionsList.size() + 1, rc, number, area, note);
-            Controller.getInstance().getTemporaryList().getSeparateSections().add(ss);
+            ss.setResidentialCommunity(asp.getBuildingsBox().getValue());
             asp.getBuildingsBox().getValue().getListSeparationSection().add(ss);
+            if (asp.getOwnerBox().getValue() != null) {
+                asp.getOwnerBox().getValue().getListSeparateSections().add(ss);
+                ss.setOccupant(asp.getOwnerBox().getValue());
+            }
+            Controller.getInstance().getTemporaryList().getSeparateSections().add(ss);
         }
 
         Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_NEW_SECTION);
@@ -60,9 +71,9 @@ public class ConfirmAddSeparateEvent implements EventHandler<ActionEvent> {
         MainPane mp = new MainPane(Controller.getInstance().getListSeparateSectionsPane());
         Scene scena = new Scene(mp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
         Controller.getInstance().getPrimaryStage().setScene(scena);
-        Controller.getInstance().getListSeparateSectionsPane().reload(Controller.getInstance().getTemporaryList().getSeparateSections());
+        Controller.getInstance().getListSeparateSectionsPane().reload(asp.getBuildingsBox().getValue().getListSeparationSection());
         Controller.getInstance().getTemporaryStage().close();
-        
+
     }
 
 }

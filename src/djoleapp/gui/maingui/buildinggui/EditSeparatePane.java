@@ -1,10 +1,11 @@
 package djoleapp.gui.maingui.buildinggui;
 
+import djoleapp.business.Factory;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ResidentialCommunity;
+import djoleapp.business.model.SeparateSection;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
-import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
@@ -18,12 +19,12 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import static javafx.scene.layout.Region.USE_PREF_SIZE;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 
-public class AddSeparatePane extends BorderPane {
+public class EditSeparatePane extends BorderPane {
 
-    private Label title = new Label(Constants.TITLE_ADD_SECTION);
+    private Label title = new Label(Constants.SECTION_EDIT_TITLE); 
 
     private TextField numberFld = new TextField();
     private TextField areaFld = new TextField();
@@ -41,10 +42,15 @@ public class AddSeparatePane extends BorderPane {
     private Label noteLbl = new Label(Constants.NOTE);
     private Label listOccupantLbl = new Label(Constants.OCCUPANT_LIST_TITLE);
 
-    private Button confirmBtn = new Button(Constants.BUTTON_CONFIRM);
+    private Button confirmEditBtn = new Button(Constants.BUTTON_CONFIRM);
     private Button cancelBtn = new Button(Constants.BUTTON_CANCEL);
+    private Button addOccupant = new Button(Constants.BUTTON_ADD_OCCUPANT);
 
-    public AddSeparatePane() {
+    public EditSeparatePane() {
+        
+        SeparateSection section = Controller.getInstance().getTemporarySeparateSection();
+        reloadOwnersBox(section.getResidentialCommunity().getListOccupants());
+        
         title.setFont(new Font(Constants.FONT_ARIAL, 20));
         this.setTop(title);
 
@@ -57,24 +63,32 @@ public class AddSeparatePane extends BorderPane {
 
         gp.add(kindLbl, 0, 0);
         gp.add(sectionsBox, 1, 0);
+        sectionsBox.getSelectionModel().select(Factory.getFacade().kindOfSection(section));
         gp.add(buildingLbl, 0, 1);
         gp.add(buildingsBox, 1, 1);
+        buildingsBox.getSelectionModel().select(section.getResidentialCommunity());
         gp.add(ownerLbl, 0, 2);
         gp.add(ownerBox, 1, 2);
+        if(section.getOwner() != null){
+            ownerBox.getSelectionModel().select(section.getOwner());
+        }
         gp.add(numberLbl, 0, 3);
         gp.add(numberFld, 1, 3);
+        numberFld.setText(section.getNumber());
         gp.add(areaLbl, 0, 4);
         gp.add(areaFld, 1, 4);
+        areaFld.setText(Double.toString(section.getSurfaceArea()));
         gp.add(noteLbl, 0, 5);
         gp.add(noteFld, 1, 5);
+        noteFld.setText(section.getNote());
 
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(3);
         hBox.setPadding(new Insets(30, 30, 30, 30));
 
-        confirmBtn.setOnAction(Controller.getInstance().getManagerEvent().getConfirmAddSeparateEvent());
-        confirmBtn.setOnKeyPressed(e -> {
+        confirmEditBtn.setOnAction(Controller.getInstance().getManagerEvent().getConfirmAddSeparateEvent());
+        confirmEditBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 Controller.getInstance().getManagerEvent().getConfirmAddSeparateEvent().confirmAddSeparateEvent();
             }
@@ -104,11 +118,15 @@ public class AddSeparatePane extends BorderPane {
 
         ownerBox.setMaxWidth(USE_PREF_SIZE);
 
-        hBox.getChildren().addAll(cancelBtn, confirmBtn);
+        hBox.getChildren().addAll(cancelBtn, confirmEditBtn);
 
         this.setPadding(new Insets(60, 60, 60, 60));
         this.setCenter(gp);
         this.setBottom(hBox);
+    }
+    
+    public void reloadOwnersBox(List<Occupant> list) {
+        ownerBox.setItems(FXCollections.observableArrayList(list));
     }
 
     public TextField getNumberFld() {
@@ -127,12 +145,12 @@ public class AddSeparatePane extends BorderPane {
         this.areaFld = areaFld;
     }
 
-    public void setNoteFld(TextArea noteFld) {
-        this.noteFld = noteFld;
-    }
-
     public TextArea getNoteFld() {
         return noteFld;
+    }
+
+    public void setNoteFld(TextArea noteFld) {
+        this.noteFld = noteFld;
     }
 
     public ComboBox<ResidentialCommunity> getBuildingsBox() {
@@ -158,9 +176,7 @@ public class AddSeparatePane extends BorderPane {
     public void setOwnerBox(ComboBox<Occupant> ownerBox) {
         this.ownerBox = ownerBox;
     }
-
-    public void reloadOwnersBox(List<Occupant> list) {
-        ownerBox.setItems(FXCollections.observableArrayList(list));
-    }
+    
+    
 
 }
