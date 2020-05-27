@@ -14,6 +14,8 @@ import djoleapp.controller.event.buildingevent.DetailsSeparateEvent;
 import djoleapp.controller.event.buildingevent.EditSeparationEvent;
 import djoleapp.controller.event.buildingevent.ListBuildingEvent;
 import djoleapp.controller.event.buildingevent.ReloadListOwnerBuildingEvent;
+import djoleapp.controller.event.buildingevent.RemoveBankAccountEvent;
+import djoleapp.controller.event.buildingevent.RemoveBuildingEvent;
 import djoleapp.controller.event.buildingevent.SearchBuildingEvent;
 import djoleapp.controller.event.buildingevent.ShowAllOccupants;
 import djoleapp.controller.event.buildingevent.ShowSelectBuildTableEvent;
@@ -59,6 +61,8 @@ public class ManagerEvent {
     private DetailsSeparateEvent detailsSeparateEvent = null;
     private EditSeparationEvent editSeparationEvent = null;
     private SearchBuildingEvent searchBuildingEvent = null;
+    private RemoveBuildingEvent removeBuildingEvent = null;
+    private RemoveBankAccountEvent removeBankAccountEvent = null;
 
     public ManagerEvent() {
 
@@ -88,6 +92,16 @@ public class ManagerEvent {
         detailsSeparateEvent = new DetailsSeparateEvent();
         editSeparationEvent = new EditSeparationEvent();
         searchBuildingEvent = new SearchBuildingEvent();
+        removeBuildingEvent = new RemoveBuildingEvent();
+        removeBankAccountEvent = new RemoveBankAccountEvent();
+    }
+
+    public RemoveBankAccountEvent getRemoveBankAccountEvent() {
+        return removeBankAccountEvent;
+    }
+
+    public RemoveBuildingEvent getRemoveBuildingEvent() {
+        return removeBuildingEvent;
     }
 
     public SearchBuildingEvent getSearchBuildingEvent() {

@@ -6,7 +6,6 @@ import java.util.List;
 
 public class ResidentialCommunity implements Serializable {
 
-    private int id;
     private String name;
     private String identificationNumber;
     private String taxIdentificationNumber;
@@ -14,26 +13,14 @@ public class ResidentialCommunity implements Serializable {
     private List<Occupant> listOccupants = new ArrayList<>();
     private List<BankAccount> bankAccounts = new ArrayList<>();
     private List<SeparateSection> listSeparationSection = new ArrayList<>();
-    private boolean isExist = true;
 
-    public ResidentialCommunity(int id) {
-        this.id = id;
-    }
-
-    public ResidentialCommunity(int id, String name, String identificationNumber, String taxIdentificationNumber, String mail) {
-        this.id = id;
+ 
+    public ResidentialCommunity(String name, String identificationNumber, String taxIdentificationNumber, String mail) {
+        
         this.name = name;
         this.identificationNumber = identificationNumber;
         this.taxIdentificationNumber = taxIdentificationNumber;
         this.mail = mail;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -92,17 +79,9 @@ public class ResidentialCommunity implements Serializable {
         this.listSeparationSection = listSeparationSection;
     }
 
-    public boolean isIsExist() {
-        return isExist;
-    }
-
-    public void setIsExist(boolean isExist) {
-        this.isExist = isExist;
-    }
-
     @Override
     public String toString() {
-        return id + ". " + name;
+        return name;
     }
 
 }

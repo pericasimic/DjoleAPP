@@ -21,10 +21,6 @@ public interface Storage {
 
     public void writeResidentialCommunities(List<ResidentialCommunity> list);
     
-    public List<BankAccount> loadBankAccounts();
-
-    public void writeBankAccounts(List<BankAccount> list);
-    
     public List<Occupant> loadOccupants();
 
     public void writeOccupants(List<Occupant> list);
@@ -32,5 +28,6 @@ public interface Storage {
     public List<SeparateSection> loadSeparateSections();
 
     public void writeSeparateSections(List<SeparateSection> list);
+  
 
 }

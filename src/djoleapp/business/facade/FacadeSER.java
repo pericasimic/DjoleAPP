@@ -7,6 +7,7 @@ package djoleapp.business.facade;
 
 import djoleapp.business.Factory;
 import djoleapp.business.model.Administrator;
+import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.BusinessSpace;
 import djoleapp.business.model.Flat;
 import djoleapp.business.model.Garage;
@@ -20,7 +21,11 @@ import djoleapp.controller.constant.Constants;
 import djoleapp.controller.util.Message;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  *
@@ -141,12 +146,62 @@ public class FacadeSER implements Facade {
     }
 
     @Override
-    public void removeBuilding(ResidentialCommunity rc) {
+    public boolean removeBuilding(ResidentialCommunity rc) {
+        List<Occupant> occupants = new ArrayList<>();
 
-        if (!rc.getBankAccounts().isEmpty() || !rc.getListOccupants().isEmpty() || !rc.getListSeparationSection().isEmpty()) {
-            Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_BUILDING_EXIST);
+        if (rc == null) {
+            Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
+            return false;
         }
+
+        if (!rc.getListOccupants().isEmpty()) {
+            for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
+                List<ResidentialCommunity> tempResList = new ArrayList<>();
+                for (ResidentialCommunity r : o.getResidentials()) {
+                    if (r.getIdentificationNumber() != rc.getIdentificationNumber()) {
+                        tempResList.add(r);
+                    }
+                }
+                o.setResidentials(tempResList);
+                occupants.add(o);
+            }
+
+        }
+
+        Controller.getInstance().getTemporaryList().setOccupants(occupants);
         Controller.getInstance().getTemporaryList().getResidentialCommunitys().remove(rc);
+        return true;
+    }
+
+    @Override
+    public boolean removeBankAccount(BankAccount ba, ResidentialCommunity rc) {
+
+        if (ba == null) {
+            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
+            return false;
+        }
+        rc.getBankAccounts().remove(ba);
+        return true;
+    }
+
+    @Override
+    public boolean checkBankAccount(String name, String number) {
+
+        if (name.isEmpty() || name == null || number.isEmpty() || number == null) {
+            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
+            return false;
+        }
+
+        for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
+            for (BankAccount ba : rc.getBankAccounts()) {
+                if (ba.getBankAccountNumber().equalsIgnoreCase(number)) {
+                    Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_ACCOUNT_EXIST);
+                    return false;
+                }
+            }
+        }
+        return true;
+
     }
 
 }

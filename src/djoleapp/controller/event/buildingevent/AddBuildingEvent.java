@@ -38,8 +38,7 @@ public class AddBuildingEvent implements EventHandler<ActionEvent> {
             return;
         }
 
-        int id = Controller.getInstance().getTemporaryList().getResidentialCommunitys().size() + 1;
-        ResidentialCommunity rc = new ResidentialCommunity(id, name, idNumber, taxNumber, mail);
+        ResidentialCommunity rc = new ResidentialCommunity(name, idNumber, taxNumber, mail);
         Controller.getInstance().getTemporaryList().getResidentialCommunitys().add(rc);
         Message.info(Alert.AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_BUILDING);
         lp.clearAllFields();

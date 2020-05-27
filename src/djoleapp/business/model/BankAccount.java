@@ -4,13 +4,10 @@ import java.io.Serializable;
 
 public class BankAccount implements Serializable {
 
-    private long id;
     private String bankName;
     private String bankAccountNumber;
-    private boolean isExist = true;
 
-    public BankAccount(long id, String bankName, String bankAccountNumber) {
-        this.id = id;
+    public BankAccount(String bankName, String bankAccountNumber) {
         this.bankName = bankName;
         this.bankAccountNumber = bankAccountNumber;
     }
@@ -29,22 +26,6 @@ public class BankAccount implements Serializable {
 
     public void setBankAccountNumber(String bankAccountNumber) {
         this.bankAccountNumber = bankAccountNumber;
-    }
-
-    public boolean isIsExist() {
-        return isExist;
-    }
-
-    public void setIsExist(boolean isExist) {
-        this.isExist = isExist;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     @Override

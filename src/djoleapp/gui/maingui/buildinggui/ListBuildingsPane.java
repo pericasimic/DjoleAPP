@@ -42,10 +42,6 @@ public class ListBuildingsPane extends VBox {
         setSpacing(5);
         setPadding(new Insets(10, 10, 10, 10));
 
-        TableColumn idBuildingCol = new TableColumn(Constants.ID);
-        idBuildingCol.setMinWidth(150);
-        idBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, Object>("id"));
-
         TableColumn nameBuildingCol = new TableColumn(Constants.NAME_OF_BUILDING);
         nameBuildingCol.setMinWidth(150);
         nameBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("name"));
@@ -63,7 +59,7 @@ public class ListBuildingsPane extends VBox {
         mailNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("mail"));
 
         reload();
-        tableBuildings.getColumns().addAll(idBuildingCol, nameBuildingCol, idNumBuildingCol, taxNumBuildingCol, mailNumBuildingCol);
+        tableBuildings.getColumns().addAll(nameBuildingCol, idNumBuildingCol, taxNumBuildingCol, mailNumBuildingCol);
         getChildren().addAll(titleLbl, getSearch(), tableBuildings, getForm());
 
     }
@@ -115,13 +111,13 @@ public class ListBuildingsPane extends VBox {
 
         });
 
-//        removeBuildingBtn.setOnAction(Controller.getInstance().getManagerEvent().getRemoveUserEvent());
-//        removeBuildingBtn.setOnKeyPressed(e -> {
-//            if (e.getCode() == KeyCode.ENTER) {
-//                Controller.getInstance().getManagerEvent().getRemoveUserEvent().removeUserEvent();
-//            }
-//
-//        });
+        removeBuildingBtn.setOnAction(Controller.getInstance().getManagerEvent().getRemoveBuildingEvent());
+        removeBuildingBtn.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                Controller.getInstance().getManagerEvent().getRemoveBuildingEvent();
+            }
+
+        });
         
         hbox.getChildren().addAll(nameBuildingFld, idNumBuildingFld, tidNumBuildingFld, mailBuildingFld, removeBuildingBtn, addBuildingBtn);
         return hbox;

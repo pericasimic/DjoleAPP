@@ -5,10 +5,15 @@ import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.business.model.SeparateSection;
+import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.controller.util.Message;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -18,6 +23,7 @@ import javafx.scene.control.Alert.AlertType;
 
 public class SerStorage implements Storage {
 
+  
     @Override
     public List<Administrator> loadAdmin() {
         try {
@@ -78,34 +84,6 @@ public class SerStorage implements Storage {
     }
 
     @Override
-    public List<BankAccount> loadBankAccounts() {
-        try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Constants.BANK_ACCOUNTS_DAT));
-            List<BankAccount> list = (List<BankAccount>) ois.readObject();
-            ois.close();
-            return list;
-        } catch (IOException ex) {
-            return new ArrayList<>();
-        } catch (ClassNotFoundException ex) {
-            Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_LOAD_BANK_ACCOUNT);
-            System.exit(0);
-            return null;
-        }
-    }
-
-    @Override
-    public void writeBankAccounts(List<BankAccount> list) {
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Constants.BANK_ACCOUNTS_DAT));
-            oos.writeObject(list);
-            oos.close();
-        } catch (Exception ex) {
-            Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_WRITE_BANK_ACCOUNT);
-            System.exit(0);
-        }
-    }
-
-    @Override
     public List<Occupant> loadOccupants() {
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Constants.OCCUPANTS_DAT));
@@ -133,7 +111,7 @@ public class SerStorage implements Storage {
             System.exit(0);
         }
     }
-    
+
     @Override
     public List<SeparateSection> loadSeparateSections() {
         try {
@@ -163,5 +141,4 @@ public class SerStorage implements Storage {
         }
     }
 
-    
 }

@@ -24,9 +24,9 @@ public class ConfirmAddAccountOccupantEvent implements EventHandler<ActionEvent>
         String number = aaop.getNumberFld().getText();
         Controller.getInstance().getAddAccountOccupantPane().getNumberFld().setText(Constants.EMPTY_STRING);
         
-        BankAccount ba = new BankAccount(Controller.getInstance().getTemporaryList().getBankAccounts().size() + 1, bankName, number);
-        Controller.getInstance().getTemporaryList().getBankAccounts().add(ba);
-        Controller.getInstance().getTemporaryOccupant().getBankAccounts().add(ba);
+//        BankAccount ba = new BankAccount(Controller.getInstance().getTemporaryList().getBankAccounts().size() + 1, bankName, number);
+//        Controller.getInstance().getTemporaryList().getBankAccounts().add(ba);
+//        Controller.getInstance().getTemporaryOccupant().getBankAccounts().add(ba);
         Controller.getInstance().getTemporaryStage().close();
         Controller.getInstance().getSelectOcupantPane().reloadList();
     }

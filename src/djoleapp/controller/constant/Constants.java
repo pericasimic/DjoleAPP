@@ -3,6 +3,7 @@ package djoleapp.controller.constant;
 public class Constants {
 
     public static final String TITLE_LOGIN = "Prijava na aplikaciju";
+    public static final String COUNT_ID_ACCOUNT_BANK = "C:\\Users\\perica.simic\\Documents\\NetBeansProjects\\DjoleAPP\\countBankAccountId.txt";
     public static final int SCENE_WIDTH = 960;
     public static final int SCENE_HEIGHT = 640;
     public static final int SCENE_WIDTH_TEMP = 800;
@@ -18,6 +19,8 @@ public class Constants {
     public static final String ALERT_INFORMATION_DIALOG = "Informacija";
     public static final String ALERT_EMPTY_INPUT_TEXT = "Polja moraju biti popunjena";
     public static final String ALERT_BUILDING_EXIST = "Zgrada vec postoji u bazi";
+    public static final String ALERT_ACCOUNT_EXIST = "Racun vec postoji";
+    public static final String ALERT_NOT_SELECT = "Morate izabrati stavku za brisanje";
     public static final String ERROR_STORAGE_LOAD_ADMIN = "package djoleapp.business.storage.loadAdmin";
     public static final String ERROR_STORAGE_WRITE_ADMIN = "package djoleapp.business.storage.writeAdmin";
     public static final String ERROR_STORAGE_LOAD_BUILDING = "package djoleapp.business.storage.loadResidentialCommunity";
@@ -63,6 +66,7 @@ public class Constants {
     public static final String EXIT = "Izlaz";
     public static final String PRINT = "Stampaj";
     public static final String SUCCESS_SAVE = "Uspesno je sacuvano";
+    public static final String SUCCESS_DELETE = "Uspesno je obrisano";
     public static final String EMPTY_STRING = "";
     public static final String DEBIT = "Zaduzenje";
     public static final String FROM_PREVIOUS_PERIOD = "iz prethodnog perioda";

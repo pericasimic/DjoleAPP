@@ -23,6 +23,7 @@ public class BankDetailsBildingPane extends VBox {
     private TextField nameBankFld = new TextField();
     private TextField numAccountFld = new TextField();
     private Button addAccountBtn = new Button(Constants.BUTTON_ADD);
+    private Button removeAccountBtn = new Button(Constants.BUTTON_REMOVE);
 
     public BankDetailsBildingPane(List<BankAccount> bankAccounts, HBox box) {
         this.setPadding(new Insets(10, 10, 10, 10));
@@ -55,8 +56,16 @@ public class BankDetailsBildingPane extends VBox {
             }
 
         });
+        
+        removeAccountBtn.setOnAction(Controller.getInstance().getManagerEvent().getRemoveBankAccountEvent());
+        removeAccountBtn.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                Controller.getInstance().getManagerEvent().getRemoveBankAccountEvent().removeBankAccountEvent();
+            }
 
-        hbox.getChildren().addAll(nameBankFld, numAccountFld, addAccountBtn);
+        });
+
+        hbox.getChildren().addAll(nameBankFld, numAccountFld, removeAccountBtn, addAccountBtn);
         this.getChildren().addAll(box, bankAccountTable, hbox);
 
     }
@@ -72,5 +81,11 @@ public class BankDetailsBildingPane extends VBox {
     public TextField getNumAccountFld() {
         return numAccountFld;
     }
+
+    public TableView<BankAccount> getBankAccountTable() {
+        return bankAccountTable;
+    }
+    
+    
 
 }

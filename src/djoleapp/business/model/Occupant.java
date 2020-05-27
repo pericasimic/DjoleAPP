@@ -14,14 +14,11 @@ public class Occupant implements Serializable {
     private String mail;
     private String note;
     private double sum = 0;
-    private List<IndependentSection> independents = new ArrayList<>();
     private List<ResidentialCommunity> residentials = new ArrayList<>();
     private List<BankAccount> bankAccounts = new ArrayList<>();
-    private List<SeparateSection> listSeparateSections = new ArrayList<>();
     private List<AccountCalculation> listAccountCalc = new ArrayList<>();
     private List<BankingStatement> listStatements = new ArrayList<>();
     private boolean isAdd = false;
-    private boolean isExist = true;
 
     public Occupant(long id) {
         this.id = id;
@@ -84,14 +81,6 @@ public class Occupant implements Serializable {
         this.note = note;
     }
 
-    public boolean isIsExist() {
-        return isExist;
-    }
-
-    public void setIsExist(boolean isExist) {
-        this.isExist = isExist;
-    }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -124,28 +113,12 @@ public class Occupant implements Serializable {
         return bankAccounts;
     }
 
-    public List<IndependentSection> getIndependents() {
-        return independents;
-    }
-
-    public void setIndependents(List<IndependentSection> independents) {
-        this.independents = independents;
-    }
-
     public double getSum() {
         return sum;
     }
 
     public void setSum(double sum) {
         this.sum = sum;
-    }
-
-    public List<SeparateSection> getListSeparateSections() {
-        return listSeparateSections;
-    }
-
-    public void setListSeparateSections(List<SeparateSection> listSeparateSections) {
-        this.listSeparateSections = listSeparateSections;
     }
 
     public List<ResidentialCommunity> getResidentials() {

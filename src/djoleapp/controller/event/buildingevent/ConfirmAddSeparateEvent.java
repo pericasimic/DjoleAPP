@@ -48,7 +48,6 @@ public class ConfirmAddSeparateEvent implements EventHandler<ActionEvent> {
             ss.setResidentialCommunity(asp.getBuildingsBox().getValue());
             asp.getBuildingsBox().getValue().getListSeparationSection().add(ss);
             if (asp.getOwnerBox().getValue() != null) {
-                asp.getOwnerBox().getValue().getListSeparateSections().add(ss);
                 ss.setOccupant(asp.getOwnerBox().getValue());
             }
             Controller.getInstance().getTemporaryList().getSeparateSections().add(ss);
@@ -60,7 +59,6 @@ public class ConfirmAddSeparateEvent implements EventHandler<ActionEvent> {
             ss.setResidentialCommunity(asp.getBuildingsBox().getValue());
             asp.getBuildingsBox().getValue().getListSeparationSection().add(ss);
             if (asp.getOwnerBox().getValue() != null) {
-                asp.getOwnerBox().getValue().getListSeparateSections().add(ss);
                 ss.setOccupant(asp.getOwnerBox().getValue());
             }
             Controller.getInstance().getTemporaryList().getSeparateSections().add(ss);

@@ -6,20 +6,20 @@ import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.business.model.SeparateSection;
+import djoleapp.controller.Controller;
 import java.util.List;
 
 public class TemporaryList {
 
     List<Administrator> administrators;
     List<ResidentialCommunity> residentialCommunitys;
-    List<BankAccount> bankAccounts;
+//    List<BankAccount> bankAccounts;
     List<Occupant> occupants;
     List<SeparateSection> separateSections;
 
     public TemporaryList() {
         administrators = Factory.getStorage().loadAdmin();
         residentialCommunitys = Factory.getStorage().loadResidentialCommunities();
-        bankAccounts = Factory.getStorage().loadBankAccounts();
         occupants = Factory.getStorage().loadOccupants();
         separateSections = Factory.getStorage().loadSeparateSections();
     }
@@ -27,7 +27,6 @@ public class TemporaryList {
     public void saveTemporaryLists() {
         Factory.getStorage().writeAdmins(administrators);
         Factory.getStorage().writeResidentialCommunities(residentialCommunitys);
-        Factory.getStorage().writeBankAccounts(bankAccounts);
         Factory.getStorage().writeOccupants(occupants);
         Factory.getStorage().writeSeparateSections(separateSections);
     }
@@ -46,14 +45,6 @@ public class TemporaryList {
 
     public void setResidentialCommunitys(List<ResidentialCommunity> residentialCommunitys) {
         this.residentialCommunitys = residentialCommunitys;
-    }
-
-    public List<BankAccount> getBankAccounts() {
-        return bankAccounts;
-    }
-
-    public void setBankAccounts(List<BankAccount> bankAccounts) {
-        this.bankAccounts = bankAccounts;
     }
 
     public List<Occupant> getOccupants() {

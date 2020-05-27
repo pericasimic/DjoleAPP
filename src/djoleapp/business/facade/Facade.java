@@ -1,6 +1,7 @@
 package djoleapp.business.facade;
 
 import djoleapp.business.model.Administrator;
+import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.business.model.SeparateSection;
@@ -30,5 +31,9 @@ public interface Facade {
 
     public List<ResidentialCommunity> searchBuidingList(String word);
 
-    public void removeBuilding(ResidentialCommunity rc);
+    public boolean removeBuilding(ResidentialCommunity rc);
+    
+    public boolean removeBankAccount(BankAccount ba, ResidentialCommunity rc);
+    
+    public boolean checkBankAccount(String name, String number);
 }
