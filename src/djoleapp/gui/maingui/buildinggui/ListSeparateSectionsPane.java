@@ -44,10 +44,10 @@ public class ListSeparateSectionsPane extends VBox {
 
         });
 
-        deleteBtn.setOnAction(Controller.getInstance().getManagerEvent().getAddOccupantBuildingEvent());
+        deleteBtn.setOnAction(Controller.getInstance().getManagerEvent().getRemoveSeparateSectionEvent());
         deleteBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getAddOccupantBuildingEvent().addOccupantBuildingEvent();
+                Controller.getInstance().getManagerEvent().getRemoveSeparateSectionEvent();
             }
 
         });
@@ -68,5 +68,11 @@ public class ListSeparateSectionsPane extends VBox {
         tableSection.setItems(FXCollections.observableArrayList(list));
 
     }
+
+    public TableSection getTableSection() {
+        return tableSection;
+    }
+    
+    
 
 }

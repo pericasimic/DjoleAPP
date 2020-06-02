@@ -105,13 +105,6 @@ public class EditSeparatePane extends BorderPane {
 
         buildingsBox.setMaxWidth(USE_PREF_SIZE);
         buildingsBox.setItems(FXCollections.observableArrayList(Controller.getInstance().getTemporaryList().getResidentialCommunitys()));
-        buildingsBox.setOnAction(Controller.getInstance().getManagerEvent().getReloadListOwnerBuildingEvent());
-        buildingsBox.setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getReloadListOwnerBuildingEvent().reloadListOwnerBuilding();
-            }
-
-        });
 
         sectionsBox.setMaxWidth(USE_PREF_SIZE);
         sectionsBox.getItems().addAll(Constants.FLAT, Constants.BUSINESS_SPACE, Constants.GARAGE, Constants.GARAGE_BOX, Constants.GARAGE_SPACE);

@@ -5,12 +5,12 @@ import javafx.scene.text.Text;
 
 public class Garage extends SeparateSection {
 
-    public Garage(long id, ResidentialCommunity residentialCommunity, String number, double surfaceArea, String note) {
-        super(id, residentialCommunity, number, surfaceArea, note);
+    public Garage(ResidentialCommunity residentialCommunity, String number, double surfaceArea, String note) {
+        super(residentialCommunity, number, surfaceArea, note);
     }
 
     @Override
     public String toString() {
-        return super.getId() + super.getNumber() + super.getSurfaceArea() + super.getNote();
+        return super.getNumber() + super.getSurfaceArea() + super.getNote();
     }
 }

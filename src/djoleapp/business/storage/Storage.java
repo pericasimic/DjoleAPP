@@ -24,10 +24,6 @@ public interface Storage {
     public List<Occupant> loadOccupants();
 
     public void writeOccupants(List<Occupant> list);
-    
-    public List<SeparateSection> loadSeparateSections();
-
-    public void writeSeparateSections(List<SeparateSection> list);
   
 
 }

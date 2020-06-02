@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package djoleapp.business.facade;
 
 import djoleapp.business.Factory;
@@ -48,6 +43,7 @@ public class FacadeSER implements Facade {
     public boolean chackExistOccupantBuilding(ResidentialCommunity r, Occupant o) {
         for (Occupant oc : r.getListOccupants()) {
             if (oc.getId() == o.getId()) {
+                Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_BUILDING_EXIST);
                 return false;
             }
         }
@@ -201,6 +197,106 @@ public class FacadeSER implements Facade {
             }
         }
         return true;
+
+    }
+
+    @Override
+    public boolean addSeparateSection(ResidentialCommunity rc, String section, String number, double area, String note, Occupant owner) {
+
+        if (rc == null || section.isEmpty() || section == null || number.isEmpty() || number == null || area == 0.0 || note.isEmpty() || note == null) {
+            Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
+            return false;
+        }
+
+        if (section.equals(Constants.FLAT)) {
+            for (SeparateSection s : rc.getListSeparationSection()) {
+                if (s.getNumber().equalsIgnoreCase(number)) {
+                    Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                    return false;
+                }
+            }
+            SeparateSection ss = new Flat(rc, number, area, note);
+            rc.getListSeparationSection().add(ss);
+            if (owner != null) {
+                ss.setOccupant(owner);
+            }
+
+        }
+
+        if (section.equals(Constants.GARAGE)) {
+            for (SeparateSection s : rc.getListSeparationSection()) {
+                if (s.getNumber().equalsIgnoreCase(number)) {
+                    Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                    return false;
+                }
+            }
+            SeparateSection ss = new Garage(rc, number, area, note);
+            rc.getListSeparationSection().add(ss);
+            if (owner != null) {
+                ss.setOccupant(owner);
+            }
+        }
+
+        if (section.equals(Constants.BUSINESS_SPACE)) {
+            for (SeparateSection s : rc.getListSeparationSection()) {
+                if (s.getNumber().equalsIgnoreCase(number)) {
+                    Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                    return false;
+                }
+            }
+            SeparateSection ss = new BusinessSpace(rc, number, area, note);
+            rc.getListSeparationSection().add(ss);
+            if (owner != null) {
+                ss.setOccupant(owner);
+            }
+        }
+
+        if (section.equals(Constants.GARAGE_BOX)) {
+            for (SeparateSection s : rc.getListSeparationSection()) {
+                if (s.getNumber().equalsIgnoreCase(number)) {
+                    Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                    return false;
+                }
+            }
+            SeparateSection ss = new ParkingBox(rc, number, area, note);
+            rc.getListSeparationSection().add(ss);
+            if (owner != null) {
+                ss.setOccupant(owner);
+            }
+        }
+
+        if (section.equals(Constants.GARAGE_SPACE)) {
+            for (SeparateSection s : rc.getListSeparationSection()) {
+                if (s.getNumber().equalsIgnoreCase(number)) {
+                    Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                    return false;
+                }
+            }
+            SeparateSection ss = new ParkingSpace(rc, number, area, note);
+            rc.getListSeparationSection().add(ss);
+            if (owner != null) {
+                ss.setOccupant(owner);
+            }
+        }
+
+        Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_NEW_SECTION);
+        Controller.getInstance().getTemporaryStage().close();
+        Controller.getInstance().getManagerEvent().getAddSectionEvent().setScene();
+        Controller.getInstance().getListSeparateSectionsPane().reload(rc.getListSeparationSection());
+
+        return true;
+    }
+
+    @Override
+    public void removeSeparateSection(SeparateSection ss, ResidentialCommunity rc) {
+
+        if (ss == null || rc == null) {
+            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
+            return;
+        }
+
+        rc.getListSeparationSection().remove(ss);
+        Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.SUCCESS_DELETE);
 
     }
 

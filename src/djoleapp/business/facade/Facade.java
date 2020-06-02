@@ -35,5 +35,9 @@ public interface Facade {
     
     public boolean removeBankAccount(BankAccount ba, ResidentialCommunity rc);
     
+    public void removeSeparateSection(SeparateSection ss, ResidentialCommunity rc);
+    
     public boolean checkBankAccount(String name, String number);
+    
+    public boolean addSeparateSection(ResidentialCommunity rc, String section, String number, double area, String note, Occupant owner);
 }

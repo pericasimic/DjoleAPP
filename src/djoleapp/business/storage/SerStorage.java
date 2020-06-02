@@ -112,33 +112,4 @@ public class SerStorage implements Storage {
         }
     }
 
-    @Override
-    public List<SeparateSection> loadSeparateSections() {
-        try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Constants.SEPARATE_SECTION_DAT));
-            List<SeparateSection> list = (List<SeparateSection>) ois.readObject();
-            ois.close();
-            return list;
-        } catch (IOException ex) {
-            return new ArrayList();
-        } catch (ClassNotFoundException ex) {
-            Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_LOAD_SEPARATE_SECTIONS);
-            System.exit(0);
-            return null;
-        }
-    }
-
-    @Override
-    public void writeSeparateSections(List<SeparateSection> list) {
-        try {
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Constants.SEPARATE_SECTION_DAT));
-            oos.writeObject(list);
-            oos.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_WRITE_SEPARATE_SECTIONS);
-            System.exit(0);
-        }
-    }
-
 }

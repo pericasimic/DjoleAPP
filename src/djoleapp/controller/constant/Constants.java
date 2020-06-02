@@ -19,6 +19,7 @@ public class Constants {
     public static final String ALERT_INFORMATION_DIALOG = "Informacija";
     public static final String ALERT_EMPTY_INPUT_TEXT = "Polja moraju biti popunjena";
     public static final String ALERT_BUILDING_EXIST = "Zgrada vec postoji u bazi";
+    public static final String ALERT_OCCUPANT_BUILDING_EXIST = "Izabrani stanar je već u zgradi";
     public static final String ALERT_ACCOUNT_EXIST = "Racun vec postoji";
     public static final String ALERT_NOT_SELECT = "Morate izabrati stavku za brisanje";
     public static final String ERROR_STORAGE_LOAD_ADMIN = "package djoleapp.business.storage.loadAdmin";
@@ -40,7 +41,7 @@ public class Constants {
     public static final String SEPARATE_SECTION_DAT = "separate_sections.dat";
     public static final String TITLE_ADD_ADMIN = "Dodavanje administratora";
     public static final String TITLE_ADD_OCCUPANT = "Dodavanje stanara";
-    public static final String TITLE_ADD_SECTION = "Dodavanje sekcije";
+    public static final String TITLE_ADD_SECTION = "Dodavanje sekcije za ";
     public static final String INFO_OCCUPANT = "Informacije o korisniku: ";
     public static final String ADD_ADMIN = "Novi administrator je dodat";
     public static final String ADD_NEW_SECTION = "Nova sekcija je dodata";
@@ -104,6 +105,7 @@ public class Constants {
     public static final String NUMBER = "Broj";
     public static final String FLAT_AREA = "Povrsina stana(m2)";
     public static final String OWNER = "Vlasnik";
+    public static final String OWNER_IF_EXIST = "Izabrati vlasnika (ako postoji)";
     public static final String KIND_SECTION = "Vrsta posebnog dela";
     public static final String HASH_KEY = "#";
     public static final String BUTTON_ADD_ACCOUNT = "Dodaj racun";
@@ -124,4 +126,5 @@ public class Constants {
     public static final String GARAGE_SPACE = "Garazno mesto";
     public static final String GARAGE_BOX = "Garazni boks";
     public static final String BUSINESS_SPACE = "Poslovni prostor";
+    public static final String NUMBER_SECTION_EXIST = "Broj sekcije već postoji";
 }

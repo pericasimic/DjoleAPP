@@ -17,7 +17,6 @@ public class BackListOccupant implements EventHandler<ActionEvent> {
     }
 
     public void backListOccupant() {
-
         ListOccupantsPane lp = Controller.getInstance().getListOccupantsPane();
         MainPane mp = new MainPane(lp);
         Scene scene = new Scene(mp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);

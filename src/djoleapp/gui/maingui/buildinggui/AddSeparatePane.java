@@ -6,7 +6,9 @@ import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -20,22 +22,21 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.WindowEvent;
 
 public class AddSeparatePane extends BorderPane {
 
-    private Label title = new Label(Constants.TITLE_ADD_SECTION);
+    private Label title = new Label(Constants.TITLE_ADD_SECTION + Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getName());
 
     private TextField numberFld = new TextField();
     private TextField areaFld = new TextField();
     private TextArea noteFld = new TextArea();
 
-    private ComboBox<ResidentialCommunity> buildingsBox = new ComboBox<>();
     private ComboBox<String> sectionsBox = new ComboBox<>();
     private ComboBox<Occupant> ownerBox = new ComboBox<>();
 
-    private Label buildingLbl = new Label(Constants.SELECT_BUILDINGS);
     private Label kindLbl = new Label(Constants.KIND_SECTION);
-    private Label ownerLbl = new Label(Constants.OWNER);
+    private Label ownerLbl = new Label(Constants.OWNER_IF_EXIST);
     private Label numberLbl = new Label(Constants.NUMBER);
     private Label areaLbl = new Label(Constants.FLAT_AREA);
     private Label noteLbl = new Label(Constants.NOTE);
@@ -57,16 +58,14 @@ public class AddSeparatePane extends BorderPane {
 
         gp.add(kindLbl, 0, 0);
         gp.add(sectionsBox, 1, 0);
-        gp.add(buildingLbl, 0, 1);
-        gp.add(buildingsBox, 1, 1);
-        gp.add(ownerLbl, 0, 2);
-        gp.add(ownerBox, 1, 2);
-        gp.add(numberLbl, 0, 3);
-        gp.add(numberFld, 1, 3);
-        gp.add(areaLbl, 0, 4);
-        gp.add(areaFld, 1, 4);
-        gp.add(noteLbl, 0, 5);
-        gp.add(noteFld, 1, 5);
+        gp.add(ownerLbl, 0, 1);
+        gp.add(ownerBox, 1, 1);
+        gp.add(numberLbl, 0, 2);
+        gp.add(numberFld, 1, 2);
+        gp.add(areaLbl, 0, 3);
+        gp.add(areaFld, 1, 3);
+        gp.add(noteLbl, 0, 4);
+        gp.add(noteFld, 1, 4);
 
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
@@ -81,20 +80,10 @@ public class AddSeparatePane extends BorderPane {
 
         });
 
-        cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getBackListOccupant());
+        cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getBackListSeparateSections());
         cancelBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getBackListOccupant().backListOccupant();
-            }
-
-        });
-
-        buildingsBox.setMaxWidth(USE_PREF_SIZE);
-        buildingsBox.setItems(FXCollections.observableArrayList(Controller.getInstance().getTemporaryList().getResidentialCommunitys()));
-        buildingsBox.setOnAction(Controller.getInstance().getManagerEvent().getReloadListOwnerBuildingEvent());
-        buildingsBox.setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getReloadListOwnerBuildingEvent().reloadListOwnerBuilding();
+                Controller.getInstance().getManagerEvent().getBackListSeparateSections().backListSeparateSections();
             }
 
         });
@@ -103,12 +92,14 @@ public class AddSeparatePane extends BorderPane {
         sectionsBox.getItems().addAll(Constants.FLAT, Constants.BUSINESS_SPACE, Constants.GARAGE, Constants.GARAGE_BOX, Constants.GARAGE_SPACE);
 
         ownerBox.setMaxWidth(USE_PREF_SIZE);
+        ownerBox.setItems(FXCollections.observableArrayList(Controller.getInstance().getTemporaryList().getOccupants()));
 
         hBox.getChildren().addAll(cancelBtn, confirmBtn);
 
         this.setPadding(new Insets(60, 60, 60, 60));
         this.setCenter(gp);
         this.setBottom(hBox);
+
     }
 
     public TextField getNumberFld() {
@@ -135,14 +126,6 @@ public class AddSeparatePane extends BorderPane {
         return noteFld;
     }
 
-    public ComboBox<ResidentialCommunity> getBuildingsBox() {
-        return buildingsBox;
-    }
-
-    public void setBuildingsBox(ComboBox<ResidentialCommunity> buildingsBox) {
-        this.buildingsBox = buildingsBox;
-    }
-
     public ComboBox<String> getSectionsBox() {
         return sectionsBox;
     }
@@ -157,10 +140,6 @@ public class AddSeparatePane extends BorderPane {
 
     public void setOwnerBox(ComboBox<Occupant> ownerBox) {
         this.ownerBox = ownerBox;
-    }
-
-    public void reloadOwnersBox(List<Occupant> list) {
-        ownerBox.setItems(FXCollections.observableArrayList(list));
     }
 
 }

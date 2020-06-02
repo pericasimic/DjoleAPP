@@ -41,7 +41,7 @@ public class ShowSelectBuildTableEvent implements EventHandler<ActionEvent> {
 
         if (thbbp.getSelectItemBox().getValue().equals(Constants.SEPARATE_SECTIONS)) {
             ListSeparateSectionsPane lssp = new ListSeparateSectionsPane(thbbp.getBuildingsBox().getValue().getListSeparationSection(), thbbp);
-//            thbbp.getBuildingsBox().setValue(thbbp.getBuildingsBox().getValue());
+            thbbp.getBuildingsBox().setValue(thbbp.getBuildingsBox().getValue());
             Controller.getInstance().setListSeparateSectionsPane(lssp);
             MainPane mp = new MainPane(lssp);
             setScene(mp);

@@ -10,8 +10,8 @@ public class Flat extends SeparateSection {
 
     List<Occupant> listOccupants = new ArrayList<>();
 
-    public Flat(long id, ResidentialCommunity residentialCommunity, String number, double surfaceArea, String note) {
-        super(id, residentialCommunity, number, surfaceArea, note);
+    public Flat(ResidentialCommunity residentialCommunity, String number, double surfaceArea, String note) {
+        super(residentialCommunity, number, surfaceArea, note);
     }
 
     public List<Occupant> getListOccupants() {
@@ -24,7 +24,7 @@ public class Flat extends SeparateSection {
 
     @Override
     public String toString() {
-        return super.getId() + super.getNumber() + super.getSurfaceArea() + super.getNote();
+        return super.getNumber() + super.getSurfaceArea() + super.getNote();
     }
 
 }

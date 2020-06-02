@@ -5,8 +5,8 @@ import javafx.scene.text.Text;
 
 public class BusinessSpace extends SeparateSection {
 
-    public BusinessSpace(long id, ResidentialCommunity residentialCommunity, String number, double surfaceArea, String note) {
-        super(id, residentialCommunity, number, surfaceArea, note);
+    public BusinessSpace(ResidentialCommunity residentialCommunity, String number, double surfaceArea, String note) {
+        super(residentialCommunity, number, surfaceArea, note);
     }
 
    

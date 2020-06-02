@@ -5,8 +5,8 @@ import javafx.scene.text.Text;
 
 public class ParkingBox extends SeparateSection {
 
-    public ParkingBox(long id, ResidentialCommunity residentialCommunity, String number, double surfaceArea, String note) {
-        super(id, residentialCommunity, number, surfaceArea, note);
+    public ParkingBox(ResidentialCommunity residentialCommunity, String number, double surfaceArea, String note) {
+        super(residentialCommunity, number, surfaceArea, note);
     }
 
 

@@ -8,14 +8,15 @@ import djoleapp.controller.event.buildingevent.AddBankAccountBuildEvent;
 import djoleapp.controller.event.buildingevent.AddBuildingEvent;
 import djoleapp.controller.event.buildingevent.AddOccupantBuildingEvent;
 import djoleapp.controller.event.buildingevent.AddSectionEvent;
+import djoleapp.controller.event.buildingevent.BackListSeparateSections;
 import djoleapp.controller.event.buildingevent.BankDetailsBuildingEvent;
 import djoleapp.controller.event.buildingevent.ConfirmAddSeparateEvent;
 import djoleapp.controller.event.buildingevent.DetailsSeparateEvent;
 import djoleapp.controller.event.buildingevent.EditSeparationEvent;
 import djoleapp.controller.event.buildingevent.ListBuildingEvent;
-import djoleapp.controller.event.buildingevent.ReloadListOwnerBuildingEvent;
 import djoleapp.controller.event.buildingevent.RemoveBankAccountEvent;
 import djoleapp.controller.event.buildingevent.RemoveBuildingEvent;
+import djoleapp.controller.event.buildingevent.RemoveSeparateSectionEvent;
 import djoleapp.controller.event.buildingevent.SearchBuildingEvent;
 import djoleapp.controller.event.buildingevent.ShowAllOccupants;
 import djoleapp.controller.event.buildingevent.ShowSelectBuildTableEvent;
@@ -57,12 +58,13 @@ public class ManagerEvent {
     private AddSectionEvent addSectionEvent = null;
     private ShowAllOccupants showAllOccupants = null;
     private ConfirmAddSeparateEvent confirmAddSeparateEvent = null;
-    private ReloadListOwnerBuildingEvent reloadListOwnerBuildingEvent = null;
     private DetailsSeparateEvent detailsSeparateEvent = null;
     private EditSeparationEvent editSeparationEvent = null;
     private SearchBuildingEvent searchBuildingEvent = null;
     private RemoveBuildingEvent removeBuildingEvent = null;
     private RemoveBankAccountEvent removeBankAccountEvent = null;
+    private BackListSeparateSections backListSeparateSections = null;
+    private RemoveSeparateSectionEvent removeSeparateSectionEvent = null;
 
     public ManagerEvent() {
 
@@ -88,12 +90,21 @@ public class ManagerEvent {
         showAllOccupants = new ShowAllOccupants();
         addSectionEvent = new AddSectionEvent();
         confirmAddSeparateEvent = new ConfirmAddSeparateEvent();
-        reloadListOwnerBuildingEvent = new ReloadListOwnerBuildingEvent();
         detailsSeparateEvent = new DetailsSeparateEvent();
         editSeparationEvent = new EditSeparationEvent();
         searchBuildingEvent = new SearchBuildingEvent();
         removeBuildingEvent = new RemoveBuildingEvent();
         removeBankAccountEvent = new RemoveBankAccountEvent();
+        backListSeparateSections = new BackListSeparateSections();
+        removeSeparateSectionEvent = new RemoveSeparateSectionEvent();
+    }
+
+    public RemoveSeparateSectionEvent getRemoveSeparateSectionEvent() {
+        return removeSeparateSectionEvent;
+    }
+
+    public BackListSeparateSections getBackListSeparateSections() {
+        return backListSeparateSections;
     }
 
     public RemoveBankAccountEvent getRemoveBankAccountEvent() {
@@ -114,10 +125,6 @@ public class ManagerEvent {
 
     public DetailsSeparateEvent getDetailsSeparateEvent() {
         return detailsSeparateEvent;
-    }
-
-    public ReloadListOwnerBuildingEvent getReloadListOwnerBuildingEvent() {
-        return reloadListOwnerBuildingEvent;
     }
 
     public ConfirmAddSeparateEvent getConfirmAddSeparateEvent() {

@@ -4,6 +4,7 @@ import djoleapp.business.Factory;
 import djoleapp.business.facade.Facade;
 import djoleapp.business.model.Flat;
 import djoleapp.business.model.Garage;
+import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.business.model.SeparateSection;
 import djoleapp.controller.Controller;
@@ -31,46 +32,21 @@ public class ConfirmAddSeparateEvent implements EventHandler<ActionEvent> {
 
         AddSeparatePane asp = Controller.getInstance().getAddSeparatePane();
 
-        ResidentialCommunity rc = asp.getBuildingsBox().getValue();
+        ResidentialCommunity rc = Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue();
         String section = asp.getSectionsBox().getValue();
         String number = asp.getNumberFld().getText();
-        double area = Double.valueOf(asp.getAreaFld().getText());
         String note = asp.getNoteFld().getText();
-        List<SeparateSection> sectionsList = Controller.getInstance().getTemporaryList().getSeparateSections();
-
-        if (rc == null || section.isEmpty() || section == null || number.isEmpty() || number == null || area == 0.0) {
+        Occupant owner = asp.getOwnerBox().getValue();
+        if (asp.getAreaFld().getText().isEmpty() || asp.getAreaFld().getText() == null) {
             Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
             return;
         }
 
-        if (section.equals(Constants.FLAT)) {
-            SeparateSection ss = new Flat(sectionsList.size() + 1, rc, number, area, note);
-            ss.setResidentialCommunity(asp.getBuildingsBox().getValue());
-            asp.getBuildingsBox().getValue().getListSeparationSection().add(ss);
-            if (asp.getOwnerBox().getValue() != null) {
-                ss.setOccupant(asp.getOwnerBox().getValue());
-            }
-            Controller.getInstance().getTemporaryList().getSeparateSections().add(ss);
-            
+        double area = Double.valueOf(asp.getAreaFld().getText());
+
+        if (!Factory.getFacade().addSeparateSection(rc, section, number, area, note, owner)) {
+            return;
         }
-
-        if (section.equals(Constants.GARAGE)) {
-            SeparateSection ss = new Garage(sectionsList.size() + 1, rc, number, area, note);
-            ss.setResidentialCommunity(asp.getBuildingsBox().getValue());
-            asp.getBuildingsBox().getValue().getListSeparationSection().add(ss);
-            if (asp.getOwnerBox().getValue() != null) {
-                ss.setOccupant(asp.getOwnerBox().getValue());
-            }
-            Controller.getInstance().getTemporaryList().getSeparateSections().add(ss);
-        }
-
-        Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_NEW_SECTION);
-
-        MainPane mp = new MainPane(Controller.getInstance().getListSeparateSectionsPane());
-        Scene scena = new Scene(mp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
-        Controller.getInstance().getPrimaryStage().setScene(scena);
-        Controller.getInstance().getListSeparateSectionsPane().reload(asp.getBuildingsBox().getValue().getListSeparationSection());
-        Controller.getInstance().getTemporaryStage().close();
 
     }
 

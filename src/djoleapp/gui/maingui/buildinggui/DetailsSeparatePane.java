@@ -34,15 +34,15 @@ public class DetailsSeparatePane extends BorderPane {
     private Button editBtn = new Button(Constants.BUTTON_EDIT);
     private Button confirmBtn = new Button(Constants.BUTTON_CONFIRM);
     private Button cancelBtn = new Button(Constants.BUTTON_CANCEL);
-    
+
     private SeparateSection separateSection;
-    
+
     private HBox hBox = new HBox();
 
     public DetailsSeparatePane(SeparateSection section) {
 
         setSeparateSection(section);
-        
+
         title.setFont(new Font(Constants.FONT_ARIAL, 20));
         title.setText(Constants.SECTION_DETAILS_TITLE);
         this.setTop(title);
@@ -61,7 +61,11 @@ public class DetailsSeparatePane extends BorderPane {
         gp.add(ownerLbl, 0, 2);
         gp.add(ownerFld, 1, 2);
         ownerFld.setEditable(false);
-        ownerFld.setText(section.getOwner().getFirstNameOccupant() + section.getOwner().getLastNameOccupant());
+
+        if (section.getOwner() != null) {
+            ownerFld.setText(section.getOwner().getFirstNameOccupant() + section.getOwner().getLastNameOccupant());
+        }
+
         gp.add(numberLbl, 0, 3);
         gp.add(numberFld, 1, 3);
         numberFld.setEditable(false);
@@ -82,7 +86,7 @@ public class DetailsSeparatePane extends BorderPane {
             }
 
         });
-        
+
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(3);
         hBox.setPadding(new Insets(30, 30, 30, 30));
@@ -95,7 +99,7 @@ public class DetailsSeparatePane extends BorderPane {
 
         });
         hBox.getChildren().addAll(cancelBtn, editBtn);
-       
+
         this.setPadding(new Insets(60, 60, 60, 60));
         this.setCenter(gp);
         this.setBottom(hBox);
@@ -108,8 +112,5 @@ public class DetailsSeparatePane extends BorderPane {
     public void setSeparateSection(SeparateSection separateSection) {
         this.separateSection = separateSection;
     }
-
-    
-
 
 }

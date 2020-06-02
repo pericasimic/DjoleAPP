@@ -6,7 +6,6 @@ import javafx.scene.text.Text;
 
 public abstract class SeparateSection implements Serializable {
 
-    private long id;
     private Occupant owner;
     private ResidentialCommunity residentialCommunity;
     private String number;
@@ -19,12 +18,8 @@ public abstract class SeparateSection implements Serializable {
     public SeparateSection() {
     }
     
-    public SeparateSection(long id) {
-        this.id = id;
-    }
-
-    public SeparateSection(long id, ResidentialCommunity residentialCommunity, String number, double surfaceArea, String note) {
-        this.id = id;
+    public SeparateSection(ResidentialCommunity residentialCommunity, String number, double surfaceArea, String note) {
+        
         this.residentialCommunity = residentialCommunity;
         this.number = number;
         this.surfaceArea = surfaceArea;
@@ -70,14 +65,6 @@ public abstract class SeparateSection implements Serializable {
 
     public void setNumber(String number) {
         this.number = number;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public ResidentialCommunity getResidentialCommunity() {
