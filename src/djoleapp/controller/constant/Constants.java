@@ -45,6 +45,7 @@ public class Constants {
     public static final String INFO_OCCUPANT = "Informacije o korisniku: ";
     public static final String ADD_ADMIN = "Novi administrator je dodat";
     public static final String ADD_NEW_SECTION = "Nova sekcija je dodata";
+    public static final String MODIFIED_SECTION = "Sekcija je uspesno izmenjena";
     public static final String ADD_ADMIN_LABEL_PASSWORD_CONFIRM = "Potvrdi lozinku:";
     public static final String FONT_COMIC_SANS = "Comic Sans";
     public static final String FONT_ARIAL = "Arial";

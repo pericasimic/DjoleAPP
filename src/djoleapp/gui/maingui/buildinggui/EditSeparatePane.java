@@ -26,12 +26,12 @@ public class EditSeparatePane extends BorderPane {
 
     private Label title = new Label(Constants.SECTION_EDIT_TITLE); 
 
+    private TextField sectionFld = new TextField();
     private TextField numberFld = new TextField();
     private TextField areaFld = new TextField();
     private TextArea noteFld = new TextArea();
 
     private ComboBox<ResidentialCommunity> buildingsBox = new ComboBox<>();
-    private ComboBox<String> sectionsBox = new ComboBox<>();
     private ComboBox<Occupant> ownerBox = new ComboBox<>();
 
     private Label buildingLbl = new Label(Constants.SELECT_BUILDINGS);
@@ -49,7 +49,7 @@ public class EditSeparatePane extends BorderPane {
     public EditSeparatePane() {
         
         SeparateSection section = Controller.getInstance().getTemporarySeparateSection();
-        reloadOwnersBox(section.getResidentialCommunity().getListOccupants());
+        reloadOwnersBox(Controller.getInstance().getTemporaryList().getOccupants());
         
         title.setFont(new Font(Constants.FONT_ARIAL, 20));
         this.setTop(title);
@@ -62,8 +62,9 @@ public class EditSeparatePane extends BorderPane {
         gp.setHgap(5);
 
         gp.add(kindLbl, 0, 0);
-        gp.add(sectionsBox, 1, 0);
-        sectionsBox.getSelectionModel().select(Factory.getFacade().kindOfSection(section));
+        gp.add(sectionFld, 1, 0);
+        sectionFld.setText(Factory.getFacade().kindOfSection(section));
+        sectionFld.setEditable(false);
         gp.add(buildingLbl, 0, 1);
         gp.add(buildingsBox, 1, 1);
         buildingsBox.getSelectionModel().select(section.getResidentialCommunity());
@@ -87,27 +88,24 @@ public class EditSeparatePane extends BorderPane {
         hBox.setSpacing(3);
         hBox.setPadding(new Insets(30, 30, 30, 30));
 
-        confirmEditBtn.setOnAction(Controller.getInstance().getManagerEvent().getConfirmAddSeparateEvent());
+        confirmEditBtn.setOnAction(Controller.getInstance().getManagerEvent().getConfirmEditSeparateEvent());
         confirmEditBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getConfirmAddSeparateEvent().confirmAddSeparateEvent();
+                Controller.getInstance().getManagerEvent().getConfirmEditSeparateEvent();
             }
 
         });
 
-        cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getBackListOccupant());
+        cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getBackListSeparateSections());
         cancelBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getBackListOccupant().backListOccupant();
+                Controller.getInstance().getManagerEvent().getBackListSeparateSections();
             }
 
         });
 
         buildingsBox.setMaxWidth(USE_PREF_SIZE);
         buildingsBox.setItems(FXCollections.observableArrayList(Controller.getInstance().getTemporaryList().getResidentialCommunitys()));
-
-        sectionsBox.setMaxWidth(USE_PREF_SIZE);
-        sectionsBox.getItems().addAll(Constants.FLAT, Constants.BUSINESS_SPACE, Constants.GARAGE, Constants.GARAGE_BOX, Constants.GARAGE_SPACE);
 
         ownerBox.setMaxWidth(USE_PREF_SIZE);
 
@@ -154,13 +152,6 @@ public class EditSeparatePane extends BorderPane {
         this.buildingsBox = buildingsBox;
     }
 
-    public ComboBox<String> getSectionsBox() {
-        return sectionsBox;
-    }
-
-    public void setSectionsBox(ComboBox<String> sectionsBox) {
-        this.sectionsBox = sectionsBox;
-    }
 
     public ComboBox<Occupant> getOwnerBox() {
         return ownerBox;
@@ -168,6 +159,14 @@ public class EditSeparatePane extends BorderPane {
 
     public void setOwnerBox(ComboBox<Occupant> ownerBox) {
         this.ownerBox = ownerBox;
+    }
+
+    public TextField getSectionFld() {
+        return sectionFld;
+    }
+
+    public void setSectionFld(TextField sectionFld) {
+        this.sectionFld = sectionFld;
     }
     
     

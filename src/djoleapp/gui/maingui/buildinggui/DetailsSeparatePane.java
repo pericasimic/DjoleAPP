@@ -1,5 +1,10 @@
 package djoleapp.gui.maingui.buildinggui;
 
+import djoleapp.business.model.BusinessSpace;
+import djoleapp.business.model.Flat;
+import djoleapp.business.model.Garage;
+import djoleapp.business.model.ParkingBox;
+import djoleapp.business.model.ParkingSpace;
 import djoleapp.business.model.SeparateSection;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
@@ -44,7 +49,22 @@ public class DetailsSeparatePane extends BorderPane {
         setSeparateSection(section);
 
         title.setFont(new Font(Constants.FONT_ARIAL, 20));
-        title.setText(Constants.SECTION_DETAILS_TITLE);
+        if (section instanceof Flat) {
+            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.FLAT);
+        }
+        if (section instanceof Garage) {
+            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.GARAGE);
+        }
+        if (section instanceof BusinessSpace) {
+            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.BUSINESS_SPACE);
+        }
+        if (section instanceof ParkingBox) {
+            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.GARAGE_BOX);
+        }
+        if (section instanceof ParkingSpace) {
+            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.GARAGE_SPACE);
+        }
+
         this.setTop(title);
 
         GridPane gp = new GridPane();
@@ -79,10 +99,10 @@ public class DetailsSeparatePane extends BorderPane {
         noteFld.setEditable(false);
         noteFld.setText(section.getNote());
 
-        cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getBackListOccupant());
+        cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getBackListSeparateSections());
         cancelBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getBackListOccupant().backListOccupant();
+                Controller.getInstance().getManagerEvent().getBackListSeparateSections();
             }
 
         });

@@ -11,6 +11,7 @@ import djoleapp.controller.event.buildingevent.AddSectionEvent;
 import djoleapp.controller.event.buildingevent.BackListSeparateSections;
 import djoleapp.controller.event.buildingevent.BankDetailsBuildingEvent;
 import djoleapp.controller.event.buildingevent.ConfirmAddSeparateEvent;
+import djoleapp.controller.event.buildingevent.ConfirmEditSeparateEvent;
 import djoleapp.controller.event.buildingevent.DetailsSeparateEvent;
 import djoleapp.controller.event.buildingevent.EditSeparationEvent;
 import djoleapp.controller.event.buildingevent.ListBuildingEvent;
@@ -65,6 +66,7 @@ public class ManagerEvent {
     private RemoveBankAccountEvent removeBankAccountEvent = null;
     private BackListSeparateSections backListSeparateSections = null;
     private RemoveSeparateSectionEvent removeSeparateSectionEvent = null;
+    private ConfirmEditSeparateEvent confirmEditSeparateEvent = null;
 
     public ManagerEvent() {
 
@@ -97,6 +99,11 @@ public class ManagerEvent {
         removeBankAccountEvent = new RemoveBankAccountEvent();
         backListSeparateSections = new BackListSeparateSections();
         removeSeparateSectionEvent = new RemoveSeparateSectionEvent();
+        confirmEditSeparateEvent = new ConfirmEditSeparateEvent();
+    }
+
+    public ConfirmEditSeparateEvent getConfirmEditSeparateEvent() {
+        return confirmEditSeparateEvent;
     }
 
     public RemoveSeparateSectionEvent getRemoveSeparateSectionEvent() {

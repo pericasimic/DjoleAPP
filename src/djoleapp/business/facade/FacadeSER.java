@@ -201,24 +201,53 @@ public class FacadeSER implements Facade {
     }
 
     @Override
-    public boolean addSeparateSection(ResidentialCommunity rc, String section, String number, double area, String note, Occupant owner) {
+    public boolean addSeparateSection(boolean isAdd, ResidentialCommunity rc, String section, String number, String areaSection, String note, Occupant owner) {
 
-        if (rc == null || section.isEmpty() || section == null || number.isEmpty() || number == null || area == 0.0 || note.isEmpty() || note == null) {
+        SeparateSection sep = Controller.getInstance().getTemporarySeparateSection();
+
+        if (rc == null || section.isEmpty() || section == null || number.isEmpty() || number == null || areaSection == null || areaSection.isEmpty() || note.isEmpty() || note == null) {
             Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
             return false;
         }
 
+        double area = Double.valueOf(areaSection);
+
         if (section.equals(Constants.FLAT)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
-                if (s.getNumber().equalsIgnoreCase(number)) {
-                    Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
-                    return false;
+                if (s instanceof Flat) {
+                    if (s.getNumber().equalsIgnoreCase(number) && isAdd) {
+                        Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                        return false;
+                    }
+                    if (s.getNumber().equalsIgnoreCase(number) && !isAdd && !sep.getNumber().equalsIgnoreCase(number)) {
+                        Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                        return false;
+                    }
+
                 }
             }
-            SeparateSection ss = new Flat(rc, number, area, note);
-            rc.getListSeparationSection().add(ss);
-            if (owner != null) {
-                ss.setOccupant(owner);
+            if (isAdd) {
+                SeparateSection ss = new Flat(rc, number, area, note);
+                if (owner != null) {
+                    ss.setOccupant(owner);
+                    ss.setHasOwner(true);
+                }
+                rc.getListSeparationSection().add(ss);
+                Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_NEW_SECTION);
+            } else {
+                sep.setNumber(number);
+                sep.setSurfaceArea(area);
+                sep.setNote(note);
+                if (owner != null) {
+                    sep.setOccupant(owner);
+                    sep.setHasOwner(true);
+                }
+                if (sep.getResidentialCommunity() != rc) {
+                    sep.setResidentialCommunity(rc);
+                    rc.getListSeparationSection().add(sep);
+                    Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListSeparationSection().remove(sep);
+                }
+                Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
 
         }
@@ -226,64 +255,164 @@ public class FacadeSER implements Facade {
         if (section.equals(Constants.GARAGE)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
                 if (s.getNumber().equalsIgnoreCase(number)) {
-                    Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
-                    return false;
+                    if (s instanceof Garage) {
+                        Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                        return false;
+                    }
+                    if (s.getNumber().equalsIgnoreCase(number) && !isAdd && !sep.getNumber().equalsIgnoreCase(number)) {
+                        Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                        return false;
+                    }
                 }
             }
-            SeparateSection ss = new Garage(rc, number, area, note);
-            rc.getListSeparationSection().add(ss);
-            if (owner != null) {
-                ss.setOccupant(owner);
+            if (isAdd) {
+                SeparateSection ss = new Garage(rc, number, area, note);
+                if (owner != null) {
+                    ss.setOccupant(owner);
+                    ss.setHasOwner(true);
+                }
+                rc.getListSeparationSection().add(ss);
+                Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_NEW_SECTION);
+            } else {
+                sep.setNumber(number);
+                sep.setSurfaceArea(area);
+                sep.setNote(note);
+                if (owner != null) {
+                    sep.setOccupant(owner);
+                    sep.setHasOwner(true);
+                }
+                if (sep.getResidentialCommunity() != rc) {
+                    sep.setResidentialCommunity(rc);
+                    rc.getListSeparationSection().add(sep);
+                    Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListSeparationSection().remove(sep);
+                }
+                Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
+
         }
 
         if (section.equals(Constants.BUSINESS_SPACE)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
                 if (s.getNumber().equalsIgnoreCase(number)) {
-                    Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
-                    return false;
+                    if (s instanceof BusinessSpace) {
+                        Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                        return false;
+                    }
+                    if (s.getNumber().equalsIgnoreCase(number) && !isAdd && !sep.getNumber().equalsIgnoreCase(number)) {
+                        Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                        return false;
+                    }
                 }
             }
-            SeparateSection ss = new BusinessSpace(rc, number, area, note);
-            rc.getListSeparationSection().add(ss);
-            if (owner != null) {
-                ss.setOccupant(owner);
+            if (isAdd) {
+                SeparateSection ss = new BusinessSpace(rc, number, area, note);
+                if (owner != null) {
+                    ss.setOccupant(owner);
+                    ss.setHasOwner(true);
+                }
+                rc.getListSeparationSection().add(ss);
+                Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_NEW_SECTION);
+            } else {
+                sep.setNumber(number);
+                sep.setSurfaceArea(area);
+                sep.setNote(note);
+                if (owner != null) {
+                    sep.setOccupant(owner);
+                    sep.setHasOwner(true);
+                }
+                if (sep.getResidentialCommunity() != rc) {
+                    sep.setResidentialCommunity(rc);
+                    rc.getListSeparationSection().add(sep);
+                    Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListSeparationSection().remove(sep);
+                }
+                Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
+
         }
 
         if (section.equals(Constants.GARAGE_BOX)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
                 if (s.getNumber().equalsIgnoreCase(number)) {
-                    Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
-                    return false;
+                    if (s instanceof ParkingBox) {
+                        Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                        return false;
+                    }
+                    if (s.getNumber().equalsIgnoreCase(number) && !isAdd && !sep.getNumber().equalsIgnoreCase(number)) {
+                        Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                        return false;
+                    }
                 }
             }
-            SeparateSection ss = new ParkingBox(rc, number, area, note);
-            rc.getListSeparationSection().add(ss);
-            if (owner != null) {
-                ss.setOccupant(owner);
+            if (isAdd) {
+                SeparateSection ss = new ParkingBox(rc, number, area, note);
+                if (owner != null) {
+                    ss.setOccupant(owner);
+                    ss.setHasOwner(true);
+                }
+                rc.getListSeparationSection().add(ss);
+                Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_NEW_SECTION);
+            } else {
+                sep.setNumber(number);
+                sep.setSurfaceArea(area);
+                sep.setNote(note);
+                if (owner != null) {
+                    sep.setOccupant(owner);
+                    sep.setHasOwner(true);
+                }
+                if (sep.getResidentialCommunity() != rc) {
+                    sep.setResidentialCommunity(rc);
+                    rc.getListSeparationSection().add(sep);
+                    Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListSeparationSection().remove(sep);
+                }
+                Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
+
         }
 
         if (section.equals(Constants.GARAGE_SPACE)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
                 if (s.getNumber().equalsIgnoreCase(number)) {
-                    Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
-                    return false;
+                    if (s instanceof ParkingSpace) {
+                        Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                        return false;
+                    }
+                    if (s.getNumber().equalsIgnoreCase(number) && !isAdd && !sep.getNumber().equalsIgnoreCase(number)) {
+                        Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
+                        return false;
+                    }
                 }
             }
-            SeparateSection ss = new ParkingSpace(rc, number, area, note);
-            rc.getListSeparationSection().add(ss);
-            if (owner != null) {
-                ss.setOccupant(owner);
+            if (isAdd) {
+                SeparateSection ss = new ParkingSpace(rc, number, area, note);
+                if (owner != null) {
+                    ss.setOccupant(owner);
+                    ss.setHasOwner(true);
+                }
+                rc.getListSeparationSection().add(ss);
+                Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_NEW_SECTION);
+            } else {
+                sep.setNumber(number);
+                sep.setSurfaceArea(area);
+                sep.setNote(note);
+                if (owner != null) {
+                    sep.setOccupant(owner);
+                    sep.setHasOwner(true);
+                }
+                if (sep.getResidentialCommunity() != rc) {
+                    sep.setResidentialCommunity(rc);
+                    rc.getListSeparationSection().add(sep);
+                    Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListSeparationSection().remove(sep);
+                }
+                Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
+
         }
 
-        Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_NEW_SECTION);
         Controller.getInstance().getTemporaryStage().close();
+        if (Controller.getInstance().getManagerEvent().getEditSeparationEvent().getStage() != null) {
+            Controller.getInstance().getManagerEvent().getEditSeparationEvent().getStage().close();
+        }
         Controller.getInstance().getManagerEvent().getAddSectionEvent().setScene();
-        Controller.getInstance().getListSeparateSectionsPane().reload(rc.getListSeparationSection());
-
         return true;
     }
 

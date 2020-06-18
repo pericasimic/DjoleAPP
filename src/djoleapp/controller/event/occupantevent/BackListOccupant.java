@@ -21,5 +21,8 @@ public class BackListOccupant implements EventHandler<ActionEvent> {
         MainPane mp = new MainPane(lp);
         Scene scene = new Scene(mp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
         Controller.getInstance().getPrimaryStage().setScene(scene);
+        if (Controller.getInstance().getTemporaryStage() != null) {
+            Controller.getInstance().getTemporaryStage().close();
+        }
     }
 }

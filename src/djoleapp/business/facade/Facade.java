@@ -39,5 +39,5 @@ public interface Facade {
     
     public boolean checkBankAccount(String name, String number);
     
-    public boolean addSeparateSection(ResidentialCommunity rc, String section, String number, double area, String note, Occupant owner);
+    public boolean addSeparateSection(boolean isAdd, ResidentialCommunity rc, String section, String number, String area, String note, Occupant owner);
 }
