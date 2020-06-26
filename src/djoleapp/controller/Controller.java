@@ -3,6 +3,7 @@ package djoleapp.controller;
 import djoleapp.business.model.BusinessSpace;
 import djoleapp.business.model.Flat;
 import djoleapp.business.model.Garage;
+import djoleapp.business.model.IndependentSection;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ParkingBox;
 import djoleapp.business.model.ParkingSpace;
@@ -12,14 +13,18 @@ import djoleapp.controller.event.ManagerEvent;
 import djoleapp.gui.LoginPane;
 import djoleapp.gui.admingui.AddAdminPane;
 import djoleapp.gui.maingui.MainPane;
+import djoleapp.gui.maingui.buildinggui.AddIndependentPane;
 import djoleapp.gui.maingui.buildinggui.AddSeparatePane;
 import djoleapp.gui.maingui.buildinggui.BankDetailsBildingPane;
 import djoleapp.gui.maingui.buildinggui.OccupantDetailsBuildingPane;
 import djoleapp.gui.maingui.buildinggui.BuildingDetailsPane;
+import djoleapp.gui.maingui.buildinggui.DetailsIndependentPane;
 import djoleapp.gui.maingui.buildinggui.DetailsSeparatePane;
 import djoleapp.gui.maingui.buildinggui.EditSeparatePane;
 import djoleapp.gui.maingui.buildinggui.ListBuildingsPane;
+import djoleapp.gui.maingui.buildinggui.ListIndependentSectionsPane;
 import djoleapp.gui.maingui.buildinggui.ListSeparateSectionsPane;
+import djoleapp.gui.maingui.buildinggui.TableIndependent;
 import djoleapp.gui.maingui.buildinggui.TableSection;
 import djoleapp.gui.maingui.buildinggui.TopHBoxBuildingPane;
 import djoleapp.gui.maingui.occupantgui.AddAccountOccupantPane;
@@ -47,11 +52,13 @@ public class Controller {
     private ListOccupantsPane listOccupantsPane;
     private TableOccupant tableOccupant;
     private TableSection tableSection;
+    private TableIndependent tableIndependent;
     private TemporaryList temporaryList;
     private AddOccupantPane addOccupantPane;
     private AddAccountOccupantPane addAccountOccupantPane;
     private SelectOcupantPane selectOcupantPane;
     private ListSeparateSectionsPane listSeparateSectionsPane;
+    private ListIndependentSectionsPane listIndependentSectionsPane;
     private AddSeparatePane addSeparatePane;
     private Occupant temporaryOccupant;
     private Flat temporaryFlat;
@@ -60,8 +67,11 @@ public class Controller {
     private Garage temporaryGarage;
     private BusinessSpace temporaryBusinesssSpace;
     private SeparateSection temporarySeparateSection;
+    private IndependentSection temporaryIndependentSection;
     private DetailsSeparatePane detailsSeparatePane;
     private EditSeparatePane editSeparatePane;
+    private DetailsIndependentPane detailsIndependentPane;
+    private AddIndependentPane addIndependentPane;
     private final ManagerEvent managerEvent = new ManagerEvent();
     
     public Controller(){    
@@ -73,6 +83,46 @@ public class Controller {
             instance = new Controller();
         }
         return instance;
+    }
+
+    public void setAddIndependentPane(AddIndependentPane addIndependentPane) {
+        this.addIndependentPane = addIndependentPane;
+    }
+
+    public AddIndependentPane getAddIndependentPane() {
+        return addIndependentPane;
+    }
+
+    public void setDetailsIndependentPane(DetailsIndependentPane detailsIndependentPane) {
+        this.detailsIndependentPane = detailsIndependentPane;
+    }
+
+    public DetailsIndependentPane getDetailsIndependentPane() {
+        return detailsIndependentPane;
+    }
+
+    public void setListIndependentSectionsPane(ListIndependentSectionsPane listIndependentSectionsPane) {
+        this.listIndependentSectionsPane = listIndependentSectionsPane;
+    }
+
+    public ListIndependentSectionsPane getListIndependentSectionsPane() {
+        return listIndependentSectionsPane;
+    }
+
+    public void setTemporaryIndependentSection(IndependentSection temporaryIndependentSection) {
+        this.temporaryIndependentSection = temporaryIndependentSection;
+    }
+
+    public IndependentSection getTemporaryIndependentSection() {
+        return temporaryIndependentSection;
+    }
+
+    public void setTableIndependent(TableIndependent tableIndependent) {
+        this.tableIndependent = tableIndependent;
+    }
+
+    public TableIndependent getTableIndependent() {
+        return tableIndependent;
     }
 
     public void setEditSeparatePane(EditSeparatePane editSeparatePane) {

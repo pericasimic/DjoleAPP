@@ -3,6 +3,7 @@ package djoleapp.gui.maingui.buildinggui;
 import djoleapp.business.model.BusinessSpace;
 import djoleapp.business.model.Flat;
 import djoleapp.business.model.Garage;
+import djoleapp.business.model.IndependentSection;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ParkingBox;
 import djoleapp.business.model.ParkingSpace;

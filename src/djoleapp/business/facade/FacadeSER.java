@@ -6,6 +6,7 @@ import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.BusinessSpace;
 import djoleapp.business.model.Flat;
 import djoleapp.business.model.Garage;
+import djoleapp.business.model.IndependentSection;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ParkingBox;
 import djoleapp.business.model.ParkingSpace;
@@ -427,6 +428,48 @@ public class FacadeSER implements Facade {
         rc.getListSeparationSection().remove(ss);
         Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.SUCCESS_DELETE);
 
+    }
+
+    @Override
+    public void addIndSection(String name, String note, Occupant owner, String price) {
+
+        if (name == null || name.isEmpty()) {
+            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.HAVE_TO_NAME_INDEPENDENT);
+            return;
+        }
+        IndependentSection ipSection = new IndependentSection(name);
+        ipSection.setNote(note);
+
+        if (price != null || !price.isEmpty()) {
+            try {
+                double priceSec = Double.valueOf(price);
+                ipSection.setPricePerMonth(priceSec);
+            } catch (Exception e) {
+                Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.BAD_FORMAT_PER_MONTH);
+                return;
+            }
+        }
+
+        if (owner != null) {
+            ipSection.setOwner(owner);
+        }
+
+        Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListIndependentSections().add(ipSection);
+        Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_NEW_SECTION);
+        Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent().showSelectBuildTableEvent();
+
+    }
+
+    @Override
+    public void removeIndSection(IndependentSection independentSection) {
+        if (independentSection == null) {
+            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
+            return;
+        }
+
+        Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListIndependentSections().remove(independentSection);
+        Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.SUCCESS_DELETE);
+        Controller.getInstance().getListIndependentSectionsPane().reload(Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListIndependentSections());
     }
 
 }

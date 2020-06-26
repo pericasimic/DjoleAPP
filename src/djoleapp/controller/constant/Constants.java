@@ -15,6 +15,8 @@ public class Constants {
     public static final String BUTTON_LOGOUT = "Odjava";
     public static final String BUTTON_CONFIRM = "Potvrdi";
     public static final String ALERT_WARNING_DIALOG = "Upozorenje";
+    public static final String HAVE_TO_NAME_INDEPENDENT = "Morate uneti naziv samostalnog dela";
+    public static final String BAD_FORMAT_PER_MONTH = "Neispravan format za Mesecno odrzavanje";
     public static final String ALERT_ERROR_DIALOG = "Greska";
     public static final String ALERT_INFORMATION_DIALOG = "Informacija";
     public static final String ALERT_EMPTY_INPUT_TEXT = "Polja moraju biti popunjena";
@@ -42,6 +44,7 @@ public class Constants {
     public static final String TITLE_ADD_ADMIN = "Dodavanje administratora";
     public static final String TITLE_ADD_OCCUPANT = "Dodavanje stanara";
     public static final String TITLE_ADD_SECTION = "Dodavanje sekcije za ";
+    public static final String TITLE_ADD_IND_SECTION = "Dodavanje samostalnog dela za ";
     public static final String INFO_OCCUPANT = "Informacije o korisniku: ";
     public static final String ADD_ADMIN = "Novi administrator je dodat";
     public static final String ADD_NEW_SECTION = "Nova sekcija je dodata";
@@ -94,6 +97,7 @@ public class Constants {
     public static final String NOTE = "Napomena";
     public static final String BANK_ACCOUNT = "Tekuci racun";
     public static final String BANK = "Naziv banke";
+    public static final String RENTER = "Zakupac";
     public static final String ADD_BUILDING = "Stambena zajednica je dodata";
     public static final String ADD_BANK_ACCOUNT_SUCCESS = "Bankovni racun je dodat";
     public static final String NOT_ADD_BUILDING = "Stambena zajednica nije dodata";
@@ -101,6 +105,8 @@ public class Constants {
     public static final String SELECT_ITEM = "Izaberi stavku:";
     public static final String SELECT_LIST = "Izaberi listu:";
     public static final String FIRST_NAME = "Ime";
+    public static final String NAME_OF_SECTION = "Naziv sekcije";
+    public static final String PRICE_PER_MONTH = "Mesecno odrzavanje";
     public static final String LAST_NAME = "Prezime";
     public static final String PHONE_NUMBER = "Broj telefona";
     public static final String NUMBER = "Broj";

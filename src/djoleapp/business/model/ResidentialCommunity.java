@@ -13,6 +13,8 @@ public class ResidentialCommunity implements Serializable {
     private List<Occupant> listOccupants = new ArrayList<>();
     private List<BankAccount> bankAccounts = new ArrayList<>();
     private List<SeparateSection> listSeparationSection = new ArrayList<>();
+    private List<IndependentSection> listIndependentSections = new ArrayList<>();
+    private List<CommonSection> listCommonSections = new ArrayList<>();
 
  
     public ResidentialCommunity(String name, String identificationNumber, String taxIdentificationNumber, String mail) {
@@ -77,6 +79,22 @@ public class ResidentialCommunity implements Serializable {
 
     public void setListSeparationSection(List<SeparateSection> listSeparationSection) {
         this.listSeparationSection = listSeparationSection;
+    }
+
+    public void setListIndependentSections(List<IndependentSection> listIndependentSections) {
+        this.listIndependentSections = listIndependentSections;
+    }
+
+    public List<IndependentSection> getListIndependentSections() {
+        return listIndependentSections;
+    }
+
+    public void setListCommonSections(List<CommonSection> listCommonSections) {
+        this.listCommonSections = listCommonSections;
+    }
+
+    public List<CommonSection> getListCommonSections() {
+        return listCommonSections;
     }
 
     @Override

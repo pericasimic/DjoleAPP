@@ -2,6 +2,7 @@ package djoleapp.business.facade;
 
 import djoleapp.business.model.Administrator;
 import djoleapp.business.model.BankAccount;
+import djoleapp.business.model.IndependentSection;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.business.model.SeparateSection;
@@ -40,4 +41,8 @@ public interface Facade {
     public boolean checkBankAccount(String name, String number);
     
     public boolean addSeparateSection(boolean isAdd, ResidentialCommunity rc, String section, String number, String area, String note, Occupant owner);
+    
+    public void addIndSection(String name, String note, Occupant owner, String price);
+    
+    public void removeIndSection(IndependentSection independentSection);
 }
