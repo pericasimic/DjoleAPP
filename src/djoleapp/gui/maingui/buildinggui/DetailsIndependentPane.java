@@ -1,12 +1,7 @@
 package djoleapp.gui.maingui.buildinggui;
 
-import djoleapp.business.model.BusinessSpace;
-import djoleapp.business.model.Flat;
-import djoleapp.business.model.Garage;
+
 import djoleapp.business.model.IndependentSection;
-import djoleapp.business.model.ParkingBox;
-import djoleapp.business.model.ParkingSpace;
-import djoleapp.business.model.SeparateSection;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import javafx.geometry.Insets;
@@ -28,22 +23,20 @@ public class DetailsIndependentPane extends BorderPane {
     private TextField buildingFld = new TextField();
     private TextField ownerFld = new TextField();
     private TextArea noteFld = new TextArea();
+    private TextField nameFld = new TextField();
+    private TextField pricePerMonth = new TextField();
 
-    private Label buildingLbl = new Label(Constants.SELECT_BUILDINGS);
+    private Label buildingLbl = new Label(Constants.BUILDING);
     private Label ownerLbl = new Label(Constants.OWNER);
     private Label noteLbl = new Label(Constants.NOTE);
-
-    private Button editBtn = new Button(Constants.BUTTON_EDIT);
-    private Button confirmBtn = new Button(Constants.BUTTON_CONFIRM);
-    private Button cancelBtn = new Button(Constants.BUTTON_CANCEL);
-
-    private IndependentSection independentSection;
+    private Label nameLbl = new Label(Constants.NAME_OF_SECTION);
+    private Label priceLbl = new Label(Constants.PRICE_PER_MONTH);
+    
+    private Button exitBtn = new Button(Constants.BUTTON_BACK);
 
     private HBox hBox = new HBox();
 
     public DetailsIndependentPane(IndependentSection section) {
-
-        setIndependentSection(section);
 
         title.setFont(new Font(Constants.FONT_ARIAL, 20));
         this.setTop(title);
@@ -55,35 +48,38 @@ public class DetailsIndependentPane extends BorderPane {
         gp.setVgap(5);
         gp.setHgap(5);
 
+        buildingFld.setText(Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getName());
+        buildingFld.setEditable(false);
+        if (section.getOwner() != null) {
+            ownerFld.setText(section.getOwner().toString());
+        }
+        ownerFld.setEditable(false);
+        nameFld.setText(section.getName());
+        nameFld.setEditable(false);
+        if (section.getNote().isEmpty() || section.getNote() != null) {
+            noteFld.setText(section.getNote());
+        }
+        noteFld.setEditable(false);
+        if (section.getPricePerMonth() != 0) {
+            pricePerMonth.setText(String.valueOf(section.getPricePerMonth()));
+        }
+        pricePerMonth.setEditable(false);
+
         gp.add(buildingLbl, 0, 1);
         gp.add(buildingFld, 1, 1);
-//        buildingFld.setText(section.getResidentialCommunity().getName());
-//        buildingFld.setEditable(false);
-//        gp.add(ownerLbl, 0, 2);
-//        gp.add(ownerFld, 1, 2);
-//        ownerFld.setEditable(false);
-//
-//        if (section.getOwner() != null) {
-//            ownerFld.setText(section.getOwner().getFirstNameOccupant() + section.getOwner().getLastNameOccupant());
-//        }
-//
-//        gp.add(numberLbl, 0, 3);
-//        gp.add(numberFld, 1, 3);
-//        numberFld.setEditable(false);
-//        numberFld.setText(section.getNumber());
-//        gp.add(areaLbl, 0, 4);
-//        gp.add(areaFld, 1, 4);
-//        areaFld.setEditable(false);
-//        areaFld.setText(String.valueOf(section.getSurfaceArea()));
-        gp.add(noteLbl, 0, 5);
-        gp.add(noteFld, 1, 5);
-        noteFld.setEditable(false);
-        noteFld.setText(section.getNote());
+        gp.add(ownerLbl, 0, 2);
+        gp.add(ownerFld, 1, 2);
+        gp.add(nameLbl, 0, 3);
+        gp.add(nameFld, 1, 3);
+        gp.add(noteLbl, 0, 4);
+        gp.add(noteFld, 1, 4);
+        gp.add(priceLbl, 0, 5);
+        gp.add(pricePerMonth, 1, 5);
 
-        cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getBackListSeparateSections());
-        cancelBtn.setOnKeyPressed(e -> {
+        exitBtn.setOnAction(Controller.getInstance().getManagerEvent().getDetailsIndependentEvent());
+        exitBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getBackListSeparateSections();
+                Controller.getInstance().getManagerEvent().getDetailsIndependentEvent();
             }
 
         });
@@ -92,26 +88,12 @@ public class DetailsIndependentPane extends BorderPane {
         hBox.setSpacing(3);
         hBox.setPadding(new Insets(30, 30, 30, 30));
 
-        editBtn.setOnAction(Controller.getInstance().getManagerEvent().getEditSeparationEvent());
-        editBtn.setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getEditSeparationEvent().editSeparationEvent();
-            }
-
-        });
-        hBox.getChildren().addAll(cancelBtn, editBtn);
+        
+        hBox.getChildren().add(exitBtn);
 
         this.setPadding(new Insets(60, 60, 60, 60));
         this.setCenter(gp);
         this.setBottom(hBox);
     }
 
-    public IndependentSection getIndependentSection() {
-        return independentSection;
-    }
-
-    public void setIndependentSection(IndependentSection independentSection) {
-        this.independentSection = independentSection;
-    }
-    
 }

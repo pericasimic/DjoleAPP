@@ -97,7 +97,8 @@ public class Constants {
     public static final String NOTE = "Napomena";
     public static final String BANK_ACCOUNT = "Tekuci racun";
     public static final String BANK = "Naziv banke";
-    public static final String RENTER = "Zakupac";
+    public static final String RENTER = "Zakupac"; 
+    public static final String BUILDING = "Stambena zajednica";
     public static final String ADD_BUILDING = "Stambena zajednica je dodata";
     public static final String ADD_BANK_ACCOUNT_SUCCESS = "Bankovni racun je dodat";
     public static final String NOT_ADD_BUILDING = "Stambena zajednica nije dodata";

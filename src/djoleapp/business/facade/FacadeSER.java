@@ -444,7 +444,7 @@ public class FacadeSER implements Facade {
             try {
                 double priceSec = Double.valueOf(price);
                 ipSection.setPricePerMonth(priceSec);
-            } catch (Exception e) {
+            } catch (NumberFormatException nfe) {
                 Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.BAD_FORMAT_PER_MONTH);
                 return;
             }
