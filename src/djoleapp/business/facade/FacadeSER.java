@@ -4,6 +4,7 @@ import djoleapp.business.Factory;
 import djoleapp.business.model.Administrator;
 import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.BusinessSpace;
+import djoleapp.business.model.CommonSection;
 import djoleapp.business.model.Flat;
 import djoleapp.business.model.Garage;
 import djoleapp.business.model.IndependentSection;
@@ -17,9 +18,6 @@ import djoleapp.controller.constant.Constants;
 import djoleapp.controller.util.Message;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
@@ -470,6 +468,42 @@ public class FacadeSER implements Facade {
         Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListIndependentSections().remove(independentSection);
         Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.SUCCESS_DELETE);
         Controller.getInstance().getListIndependentSectionsPane().reload(Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListIndependentSections());
+    }
+
+    @Override
+    public void removeCommonSection(CommonSection commonSection) {
+        if (commonSection == null) {
+            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
+            return;
+        }
+
+        Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListCommonSections().remove(commonSection);
+        Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.SUCCESS_DELETE);
+        Controller.getInstance().getListCommonSectionPane().reload(Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListCommonSections());
+    }
+
+    @Override
+    public void addCommonSection(String name, String note, String price) {
+        if (name == null || name.isEmpty()) {
+            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.HAVE_TO_NAME_COMMON);
+            return;
+        }
+        CommonSection commonSection = new CommonSection(name);
+        commonSection.setNote(note);
+
+        if (price != null || !price.isEmpty()) {
+            try {
+                double priceSec = Double.valueOf(price);
+                commonSection.setPricePerMonth(priceSec);
+            } catch (NumberFormatException nfe) {
+                Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.BAD_FORMAT_PER_MONTH);
+                return;
+            }
+        }
+
+        Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListCommonSections().add(commonSection);
+        Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_NEW_SECTION);
+        Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent().showSelectBuildTableEvent();
     }
 
 }

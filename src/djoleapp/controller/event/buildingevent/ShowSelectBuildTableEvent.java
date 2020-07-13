@@ -4,6 +4,7 @@ import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.gui.maingui.MainPane;
 import djoleapp.gui.maingui.buildinggui.BankDetailsBildingPane;
+import djoleapp.gui.maingui.buildinggui.ListCommonSectionPane;
 import djoleapp.gui.maingui.buildinggui.ListIndependentSectionsPane;
 import djoleapp.gui.maingui.buildinggui.ListSeparateSectionsPane;
 import djoleapp.gui.maingui.buildinggui.OccupantDetailsBuildingPane;
@@ -53,6 +54,14 @@ public class ShowSelectBuildTableEvent implements EventHandler<ActionEvent> {
             thbbp.getBuildingsBox().setValue(thbbp.getBuildingsBox().getValue());
             Controller.getInstance().setListIndependentSectionsPane(lisp);
             MainPane mp = new MainPane(lisp);
+            setScene(mp);
+        }
+        
+        if (thbbp.getSelectItemBox().getValue().equals(Constants.COMMON_SECTIONS)) {
+            ListCommonSectionPane lcsp = new ListCommonSectionPane(thbbp.getBuildingsBox().getValue().getListCommonSections(), thbbp);
+            thbbp.getBuildingsBox().setValue(thbbp.getBuildingsBox().getValue());
+            Controller.getInstance().setListCommonSectionPane(lcsp);
+            MainPane mp = new MainPane(lcsp);
             setScene(mp);
         }
 

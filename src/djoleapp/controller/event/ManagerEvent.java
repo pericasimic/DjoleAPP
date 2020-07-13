@@ -6,20 +6,24 @@ import djoleapp.controller.event.adminevent.LogoutEvent;
 import djoleapp.controller.event.adminevent.SaveEvent;
 import djoleapp.controller.event.buildingevent.AddBankAccountBuildEvent;
 import djoleapp.controller.event.buildingevent.AddBuildingEvent;
+import djoleapp.controller.event.buildingevent.AddCommonEvent;
 import djoleapp.controller.event.buildingevent.AddIndependentEvent;
 import djoleapp.controller.event.buildingevent.AddOccupantBuildingEvent;
 import djoleapp.controller.event.buildingevent.AddSectionEvent;
 import djoleapp.controller.event.buildingevent.BackListSeparateSections;
 import djoleapp.controller.event.buildingevent.BankDetailsBuildingEvent;
+import djoleapp.controller.event.buildingevent.ConfirmAddCommonEvent;
 import djoleapp.controller.event.buildingevent.ConfirmAddIndEvent;
 import djoleapp.controller.event.buildingevent.ConfirmAddSeparateEvent;
 import djoleapp.controller.event.buildingevent.ConfirmEditSeparateEvent;
+import djoleapp.controller.event.buildingevent.DetailsCommonSectionEvent;
 import djoleapp.controller.event.buildingevent.DetailsIndependentEvent;
 import djoleapp.controller.event.buildingevent.DetailsSeparateEvent;
 import djoleapp.controller.event.buildingevent.EditSeparationEvent;
 import djoleapp.controller.event.buildingevent.ListBuildingEvent;
 import djoleapp.controller.event.buildingevent.RemoveBankAccountEvent;
 import djoleapp.controller.event.buildingevent.RemoveBuildingEvent;
+import djoleapp.controller.event.buildingevent.RemoveCommonEvent;
 import djoleapp.controller.event.buildingevent.RemoveIndSectionEvent;
 import djoleapp.controller.event.buildingevent.RemoveSeparateSectionEvent;
 import djoleapp.controller.event.buildingevent.SearchBuildingEvent;
@@ -75,6 +79,12 @@ public class ManagerEvent {
     private AddIndependentEvent addIndependentEvent = null;
     private ConfirmAddIndEvent confirmAddIndEvent = null;
     private RemoveIndSectionEvent removeIndSectionEvent = null;
+    private DetailsCommonSectionEvent detailsCommonSectionEvent = null;
+    private AddCommonEvent addCommonEvent = null;
+    private RemoveCommonEvent removeCommonEvent = null;
+    private ConfirmAddCommonEvent confirmAddCommonEvent = null;
+    
+    
 
     public ManagerEvent() {
 
@@ -112,7 +122,30 @@ public class ManagerEvent {
         addIndependentEvent = new AddIndependentEvent();
         confirmAddIndEvent = new ConfirmAddIndEvent();
         removeIndSectionEvent = new RemoveIndSectionEvent();
-        
+        detailsCommonSectionEvent = new  DetailsCommonSectionEvent();
+        addCommonEvent = new AddCommonEvent();  
+        removeCommonEvent = new RemoveCommonEvent();
+        confirmAddCommonEvent = new ConfirmAddCommonEvent();
+    }
+
+    public ConfirmAddCommonEvent getConfirmAddCommonEvent() {
+        return confirmAddCommonEvent;
+    }
+
+    public void setRemoveCommonEvent(RemoveCommonEvent removeCommonEvent) {
+        this.removeCommonEvent = removeCommonEvent;
+    }
+
+    public RemoveCommonEvent getRemoveCommonEvent() {
+        return removeCommonEvent;
+    }
+
+    public AddCommonEvent getAddCommonEvent() {
+        return addCommonEvent;
+    }
+
+    public DetailsCommonSectionEvent getDetailsCommonSectionEvent() {
+        return detailsCommonSectionEvent;
     }
 
     public RemoveIndSectionEvent getRemoveIndSectionEvent() {

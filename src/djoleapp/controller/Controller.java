@@ -13,17 +13,21 @@ import djoleapp.controller.event.ManagerEvent;
 import djoleapp.gui.LoginPane;
 import djoleapp.gui.admingui.AddAdminPane;
 import djoleapp.gui.maingui.MainPane;
+import djoleapp.gui.maingui.buildinggui.AddCommonPane;
 import djoleapp.gui.maingui.buildinggui.AddIndependentPane;
 import djoleapp.gui.maingui.buildinggui.AddSeparatePane;
 import djoleapp.gui.maingui.buildinggui.BankDetailsBildingPane;
 import djoleapp.gui.maingui.buildinggui.OccupantDetailsBuildingPane;
 import djoleapp.gui.maingui.buildinggui.BuildingDetailsPane;
+import djoleapp.gui.maingui.buildinggui.DetailsCommonPane;
 import djoleapp.gui.maingui.buildinggui.DetailsIndependentPane;
 import djoleapp.gui.maingui.buildinggui.DetailsSeparatePane;
 import djoleapp.gui.maingui.buildinggui.EditSeparatePane;
 import djoleapp.gui.maingui.buildinggui.ListBuildingsPane;
+import djoleapp.gui.maingui.buildinggui.ListCommonSectionPane;
 import djoleapp.gui.maingui.buildinggui.ListIndependentSectionsPane;
 import djoleapp.gui.maingui.buildinggui.ListSeparateSectionsPane;
+import djoleapp.gui.maingui.buildinggui.TableCommon;
 import djoleapp.gui.maingui.buildinggui.TableIndependent;
 import djoleapp.gui.maingui.buildinggui.TableSection;
 import djoleapp.gui.maingui.buildinggui.TopHBoxBuildingPane;
@@ -36,7 +40,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Controller {
-    
+
     private static Controller instance = null;
     private Stage primaryStage;
     private Stage temporaryStage;
@@ -53,12 +57,14 @@ public class Controller {
     private TableOccupant tableOccupant;
     private TableSection tableSection;
     private TableIndependent tableIndependent;
+    private TableCommon tableCommon;
     private TemporaryList temporaryList;
     private AddOccupantPane addOccupantPane;
     private AddAccountOccupantPane addAccountOccupantPane;
     private SelectOcupantPane selectOcupantPane;
     private ListSeparateSectionsPane listSeparateSectionsPane;
     private ListIndependentSectionsPane listIndependentSectionsPane;
+    private ListCommonSectionPane listCommonSectionPane;
     private AddSeparatePane addSeparatePane;
     private Occupant temporaryOccupant;
     private Flat temporaryFlat;
@@ -72,17 +78,52 @@ public class Controller {
     private EditSeparatePane editSeparatePane;
     private DetailsIndependentPane detailsIndependentPane;
     private AddIndependentPane addIndependentPane;
+    private DetailsCommonPane detailsCommonPane;
+    private AddCommonPane addCommonPane;
     private final ManagerEvent managerEvent = new ManagerEvent();
-    
-    public Controller(){    
+
+    public Controller() {
     }
-    
-    public static Controller getInstance(){
-        
-        if(instance == null){
+
+    public static Controller getInstance() {
+
+        if (instance == null) {
             instance = new Controller();
         }
         return instance;
+    }
+
+    public void setAddCommonPane(AddCommonPane addCommonPane) {
+        this.addCommonPane = addCommonPane;
+    }
+
+    public AddCommonPane getAddCommonPane() {
+        return addCommonPane;
+    }
+
+    public void setListCommonSectionPane(ListCommonSectionPane listCommonSectionPane) {
+        this.listCommonSectionPane = listCommonSectionPane;
+    }
+
+    public ListCommonSectionPane getListCommonSectionPane() {
+        return listCommonSectionPane;
+    }
+
+    public DetailsCommonPane getDetailsCommonPane() {
+        return detailsCommonPane;
+    }
+
+    public void setDetailsCommonPane(DetailsCommonPane detailsCommonPane) {
+        this.detailsCommonPane = detailsCommonPane;
+    }
+    
+
+    public TableCommon getTableCommon() {
+        return tableCommon;
+    }
+
+    public void setTableCommon(TableCommon tableCommon) {
+        this.tableCommon = tableCommon;
     }
 
     public void setAddIndependentPane(AddIndependentPane addIndependentPane) {
@@ -153,7 +194,6 @@ public class Controller {
         this.temporarySeparateSection = temporarySeparateSection;
     }
 
-    
     public Garage getTemporaryGarage() {
         return temporaryGarage;
     }
@@ -190,10 +230,6 @@ public class Controller {
         this.temporaryParkingBox = temporaryParkingBox;
     }
 
-    
-
-    
-    
     public AddSeparatePane getAddSeparatePane() {
         return addSeparatePane;
     }
@@ -217,7 +253,6 @@ public class Controller {
     public void setListSeparateSectionsPane(ListSeparateSectionsPane listSeparateSectionsPane) {
         this.listSeparateSectionsPane = listSeparateSectionsPane;
     }
-    
 
     public TableSection getTableSection() {
         return tableSection;
@@ -226,9 +261,7 @@ public class Controller {
     public void setTableSection(TableSection tableSection) {
         this.tableSection = tableSection;
     }
-    
 
-    
     public Stage getPrimaryStage() {
         return primaryStage;
     }
@@ -240,7 +273,6 @@ public class Controller {
     public void setTemporaryStage(Stage temporaryStage) {
         this.temporaryStage = temporaryStage;
     }
-    
 
     public void setSelectOcupantPane(SelectOcupantPane selectOcupantPane) {
         this.selectOcupantPane = selectOcupantPane;
@@ -269,8 +301,7 @@ public class Controller {
     public void setListOccupantsPane(ListOccupantsPane listOccupantsPane) {
         this.listOccupantsPane = listOccupantsPane;
     }
-    
-    
+
     public void setTableOccupant(TableOccupant tableOccupant) {
         this.tableOccupant = tableOccupant;
     }
@@ -371,5 +402,4 @@ public class Controller {
         this.temporaryOccupant = temporaryOccupant;
     }
 
-    
 }

@@ -16,6 +16,7 @@ public class Constants {
     public static final String BUTTON_CONFIRM = "Potvrdi";
     public static final String ALERT_WARNING_DIALOG = "Upozorenje";
     public static final String HAVE_TO_NAME_INDEPENDENT = "Morate uneti naziv samostalnog dela";
+    public static final String HAVE_TO_NAME_COMMON = "Morate uneti naziv zajednickog dela";
     public static final String BAD_FORMAT_PER_MONTH = "Neispravan format za Mesecno odrzavanje";
     public static final String ALERT_ERROR_DIALOG = "Greska";
     public static final String ALERT_INFORMATION_DIALOG = "Informacija";
@@ -45,6 +46,7 @@ public class Constants {
     public static final String TITLE_ADD_OCCUPANT = "Dodavanje stanara";
     public static final String TITLE_ADD_SECTION = "Dodavanje sekcije za ";
     public static final String TITLE_ADD_IND_SECTION = "Dodavanje samostalnog dela za ";
+    public static final String TITLE_ADD_COMMON_SECTION = "Dodavanje zajednickog dela za ";
     public static final String INFO_OCCUPANT = "Informacije o korisniku: ";
     public static final String ADD_ADMIN = "Novi administrator je dodat";
     public static final String ADD_NEW_SECTION = "Nova sekcija je dodata";
