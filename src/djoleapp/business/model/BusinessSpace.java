@@ -9,6 +9,13 @@ public class BusinessSpace extends SeparateSection {
         super(residentialCommunity, number, surfaceArea, note);
     }
 
+    @Override
+    public String toString() {
+   
+        return "Poslovni prostor broj " + super.getNumber();
+    
+    }
+
    
 
    

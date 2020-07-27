@@ -24,7 +24,7 @@ public class Flat extends SeparateSection {
 
     @Override
     public String toString() {
-        return super.getNumber() + super.getSurfaceArea() + super.getNote();
+        return "Stan broj " + super.getNumber();
     }
 
 }

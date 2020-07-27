@@ -42,11 +42,11 @@ public class FacadeSER implements Facade {
     public boolean chackExistOccupantBuilding(ResidentialCommunity r, Occupant o) {
         for (Occupant oc : r.getListOccupants()) {
             if (oc.getId() == o.getId()) {
-                Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_BUILDING_EXIST);
-                return false;
+                Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_OCCUPANT_BUILDING_EXIST);
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     @Override

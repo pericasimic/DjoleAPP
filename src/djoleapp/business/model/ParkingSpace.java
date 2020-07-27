@@ -9,4 +9,9 @@ public class ParkingSpace extends SeparateSection {
         super(residentialCommunity, number, surfaceArea, note);
     }
 
+    @Override
+    public String toString() {
+        return "Garazno mesto broj " + super.getNumber();
+    }
+    
   }

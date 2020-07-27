@@ -11,6 +11,6 @@ public class Garage extends SeparateSection {
 
     @Override
     public String toString() {
-        return super.getNumber() + super.getSurfaceArea() + super.getNote();
+        return "Garaza broj " + super.getNumber();
     }
 }
