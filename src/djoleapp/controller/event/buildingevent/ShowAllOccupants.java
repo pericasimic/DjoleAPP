@@ -8,11 +8,11 @@ public class ShowAllOccupants implements EventHandler<ActionEvent>{
 
     @Override
     public void handle(ActionEvent event) {
-        showAllOccupant();
+        
     }
-    
-    public void showAllOccupant(){
-        Controller.getInstance().getOccupantDetailsBuildingPane().reloadBoxAll();
-    }
-    
+////    
+////    public void showAllOccupant(){
+////        Controller.getInstance().getOccupantDetailsBuildingPane().reloadBoxAll();
+////    }
+//    
 }

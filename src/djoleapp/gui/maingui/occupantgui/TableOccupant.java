@@ -1,6 +1,8 @@
 package djoleapp.gui.maingui.occupantgui;
 
+import djoleapp.business.model.Flat;
 import djoleapp.business.model.Occupant;
+import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.constant.Constants;
 import java.util.List;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -45,9 +47,13 @@ public class TableOccupant extends TableView<Occupant> {
         TableColumn mailCol = new TableColumn(Constants.MAIL);
         mailCol.setMinWidth(150);
         mailCol.setCellValueFactory(new PropertyValueFactory<Occupant, String>("mail"));
+        
+        TableColumn homeCol = new TableColumn(Constants.FLAT);
+        homeCol.setMinWidth(150);
+        homeCol.setCellValueFactory(new PropertyValueFactory<Occupant, Flat>("home"));
 
         this.setItems(FXCollections.observableArrayList(list));
-        this.getColumns().addAll(numOrder, firstNameCol, lastNameCol, idNumberCol, phoneNumberCol, mailCol);
+        this.getColumns().addAll(numOrder, firstNameCol, lastNameCol, idNumberCol, phoneNumberCol, mailCol, homeCol);
     }
 
 }

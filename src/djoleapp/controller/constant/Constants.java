@@ -24,7 +24,7 @@ public class Constants {
     public static final String ALERT_BUILDING_EXIST = "Zgrada vec postoji u bazi";
     public static final String ALERT_OCCUPANT_BUILDING_EXIST = "Izabrani stanar je već u zgradi";
     public static final String ALERT_ACCOUNT_EXIST = "Racun vec postoji";
-    public static final String ALERT_NOT_SELECT = "Morate izabrati stavku za brisanje";
+    public static final String ALERT_NOT_SELECT = "Morate izabrati stavku";
     public static final String ERROR_STORAGE_LOAD_ADMIN = "package djoleapp.business.storage.loadAdmin";
     public static final String ERROR_STORAGE_WRITE_ADMIN = "package djoleapp.business.storage.writeAdmin";
     public static final String ERROR_STORAGE_LOAD_BUILDING = "package djoleapp.business.storage.loadResidentialCommunity";

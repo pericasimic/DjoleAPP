@@ -23,6 +23,7 @@ import djoleapp.controller.event.buildingevent.EditSeparationEvent;
 import djoleapp.controller.event.buildingevent.ListBuildingEvent;
 import djoleapp.controller.event.buildingevent.RemoveBankAccountEvent;
 import djoleapp.controller.event.buildingevent.RemoveBuildingEvent;
+import djoleapp.controller.event.buildingevent.RemoveBuildingOccupantEvent;
 import djoleapp.controller.event.buildingevent.RemoveCommonEvent;
 import djoleapp.controller.event.buildingevent.RemoveIndSectionEvent;
 import djoleapp.controller.event.buildingevent.RemoveSeparateSectionEvent;
@@ -83,6 +84,7 @@ public class ManagerEvent {
     private AddCommonEvent addCommonEvent = null;
     private RemoveCommonEvent removeCommonEvent = null;
     private ConfirmAddCommonEvent confirmAddCommonEvent = null;
+    private RemoveBuildingOccupantEvent removeBuildingOccupantEvent = null;
     
     
 
@@ -126,6 +128,11 @@ public class ManagerEvent {
         addCommonEvent = new AddCommonEvent();  
         removeCommonEvent = new RemoveCommonEvent();
         confirmAddCommonEvent = new ConfirmAddCommonEvent();
+        removeBuildingOccupantEvent = new RemoveBuildingOccupantEvent();
+    }
+
+    public RemoveBuildingOccupantEvent getRemoveBuildingOccupantEvent() {
+        return removeBuildingOccupantEvent;
     }
 
     public ConfirmAddCommonEvent getConfirmAddCommonEvent() {

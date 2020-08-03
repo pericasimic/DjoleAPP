@@ -14,6 +14,7 @@ public class Occupant implements Serializable {
     private String mail;
     private String note;
     private double sum = 0;
+    private Flat home;
     private List<ResidentialCommunity> residentials = new ArrayList<>();
     private List<BankAccount> bankAccounts = new ArrayList<>();
     private List<AccountCalculation> listAccountCalc = new ArrayList<>();
@@ -136,8 +137,14 @@ public class Occupant implements Serializable {
     public void setIsAdd(boolean isAdd) {
         this.isAdd = isAdd;
     }
-    
-    
+
+    public Flat getHome() {
+        return home;
+    }
+
+    public void setHome(Flat home) {
+        this.home = home;
+    }
 
     @Override
     public String toString() {

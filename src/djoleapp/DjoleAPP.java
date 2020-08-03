@@ -6,7 +6,6 @@ import djoleapp.controller.constant.Constants;
 import djoleapp.gui.LoginPane;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**

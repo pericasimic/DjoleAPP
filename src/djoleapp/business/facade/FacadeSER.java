@@ -506,4 +506,42 @@ public class FacadeSER implements Facade {
         Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent().showSelectBuildTableEvent();
     }
 
+    @Override
+    public List<Flat> getFlats(ResidentialCommunity r) {
+        List<Flat> list = new ArrayList<>();
+
+        for (SeparateSection s : r.getListSeparationSection()) {
+            if (s instanceof Flat) {
+                list.add((Flat) s);
+            }
+        }
+        return list;
+    }
+
+    @Override
+    public void removeOccupant(ResidentialCommunity rc, Occupant o) {
+        if (rc == null || o == null) {
+            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
+            return;
+        }
+
+        rc.getListOccupants().remove(o);
+        o.setIsAdd(false);
+        o.setHome(null);
+        Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.SUCCESS_DELETE);
+    }
+
+    @Override
+    public void addOccupantBuilding(ResidentialCommunity rc, Occupant o, SeparateSection ss) {
+
+        if (rc == null || o == null || ss == null) {
+            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
+            return;
+        }
+
+        o.setIsAdd(true);
+        o.setHome((Flat) ss);
+        rc.getListOccupants().add(o);
+
+    }
 }
