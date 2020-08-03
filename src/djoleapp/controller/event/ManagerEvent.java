@@ -28,7 +28,6 @@ import djoleapp.controller.event.buildingevent.RemoveCommonEvent;
 import djoleapp.controller.event.buildingevent.RemoveIndSectionEvent;
 import djoleapp.controller.event.buildingevent.RemoveSeparateSectionEvent;
 import djoleapp.controller.event.buildingevent.SearchBuildingEvent;
-import djoleapp.controller.event.buildingevent.ShowAllOccupants;
 import djoleapp.controller.event.buildingevent.ShowSelectBuildTableEvent;
 import djoleapp.controller.event.occupantevent.AddAccountOccupantEvent;
 import djoleapp.controller.event.occupantevent.AddOccupantEvent;
@@ -38,6 +37,8 @@ import djoleapp.controller.event.occupantevent.ConfirmAddAccountOccupantEvent;
 import djoleapp.controller.event.occupantevent.ConfirmAddOcupantEvent;
 import djoleapp.controller.event.occupantevent.DetailsOccupantEvent;
 import djoleapp.controller.event.occupantevent.ListOccupantEvent;
+import djoleapp.controller.event.occupantevent.RemoveUserEvent;
+import djoleapp.controller.event.occupantevent.SearchUserEvent;
 import djoleapp.controller.event.occupantevent.SelectOccupantEvent;
 
 /**
@@ -66,7 +67,6 @@ public class ManagerEvent {
     private BackAddAccountOccupantEvent backAddAccountOccupantEvent = null;
     private ConfirmAddAccountOccupantEvent confirmAddAccountOccupantEvent = null;
     private AddSectionEvent addSectionEvent = null;
-    private ShowAllOccupants showAllOccupants = null;
     private ConfirmAddSeparateEvent confirmAddSeparateEvent = null;
     private DetailsSeparateEvent detailsSeparateEvent = null;
     private EditSeparationEvent editSeparationEvent = null;
@@ -85,6 +85,8 @@ public class ManagerEvent {
     private RemoveCommonEvent removeCommonEvent = null;
     private ConfirmAddCommonEvent confirmAddCommonEvent = null;
     private RemoveBuildingOccupantEvent removeBuildingOccupantEvent = null;
+    private SearchUserEvent searchUserEvent = null;
+    private RemoveUserEvent removeUserEvent = null;
     
     
 
@@ -109,7 +111,6 @@ public class ManagerEvent {
         addAccountOccupantEvent = new AddAccountOccupantEvent();
         backAddAccountOccupantEvent = new BackAddAccountOccupantEvent();
         confirmAddAccountOccupantEvent = new ConfirmAddAccountOccupantEvent();
-        showAllOccupants = new ShowAllOccupants();
         addSectionEvent = new AddSectionEvent();
         confirmAddSeparateEvent = new ConfirmAddSeparateEvent();
         detailsSeparateEvent = new DetailsSeparateEvent();
@@ -129,8 +130,20 @@ public class ManagerEvent {
         removeCommonEvent = new RemoveCommonEvent();
         confirmAddCommonEvent = new ConfirmAddCommonEvent();
         removeBuildingOccupantEvent = new RemoveBuildingOccupantEvent();
+        searchUserEvent = new SearchUserEvent();
+        removeUserEvent =new RemoveUserEvent();
+                
     }
 
+    public RemoveUserEvent getRemoveUserEvent() {
+        return removeUserEvent;
+    }
+
+    public SearchUserEvent getSearchUserEvent() {
+        return searchUserEvent;
+    }
+
+    
     public RemoveBuildingOccupantEvent getRemoveBuildingOccupantEvent() {
         return removeBuildingOccupantEvent;
     }
@@ -205,10 +218,6 @@ public class ManagerEvent {
 
     public ConfirmAddSeparateEvent getConfirmAddSeparateEvent() {
         return confirmAddSeparateEvent;
-    }
-
-    public ShowAllOccupants getShowAllOccupants() {
-        return showAllOccupants;
     }
 
     public AddSectionEvent getAddSectionEvent() {

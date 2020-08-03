@@ -40,10 +40,12 @@ public class FacadeSER implements Facade {
 
     @Override
     public boolean chackExistOccupantBuilding(ResidentialCommunity r, Occupant o) {
-        for (Occupant oc : r.getListOccupants()) {
-            if (oc.getId() == o.getId()) {
-                Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_OCCUPANT_BUILDING_EXIST);
-                return true;
+        if (r != null && o != null) {
+            for (Occupant oc : r.getListOccupants()) {
+                if (oc.getId() == o.getId()) {
+                    Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_OCCUPANT_BUILDING_EXIST);
+                    return true;
+                }
             }
         }
         return false;
@@ -519,7 +521,7 @@ public class FacadeSER implements Facade {
     }
 
     @Override
-    public void removeOccupant(ResidentialCommunity rc, Occupant o) {
+    public void removeBuildingOccupant(ResidentialCommunity rc, Occupant o) {
         if (rc == null || o == null) {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
             return;
@@ -544,4 +546,62 @@ public class FacadeSER implements Facade {
         rc.getListOccupants().add(o);
 
     }
+
+    @Override
+    public List<Occupant> searchUserList(String word) {
+        List<Occupant> list = new ArrayList<>();
+        for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
+            if (o.getFirstNameOccupant().contains(word) || o.getLastNameOccupant().contains(word) || o.getPhoneNumber().contains(word) || o.getMail().contains(word) || o.getIdentificationNumber().contains(word)) {
+                list.add(o);
+            }
+        }
+        return list;
+    }
+
+    @Override
+    public void removeOccupant(Occupant o) {
+        if (o != null) {
+            List<ResidentialCommunity> residentialCommunitys = new ArrayList<>();
+
+            for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
+                if (rc.getListOccupants().isEmpty() || rc.getListOccupants() != null) {
+                    List<Occupant> resList = new ArrayList<>();
+                    for (Occupant oc : rc.getListOccupants()) {
+                        if (oc.getId() != o.getId()) {
+                            resList.add(oc);
+                        }
+
+                    }
+                    rc.setListOccupants(resList);
+                    residentialCommunitys.add(rc);
+                }
+
+                for (SeparateSection ss : rc.getListSeparationSection()) {
+                    if (ss.getOwner() != null) {
+                        if (ss.getOwner().getId() == o.getId()) {
+                            ss.setHasOwner(false);
+                            ss.setOccupant(null);
+                        }
+                    }
+
+                }
+
+                for (IndependentSection is : rc.getListIndependentSections()) {
+                    if (is.getOwner() != null) {
+                        if (is.getOwner().getId() == o.getId()) {
+                            is.setOwner(null);
+                        }
+                    }
+
+                }
+
+            }
+            Controller.getInstance().getTemporaryList().getOccupants().remove(o);
+            Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.SUCCESS_DELETE);
+        } else {
+            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
+            return;
+        }
+    }
+
 }

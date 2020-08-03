@@ -33,9 +33,11 @@ public interface Facade {
 
     public List<ResidentialCommunity> searchBuidingList(String word);
 
+    public List<Occupant> searchUserList(String word);
+
     public boolean removeBuilding(ResidentialCommunity rc);
-    
-    public void removeOccupant(ResidentialCommunity rc, Occupant o);
+
+    public void removeBuildingOccupant(ResidentialCommunity rc, Occupant o);
 
     public boolean removeBankAccount(BankAccount ba, ResidentialCommunity rc);
 
@@ -54,6 +56,8 @@ public interface Facade {
     public void addCommonSection(String name, String note, String price);
 
     public List<Flat> getFlats(ResidentialCommunity r);
-    
+
     public void addOccupantBuilding(ResidentialCommunity rc, Occupant o, SeparateSection ss);
+
+    public void removeOccupant(Occupant o);
 }

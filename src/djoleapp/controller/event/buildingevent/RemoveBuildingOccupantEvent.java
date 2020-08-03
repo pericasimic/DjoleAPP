@@ -9,22 +9,20 @@ import djoleapp.gui.maingui.buildinggui.TopHBoxBuildingPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class RemoveBuildingOccupantEvent implements EventHandler<ActionEvent>{
+public class RemoveBuildingOccupantEvent implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-        
+
         OccupantDetailsBuildingPane odbp = Controller.getInstance().getOccupantDetailsBuildingPane();
         TopHBoxBuildingPane thbbp = Controller.getInstance().getTopHBoxBuildingPane();
-        
+
         ResidentialCommunity rc = thbbp.getBuildingsBox().getValue();
         Occupant o = odbp.getTableOccupant().getSelectionModel().getSelectedItem();
-        
-        Factory.getFacade().removeOccupant(rc, o);
+
+        Factory.getFacade().removeBuildingOccupant(rc, o);
         odbp.reload(rc.getListOccupants());
-        
-        
-        
+
     }
-    
+
 }
