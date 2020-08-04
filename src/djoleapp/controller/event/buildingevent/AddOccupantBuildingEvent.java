@@ -28,11 +28,6 @@ public class AddOccupantBuildingEvent implements EventHandler<ActionEvent> {
         if(Factory.getFacade().chackExistOccupantBuilding(rr, o)){
             return;
         };
-
-        if (ss instanceof Flat) {
-            ((Flat) ss).getListOccupants().add(o);
-        }
-        
         Factory.getFacade().addOccupantBuilding(rr, o, ss);
         
         odbp.reloadBox();

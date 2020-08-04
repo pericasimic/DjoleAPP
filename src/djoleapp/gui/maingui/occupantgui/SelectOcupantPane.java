@@ -2,7 +2,6 @@ package djoleapp.gui.maingui.occupantgui;
 
 import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.Occupant;
-import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import javafx.collections.FXCollections;
@@ -41,7 +40,6 @@ public class SelectOcupantPane extends BorderPane {
     private Label debitLbl = new Label(Constants.DEBIT);
 
     private ComboBox<BankAccount> accountsBox = new ComboBox<>();
-    private ComboBox<ResidentialCommunity> residentialBox = new ComboBox<>();
     private ComboBox<String> selctBox = new ComboBox<>();
 
     private Button selectListBtn = new Button(Constants.BUTTON_SHOW);
@@ -77,14 +75,12 @@ public class SelectOcupantPane extends BorderPane {
         gp.add(mailFld, 1, 4);
         gp.add(noteLbl, 0, 5);
         gp.add(noteFld, 1, 5);
-        gp.add(listBuildingsLbl, 0, 6);
-        gp.add(residentialBox, 1, 6);
-        gp.add(bankAccountsLbl, 0, 7);
-        gp.add(accountsBox, 1, 7);
-        gp.add(addAccountBtn, 1, 8);
-        gp.add(selectListLbl, 0, 9);
-        gp.add(selctBox, 1, 9);
-        gp.add(selectListBtn, 1, 10);
+        gp.add(bankAccountsLbl, 0, 6);
+        gp.add(accountsBox, 1, 6);
+        gp.add(addAccountBtn, 1, 7);
+        gp.add(selectListLbl, 0, 8);
+        gp.add(selctBox, 1, 8);
+        gp.add(selectListBtn, 1, 9);
 
         idFld.setText(Long.toString(o.getId()));
         idFld.setEditable(false);
@@ -105,7 +101,6 @@ public class SelectOcupantPane extends BorderPane {
         hBox.setPadding(new Insets(10, 10, 10, 10));
 
         selctBox.getItems().addAll(Constants.SEPARATE_SECTIONS, Constants.STATEMENTS, Constants.ACCOUNTS);
-        residentialBox.setItems(FXCollections.observableArrayList(o.getResidentials()));
 
         reloadList();
 

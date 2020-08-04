@@ -4,6 +4,7 @@ public class Constants {
 
     public static final String TITLE_LOGIN = "Prijava na aplikaciju";
     public static final String COUNT_ID_ACCOUNT_BANK = "C:\\Users\\perica.simic\\Documents\\NetBeansProjects\\DjoleAPP\\countBankAccountId.txt";
+    public static final String COUNT_ID_OCCUPANT = "C:\\Users\\perica.simic\\Documents\\NetBeansProjects\\DjoleAPP\\id.txt";
     public static final int SCENE_WIDTH = 960;
     public static final int SCENE_HEIGHT = 640;
     public static final int SCENE_WIDTH_TEMP = 800;
@@ -21,6 +22,7 @@ public class Constants {
     public static final String ALERT_ERROR_DIALOG = "Greska";
     public static final String ALERT_INFORMATION_DIALOG = "Informacija";
     public static final String ALERT_EMPTY_INPUT_TEXT = "Polja moraju biti popunjena";
+    public static final String ALERT_EMPTY_INPUT_TEXT_OCCUPANT = "Sva polja moraju biti popunjena osim polja *Napomena";
     public static final String ALERT_BUILDING_EXIST = "Zgrada vec postoji u bazi";
     public static final String ALERT_OCCUPANT_BUILDING_EXIST = "Izabrani stanar je već u zgradi";
     public static final String ALERT_ACCOUNT_EXIST = "Racun vec postoji";
@@ -99,7 +101,7 @@ public class Constants {
     public static final String NOTE = "Napomena";
     public static final String BANK_ACCOUNT = "Tekuci racun";
     public static final String BANK = "Naziv banke";
-    public static final String RENTER = "Zakupac"; 
+    public static final String RENTER = "Zakupac";
     public static final String BUILDING = "Stambena zajednica";
     public static final String ADD_BUILDING = "Stambena zajednica je dodata";
     public static final String ADD_BANK_ACCOUNT_SUCCESS = "Bankovni racun je dodat";
@@ -137,4 +139,5 @@ public class Constants {
     public static final String GARAGE_BOX = "Garazni boks";
     public static final String BUSINESS_SPACE = "Poslovni prostor";
     public static final String NUMBER_SECTION_EXIST = "Broj sekcije već postoji";
+    public static final String OCCUPANT_IDNUM_EXIST = "Stanar sa unetim matičnim brojem već postoji";
 }

@@ -1,5 +1,6 @@
 package djoleapp.controller.event.occupantevent;
 
+import djoleapp.business.Factory;
 import djoleapp.business.model.Occupant;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
@@ -10,8 +11,6 @@ import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
-import javafx.scene.text.Text;
 
 public class ConfirmAddOcupantEvent implements EventHandler<ActionEvent> {
 
@@ -26,6 +25,7 @@ public class ConfirmAddOcupantEvent implements EventHandler<ActionEvent> {
         List<Occupant> list = Controller.getInstance().getTemporaryList().getOccupants();
         ListOccupantsPane lop = Controller.getInstance().getListOccupantsPane();
 
+        long id = Factory.getFacade().readId() + 1;
         String firstName = aop.getFirstNameFld().getText();
         String lastName = aop.getLastNameFld().getText();
         String idNum = aop.getIdNumberFld().getText();
@@ -33,18 +33,15 @@ public class ConfirmAddOcupantEvent implements EventHandler<ActionEvent> {
         String mail = aop.getMailFld().getText();
         String note = aop.getNoteFld().getText();
 
-        Occupant o = new Occupant(list.size() + 1, firstName, lastName, idNum, phone, mail);
-
-        if (!note.isEmpty() || note != null) {
-            o.setNote(note);
+        if (Factory.getFacade().addOccupant(id, firstName, lastName, idNum, phone, mail, note)) {
+            Factory.getFacade().writeId(id);
+            lop.reload();
+            MainPane mp = new MainPane(Controller.getInstance().getListOccupantsPane());
+            Scene scena = new Scene(mp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
+            Controller.getInstance().getPrimaryStage().setScene(scena);
+        } else {
+            return;
         }
-
-        Controller.getInstance().getTemporaryList().getOccupants().add(o);
-        lop.reload();
-
-        MainPane mp = new MainPane(Controller.getInstance().getListOccupantsPane());
-        Scene scena = new Scene(mp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
-        Controller.getInstance().getPrimaryStage().setScene(scena);
 
     }
 }

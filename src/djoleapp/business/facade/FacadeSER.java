@@ -16,8 +16,13 @@ import djoleapp.business.model.SeparateSection;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.controller.util.Message;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
@@ -144,28 +149,12 @@ public class FacadeSER implements Facade {
 
     @Override
     public boolean removeBuilding(ResidentialCommunity rc) {
-        List<Occupant> occupants = new ArrayList<>();
 
         if (rc == null) {
             Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
             return false;
         }
 
-        if (!rc.getListOccupants().isEmpty()) {
-            for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
-                List<ResidentialCommunity> tempResList = new ArrayList<>();
-                for (ResidentialCommunity r : o.getResidentials()) {
-                    if (r.getIdentificationNumber() != rc.getIdentificationNumber()) {
-                        tempResList.add(r);
-                    }
-                }
-                o.setResidentials(tempResList);
-                occupants.add(o);
-            }
-
-        }
-
-        Controller.getInstance().getTemporaryList().setOccupants(occupants);
         Controller.getInstance().getTemporaryList().getResidentialCommunitys().remove(rc);
         return true;
     }
@@ -551,7 +540,7 @@ public class FacadeSER implements Facade {
     public List<Occupant> searchUserList(String word) {
         List<Occupant> list = new ArrayList<>();
         for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
-            if (o.getFirstNameOccupant().contains(word) || o.getLastNameOccupant().contains(word) || o.getPhoneNumber().contains(word) || o.getMail().contains(word) || o.getIdentificationNumber().contains(word)) {
+            if (o.getFirstNameOccupant().contains(word) || o.getLastNameOccupant().contains(word) || o.getPhoneNumber().contains(word) || o.getMail().contains(word) || o.getIdentificationNumber().contains(word) || (o.getHome() != null && o.getHome().toString().contains(word))) {
                 list.add(o);
             }
         }
@@ -602,6 +591,70 @@ public class FacadeSER implements Facade {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
             return;
         }
+    }
+
+    @Override
+    public void writeId(long id) {
+        File file = new File(Constants.COUNT_ID_OCCUPANT);
+        FileWriter fr = null;
+        try {
+            fr = new FileWriter(file);
+            fr.write(String.valueOf(id));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            //close resources
+            try {
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public long readId() {
+        long result = 0;
+        try {
+            File myObj = new File(Constants.COUNT_ID_OCCUPANT);
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                result = Long.valueOf(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return result;
+
+    }
+
+    @Override
+    public boolean addOccupant(long id, String firstName, String lastName, String idNum, String phone, String mail, String note) {
+
+        if (firstName == null || firstName.isEmpty() || lastName == null || lastName.isEmpty() || idNum.isEmpty() || idNum == null || phone.isEmpty() || phone == null || mail.isEmpty() || mail == null) {
+            Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT_OCCUPANT);
+            return false;
+        }
+
+        for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
+            if (o.getIdentificationNumber().equalsIgnoreCase(idNum)) {
+                Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.OCCUPANT_IDNUM_EXIST);
+                return false;
+
+            }
+
+        }
+
+        Occupant o = new Occupant(id, firstName, lastName, idNum, phone, mail);
+
+        if (!note.isEmpty()) {
+            o.setNote(note);
+        }
+        Controller.getInstance().getTemporaryList().getOccupants().add(o);
+        return true;
+
     }
 
 }

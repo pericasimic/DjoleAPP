@@ -22,6 +22,10 @@ public interface Facade {
     public boolean checkAddBuildingFieldExist(String name, String idNum, String taxNum, String mail);
 
     public boolean chackExistOccupantBuilding(ResidentialCommunity r, Occupant o);
+    
+    public void writeId(long id);
+    
+    public long readId();
 
     public List<Occupant> getListfreeOccupants();
 
@@ -60,4 +64,8 @@ public interface Facade {
     public void addOccupantBuilding(ResidentialCommunity rc, Occupant o, SeparateSection ss);
 
     public void removeOccupant(Occupant o);
+    
+    public boolean addOccupant(long id, String firstName, String lastName, String idNum, String phone, String mail, String note);
+    
+    
 }

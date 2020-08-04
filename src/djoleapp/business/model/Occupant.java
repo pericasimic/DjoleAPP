@@ -15,7 +15,6 @@ public class Occupant implements Serializable {
     private String note;
     private double sum = 0;
     private Flat home;
-    private List<ResidentialCommunity> residentials = new ArrayList<>();
     private List<BankAccount> bankAccounts = new ArrayList<>();
     private List<AccountCalculation> listAccountCalc = new ArrayList<>();
     private List<BankingStatement> listStatements = new ArrayList<>();
@@ -120,14 +119,6 @@ public class Occupant implements Serializable {
 
     public void setSum(double sum) {
         this.sum = sum;
-    }
-
-    public List<ResidentialCommunity> getResidentials() {
-        return residentials;
-    }
-
-    public void setResidentials(List<ResidentialCommunity> residentials) {
-        this.residentials = residentials;
     }
 
     public boolean isIsAdd() {

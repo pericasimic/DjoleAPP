@@ -64,7 +64,7 @@ public class ListOccupantsPane extends VBox {
         serchOccupantBtn.setOnAction(Controller.getInstance().getManagerEvent().getSearchUserEvent());
         serchOccupantBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getSearchUserEvent();
+                Controller.getInstance().getManagerEvent().getSearchUserEvent().searchUserEvent();
             }
         });
         

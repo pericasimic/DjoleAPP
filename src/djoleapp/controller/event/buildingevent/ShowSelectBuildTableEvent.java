@@ -1,5 +1,6 @@
 package djoleapp.controller.event.buildingevent;
 
+import djoleapp.business.model.Flat;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.gui.maingui.MainPane;
@@ -48,7 +49,7 @@ public class ShowSelectBuildTableEvent implements EventHandler<ActionEvent> {
             MainPane mp = new MainPane(lssp);
             setScene(mp);
         }
-        
+
         if (thbbp.getSelectItemBox().getValue().equals(Constants.INDEPENDENT_SECTIONS)) {
             ListIndependentSectionsPane lisp = new ListIndependentSectionsPane(thbbp.getBuildingsBox().getValue().getListIndependentSections(), thbbp);
             thbbp.getBuildingsBox().setValue(thbbp.getBuildingsBox().getValue());
@@ -56,7 +57,7 @@ public class ShowSelectBuildTableEvent implements EventHandler<ActionEvent> {
             MainPane mp = new MainPane(lisp);
             setScene(mp);
         }
-        
+
         if (thbbp.getSelectItemBox().getValue().equals(Constants.COMMON_SECTIONS)) {
             ListCommonSectionPane lcsp = new ListCommonSectionPane(thbbp.getBuildingsBox().getValue().getListCommonSections(), thbbp);
             thbbp.getBuildingsBox().setValue(thbbp.getBuildingsBox().getValue());
