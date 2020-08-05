@@ -18,10 +18,6 @@ public class BackAddAccountOccupantEvent implements EventHandler<ActionEvent> {
 
     public void backAddAccountOccupantEvent() {
 
-        if (Controller.getInstance().getTemporaryStage() != null) {
-            Controller.getInstance().getTemporaryStage().close();
-        }
-
         SelectOcupantPane sop = Controller.getInstance().getSelectOcupantPane();
         MainPane mp = new MainPane(sop);
         Scene scene = new Scene(mp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);

@@ -11,9 +11,9 @@ public class PaymentItems {
 
     public PaymentItems(SeparateSection section) {
 
-        pricePer = Factory.getFacade().pricePerArea(section);
-        sum = Factory.getFacade().supportSum(pricePer, section.getSurfaceArea());
-        item = Constants.PAYMENT_ITEM_STRING_I + pricePer + Constants.PAYMENT_ITEM_STRING_II;
+//        pricePer = Factory.getFacade().pricePerArea(section);
+//        sum = Factory.getFacade().supportSum(pricePer, section.getSurfaceArea());
+//        item = Constants.PAYMENT_ITEM_STRING_I + pricePer + Constants.PAYMENT_ITEM_STRING_II;
     }
 
     public String getItem() {

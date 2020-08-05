@@ -100,9 +100,9 @@ public class SelectOcupantPane extends BorderPane {
         hBox.setSpacing(3);
         hBox.setPadding(new Insets(10, 10, 10, 10));
 
-        selctBox.getItems().addAll(Constants.SEPARATE_SECTIONS, Constants.STATEMENTS, Constants.ACCOUNTS);
+        selctBox.getItems().addAll(Constants.SEPARATE_SECTIONS, Constants.INDEPENDENT_SECTIONS, Constants.STATEMENTS, Constants.ACCOUNTS);
 
-        reloadList();
+        accountsBox.setItems(FXCollections.observableArrayList(Controller.getInstance().getTemporaryOccupant().getBankAccounts()));
 
         addAccountBtn.setOnAction(Controller.getInstance().getManagerEvent().getAddAccountOccupantEvent());
         addAccountBtn.setOnKeyPressed(e -> {
@@ -112,18 +112,18 @@ public class SelectOcupantPane extends BorderPane {
 
         });
 
-        selectListBtn.setOnAction(Controller.getInstance().getManagerEvent().getConfirmAddOcupantEvent());
+        selectListBtn.setOnAction(Controller.getInstance().getManagerEvent().getShowSelectListsOccupantEvent());
         selectListBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getConfirmAddOcupantEvent().confirmAddOcupantEvent();
+                Controller.getInstance().getManagerEvent().getShowSelectListsOccupantEvent().showSelectListsOccupantEvent();
             }
 
         });
 
-        back.setOnAction(Controller.getInstance().getManagerEvent().getBackListOccupant());
+        back.setOnAction(Controller.getInstance().getManagerEvent().getListOccupantEvent());
         back.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getBackListOccupant().backListOccupant();
+                Controller.getInstance().getManagerEvent().getListOccupantEvent().listOccupantEvent();
             }
 
         });
@@ -141,10 +141,6 @@ public class SelectOcupantPane extends BorderPane {
         this.setPadding(new Insets(60, 60, 60, 60));
         this.setCenter(gp);
         this.setBottom(hBox);
-    }
-
-    public void reloadList() {
-        accountsBox.setItems(FXCollections.observableArrayList(Controller.getInstance().getTemporaryOccupant().getBankAccounts()));
     }
 
     public TextField getIdFld() {
@@ -167,8 +163,6 @@ public class SelectOcupantPane extends BorderPane {
         this.debitFld = debitFld;
     }
 
-    
-    
     public void setIdNumberFld(TextField idNumberFld) {
         this.idNumberFld = idNumberFld;
     }
@@ -200,7 +194,5 @@ public class SelectOcupantPane extends BorderPane {
     public ComboBox<String> getSelctBox() {
         return selctBox;
     }
-    
-    
 
 }

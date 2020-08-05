@@ -80,6 +80,11 @@ public class Controller {
     private AddIndependentPane addIndependentPane;
     private DetailsCommonPane detailsCommonPane;
     private AddCommonPane addCommonPane;
+    private double pricePerMonthFlat = 7.82;
+    private double pricePerMonthBox = 4.69;
+    private double pricePerMonthSpace = 5.69;
+    private double pricePerMonthGarage = 10;
+    private double pricePerMonthBusiness = 6.82;
     private final ManagerEvent managerEvent = new ManagerEvent();
 
     public Controller() {
@@ -400,6 +405,46 @@ public class Controller {
 
     public void setTemporaryOccupant(Occupant temporaryOccupant) {
         this.temporaryOccupant = temporaryOccupant;
+    }
+
+    public double getPricePerMonthFlat() {
+        return pricePerMonthFlat;
+    }
+
+    public void setPricePerMonthFlat(double pricePerMonthFlat) {
+        this.pricePerMonthFlat = pricePerMonthFlat;
+    }
+
+    public double getPricePerMonthBox() {
+        return pricePerMonthBox;
+    }
+
+    public void setPricePerMonthBox(double pricePerMonthBox) {
+        this.pricePerMonthBox = pricePerMonthBox;
+    }
+
+    public double getPricePerMonthSpace() {
+        return pricePerMonthSpace;
+    }
+
+    public void setPricePerMonthSpace(double pricePerMonthSpace) {
+        this.pricePerMonthSpace = pricePerMonthSpace;
+    }
+
+    public double getPricePerMonthGarage() {
+        return pricePerMonthGarage;
+    }
+
+    public void setPricePerMonthGarage(double pricePerMonthGarage) {
+        this.pricePerMonthGarage = pricePerMonthGarage;
+    }
+
+    public double getPricePerMonthBusiness() {
+        return pricePerMonthBusiness;
+    }
+
+    public void setPricePerMonthBusiness(double pricePerMonthBusiness) {
+        this.pricePerMonthBusiness = pricePerMonthBusiness;
     }
 
 }

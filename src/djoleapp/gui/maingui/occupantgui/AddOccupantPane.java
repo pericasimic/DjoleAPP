@@ -76,10 +76,10 @@ public class AddOccupantPane extends BorderPane {
 
         });
         
-        cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getBackListOccupant());
+        cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getListOccupantEvent());
         cancelBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getBackListOccupant().backListOccupant();
+                Controller.getInstance().getManagerEvent().getListOccupantEvent().listOccupantEvent();
             }
 
         });

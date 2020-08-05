@@ -1,6 +1,5 @@
 package djoleapp.gui.maingui.buildinggui;
 
-
 import djoleapp.business.model.SeparateSection;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
@@ -19,13 +18,33 @@ public class ListSeparateSectionsPane extends VBox {
     private TableSection tableSection;
     private Button addBtn = new Button(Constants.BUTTON_ADD);
     private Button deleteBtn = new Button(Constants.BUTTON_REMOVE);
+    private Button backBtn = new Button(Constants.BUTTON_BACK);
+
+    public ListSeparateSectionsPane(List<SeparateSection> list) {
+        commonMade();
+        tableSection = new TableSection(list);
+
+        HBox hBox1 = new HBox();
+        hBox1.setSpacing(10);
+        hBox1.setPadding(new Insets(10, 10, 10, 10));
+        hBox1.setAlignment(Pos.CENTER);
+        hBox1.getChildren().addAll(backBtn);
+
+        backBtn.setOnAction(Controller.getInstance().getManagerEvent().getBackAddAccountOccupantEvent());
+        backBtn.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                Controller.getInstance().getManagerEvent().getBackAddAccountOccupantEvent().backAddAccountOccupantEvent();
+            }
+
+        });
+
+        this.getChildren().addAll(tableSection, hBox1);
+    }
 
     public ListSeparateSectionsPane(List<SeparateSection> list, HBox hBox) {
 
-        this.setPadding(new Insets(10, 10, 10, 10));
-
+        commonMade();
         tableSection = new TableSection(list);
-        Controller.getInstance().setTableSection(tableSection);
 
         HBox hBox1 = new HBox();
         hBox1.setSpacing(10);
@@ -64,6 +83,12 @@ public class ListSeparateSectionsPane extends VBox {
 
     }
 
+    private void commonMade() {
+        this.setPadding(new Insets(10, 10, 10, 10));
+        Controller.getInstance().setTableSection(tableSection);
+
+    }
+
     public void reload(List<SeparateSection> list) {
         tableSection.setItems(FXCollections.observableArrayList(list));
 
@@ -72,7 +97,5 @@ public class ListSeparateSectionsPane extends VBox {
     public TableSection getTableSection() {
         return tableSection;
     }
-    
-    
 
 }

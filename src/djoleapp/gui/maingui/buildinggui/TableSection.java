@@ -6,6 +6,7 @@ import djoleapp.business.model.Garage;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ParkingBox;
 import djoleapp.business.model.ParkingSpace;
+import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.business.model.SeparateSection;
 import djoleapp.controller.constant.Constants;
 import java.util.List;
@@ -51,9 +52,13 @@ public class TableSection extends TableView<SeparateSection> {
         TableColumn ownerCol = new TableColumn(Constants.OWNER);
         ownerCol.setMinWidth(150);
         ownerCol.setCellValueFactory(new PropertyValueFactory<SeparateSection, Occupant>("owner"));
+        
+        TableColumn buildingCol = new TableColumn(Constants.BUILDING);
+        buildingCol.setMinWidth(150);
+        buildingCol.setCellValueFactory(new PropertyValueFactory<SeparateSection, ResidentialCommunity>("residentialCommunity"));
 
         this.setItems(FXCollections.observableArrayList(list));
-        this.getColumns().addAll(numOrder, kindCol, numberCol, areaCol, ownerCol);
+        this.getColumns().addAll(numOrder, kindCol, numberCol, areaCol, ownerCol, buildingCol);
     }
 
     private String valueString(SeparateSection ss) {

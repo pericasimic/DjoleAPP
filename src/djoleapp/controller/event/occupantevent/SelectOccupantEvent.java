@@ -13,7 +13,7 @@ public class SelectOccupantEvent implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-        
+      
     }
     
     public void selectOccupantEvent(Occupant o){

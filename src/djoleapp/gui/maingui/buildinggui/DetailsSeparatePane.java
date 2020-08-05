@@ -1,16 +1,22 @@
 package djoleapp.gui.maingui.buildinggui;
 
+import djoleapp.business.Factory;
 import djoleapp.business.model.BusinessSpace;
 import djoleapp.business.model.Flat;
 import djoleapp.business.model.Garage;
+import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ParkingBox;
 import djoleapp.business.model.ParkingSpace;
 import djoleapp.business.model.SeparateSection;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -21,59 +27,49 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 
 public class DetailsSeparatePane extends BorderPane {
-
+    
     private Label title = new Label();
-
+    
     private TextField buildingFld = new TextField();
     private TextField ownerFld = new TextField();
     private TextField numberFld = new TextField();
     private TextField areaFld = new TextField();
     private TextArea noteFld = new TextArea();
-
+    private TextField investmentMaintenanceFld = new TextField();
+    
     private Label buildingLbl = new Label(Constants.SELECT_BUILDINGS);
     private Label ownerLbl = new Label(Constants.OWNER);
     private Label numberLbl = new Label(Constants.NUMBER);
     private Label areaLbl = new Label(Constants.FLAT_AREA);
     private Label noteLbl = new Label(Constants.NOTE);
-
+    private Label occupants = new Label(Constants.OCCUPANTS);
+    private Label investmentMaintenanceLbl = new Label();
+    
+    private ComboBox<Occupant> occupantsBox = new ComboBox<>();
+    
     private Button editBtn = new Button(Constants.BUTTON_EDIT);
     private Button confirmBtn = new Button(Constants.BUTTON_CONFIRM);
     private Button cancelBtn = new Button(Constants.BUTTON_CANCEL);
-
+    
     private SeparateSection separateSection;
-
+    
     private HBox hBox = new HBox();
-
+    
     public DetailsSeparatePane(SeparateSection section) {
-
+        
         setSeparateSection(section);
-
+        
         title.setFont(new Font(Constants.FONT_ARIAL, 20));
-        if (section instanceof Flat) {
-            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.FLAT);
-        }
-        if (section instanceof Garage) {
-            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.GARAGE);
-        }
-        if (section instanceof BusinessSpace) {
-            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.BUSINESS_SPACE);
-        }
-        if (section instanceof ParkingBox) {
-            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.GARAGE_BOX);
-        }
-        if (section instanceof ParkingSpace) {
-            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.GARAGE_SPACE);
-        }
-
+        
         this.setTop(title);
-
+        
         GridPane gp = new GridPane();
         gp.setStyle(Constants.FX_BORDER_COLOR_BLACK);
         gp.setAlignment(Pos.CENTER);
-
+        
         gp.setVgap(5);
         gp.setHgap(5);
-
+        
         gp.add(buildingLbl, 0, 1);
         gp.add(buildingFld, 1, 1);
         buildingFld.setText(section.getResidentialCommunity().getName());
@@ -81,11 +77,11 @@ public class DetailsSeparatePane extends BorderPane {
         gp.add(ownerLbl, 0, 2);
         gp.add(ownerFld, 1, 2);
         ownerFld.setEditable(false);
-
+        
         if (section.getOwner() != null) {
             ownerFld.setText(section.getOwner().getFirstNameOccupant() + section.getOwner().getLastNameOccupant());
         }
-
+        
         gp.add(numberLbl, 0, 3);
         gp.add(numberFld, 1, 3);
         numberFld.setEditable(false);
@@ -98,39 +94,71 @@ public class DetailsSeparatePane extends BorderPane {
         gp.add(noteFld, 1, 5);
         noteFld.setEditable(false);
         noteFld.setText(section.getNote());
-
+        gp.add(investmentMaintenanceLbl, 0, 6);
+        gp.add(investmentMaintenanceFld, 1, 6);
+        investmentMaintenanceFld.setEditable(false);
+        
+        if (section instanceof Flat) {
+            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.FLAT);
+            investmentMaintenanceLbl.setText(Constants.INVESTEMENT_MAINTENANCE + " " + Controller.getInstance().getPricePerMonthFlat() + " din/m2");
+            investmentMaintenanceFld.setText(String.valueOf(Factory.getFacade().supportSum(Controller.getInstance().getPricePerMonthFlat(), section.getSurfaceArea())));
+            gp.add(occupants, 0, 7);
+            gp.add(occupantsBox, 1, 7);
+            occupantsBox.setItems(FXCollections.observableArrayList(Factory.getFacade().getListOccupantsPerFlat((Flat) section)));
+        }
+        if (section instanceof Garage) {
+            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.GARAGE);
+            investmentMaintenanceLbl.setText(Constants.INVESTEMENT_MAINTENANCE + " " + Controller.getInstance().getPricePerMonthGarage() + " din/m2");
+            investmentMaintenanceFld.setText(String.valueOf(Factory.getFacade().supportSum(Controller.getInstance().getPricePerMonthGarage(), section.getSurfaceArea())));
+        }
+        if (section instanceof BusinessSpace) {
+            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.BUSINESS_SPACE);
+            investmentMaintenanceLbl.setText(Constants.INVESTEMENT_MAINTENANCE + " " + Controller.getInstance().getPricePerMonthBusiness() + " din/m2");
+            investmentMaintenanceFld.setText(String.valueOf(Factory.getFacade().supportSum(Controller.getInstance().getPricePerMonthBusiness(), section.getSurfaceArea())));
+        }
+        if (section instanceof ParkingBox) {
+            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.GARAGE_BOX);
+            investmentMaintenanceLbl.setText(Constants.INVESTEMENT_MAINTENANCE + " " + Controller.getInstance().getPricePerMonthBox() + " din/m2");
+            investmentMaintenanceFld.setText(String.valueOf(Factory.getFacade().supportSum(Controller.getInstance().getPricePerMonthBox(), section.getSurfaceArea())));
+        }
+        if (section instanceof ParkingSpace) {
+            title.setText(Constants.SECTION_DETAILS_TITLE + " " + Constants.GARAGE_SPACE);
+            investmentMaintenanceLbl.setText(Constants.INVESTEMENT_MAINTENANCE + " " + Controller.getInstance().getPricePerMonthSpace() + " din/m2");
+            investmentMaintenanceFld.setText(String.valueOf(Factory.getFacade().supportSum(Controller.getInstance().getPricePerMonthSpace(), section.getSurfaceArea())));
+        }
+        
         cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getBackListSeparateSections());
         cancelBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 Controller.getInstance().getManagerEvent().getBackListSeparateSections();
             }
-
+            
         });
-
+        
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(3);
         hBox.setPadding(new Insets(30, 30, 30, 30));
-
+        
         editBtn.setOnAction(Controller.getInstance().getManagerEvent().getEditSeparationEvent());
         editBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 Controller.getInstance().getManagerEvent().getEditSeparationEvent().editSeparationEvent();
             }
-
+            
         });
         hBox.getChildren().addAll(cancelBtn, editBtn);
-
+        
         this.setPadding(new Insets(60, 60, 60, 60));
         this.setCenter(gp);
         this.setBottom(hBox);
     }
-
+    
     public SeparateSection getSeparateSection() {
         return separateSection;
     }
-
+    
     public void setSeparateSection(SeparateSection separateSection) {
         this.separateSection = separateSection;
     }
-
+    
 }

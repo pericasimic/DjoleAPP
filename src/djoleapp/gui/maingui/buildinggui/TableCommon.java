@@ -36,6 +36,7 @@ public class TableCommon extends TableView<CommonSection> {
 
         this.setItems(FXCollections.observableArrayList(list));
         this.getColumns().addAll(numOrder, nameCol, priceCol);
+        
     }
 
 }

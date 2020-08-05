@@ -31,8 +31,6 @@ public interface Facade {
 
     public double supportSum(double price, double area);
 
-    public double pricePerArea(SeparateSection section);
-
     public String kindOfSection(SeparateSection section);
 
     public List<ResidentialCommunity> searchBuidingList(String word);
@@ -66,6 +64,12 @@ public interface Facade {
     public void removeOccupant(Occupant o);
     
     public boolean addOccupant(long id, String firstName, String lastName, String idNum, String phone, String mail, String note);
+    
+    public List<Occupant> getListOccupantsPerFlat(Flat flat);
+    
+    public List<SeparateSection> getSeparateSectionPerOccupant(Occupant o);
+    
+    public boolean createBankAccountOccupant(String name, String number);
     
     
 }

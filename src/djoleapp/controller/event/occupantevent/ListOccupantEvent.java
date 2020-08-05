@@ -12,6 +12,10 @@ public class ListOccupantEvent implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+        listOccupantEvent();
+    }
+
+    public void listOccupantEvent() {
         ListOccupantsPane lop = new ListOccupantsPane();
         Controller.getInstance().setListOccupantsPane(lop);
         MainPane mp = new MainPane(lop);

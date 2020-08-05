@@ -73,27 +73,6 @@ public class FacadeSER implements Facade {
     }
 
     @Override
-    public double pricePerArea(SeparateSection section) {
-
-        if (section instanceof ParkingBox) {
-            return Constants.PARKING_BOX_PRICE;
-        }
-        if (section instanceof ParkingSpace) {
-            return Constants.PARKING_SPACE_PRICE;
-        }
-        if (section instanceof Garage) {
-            return Constants.GARAGE_PRICE;
-        }
-        if (section instanceof BusinessSpace) {
-            return Constants.BUSINESS_PRICE;
-        }
-        if (section instanceof Flat) {
-            return Constants.FLAT_PRICE;
-        }
-        return 0;
-    }
-
-    @Override
     public String kindOfSection(SeparateSection section) {
         if (section instanceof ParkingBox) {
             return Constants.GARAGE_BOX;
@@ -186,6 +165,15 @@ public class FacadeSER implements Facade {
                 }
             }
         }
+        for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
+            for (BankAccount b : o.getBankAccounts()) {
+                if (b.getBankAccountNumber().equalsIgnoreCase(number)) {
+                    Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_ACCOUNT_EXIST);
+                    return false;
+                }
+            }
+        }
+
         return true;
 
     }
@@ -194,13 +182,20 @@ public class FacadeSER implements Facade {
     public boolean addSeparateSection(boolean isAdd, ResidentialCommunity rc, String section, String number, String areaSection, String note, Occupant owner) {
 
         SeparateSection sep = Controller.getInstance().getTemporarySeparateSection();
+        double area = 0;
 
         if (rc == null || section.isEmpty() || section == null || number.isEmpty() || number == null || areaSection == null || areaSection.isEmpty() || note.isEmpty() || note == null) {
             Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
             return false;
         }
 
-        double area = Double.valueOf(areaSection);
+        try {
+            double value = Double.valueOf(areaSection);
+            area = value;
+        } catch (NumberFormatException nfe) {
+            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.BAD_FORMAT_AREA);
+            return false;
+        }
 
         if (section.equals(Constants.FLAT)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
@@ -655,6 +650,49 @@ public class FacadeSER implements Facade {
         Controller.getInstance().getTemporaryList().getOccupants().add(o);
         return true;
 
+    }
+
+    @Override
+    public List<Occupant> getListOccupantsPerFlat(Flat flat) {
+
+        List<Occupant> result = new ArrayList<>();
+
+        for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
+            if (o.getHome().equals(flat)) {
+                result.add(o);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public boolean createBankAccountOccupant(String name, String number) {
+
+        if (name == null || name.isEmpty() || number == null || number.isEmpty()) {
+            Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
+            return false;
+        }
+        BankAccount bankAccount = new BankAccount(name, number);
+        Controller.getInstance().getTemporaryOccupant().getBankAccounts().add(bankAccount);
+        Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_BANK_ACCOUNT_SUCCESS);
+        return true;
+    }
+
+    @Override
+    public List<SeparateSection> getSeparateSectionPerOccupant(Occupant o) {
+
+        List<SeparateSection> result = new ArrayList<>();
+
+        for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
+            for (SeparateSection ss : rc.getListSeparationSection()) {
+                if (ss.getOwner().getId() == o.getId()) {
+                    result.add(ss);
+                }
+            }
+        }
+
+        return result;
     }
 
 }

@@ -19,12 +19,14 @@ public class Constants {
     public static final String HAVE_TO_NAME_INDEPENDENT = "Morate uneti naziv samostalnog dela";
     public static final String HAVE_TO_NAME_COMMON = "Morate uneti naziv zajednickog dela";
     public static final String BAD_FORMAT_PER_MONTH = "Neispravan format za Mesecno odrzavanje";
+    public static final String BAD_FORMAT_AREA = "Neispravan format za površinu";
     public static final String ALERT_ERROR_DIALOG = "Greska";
     public static final String ALERT_INFORMATION_DIALOG = "Informacija";
     public static final String ALERT_EMPTY_INPUT_TEXT = "Polja moraju biti popunjena";
     public static final String ALERT_EMPTY_INPUT_TEXT_OCCUPANT = "Sva polja moraju biti popunjena osim polja *Napomena";
     public static final String ALERT_BUILDING_EXIST = "Zgrada vec postoji u bazi";
     public static final String ALERT_OCCUPANT_BUILDING_EXIST = "Izabrani stanar je već u zgradi";
+    public static final String INVESTEMENT_MAINTENANCE = "Investiciono održavanje";
     public static final String ALERT_ACCOUNT_EXIST = "Racun vec postoji";
     public static final String ALERT_NOT_SELECT = "Morate izabrati stavku";
     public static final String ERROR_STORAGE_LOAD_ADMIN = "package djoleapp.business.storage.loadAdmin";
@@ -115,7 +117,7 @@ public class Constants {
     public static final String LAST_NAME = "Prezime";
     public static final String PHONE_NUMBER = "Broj telefona";
     public static final String NUMBER = "Broj";
-    public static final String FLAT_AREA = "Povrsina stana(m2)";
+    public static final String FLAT_AREA = "Povrsina(m2)";
     public static final String OWNER = "Vlasnik";
     public static final String OWNER_IF_EXIST = "Izabrati vlasnika (ako postoji)";
     public static final String KIND_SECTION = "Vrsta posebnog dela";

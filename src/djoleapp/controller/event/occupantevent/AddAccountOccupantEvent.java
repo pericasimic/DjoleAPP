@@ -19,13 +19,7 @@ public class AddAccountOccupantEvent implements EventHandler<ActionEvent>{
         AddAccountOccupantPane aaop = new AddAccountOccupantPane();
         Controller.getInstance().setAddAccountOccupantPane(aaop);
         Scene scena = new Scene(aaop, Constants.SCENE_WIDTH_TEMP, Constants.SCENE_HEIGHT_TEMP);
-        Stage stage = new Stage();
-        Controller.getInstance().setTemporaryStage(stage);
-        stage.setScene(scena);
-        stage.setTitle(Constants.ACCOUNTS);
-        stage.setResizable(false);
-        stage.centerOnScreen();
-        stage.show();
+        Controller.getInstance().getPrimaryStage().setScene(scena);
     }
     
 }
