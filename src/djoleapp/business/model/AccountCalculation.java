@@ -1,55 +1,67 @@
 package djoleapp.business.model;
 
+import djoleapp.business.Factory;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 public class AccountCalculation implements Serializable {
-    
-    private long id;
+
+    private ResidentialCommunity residentialCommunity;
     private Occupant occupant;
-    private String title;
+    private String month;
     private String titleNumber;
     private Date dateOfDelivery;
     private Date paymentDeadline;
-    private List<PaymentItems> paymentItemses = new ArrayList<>();
+    private List<PaymentItems> itemses;
     private double debitCurentMonth;
-    private double previousMonth;
+    private double debitPreviousMonth;
     private double sum;
+    private String note;
     private boolean isPaid = false;
     private boolean isExist = true;
 
-    public AccountCalculation(long id) {
-        this.id = id;
+    public AccountCalculation() {
     }
 
-    public AccountCalculation(long id, ResidentialCommunity residentialCommunity, SeparateSection separateSection, String title, String titleNumber, Date dateOfDelivery, Date paymentDeadline, String accountRecipient, double debitCurentMonth, double previousMonth, double sum) {
-        this.id = id;
-        this.title = title;
+    public AccountCalculation(ResidentialCommunity residentialCommunity, Occupant occupant,
+            String titleNumber, Date dateOfDelivery, Date paymentDeadline,
+            List<PaymentItems> itemses, double debitCurentMonth,
+            double debitPreviousMonth, double sum) {
+        this.residentialCommunity = residentialCommunity;
+        this.occupant = occupant;
         this.titleNumber = titleNumber;
         this.dateOfDelivery = dateOfDelivery;
         this.paymentDeadline = paymentDeadline;
+        this.itemses = itemses;
         this.debitCurentMonth = debitCurentMonth;
-        this.previousMonth = previousMonth;
+        this.debitPreviousMonth = debitPreviousMonth;
         this.sum = sum;
     }
 
-    public long getId() {
-        return id;
+    public void setMonth(String month) {
+        this.month = month;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public String getMonth() {
+        return month;
     }
 
-
-    public String getTitle() {
-        return title;
+    public ResidentialCommunity getResidentialCommunity() {
+        return residentialCommunity;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setResidentialCommunity(ResidentialCommunity residentialCommunity) {
+        this.residentialCommunity = residentialCommunity;
+    }
+
+    public Occupant getOccupant() {
+        return occupant;
+    }
+
+    public void setOccupant(Occupant occupant) {
+        this.occupant = occupant;
     }
 
     public String getTitleNumber() {
@@ -75,7 +87,7 @@ public class AccountCalculation implements Serializable {
     public void setPaymentDeadline(Date paymentDeadline) {
         this.paymentDeadline = paymentDeadline;
     }
-    
+
     public double getDebitCurentMonth() {
         return debitCurentMonth;
     }
@@ -84,12 +96,12 @@ public class AccountCalculation implements Serializable {
         this.debitCurentMonth = debitCurentMonth;
     }
 
-    public double getPreviousMonth() {
-        return previousMonth;
+    public double getDebitPreviousMonth() {
+        return debitPreviousMonth;
     }
 
-    public void setPreviousMonth(double previousMonth) {
-        this.previousMonth = previousMonth;
+    public void setDebitPreviousMonth(double debitPreviousMonth) {
+        this.debitPreviousMonth = debitPreviousMonth;
     }
 
     public double getSum() {
@@ -100,12 +112,12 @@ public class AccountCalculation implements Serializable {
         this.sum = sum;
     }
 
-    public boolean isIsExist() {
-        return isExist;
+    public String getNote() {
+        return note;
     }
 
-    public void setIsExist(boolean isExist) {
-        this.isExist = isExist;
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public boolean isIsPaid() {
@@ -115,7 +127,21 @@ public class AccountCalculation implements Serializable {
     public void setIsPaid(boolean isPaid) {
         this.isPaid = isPaid;
     }
-    
-    
-    
+
+    public boolean isIsExist() {
+        return isExist;
+    }
+
+    public void setIsExist(boolean isExist) {
+        this.isExist = isExist;
+    }
+
+    public List<PaymentItems> getItemses() {
+        return itemses;
+    }
+
+    public void setItemses(List<PaymentItems> itemses) {
+        this.itemses = itemses;
+    }
+
 }

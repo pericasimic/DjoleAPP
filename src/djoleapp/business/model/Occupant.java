@@ -20,6 +20,9 @@ public class Occupant implements Serializable {
     private List<BankingStatement> listStatements = new ArrayList<>();
     private boolean isAdd = false;
 
+    public Occupant() {
+    }
+    
     public Occupant(long id) {
         this.id = id;
     }

@@ -5,6 +5,7 @@ import djoleapp.business.model.CommonSection;
 import djoleapp.business.model.Flat;
 import djoleapp.business.model.IndependentSection;
 import djoleapp.business.model.Occupant;
+import djoleapp.business.model.PaymentItems;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.business.model.SeparateSection;
 import java.util.List;
@@ -17,11 +18,13 @@ public interface Facade {
 
     public boolean loginAdminCheck(final String username, final String password);
 
-    public boolean checkAddBuildingFieldsEmpty(String name, String idNum, String taxNum, String mail);
+    public boolean checkAddBuildingFieldsEmpty(String name, String city, String idNum, String taxNum, String mail);
 
-    public boolean checkAddBuildingFieldExist(String name, String idNum, String taxNum, String mail);
+    public boolean checkAddBuildingFieldExist(String name, String city, String idNum, String taxNum, String mail);
 
     public boolean chackExistOccupantBuilding(ResidentialCommunity r, Occupant o);
+    
+    public void createNewCalculations();
     
     public void writeId(long id);
     
@@ -49,7 +52,7 @@ public interface Facade {
 
     public boolean addSeparateSection(boolean isAdd, ResidentialCommunity rc, String section, String number, String area, String note, Occupant owner);
 
-    public void addIndSection(String name, String note, Occupant owner, String price);
+    public void addIndSection(String name, String note, Occupant owner, String price, ResidentialCommunity residentialCommunity);
 
     public void removeIndSection(IndependentSection independentSection);
 
@@ -69,7 +72,14 @@ public interface Facade {
     
     public List<SeparateSection> getSeparateSectionPerOccupant(Occupant o);
     
+    public List<IndependentSection> getIndSectionPerOccupant(Occupant o);
+    
     public boolean createBankAccountOccupant(String name, String number);
     
+    public double pricePerArea(SeparateSection section);
+    
+    public List<PaymentItems> getListPayment(ResidentialCommunity residentialCommunity, Occupant o);
+    
+    public String returnMonth(int num);
     
 }

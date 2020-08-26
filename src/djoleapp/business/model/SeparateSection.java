@@ -1,8 +1,6 @@
 package djoleapp.business.model;
 
 import java.io.Serializable;
-import javafx.scene.control.TextArea;
-import javafx.scene.text.Text;
 
 public abstract class SeparateSection implements Serializable {
 
@@ -11,6 +9,7 @@ public abstract class SeparateSection implements Serializable {
     private String number;
     private double surfaceArea;
     private String note;
+    private double debit;
     private boolean hasOwner = false;
     private boolean isExist = true;
 
@@ -81,6 +80,14 @@ public abstract class SeparateSection implements Serializable {
 
     public void setHasOwner(boolean hasOwner) {
         this.hasOwner = hasOwner;
+    }
+
+    public void setDebit(double debit) {
+        this.debit = debit;
+    }
+
+    public double getDebit() {
+        return debit;
     }
 
     

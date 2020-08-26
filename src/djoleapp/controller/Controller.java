@@ -13,6 +13,7 @@ import djoleapp.controller.event.ManagerEvent;
 import djoleapp.gui.LoginPane;
 import djoleapp.gui.admingui.AddAdminPane;
 import djoleapp.gui.maingui.MainPane;
+import djoleapp.gui.maingui.accountcalculationgui.AccountCalculationPane;
 import djoleapp.gui.maingui.buildinggui.AddCommonPane;
 import djoleapp.gui.maingui.buildinggui.AddIndependentPane;
 import djoleapp.gui.maingui.buildinggui.AddSeparatePane;
@@ -31,6 +32,7 @@ import djoleapp.gui.maingui.buildinggui.TableCommon;
 import djoleapp.gui.maingui.buildinggui.TableIndependent;
 import djoleapp.gui.maingui.buildinggui.TableSection;
 import djoleapp.gui.maingui.buildinggui.TopHBoxBuildingPane;
+import djoleapp.gui.maingui.finance.TableCalculations;
 import djoleapp.gui.maingui.occupantgui.AddAccountOccupantPane;
 import djoleapp.gui.maingui.occupantgui.AddOccupantPane;
 import djoleapp.gui.maingui.occupantgui.ListOccupantsPane;
@@ -80,6 +82,8 @@ public class Controller {
     private AddIndependentPane addIndependentPane;
     private DetailsCommonPane detailsCommonPane;
     private AddCommonPane addCommonPane;
+    private TableCalculations tableCalculations;
+    private AccountCalculationPane accountCalculationPane;
     private double pricePerMonthFlat = 7.82;
     private double pricePerMonthBox = 4.69;
     private double pricePerMonthSpace = 5.69;
@@ -96,6 +100,22 @@ public class Controller {
             instance = new Controller();
         }
         return instance;
+    }
+
+    public void setAccountCalculationPane(AccountCalculationPane accountCalculationPane) {
+        this.accountCalculationPane = accountCalculationPane;
+    }
+
+    public AccountCalculationPane getAccountCalculationPane() {
+        return accountCalculationPane;
+    }
+
+    public void setTableCalculations(TableCalculations tableCalculations) {
+        this.tableCalculations = tableCalculations;
+    }
+
+    public TableCalculations getTableCalculations() {
+        return tableCalculations;
     }
 
     public void setAddCommonPane(AddCommonPane addCommonPane) {

@@ -15,6 +15,7 @@ public class Constants {
     public static final String BUTTON_LOGIN = "Prijava";
     public static final String BUTTON_LOGOUT = "Odjava";
     public static final String BUTTON_CONFIRM = "Potvrdi";
+    public static final String CITY = "Mesto";
     public static final String ALERT_WARNING_DIALOG = "Upozorenje";
     public static final String HAVE_TO_NAME_INDEPENDENT = "Morate uneti naziv samostalnog dela";
     public static final String HAVE_TO_NAME_COMMON = "Morate uneti naziv zajednickog dela";
@@ -27,6 +28,7 @@ public class Constants {
     public static final String ALERT_BUILDING_EXIST = "Zgrada vec postoji u bazi";
     public static final String ALERT_OCCUPANT_BUILDING_EXIST = "Izabrani stanar je već u zgradi";
     public static final String INVESTEMENT_MAINTENANCE = "Investiciono održavanje";
+    public static final String LIST_ITEM = "Lista stavki za održavanje";
     public static final String ALERT_ACCOUNT_EXIST = "Racun vec postoji";
     public static final String ALERT_NOT_SELECT = "Morate izabrati stavku";
     public static final String ERROR_STORAGE_LOAD_ADMIN = "package djoleapp.business.storage.loadAdmin";
@@ -142,4 +144,20 @@ public class Constants {
     public static final String BUSINESS_SPACE = "Poslovni prostor";
     public static final String NUMBER_SECTION_EXIST = "Broj sekcije već postoji";
     public static final String OCCUPANT_IDNUM_EXIST = "Stanar sa unetim matičnim brojem već postoji";
+    public static final String JANUARY = "Januar";
+    public static final String FEBRUARY = "Februar";
+    public static final String MARCH = "Mart";
+    public static final String APRIL = "April";
+    public static final String MAY = "Maj";
+    public static final String JUNE = "Jun";
+    public static final String JULY = "Jul";
+    public static final String AUGUST = "Avgust";
+    public static final String SEPTEMBER = "Septembar";
+    public static final String OCTOBER = "Oktobar";
+    public static final String NOVEMBER = "Novembar";
+    public static final String DECEMBER = "Decembar";
+    public static final String MONTH = "Mesec";
+    public static final String NUMBER_CALCULATION = "Broj računa";
+    public static final String SUM_CALCULATION = "Iznos za uplatu";
+    
 }

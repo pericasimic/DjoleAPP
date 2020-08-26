@@ -2,18 +2,18 @@ package djoleapp.business.model;
 
 import djoleapp.business.Factory;
 import djoleapp.controller.constant.Constants;
+import java.io.Serializable;
 
-public class PaymentItems {
+public class PaymentItems implements Serializable{
 
     private String item;
-    private double pricePer;
     private double sum;
 
     public PaymentItems(SeparateSection section) {
+        double price = Factory.getFacade().pricePerArea(section);
+        item = Constants.PAYMENT_ITEM_STRING_I + price + Constants.PAYMENT_ITEM_STRING_II;
+        sum = Factory.getFacade().supportSum(price, section.getSurfaceArea());
 
-//        pricePer = Factory.getFacade().pricePerArea(section);
-//        sum = Factory.getFacade().supportSum(pricePer, section.getSurfaceArea());
-//        item = Constants.PAYMENT_ITEM_STRING_I + pricePer + Constants.PAYMENT_ITEM_STRING_II;
     }
 
     public String getItem() {
@@ -23,15 +23,7 @@ public class PaymentItems {
     public void setItem(String item) {
         this.item = item;
     }
-
-    public double getPricePer() {
-        return pricePer;
-    }
-
-    public void setPricePer(double pricePer) {
-        this.pricePer = pricePer;
-    }
-
+    
     public double getSum() {
         return sum;
     }
@@ -39,7 +31,5 @@ public class PaymentItems {
     public void setSum(double sum) {
         this.sum = sum;
     }
-    
-    
 
 }

@@ -1,6 +1,7 @@
 package djoleapp.business.facade;
 
 import djoleapp.business.Factory;
+import djoleapp.business.model.AccountCalculation;
 import djoleapp.business.model.Administrator;
 import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.BusinessSpace;
@@ -11,6 +12,7 @@ import djoleapp.business.model.IndependentSection;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ParkingBox;
 import djoleapp.business.model.ParkingSpace;
+import djoleapp.business.model.PaymentItems;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.business.model.SeparateSection;
 import djoleapp.controller.Controller;
@@ -21,6 +23,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import javafx.scene.control.Alert;
@@ -104,8 +108,8 @@ public class FacadeSER implements Facade {
     }
 
     @Override
-    public boolean checkAddBuildingFieldsEmpty(String name, String idNum, String taxNum, String mail) {
-        if (name.isEmpty() || name == null || idNum.isEmpty() || idNum == null || taxNum.isEmpty() || taxNum == null || mail.isEmpty() || mail == null) {
+    public boolean checkAddBuildingFieldsEmpty(String name, String city, String idNum, String taxNum, String mail) {
+        if (name.isEmpty() || name == null || city.isEmpty() || city == null || idNum.isEmpty() || idNum == null || taxNum.isEmpty() || taxNum == null || mail.isEmpty() || mail == null) {
             Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
             return true;
         }
@@ -113,7 +117,7 @@ public class FacadeSER implements Facade {
     }
 
     @Override
-    public boolean checkAddBuildingFieldExist(String name, String idNum, String taxNum, String mail) {
+    public boolean checkAddBuildingFieldExist(String name, String city, String idNum, String taxNum, String mail) {
 
         for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
             if (rc.getName().replaceAll("\\s+", "").equalsIgnoreCase(name.replaceAll("\\s+", "")) || rc.getIdentificationNumber().replaceAll("\\s+", "").equalsIgnoreCase(idNum.replaceAll("\\s+", ""))
@@ -415,13 +419,13 @@ public class FacadeSER implements Facade {
     }
 
     @Override
-    public void addIndSection(String name, String note, Occupant owner, String price) {
+    public void addIndSection(String name, String note, Occupant owner, String price, ResidentialCommunity residentialCommunity) {
 
         if (name == null || name.isEmpty()) {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.HAVE_TO_NAME_INDEPENDENT);
             return;
         }
-        IndependentSection ipSection = new IndependentSection(name);
+        IndependentSection ipSection = new IndependentSection(name, residentialCommunity);
         ipSection.setNote(note);
 
         if (price != null || !price.isEmpty()) {
@@ -658,7 +662,7 @@ public class FacadeSER implements Facade {
         List<Occupant> result = new ArrayList<>();
 
         for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
-            if (o.getHome().equals(flat)) {
+            if (o.getHome() != null && o.getHome().equals(flat)) {
                 result.add(o);
             }
         }
@@ -686,7 +690,7 @@ public class FacadeSER implements Facade {
 
         for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
             for (SeparateSection ss : rc.getListSeparationSection()) {
-                if (ss.getOwner().getId() == o.getId()) {
+                if (ss.getOwner() != null && ss.getOwner().getId() == o.getId()) {
                     result.add(ss);
                 }
             }
@@ -695,4 +699,166 @@ public class FacadeSER implements Facade {
         return result;
     }
 
+    @Override
+    public List<IndependentSection> getIndSectionPerOccupant(Occupant o) {
+        List<IndependentSection> result = new ArrayList<>();
+
+        for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
+            for (IndependentSection is : rc.getListIndependentSections()) {
+                if (is.getOwner().getId() == o.getId()) {
+                    result.add(is);
+                }
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    public double pricePerArea(SeparateSection section) {
+
+        if (section instanceof ParkingBox) {
+            return Controller.getInstance().getPricePerMonthBox();
+        }
+        if (section instanceof ParkingSpace) {
+            return Controller.getInstance().getPricePerMonthSpace();
+        }
+        if (section instanceof Garage) {
+            return Controller.getInstance().getPricePerMonthGarage();
+        }
+        if (section instanceof BusinessSpace) {
+            return Controller.getInstance().getPricePerMonthBusiness();
+        }
+        if (section instanceof Flat) {
+            return Controller.getInstance().getPricePerMonthFlat();
+        }
+
+        return -1;
+    }
+
+    @Override
+    public List<PaymentItems> getListPayment(ResidentialCommunity residentialCommunity, Occupant occupant) {
+
+        List<SeparateSection> listSections = new ArrayList<>();
+        List<PaymentItems> result = new ArrayList<>();
+
+        for (SeparateSection ss : residentialCommunity.getListSeparationSection()) {
+            if (ss.getOwner().getId() == occupant.getId()) {
+                listSections.add(ss);
+            }
+        }
+
+        for (SeparateSection section : listSections) {
+            result.add(new PaymentItems(section));
+        }
+
+        return result;
+    }
+
+    @Override
+    public void createNewCalculations() {
+
+        Date currentDate = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_MONTH, 7);
+        Date delayDate = calendar.getTime();
+
+        for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
+            for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
+                if (!rc.getListSeparationSection().isEmpty()) {
+                    List<PaymentItems> itemses = new ArrayList<>();
+                    double sumItems = 0;
+                    double tempDebit = 0;
+                    for (SeparateSection s : rc.getListSeparationSection()) {
+                        double debit = 0;
+                        if (s.getOwner() != null && s.getOwner().getId() == o.getId()) {
+                            tempDebit = s.getDebit();
+                            PaymentItems paymentItems = new PaymentItems(s);
+                            itemses.add(paymentItems);
+                            debit += s.getDebit() + paymentItems.getSum();
+                            s.setDebit(debit);
+                            
+                        }
+                    }
+                    for (PaymentItems p : itemses) {
+                        sumItems += p.getSum();
+                    }
+                    if (!itemses.isEmpty()) {
+                        AccountCalculation ac = new AccountCalculation(rc, o, currentDate.toString(), currentDate, delayDate, itemses, sumItems, tempDebit, sumItems + tempDebit);
+                        ac.setMonth(Factory.getFacade().returnMonth(calendar.get(Calendar.MONTH)));
+                        o.getListAccountCalc().add(ac);
+                        o.setSum(sumItems + o.getSum());
+                    }
+                }
+
+            }
+        }
+
+        List<Occupant> list = Controller.getInstance().getTemporaryList().getOccupants();
+        System.out.println(list);
+
+        //    int month = cal.get(Calendar.MONTH);
+        //    int curentDay = cal.get(Calendar.DAY_OF_MONTH);
+        //
+        //    if (curentDay
+        //
+        //    
+        //        == 31) {
+        //            System.out.println("Mesec ima 31 dan");
+        //        return;
+        //    }
+        //
+        //    if (curentDay == 30 && (month == 4 || month == 6
+        //                || month == 9 || month
+        //
+        //    
+        //        == 11)) {
+        //            System.out.println("Mesec ima 30 dan");
+        //        return;
+        //    }
+        //
+        //    if (month == 2 && (curentDay == 28 || curentDay
+        //
+        //    
+        //        == 29)) {
+        //            System.out.println("Mesec je februar");
+        //        return;
+        //    }
+        //
+        //    System.out.println (
+        //
+        //"Trenutno je " + curentDay + "-i dan u mesecu");
+    }
+
+    @Override
+    public String returnMonth(int num) {
+
+        switch (num) {
+            case 1:
+                return Constants.JANUARY;
+            case 2:
+                return Constants.FEBRUARY;
+            case 3:
+                return Constants.MARCH;
+            case 4:
+                return Constants.APRIL;
+            case 5:
+                return Constants.MAY;
+            case 6:
+                return Constants.JUNE;
+            case 7:
+                return Constants.JULY;
+            case 8:
+                return Constants.AUGUST;
+            case 9:
+                return Constants.SEPTEMBER;
+            case 10:
+                return Constants.OCTOBER;
+            case 11:
+                return Constants.NOVEMBER;
+            case 12:
+                return Constants.DECEMBER;
+        }
+        return Constants.EMPTY_STRING;
+    }
 }

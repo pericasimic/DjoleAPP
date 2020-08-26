@@ -56,6 +56,7 @@ public class LoginEvent implements EventHandler<ActionEvent> {
         Controller.getInstance().setMainPane(gp);
         Scene scena = new Scene(gp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
         Controller.getInstance().getPrimaryStage().setScene(scena);
+        Factory.getFacade().createNewCalculations();
 
         }
         

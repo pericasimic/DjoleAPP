@@ -7,6 +7,7 @@ import java.util.List;
 public class ResidentialCommunity implements Serializable {
 
     private String name;
+    private String city;
     private String identificationNumber;
     private String taxIdentificationNumber;
     private String mail;
@@ -17,9 +18,10 @@ public class ResidentialCommunity implements Serializable {
     private List<CommonSection> listCommonSections = new ArrayList<>();
 
  
-    public ResidentialCommunity(String name, String identificationNumber, String taxIdentificationNumber, String mail) {
+    public ResidentialCommunity(String name, String city, String identificationNumber, String taxIdentificationNumber, String mail) {
         
         this.name = name;
+        this.city = city;
         this.identificationNumber = identificationNumber;
         this.taxIdentificationNumber = taxIdentificationNumber;
         this.mail = mail;
@@ -96,6 +98,16 @@ public class ResidentialCommunity implements Serializable {
     public List<CommonSection> getListCommonSections() {
         return listCommonSections;
     }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+    
+    
 
     @Override
     public String toString() {

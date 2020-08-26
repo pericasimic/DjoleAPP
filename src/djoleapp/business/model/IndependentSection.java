@@ -6,11 +6,13 @@ public class IndependentSection implements Serializable {
 
     private String name;
     private String note;
+    private ResidentialCommunity residentialCommunity;
     private Occupant owner;
     private double pricePerMonth;
 
-    public IndependentSection(String name) {
+    public IndependentSection(String name, ResidentialCommunity residentialCommunity) {
         this.name = name;
+        this.residentialCommunity = residentialCommunity;
     }
 
     public String getName() {
@@ -43,6 +45,14 @@ public class IndependentSection implements Serializable {
 
     public void setPricePerMonth(double pricePerMonth) {
         this.pricePerMonth = pricePerMonth;
+    }
+
+    public ResidentialCommunity getResidentialCommunity() {
+        return residentialCommunity;
+    }
+
+    public void setResidentialCommunity(ResidentialCommunity residentialCommunity) {
+        this.residentialCommunity = residentialCommunity;
     }
     
     

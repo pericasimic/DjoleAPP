@@ -37,6 +37,7 @@ public class SerStorage implements Storage {
             return new ArrayList<>();
         } catch (ClassNotFoundException ex) {
             Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_LOAD_ADMIN);
+            ex.printStackTrace();
             System.exit(0);
             return null;
         }
@@ -50,6 +51,7 @@ public class SerStorage implements Storage {
             oos.close();
         } catch (Exception ex) {
             Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_WRITE_ADMIN);
+            ex.printStackTrace();
             System.exit(0);
         }
     }
@@ -66,6 +68,7 @@ public class SerStorage implements Storage {
             return new ArrayList<>();
         } catch (ClassNotFoundException ex) {
             Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_LOAD_BUILDING);
+            ex.printStackTrace();
             System.exit(0);
             return null;
         }
@@ -80,6 +83,7 @@ public class SerStorage implements Storage {
             oos.close();
         } catch (Exception ex) {
             Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_WRITE_BUILDING);
+            ex.printStackTrace();
             System.exit(0);
         }
 
@@ -96,6 +100,7 @@ public class SerStorage implements Storage {
             return new ArrayList();
         } catch (ClassNotFoundException ex) {
             Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_LOAD_OCCUPANT);
+            ex.printStackTrace();
             System.exit(0);
             return null;
         }

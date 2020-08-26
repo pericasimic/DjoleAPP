@@ -30,6 +30,7 @@ public class ListBuildingsPane extends VBox {
     private TextField tidNumBuildingFld = new TextField();
     private TextField mailBuildingFld = new TextField();
     private TextField searchBuildingFld = new TextField();
+    private TextField cityBuildingFld = new TextField();
 
     private Button addBuildingBtn = new Button(Constants.BUTTON_ADD);
     private Button removeBuildingBtn = new Button(Constants.BUTTON_REMOVE);
@@ -57,9 +58,13 @@ public class ListBuildingsPane extends VBox {
         TableColumn mailNumBuildingCol = new TableColumn(Constants.MAIL);
         mailNumBuildingCol.setMinWidth(150);
         mailNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("mail"));
+        
+        TableColumn cityNumBuildingCol = new TableColumn(Constants.CITY);
+        cityNumBuildingCol.setMinWidth(150);
+        cityNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("city"));
 
         reload();
-        tableBuildings.getColumns().addAll(nameBuildingCol, idNumBuildingCol, taxNumBuildingCol, mailNumBuildingCol);
+        tableBuildings.getColumns().addAll(nameBuildingCol, idNumBuildingCol, taxNumBuildingCol, mailNumBuildingCol, cityNumBuildingCol);
         getChildren().addAll(titleLbl, getSearch(), tableBuildings, getForm());
 
     }
@@ -102,6 +107,9 @@ public class ListBuildingsPane extends VBox {
 
         mailBuildingFld.setMaxWidth(USE_PREF_SIZE);
         mailBuildingFld.setPromptText(Constants.MAIL);
+        
+        cityBuildingFld.setMaxWidth(USE_PREF_SIZE);
+        cityBuildingFld.setPromptText(Constants.CITY);
 
         addBuildingBtn.setOnAction(Controller.getInstance().getManagerEvent().getAddBuildingEvent());
         addBuildingBtn.setOnKeyPressed(e -> {
@@ -119,7 +127,7 @@ public class ListBuildingsPane extends VBox {
 
         });
         
-        hbox.getChildren().addAll(nameBuildingFld, idNumBuildingFld, tidNumBuildingFld, mailBuildingFld, removeBuildingBtn, addBuildingBtn);
+        hbox.getChildren().addAll(nameBuildingFld, cityBuildingFld, idNumBuildingFld, tidNumBuildingFld, mailBuildingFld, removeBuildingBtn, addBuildingBtn);
         return hbox;
     }
 
@@ -128,6 +136,7 @@ public class ListBuildingsPane extends VBox {
         idNumBuildingFld.setText(Constants.EMPTY_STRING);
         tidNumBuildingFld.setText(Constants.EMPTY_STRING);
         mailBuildingFld.setText(Constants.EMPTY_STRING);
+        cityBuildingFld.setText(Constants.EMPTY_STRING);
     }
 
     public void reload() {
@@ -176,6 +185,14 @@ public class ListBuildingsPane extends VBox {
 
     public TableView<ResidentialCommunity> getTableBuildings() {
         return tableBuildings;
+    }
+
+    public TextField getCityBuildingFld() {
+        return cityBuildingFld;
+    }
+
+    public void setCityBuildingFld(TextField cityBuildingFld) {
+        this.cityBuildingFld = cityBuildingFld;
     }
     
     

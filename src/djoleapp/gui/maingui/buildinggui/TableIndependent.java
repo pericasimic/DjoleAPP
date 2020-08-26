@@ -2,6 +2,7 @@ package djoleapp.gui.maingui.buildinggui;
 
 import djoleapp.business.model.IndependentSection;
 import djoleapp.business.model.Occupant;
+import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.constant.Constants;
 import java.util.List;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -38,9 +39,13 @@ public class TableIndependent extends TableView<IndependentSection> {
         TableColumn priceCol = new TableColumn(Constants.PRICE_PER_MONTH);
         priceCol.setMinWidth(150);
         priceCol.setCellValueFactory(new PropertyValueFactory<IndependentSection, Double>("pricePerMonth"));
+        
+        TableColumn buildingCol = new TableColumn(Constants.BUILDING);
+        buildingCol.setMinWidth(150);
+        buildingCol.setCellValueFactory(new PropertyValueFactory<IndependentSection, ResidentialCommunity>("residentialCommunity"));
 
         this.setItems(FXCollections.observableArrayList(list));
-        this.getColumns().addAll(numOrder, nameCol, ownerCol, priceCol);
+        this.getColumns().addAll(numOrder, nameCol, ownerCol, priceCol, buildingCol);
     }
 
 }

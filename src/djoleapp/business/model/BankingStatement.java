@@ -1,6 +1,8 @@
 package djoleapp.business.model;
 
-public class BankingStatement {
+import java.io.Serializable;
+
+public class BankingStatement implements Serializable{
     
     private long id;
     private String numberStatement;

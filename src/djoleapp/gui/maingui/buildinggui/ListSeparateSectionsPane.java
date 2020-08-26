@@ -8,10 +8,12 @@ import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableRow;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class ListSeparateSectionsPane extends VBox {
 
@@ -19,8 +21,12 @@ public class ListSeparateSectionsPane extends VBox {
     private Button addBtn = new Button(Constants.BUTTON_ADD);
     private Button deleteBtn = new Button(Constants.BUTTON_REMOVE);
     private Button backBtn = new Button(Constants.BUTTON_BACK);
+    private Label title = new Label(Constants.SEPARATE_SECTIONS);
 
     public ListSeparateSectionsPane(List<SeparateSection> list) {
+        
+        title.setFont(new Font(Constants.FONT_ARIAL, 20));
+        
         commonMade();
         tableSection = new TableSection(list);
 
@@ -38,7 +44,7 @@ public class ListSeparateSectionsPane extends VBox {
 
         });
 
-        this.getChildren().addAll(tableSection, hBox1);
+        this.getChildren().addAll(title, tableSection, hBox1);
     }
 
     public ListSeparateSectionsPane(List<SeparateSection> list, HBox hBox) {
