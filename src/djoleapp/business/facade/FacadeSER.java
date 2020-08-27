@@ -6,6 +6,7 @@ import djoleapp.business.model.Administrator;
 import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.BusinessSpace;
 import djoleapp.business.model.CommonSection;
+import djoleapp.business.model.Debit;
 import djoleapp.business.model.Flat;
 import djoleapp.business.model.Garage;
 import djoleapp.business.model.IndependentSection;
@@ -757,45 +758,64 @@ public class FacadeSER implements Facade {
 
     @Override
     public void createNewCalculations() {
+        
+        for(Occupant o :Controller.getInstance().getTemporaryList().getOccupants()){
+            o.getSections().clear();
+        }
 
         Date currentDate = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_MONTH, 7);
         Date delayDate = calendar.getTime();
 
-        for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
-            for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
-                if (!rc.getListSeparationSection().isEmpty()) {
-                    List<PaymentItems> itemses = new ArrayList<>();
-                    double sumItems = 0;
-                    double tempDebit = 0;
-                    for (SeparateSection s : rc.getListSeparationSection()) {
-                        double debit = 0;
-                        if (s.getOwner() != null && s.getOwner().getId() == o.getId()) {
-                            tempDebit = s.getDebit();
-                            PaymentItems paymentItems = new PaymentItems(s);
-                            itemses.add(paymentItems);
-                            debit += s.getDebit() + paymentItems.getSum();
-                            s.setDebit(debit);
-                            
-                        }
-                    }
-                    for (PaymentItems p : itemses) {
-                        sumItems += p.getSum();
-                    }
-                    if (!itemses.isEmpty()) {
-                        AccountCalculation ac = new AccountCalculation(rc, o, currentDate.toString(), currentDate, delayDate, itemses, sumItems, tempDebit, sumItems + tempDebit);
-                        ac.setMonth(Factory.getFacade().returnMonth(calendar.get(Calendar.MONTH)));
-                        o.getListAccountCalc().add(ac);
-                        o.setSum(sumItems + o.getSum());
+        for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
+            for (SeparateSection ss : rc.getListSeparationSection()) {
+                for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
+                    if (ss.getOwner() != null && ss.getOwner().getId() == o.getId()) {
+                        o.getSections().add(ss);
                     }
                 }
-
             }
         }
 
-        List<Occupant> list = Controller.getInstance().getTemporaryList().getOccupants();
-        System.out.println(list);
+        for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
+            for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
+                if (!o.getSections().isEmpty()) {
+                    List<PaymentItems> itemses = new ArrayList<>();
+                    for (SeparateSection s : o.getSections()) {
+                        if (s.getResidentialCommunity().getTaxIdentificationNumber().equalsIgnoreCase(rc.getTaxIdentificationNumber())) {
+                            PaymentItems paymentItems = new PaymentItems(s);
+                            itemses.add(paymentItems);
+                        }
+                    }
+
+                    double sumItems = 0;
+                    for (PaymentItems p : itemses) {
+                        sumItems += p.getSum();
+                    }
+
+                    double preDebit = 0;
+                    boolean empty = true;
+
+                    for (Debit d : o.getDebits()) {
+                        if (d.getResidentialCommunity().getTaxIdentificationNumber().equalsIgnoreCase(rc.getTaxIdentificationNumber())) {
+                            preDebit = d.getDebit();
+                            d.setDebit(preDebit + sumItems);
+                            empty = false;
+                        }
+                    }
+
+                    if (empty == true) {
+                        Debit debit = new Debit(rc, sumItems);
+                        o.getDebits().add(debit);
+                    }
+
+                    AccountCalculation ac = new AccountCalculation(rc, o, currentDate.toString(), currentDate, delayDate, itemses, sumItems, preDebit, sumItems + preDebit);
+                    ac.setMonth(Factory.getFacade().returnMonth(calendar.get(Calendar.MONTH)));
+                    o.getListAccountCalc().add(ac);
+                }
+            }
+        }
 
         //    int month = cal.get(Calendar.MONTH);
         //    int curentDay = cal.get(Calendar.DAY_OF_MONTH);

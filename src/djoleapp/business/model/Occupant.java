@@ -13,8 +13,10 @@ public class Occupant implements Serializable {
     private String phoneNumber;
     private String mail;
     private String note;
-    private double sum = 0;
+    private double sum;
     private Flat home;
+    private List<SeparateSection> sections = new ArrayList<>();
+    private List<Debit> debits = new ArrayList<>();
     private List<BankAccount> bankAccounts = new ArrayList<>();
     private List<AccountCalculation> listAccountCalc = new ArrayList<>();
     private List<BankingStatement> listStatements = new ArrayList<>();
@@ -22,7 +24,7 @@ public class Occupant implements Serializable {
 
     public Occupant() {
     }
-    
+
     public Occupant(long id) {
         this.id = id;
     }
@@ -34,6 +36,22 @@ public class Occupant implements Serializable {
         this.identificationNumber = identificationNumber;
         this.phoneNumber = phoneNumber;
         this.mail = mail;
+    }
+
+    public void setSections(List<SeparateSection> sections) {
+        this.sections = sections;
+    }
+
+    public List<SeparateSection> getSections() {
+        return sections;
+    }
+
+    public List<Debit> getDebits() {
+        return debits;
+    }
+
+    public void setDebits(List<Debit> debits) {
+        this.debits = debits;
     }
 
     public String getFirstNameOccupant() {
@@ -117,6 +135,11 @@ public class Occupant implements Serializable {
     }
 
     public double getSum() {
+        double sumAll = 0;
+        for (Debit d : debits) {
+            sumAll += d.getDebit();
+        }
+        sum = sumAll;
         return sum;
     }
 

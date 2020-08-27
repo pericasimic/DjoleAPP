@@ -159,5 +159,6 @@ public class Constants {
     public static final String MONTH = "Mesec";
     public static final String NUMBER_CALCULATION = "Broj računa";
     public static final String SUM_CALCULATION = "Iznos za uplatu";
+    public static final String SUM_ALL = "Ukupno za uplatu";
     
 }

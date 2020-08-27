@@ -47,9 +47,13 @@ public class TableCalculations extends TableView<AccountCalculation>{
         sumCol.setMinWidth(150);
         sumCol.setCellValueFactory(new PropertyValueFactory<AccountCalculation, Double>("debitCurentMonth"));
         
+        TableColumn sumAllCol = new TableColumn(Constants.SUM_ALL);
+        sumAllCol.setMinWidth(150);
+        sumAllCol.setCellValueFactory(new PropertyValueFactory<AccountCalculation, Double>("sum"));
+        
 
         this.setItems(FXCollections.observableArrayList(list));
-        this.getColumns().addAll(numOrder, buildingCol, ownerCol, monthCol, numberCol, sumCol);
+        this.getColumns().addAll(numOrder, buildingCol, ownerCol, monthCol, numberCol, sumCol, sumAllCol);
         
     }
   
