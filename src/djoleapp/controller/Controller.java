@@ -1,5 +1,6 @@
 package djoleapp.controller;
 
+import djoleapp.business.model.AccountCalculation;
 import djoleapp.business.model.BusinessSpace;
 import djoleapp.business.model.Flat;
 import djoleapp.business.model.Garage;
@@ -13,7 +14,7 @@ import djoleapp.controller.event.ManagerEvent;
 import djoleapp.gui.LoginPane;
 import djoleapp.gui.admingui.AddAdminPane;
 import djoleapp.gui.maingui.MainPane;
-import djoleapp.gui.maingui.accountcalculationgui.AccountCalculationPane;
+import djoleapp.gui.maingui.finance.AccountCalculationPane;
 import djoleapp.gui.maingui.buildinggui.AddCommonPane;
 import djoleapp.gui.maingui.buildinggui.AddIndependentPane;
 import djoleapp.gui.maingui.buildinggui.AddSeparatePane;
@@ -32,6 +33,7 @@ import djoleapp.gui.maingui.buildinggui.TableCommon;
 import djoleapp.gui.maingui.buildinggui.TableIndependent;
 import djoleapp.gui.maingui.buildinggui.TableSection;
 import djoleapp.gui.maingui.buildinggui.TopHBoxBuildingPane;
+import djoleapp.gui.maingui.finance.CalculationPane;
 import djoleapp.gui.maingui.finance.TableCalculations;
 import djoleapp.gui.maingui.occupantgui.AddAccountOccupantPane;
 import djoleapp.gui.maingui.occupantgui.AddOccupantPane;
@@ -69,6 +71,7 @@ public class Controller {
     private ListCommonSectionPane listCommonSectionPane;
     private AddSeparatePane addSeparatePane;
     private Occupant temporaryOccupant;
+    private AccountCalculation temporaryAccountCalculation;
     private Flat temporaryFlat;
     private ParkingBox temporaryParkingBox;
     private ParkingSpace temporaryParkingSpace;
@@ -84,6 +87,7 @@ public class Controller {
     private AddCommonPane addCommonPane;
     private TableCalculations tableCalculations;
     private AccountCalculationPane accountCalculationPane;
+    private CalculationPane calculationPane;
     private double pricePerMonthFlat = 7.82;
     private double pricePerMonthBox = 4.69;
     private double pricePerMonthSpace = 5.69;
@@ -100,6 +104,23 @@ public class Controller {
             instance = new Controller();
         }
         return instance;
+    }
+
+    public AccountCalculation getTemporaryAccountCalculation() {
+        return temporaryAccountCalculation;
+    }
+
+    public void setTemporaryAccountCalculation(AccountCalculation temporaryAccountCalculation) {
+        this.temporaryAccountCalculation = temporaryAccountCalculation;
+    }
+
+
+    public void setCalculationPane(CalculationPane calculationPane) {
+        this.calculationPane = calculationPane;
+    }
+
+    public CalculationPane getCalculationPane() {
+        return calculationPane;
     }
 
     public void setAccountCalculationPane(AccountCalculationPane accountCalculationPane) {

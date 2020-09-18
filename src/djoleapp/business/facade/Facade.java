@@ -8,6 +8,7 @@ import djoleapp.business.model.Occupant;
 import djoleapp.business.model.PaymentItems;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.business.model.SeparateSection;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,9 +19,9 @@ public interface Facade {
 
     public boolean loginAdminCheck(final String username, final String password);
 
-    public boolean checkAddBuildingFieldsEmpty(String name, String city, String idNum, String taxNum, String mail);
+    public boolean checkAddBuildingFieldsEmpty(String name, String number, String city, String idNum, String taxNum, String mail);
 
-    public boolean checkAddBuildingFieldExist(String name, String city, String idNum, String taxNum, String mail);
+    public boolean checkAddBuildingFieldExist(String name, String number, String city, String idNum, String taxNum, String mail);
 
     public boolean chackExistOccupantBuilding(ResidentialCommunity r, Occupant o);
     
@@ -81,5 +82,9 @@ public interface Facade {
     public List<PaymentItems> getListPayment(ResidentialCommunity residentialCommunity, Occupant o);
     
     public String returnMonth(int num);
+    
+    public String numberCalculation(ResidentialCommunity residentialCommunity, Occupant o, Date date);
+    
+    public String getDateFormat(Date date);
     
 }

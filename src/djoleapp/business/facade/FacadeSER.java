@@ -23,6 +23,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -109,8 +111,8 @@ public class FacadeSER implements Facade {
     }
 
     @Override
-    public boolean checkAddBuildingFieldsEmpty(String name, String city, String idNum, String taxNum, String mail) {
-        if (name.isEmpty() || name == null || city.isEmpty() || city == null || idNum.isEmpty() || idNum == null || taxNum.isEmpty() || taxNum == null || mail.isEmpty() || mail == null) {
+    public boolean checkAddBuildingFieldsEmpty(String name, String number, String city, String idNum, String taxNum, String mail) {
+        if (name.isEmpty() || name == null || number.isEmpty() || number == null || city.isEmpty() || city == null || idNum.isEmpty() || idNum == null || taxNum.isEmpty() || taxNum == null || mail.isEmpty() || mail == null) {
             Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
             return true;
         }
@@ -118,10 +120,10 @@ public class FacadeSER implements Facade {
     }
 
     @Override
-    public boolean checkAddBuildingFieldExist(String name, String city, String idNum, String taxNum, String mail) {
+    public boolean checkAddBuildingFieldExist(String name, String number, String city, String idNum, String taxNum, String mail) {
 
         for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
-            if (rc.getName().replaceAll("\\s+", "").equalsIgnoreCase(name.replaceAll("\\s+", "")) || rc.getIdentificationNumber().replaceAll("\\s+", "").equalsIgnoreCase(idNum.replaceAll("\\s+", ""))
+            if ((rc.getName() + rc.getNumber()).replaceAll("\\s+", "").equalsIgnoreCase(name.replaceAll("\\s+", "")) || rc.getIdentificationNumber().replaceAll("\\s+", "").equalsIgnoreCase(idNum.replaceAll("\\s+", ""))
                     || rc.getTaxIdentificationNumber().replaceAll("\\s+", "").equalsIgnoreCase(taxNum.replaceAll("\\s+", "")) || rc.getMail().replaceAll("\\s+", "").equalsIgnoreCase(mail.replaceAll("\\s+", ""))) {
                 Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_BUILDING_EXIST);
                 return true;
@@ -758,15 +760,16 @@ public class FacadeSER implements Facade {
 
     @Override
     public void createNewCalculations() {
-        
-        for(Occupant o :Controller.getInstance().getTemporaryList().getOccupants()){
+
+        for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
             o.getSections().clear();
         }
 
         Date currentDate = new Date();
+        Date deadlineDate = new Date();
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DAY_OF_MONTH, 7);
-        Date delayDate = calendar.getTime();
+        calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+        deadlineDate = calendar.getTime();
 
         for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
             for (SeparateSection ss : rc.getListSeparationSection()) {
@@ -810,7 +813,8 @@ public class FacadeSER implements Facade {
                         o.getDebits().add(debit);
                     }
 
-                    AccountCalculation ac = new AccountCalculation(rc, o, currentDate.toString(), currentDate, delayDate, itemses, sumItems, preDebit, sumItems + preDebit);
+                    AccountCalculation ac = new AccountCalculation(rc, o, Factory.getFacade().numberCalculation(rc, o,
+                            currentDate), currentDate, deadlineDate, itemses, sumItems, preDebit, sumItems + preDebit);
                     ac.setMonth(Factory.getFacade().returnMonth(calendar.get(Calendar.MONTH)));
                     o.getListAccountCalc().add(ac);
                 }
@@ -880,5 +884,25 @@ public class FacadeSER implements Facade {
                 return Constants.DECEMBER;
         }
         return Constants.EMPTY_STRING;
+    }
+
+    @Override
+    public String numberCalculation(ResidentialCommunity residentialCommunity, Occupant o, Date date) {
+        String firstTwo = "";
+        if (residentialCommunity.getName().length() > 2) {
+            firstTwo = residentialCommunity.getName().substring(0, 2);
+        }
+        String pattern = "M-yy";
+        DateFormat df = new SimpleDateFormat(pattern);
+        date = Calendar.getInstance().getTime();
+        String todayAsString = df.format(date);
+        return firstTwo.toUpperCase() + residentialCommunity.getNumber() + " - " + o.getId() + " - " + todayAsString;
+    }
+
+    @Override
+    public String getDateFormat(Date date) {
+        String pattern = "dd/MM/yyyy";
+        DateFormat df = new SimpleDateFormat(pattern);
+        return df.format(date);
     }
 }

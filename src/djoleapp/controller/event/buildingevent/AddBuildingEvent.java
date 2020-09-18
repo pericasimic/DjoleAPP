@@ -23,23 +23,24 @@ public class AddBuildingEvent implements EventHandler<ActionEvent> {
         ListBuildingsPane lp = Controller.getInstance().getListBuildingsPane();
 
         String name = lp.getNameBuildingFld().getText();
+        String number = lp.getNumberBuildingFld().getText();
         String idNumber = lp.getIdNumBuildingFld().getText();
         String taxNumber = lp.getTidNumBuildingFld().getText();
         String mail = lp.getMailBuildingFld().getText();
         String city = lp.getCityBuildingFld().getText();
         List<ResidentialCommunity> list = Controller.getInstance().getTemporaryList().getResidentialCommunitys();
 
-        if (Factory.getFacade().checkAddBuildingFieldsEmpty(name, city, idNumber, taxNumber, mail)) {
+        if (Factory.getFacade().checkAddBuildingFieldsEmpty(name, number, city, idNumber, taxNumber, mail)) {
             lp.clearAllFields();
             return;
         }
 
-        if (Factory.getFacade().checkAddBuildingFieldExist(name, city, idNumber, taxNumber, mail)) {
+        if (Factory.getFacade().checkAddBuildingFieldExist(name, number, city, idNumber, taxNumber, mail)) {
             lp.clearAllFields();
             return;
         }
 
-        ResidentialCommunity rc = new ResidentialCommunity(name, city, idNumber, taxNumber, mail);
+        ResidentialCommunity rc = new ResidentialCommunity(name, number, city, idNumber, taxNumber, mail);
         Controller.getInstance().getTemporaryList().getResidentialCommunitys().add(rc);
         Message.info(Alert.AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_BUILDING);
         lp.clearAllFields();

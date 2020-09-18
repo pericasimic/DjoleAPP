@@ -1,5 +1,7 @@
 package djoleapp.controller.constant;
 
+import javafx.scene.text.Text;
+
 public class Constants {
 
     public static final String TITLE_LOGIN = "Prijava na aplikaciju";
@@ -78,10 +80,12 @@ public class Constants {
     public static final String SAVE = "Snimi";
     public static final String EXIT = "Izlaz";
     public static final String PRINT = "Stampaj";
+    public static final String EXPORT_TO_PDF = "Izvezi u PDF";
     public static final String SUCCESS_SAVE = "Uspesno je sacuvano";
     public static final String SUCCESS_DELETE = "Uspesno je obrisano";
     public static final String EMPTY_STRING = "";
     public static final String DEBIT = "Zaduzenje";
+    public static final String DEBIT_FOR = "Zaduženje za";
     public static final String FROM_PREVIOUS_PERIOD = "iz prethodnog perioda";
     public static final String MENU_ITEM_BUILDING_LIST = "Lista zgrada...";
     public static final String MENU_ITEM_BUILDING_DETAILS = "Detalji o zgradi...";
@@ -99,7 +103,7 @@ public class Constants {
     public static final String BUTTON_CANCEL = "Otkazi";
     public static final String NAME_OF_BUILDING = "Naziv zgrade";
     public static final String ID = "ID";
-    public static final String ID_NUM = "Maticni broj";
+    public static final String ID_NUM = "MB";
     public static final String TAX_NUM_BUILDING = "PIB";
     public static final String MAIL = "Mejl adresa";
     public static final String NOTE = "Napomena";
@@ -130,7 +134,7 @@ public class Constants {
     public static final String INDEPENDENT_SECTIONS = "Samostalni delovi";
     public static final String COMMON_SECTIONS = "Zajednicki delovi";
     public static final String SHOW_ALL_OCCUPANTS = "Prikazi sve stanare u listi";
-    public static final String PAYMENT_ITEM_STRING_I = "Investiciono odrzavanje za (";
+    public static final String PAYMENT_ITEM_STRING_I = "Investiciono odrzavanje za ";
     public static final String PAYMENT_ITEM_STRING_II = "din./m2)";
     public static final double PARKING_BOX_PRICE = 4.69;
     public static final double PARKING_SPACE_PRICE = 5.69;
@@ -160,5 +164,9 @@ public class Constants {
     public static final String NUMBER_CALCULATION = "Broj računa";
     public static final String SUM_CALCULATION = "Iznos za uplatu";
     public static final String SUM_ALL = "Ukupno za uplatu";
-    
+    public static final String STATUS = "Status";
+    public static final String ACCOUNT_CALCULATION_FOR = "Račun-Obračun za ";
+    public static final String DATE_DELIVERY = "Datum dostave:";
+    public static final String DATE_DEADLINE = "Rok za plaćanje:";
+
 }

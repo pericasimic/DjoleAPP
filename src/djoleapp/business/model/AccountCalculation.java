@@ -11,7 +11,7 @@ public class AccountCalculation implements Serializable {
     private ResidentialCommunity residentialCommunity;
     private Occupant occupant;
     private String month;
-    private String titleNumber;
+    private String calculationNumber;
     private Date dateOfDelivery;
     private Date paymentDeadline;
     private List<PaymentItems> itemses;
@@ -26,12 +26,12 @@ public class AccountCalculation implements Serializable {
     }
 
     public AccountCalculation(ResidentialCommunity residentialCommunity, Occupant occupant,
-            String titleNumber, Date dateOfDelivery, Date paymentDeadline,
+            String calculationNumber, Date dateOfDelivery, Date paymentDeadline,
             List<PaymentItems> itemses, double debitCurentMonth,
             double debitPreviousMonth, double sum) {
         this.residentialCommunity = residentialCommunity;
         this.occupant = occupant;
-        this.titleNumber = titleNumber;
+        this.calculationNumber = calculationNumber;
         this.dateOfDelivery = dateOfDelivery;
         this.paymentDeadline = paymentDeadline;
         this.itemses = itemses;
@@ -64,13 +64,14 @@ public class AccountCalculation implements Serializable {
         this.occupant = occupant;
     }
 
-    public String getTitleNumber() {
-        return titleNumber;
+    public void setCalculationNumber(String calculationNumber) {
+        this.calculationNumber = calculationNumber;
     }
 
-    public void setTitleNumber(String titleNumber) {
-        this.titleNumber = titleNumber;
+    public String getCalculationNumber() {
+        return calculationNumber;
     }
+
 
     public Date getDateOfDelivery() {
         return dateOfDelivery;
@@ -102,6 +103,14 @@ public class AccountCalculation implements Serializable {
 
     public void setDebitPreviousMonth(double debitPreviousMonth) {
         this.debitPreviousMonth = debitPreviousMonth;
+    }
+    
+    public String getPaid(){
+        if(isPaid == true){
+            return "Plaćeno";
+        }else{
+            return "Neuplaćen";
+        }
     }
 
     public double getSum() {

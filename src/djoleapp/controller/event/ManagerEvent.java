@@ -1,5 +1,6 @@
 package djoleapp.controller.event;
 
+import djoleapp.business.model.AccountCalculation;
 import djoleapp.controller.event.adminevent.AddAdminEvent;
 import djoleapp.controller.event.adminevent.LoginEvent;
 import djoleapp.controller.event.adminevent.LogoutEvent;
@@ -29,6 +30,9 @@ import djoleapp.controller.event.buildingevent.RemoveIndSectionEvent;
 import djoleapp.controller.event.buildingevent.RemoveSeparateSectionEvent;
 import djoleapp.controller.event.buildingevent.SearchBuildingEvent;
 import djoleapp.controller.event.buildingevent.ShowSelectBuildTableEvent;
+import djoleapp.controller.event.financeevent.AccountCalculationDetailsEvent;
+import djoleapp.controller.event.financeevent.BackAccountCalEvent;
+import djoleapp.controller.event.financeevent.CreatePdfCalculaionEvent;
 import djoleapp.controller.event.occupantevent.AddAccountOccupantEvent;
 import djoleapp.controller.event.occupantevent.AddOccupantEvent;
 import djoleapp.controller.event.occupantevent.BackAddAccountOccupantEvent;
@@ -87,6 +91,9 @@ public class ManagerEvent {
     private SearchUserEvent searchUserEvent = null;
     private RemoveUserEvent removeUserEvent = null;
     private ShowSelectListsOccupantEvent showSelectListsOccupantEvent = null;
+    private BackAccountCalEvent backAccountCalEvent = null;
+    private AccountCalculationDetailsEvent accountCalculationDetailsEvent = null;
+    private CreatePdfCalculaionEvent createPdfCalculaionEvent = null;
 
     public ManagerEvent() {
 
@@ -130,7 +137,25 @@ public class ManagerEvent {
         searchUserEvent = new SearchUserEvent();
         removeUserEvent = new RemoveUserEvent();
         showSelectListsOccupantEvent = new ShowSelectListsOccupantEvent();
+        backAccountCalEvent = new BackAccountCalEvent();
+        accountCalculationDetailsEvent = new AccountCalculationDetailsEvent();
+        createPdfCalculaionEvent = new CreatePdfCalculaionEvent();
+    }
 
+    public AccountCalculationDetailsEvent getAccountCalculationDetailsEvent() {
+        return accountCalculationDetailsEvent;
+    }
+
+    public CreatePdfCalculaionEvent getCreatePdfCalculaionEvent() {
+        return createPdfCalculaionEvent;
+    }
+
+    public void getAccountCalculationDetailsEvent(AccountCalculation accountCalculation) {
+        accountCalculationDetailsEvent.showAccountCalculation(accountCalculation);
+    }
+
+    public BackAccountCalEvent getBackAccountCalEvent() {
+        return backAccountCalEvent;
     }
 
     public ShowSelectListsOccupantEvent getShowSelectListsOccupantEvent() {

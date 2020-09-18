@@ -1,7 +1,6 @@
 package djoleapp.gui.maingui.finance;
 
 import djoleapp.business.model.AccountCalculation;
-import djoleapp.business.model.Flat;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.constant.Constants;
@@ -36,24 +35,32 @@ public class TableCalculations extends TableView<AccountCalculation>{
         ownerCol.setCellValueFactory(new PropertyValueFactory<AccountCalculation, Occupant>("occupant"));
 
         TableColumn monthCol = new TableColumn(Constants.MONTH);
-        monthCol.setMinWidth(150);
+        monthCol.setMinWidth(80);
         monthCol.setCellValueFactory(new PropertyValueFactory<AccountCalculation, String>("month"));
 
         TableColumn numberCol = new TableColumn(Constants.NUMBER_CALCULATION);
         numberCol.setMinWidth(150);
-        numberCol.setCellValueFactory(new PropertyValueFactory<AccountCalculation, String>("titleNumber"));
+        numberCol.setCellValueFactory(new PropertyValueFactory<AccountCalculation, String>("calculationNumber"));
 
         TableColumn sumCol = new TableColumn(Constants.SUM_CALCULATION);
-        sumCol.setMinWidth(150);
+        sumCol.setMinWidth(80);
         sumCol.setCellValueFactory(new PropertyValueFactory<AccountCalculation, Double>("debitCurentMonth"));
         
         TableColumn sumAllCol = new TableColumn(Constants.SUM_ALL);
         sumAllCol.setMinWidth(150);
         sumAllCol.setCellValueFactory(new PropertyValueFactory<AccountCalculation, Double>("sum"));
         
+        TableColumn isPaidCol = new TableColumn(Constants.STATUS);
+        isPaidCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<AccountCalculation, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<AccountCalculation, String> o) {
+                return new ReadOnlyObjectWrapper(o.getValue().getPaid());
+            }
+        });
+        
 
         this.setItems(FXCollections.observableArrayList(list));
-        this.getColumns().addAll(numOrder, buildingCol, ownerCol, monthCol, numberCol, sumCol, sumAllCol);
+        this.getColumns().addAll(numOrder, buildingCol, ownerCol, monthCol, numberCol, sumCol, sumAllCol, isPaidCol);
         
     }
   

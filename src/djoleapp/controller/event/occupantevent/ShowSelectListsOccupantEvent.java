@@ -5,7 +5,7 @@ import djoleapp.business.model.Occupant;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.gui.maingui.MainPane;
-import djoleapp.gui.maingui.accountcalculationgui.AccountCalculationPane;
+import djoleapp.gui.maingui.finance.AccountCalculationPane;
 import djoleapp.gui.maingui.buildinggui.ListIndependentSectionsPane;
 import djoleapp.gui.maingui.buildinggui.ListSeparateSectionsPane;
 import djoleapp.gui.maingui.occupantgui.SelectOcupantPane;

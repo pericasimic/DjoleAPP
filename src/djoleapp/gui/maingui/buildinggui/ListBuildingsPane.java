@@ -26,6 +26,7 @@ public class ListBuildingsPane extends VBox {
     private List<ResidentialCommunity> listBuildings = null;
 
     private TextField nameBuildingFld = new TextField();
+    private TextField numberBuildingFld = new TextField();
     private TextField idNumBuildingFld = new TextField();
     private TextField tidNumBuildingFld = new TextField();
     private TextField mailBuildingFld = new TextField();
@@ -46,6 +47,10 @@ public class ListBuildingsPane extends VBox {
         TableColumn nameBuildingCol = new TableColumn(Constants.NAME_OF_BUILDING);
         nameBuildingCol.setMinWidth(150);
         nameBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("name"));
+        
+        TableColumn numBuildingCol = new TableColumn(Constants.NUMBER);
+        numBuildingCol.setMinWidth(150);
+        numBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("number"));
 
         TableColumn idNumBuildingCol = new TableColumn(Constants.ID_NUM);
         idNumBuildingCol.setMinWidth(150);
@@ -64,7 +69,7 @@ public class ListBuildingsPane extends VBox {
         cityNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("city"));
 
         reload();
-        tableBuildings.getColumns().addAll(nameBuildingCol, idNumBuildingCol, taxNumBuildingCol, mailNumBuildingCol, cityNumBuildingCol);
+        tableBuildings.getColumns().addAll(nameBuildingCol, numBuildingCol, idNumBuildingCol, taxNumBuildingCol, mailNumBuildingCol, cityNumBuildingCol);
         getChildren().addAll(titleLbl, getSearch(), tableBuildings, getForm());
 
     }
@@ -98,11 +103,14 @@ public class ListBuildingsPane extends VBox {
 
         nameBuildingFld.setMaxWidth(USE_PREF_SIZE);
         nameBuildingFld.setPromptText(Constants.NAME_OF_BUILDING);
+        
+        numberBuildingFld.setMaxWidth(60);
+        numberBuildingFld.setPromptText(Constants.NUMBER);
 
-        idNumBuildingFld.setMaxWidth(USE_PREF_SIZE);
+        idNumBuildingFld.setMaxWidth(80);
         idNumBuildingFld.setPromptText(Constants.ID_NUM);
 
-        tidNumBuildingFld.setMaxWidth(USE_PREF_SIZE);
+        tidNumBuildingFld.setMaxWidth(80);
         tidNumBuildingFld.setPromptText(Constants.TAX_NUM_BUILDING);
 
         mailBuildingFld.setMaxWidth(USE_PREF_SIZE);
@@ -127,7 +135,7 @@ public class ListBuildingsPane extends VBox {
 
         });
         
-        hbox.getChildren().addAll(nameBuildingFld, cityBuildingFld, idNumBuildingFld, tidNumBuildingFld, mailBuildingFld, removeBuildingBtn, addBuildingBtn);
+        hbox.getChildren().addAll(nameBuildingFld, numberBuildingFld, cityBuildingFld, idNumBuildingFld, tidNumBuildingFld, mailBuildingFld, removeBuildingBtn, addBuildingBtn);
         return hbox;
     }
 
@@ -146,6 +154,15 @@ public class ListBuildingsPane extends VBox {
         tableBuildings.setItems(FXCollections.observableArrayList(listBuildings));
     }
 
+    public TextField getNumberBuildingFld() {
+        return numberBuildingFld;
+    }
+
+    public void setNumberBuildingFld(TextField numberBuildingFld) {
+        this.numberBuildingFld = numberBuildingFld;
+    }
+
+    
     public TextField getNameBuildingFld() {
         return nameBuildingFld;
     }

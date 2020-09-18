@@ -1,11 +1,9 @@
-package djoleapp.gui.maingui.accountcalculationgui;
+package djoleapp.gui.maingui.finance;
 
 import djoleapp.business.model.AccountCalculation;
 import djoleapp.business.model.Occupant;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
-import djoleapp.gui.maingui.finance.TableCalculations;
-import djoleapp.gui.maingui.occupantgui.TableOccupant;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
@@ -28,8 +26,7 @@ public class AccountCalculationPane extends VBox {
     
     private TableCalculations tableCalculations;
     
-    private Button addOccupantBtn = new Button(Constants.BUTTON_ADD);
-    private Button removeOccupantBtn = new Button(Constants.BUTTON_REMOVE);
+    private Button backBtn = new Button(Constants.BUTTON_BACK);
     private Button serchOccupantBtn = new Button(Constants.BUTTON_SEARCH);
     
     public AccountCalculationPane(Occupant o) {
@@ -45,7 +42,7 @@ public class AccountCalculationPane extends VBox {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     AccountCalculation rowData = row.getItem();
-//                    Controller.getInstance().getManagerEvent().getSelectOccupantEvent().selectOccupantEvent(rowData);
+                    Controller.getInstance().getManagerEvent().getAccountCalculationDetailsEvent(rowData);
                 }
             });
             return row;
@@ -85,23 +82,16 @@ public class AccountCalculationPane extends VBox {
         hbox.setPadding(new Insets(10, 10, 10, 10));
         hbox.setAlignment(Pos.CENTER);
         
-        addOccupantBtn.setOnAction(Controller.getInstance().getManagerEvent().getAddOccupantEvent());
-        addOccupantBtn.setOnKeyPressed(e -> {
+        backBtn.setOnAction(Controller.getInstance().getManagerEvent().getBackAccountCalEvent());
+        backBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getAddOccupantEvent().addOccupantEvent();
+                Controller.getInstance().getManagerEvent().getBackAccountCalEvent();
             }
             
         });
         
-        removeOccupantBtn.setOnAction(Controller.getInstance().getManagerEvent().getRemoveUserEvent());
-        removeOccupantBtn.setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getRemoveUserEvent();
-            }
-            
-        });
         
-        hbox.getChildren().addAll(removeOccupantBtn, addOccupantBtn);
+        hbox.getChildren().addAll(backBtn);
         return hbox;
     }
     

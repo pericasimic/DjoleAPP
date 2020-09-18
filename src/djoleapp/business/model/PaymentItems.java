@@ -11,7 +11,7 @@ public class PaymentItems implements Serializable{
 
     public PaymentItems(SeparateSection section) {
         double price = Factory.getFacade().pricePerArea(section);
-        item = Constants.PAYMENT_ITEM_STRING_I + price + Constants.PAYMENT_ITEM_STRING_II;
+        item = Constants.PAYMENT_ITEM_STRING_I +Factory.getFacade().kindOfSection(section)+" ("+ price + Constants.PAYMENT_ITEM_STRING_II;
         sum = Factory.getFacade().supportSum(price, section.getSurfaceArea());
 
     }
