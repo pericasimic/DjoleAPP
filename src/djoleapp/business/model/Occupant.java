@@ -167,4 +167,5 @@ public class Occupant implements Serializable {
     public String toString() {
         return id + ". " + firstNameOccupant + " " + lastNameOccupant;
     }
+    
 }

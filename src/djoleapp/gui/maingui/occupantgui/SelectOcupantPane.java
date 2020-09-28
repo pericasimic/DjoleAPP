@@ -128,10 +128,10 @@ public class SelectOcupantPane extends BorderPane {
 
         });
 
-        editBtn.setOnAction(Controller.getInstance().getManagerEvent().getConfirmAddOcupantEvent());
+        editBtn.setOnAction(Controller.getInstance().getManagerEvent().getEditOccupantEvent());
         editBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getConfirmAddOcupantEvent().confirmAddOcupantEvent();
+                Controller.getInstance().getManagerEvent().getEditOccupantEvent().editOccupantEvent();
             }
 
         });

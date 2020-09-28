@@ -1,5 +1,6 @@
 package djoleapp.business.facade;
 
+import djoleapp.business.model.AccountCalculation;
 import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.CommonSection;
 import djoleapp.business.model.Flat;
@@ -86,5 +87,7 @@ public interface Facade {
     public String numberCalculation(ResidentialCommunity residentialCommunity, Occupant o, Date date);
     
     public String getDateFormat(Date date);
+    
+    public void changeCalculationSum(AccountCalculation ac, double sum);
     
 }

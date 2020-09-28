@@ -34,9 +34,11 @@ import djoleapp.gui.maingui.buildinggui.TableIndependent;
 import djoleapp.gui.maingui.buildinggui.TableSection;
 import djoleapp.gui.maingui.buildinggui.TopHBoxBuildingPane;
 import djoleapp.gui.maingui.finance.CalculationPane;
+import djoleapp.gui.maingui.finance.EditCalculationPane;
 import djoleapp.gui.maingui.finance.TableCalculations;
 import djoleapp.gui.maingui.occupantgui.AddAccountOccupantPane;
 import djoleapp.gui.maingui.occupantgui.AddOccupantPane;
+import djoleapp.gui.maingui.occupantgui.EditOccupantPane;
 import djoleapp.gui.maingui.occupantgui.ListOccupantsPane;
 import djoleapp.gui.maingui.occupantgui.SelectOcupantPane;
 import djoleapp.gui.maingui.occupantgui.TableOccupant;
@@ -88,6 +90,8 @@ public class Controller {
     private TableCalculations tableCalculations;
     private AccountCalculationPane accountCalculationPane;
     private CalculationPane calculationPane;
+    private EditCalculationPane editCalculationPane;
+    private EditOccupantPane editOccupantPane;
     private double pricePerMonthFlat = 7.82;
     private double pricePerMonthBox = 4.69;
     private double pricePerMonthSpace = 5.69;
@@ -104,6 +108,22 @@ public class Controller {
             instance = new Controller();
         }
         return instance;
+    }
+
+    public EditOccupantPane getEditOccupantPane() {
+        return editOccupantPane;
+    }
+
+    public void setEditOccupantPane(EditOccupantPane editOccupantPane) {
+        this.editOccupantPane = editOccupantPane;
+    }
+    
+    public void setEditCalculationPane(EditCalculationPane editCalculationPane) {
+        this.editCalculationPane = editCalculationPane;
+    }
+
+    public EditCalculationPane getEditCalculationPane() {
+        return editCalculationPane;
     }
 
     public AccountCalculation getTemporaryAccountCalculation() {

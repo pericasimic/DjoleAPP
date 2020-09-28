@@ -102,6 +102,7 @@ public class Constants {
     public static final String BUTTON_SEARCH = "Pretraga";
     public static final String BUTTON_CANCEL = "Otkazi";
     public static final String NAME_OF_BUILDING = "Naziv zgrade";
+    public static final String EDIT_OCCUPANT = "Promena podataka korisnika: ";
     public static final String ID = "ID";
     public static final String ID_NUM = "MB";
     public static final String TAX_NUM_BUILDING = "PIB";

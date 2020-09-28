@@ -36,6 +36,7 @@ public class CalculationPane extends BorderPane {
     private final Label debitCurentMonthLbl = new Label();
     private final Label debitPreviousMonthLbl = new Label();
     private final Label sumLbl = new Label();
+    private Button backBtn = new Button(Constants.BUTTON_BACK);
     private Button changeBtn = new Button(Constants.BUTTON_EDIT);
     private Button pdfBtn = new Button(Constants.EXPORT_TO_PDF);
     LocalDate localDate;
@@ -88,16 +89,30 @@ public class CalculationPane extends BorderPane {
         vBox2.getChildren().addAll(calculateNumberLbl, dateOfDeliveryLbl, paymentDeadlineLbl, tableItems, debitCurentMonthLbl, debitPreviousMonthLbl, sumLbl);
         this.setCenter(vBox2);
         
+        changeBtn.setOnAction(Controller.getInstance().getManagerEvent().getEditCalculationEvent());
+        changeBtn.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                Controller.getInstance().getManagerEvent().getEditCalculationEvent().editCalculationEvent();
+            }
+        });
+        
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(3);
         hBox.setPadding(new Insets(10, 10, 10, 10));
-        hBox.getChildren().addAll(changeBtn, pdfBtn);
+        hBox.getChildren().addAll(backBtn, changeBtn, pdfBtn);
         
         pdfBtn.setOnAction(Controller.getInstance().getManagerEvent().getCreatePdfCalculaionEvent());
         pdfBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 Controller.getInstance().getManagerEvent().getCreatePdfCalculaionEvent().createPdfCalEvent();
+            }
+        });
+        
+        backBtn.setOnAction(Controller.getInstance().getManagerEvent().getShowSelectListsOccupantEvent());
+        backBtn.setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
+                Controller.getInstance().getManagerEvent().getShowSelectListsOccupantEvent().showSelectListsOccupantEvent();
             }
         });
         

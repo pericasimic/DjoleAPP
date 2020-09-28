@@ -32,18 +32,22 @@ import djoleapp.controller.event.buildingevent.SearchBuildingEvent;
 import djoleapp.controller.event.buildingevent.ShowSelectBuildTableEvent;
 import djoleapp.controller.event.financeevent.AccountCalculationDetailsEvent;
 import djoleapp.controller.event.financeevent.BackAccountCalEvent;
+import djoleapp.controller.event.financeevent.ChangeCalculationEvent;
 import djoleapp.controller.event.financeevent.CreatePdfCalculaionEvent;
+import djoleapp.controller.event.financeevent.EditCalculationEvent;
 import djoleapp.controller.event.occupantevent.AddAccountOccupantEvent;
 import djoleapp.controller.event.occupantevent.AddOccupantEvent;
 import djoleapp.controller.event.occupantevent.BackAddAccountOccupantEvent;
 import djoleapp.controller.event.occupantevent.ConfirmAddAccountOccupantEvent;
 import djoleapp.controller.event.occupantevent.ConfirmAddOcupantEvent;
 import djoleapp.controller.event.occupantevent.DetailsOccupantEvent;
+import djoleapp.controller.event.occupantevent.EditOccupantEvent;
 import djoleapp.controller.event.occupantevent.ListOccupantEvent;
 import djoleapp.controller.event.occupantevent.RemoveUserEvent;
 import djoleapp.controller.event.occupantevent.SearchUserEvent;
 import djoleapp.controller.event.occupantevent.SelectOccupantEvent;
 import djoleapp.controller.event.occupantevent.ShowSelectListsOccupantEvent;
+import djoleapp.gui.maingui.occupantgui.EditOccupantPane;
 
 /**
  *
@@ -94,6 +98,9 @@ public class ManagerEvent {
     private BackAccountCalEvent backAccountCalEvent = null;
     private AccountCalculationDetailsEvent accountCalculationDetailsEvent = null;
     private CreatePdfCalculaionEvent createPdfCalculaionEvent = null;
+    private EditCalculationEvent editCalculationEvent = null;
+    private ChangeCalculationEvent changeCalculationEvent = null;
+    private EditOccupantEvent editOccupantEvent = null;
 
     public ManagerEvent() {
 
@@ -140,6 +147,22 @@ public class ManagerEvent {
         backAccountCalEvent = new BackAccountCalEvent();
         accountCalculationDetailsEvent = new AccountCalculationDetailsEvent();
         createPdfCalculaionEvent = new CreatePdfCalculaionEvent();
+        editCalculationEvent = new EditCalculationEvent();
+        changeCalculationEvent = new ChangeCalculationEvent();
+        editOccupantEvent = new EditOccupantEvent();
+
+    }
+
+    public EditOccupantEvent getEditOccupantEvent() {
+        return editOccupantEvent;
+    }
+
+    public ChangeCalculationEvent getChangeCalculationEvent() {
+        return changeCalculationEvent;
+    }
+
+    public EditCalculationEvent getEditCalculationEvent() {
+        return editCalculationEvent;
     }
 
     public AccountCalculationDetailsEvent getAccountCalculationDetailsEvent() {

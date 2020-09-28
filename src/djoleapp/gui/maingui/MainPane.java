@@ -56,11 +56,8 @@ public class MainPane extends BorderPane {
         MenuItem occupantsList = new MenuItem(Constants.MENU_ITEM_OCCUPANT_LIST);
         occupantsList.setAccelerator(new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_DOWN));
         occupantsList.setOnAction(Controller.getInstance().getManagerEvent().getListOccupantEvent());
-        MenuItem detailsOccupant = new MenuItem(Constants.MENU_ITEM_OCCUPANT_DETAILS);
-        detailsOccupant.setAccelerator(new KeyCodeCombination(KeyCode.D, KeyCombination.CONTROL_DOWN));
-        detailsOccupant.setOnAction(Controller.getInstance().getManagerEvent().getDetailsOccupantEvent());
         
-        occupants.getItems().addAll(occupantsList, detailsOccupant);
+        occupants.getItems().addAll(occupantsList);
         
         Menu finance = new Menu(Constants.FINANCE);
         

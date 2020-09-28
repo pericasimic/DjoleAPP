@@ -905,4 +905,20 @@ public class FacadeSER implements Facade {
         DateFormat df = new SimpleDateFormat(pattern);
         return df.format(date);
     }
+
+    @Override
+    public void changeCalculationSum(AccountCalculation ac, double sum) {
+        double curentNew = 0;
+        for (Debit d : ac.getOccupant().getDebits()) {
+            if (d.getResidentialCommunity().getTaxIdentificationNumber().equalsIgnoreCase(ac.getResidentialCommunity().getTaxIdentificationNumber())) {
+                double changedSum = d.getDebit() - sum;
+                d.setDebit(changedSum);
+                curentNew = changedSum;
+                break;
+            }
+        }
+        ac.setDebitCurentMonth(sum);
+        ac.setSum(curentNew);
+        
+    }
 }
