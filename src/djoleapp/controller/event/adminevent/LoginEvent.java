@@ -1,5 +1,6 @@
 package djoleapp.controller.event.adminevent;
 
+import djoleapp.DjoleAPP;
 import djoleapp.business.Factory;
 import djoleapp.business.storage.TemporaryList;
 import djoleapp.controller.Controller;
@@ -55,6 +56,7 @@ public class LoginEvent implements EventHandler<ActionEvent> {
         MainPane gp = new MainPane();
         Controller.getInstance().setMainPane(gp);
         Scene scena = new Scene(gp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
+        scena.getStylesheets().add(DjoleAPP.class.getResource(Constants.STYLE_PATH).toExternalForm());
         Controller.getInstance().getPrimaryStage().setScene(scena);
         Factory.getFacade().createNewCalculations();
 

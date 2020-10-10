@@ -1,11 +1,13 @@
 package djoleapp.gui.maingui.occupantgui;
 
 import djoleapp.business.model.Occupant;
+import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -62,6 +64,20 @@ public class EditOccupantPane extends BorderPane {
         this.setTop(titleLbl);
         this.setCenter(gridPane);
         this.setBottom(hBox);
+        
+        backBtn.setOnAction(Controller.getInstance().getManagerEvent().getBackAddAccountOccupantEvent());
+        backBtn.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.ENTER){
+                Controller.getInstance().getManagerEvent().getBackAddAccountOccupantEvent().backAddAccountOccupantEvent();
+            }
+        });
+        
+        editBtn.setOnAction(Controller.getInstance().getManagerEvent().getConfirmChangeOccupantEvent());
+        editBtn.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.ENTER){
+                Controller.getInstance().getManagerEvent().getConfirmChangeOccupantEvent().confirmChangeOccupant();
+            }
+        });
         
     }
 

@@ -40,6 +40,7 @@ import djoleapp.controller.event.occupantevent.AddOccupantEvent;
 import djoleapp.controller.event.occupantevent.BackAddAccountOccupantEvent;
 import djoleapp.controller.event.occupantevent.ConfirmAddAccountOccupantEvent;
 import djoleapp.controller.event.occupantevent.ConfirmAddOcupantEvent;
+import djoleapp.controller.event.occupantevent.ConfirmChangeOccupantEvent;
 import djoleapp.controller.event.occupantevent.DetailsOccupantEvent;
 import djoleapp.controller.event.occupantevent.EditOccupantEvent;
 import djoleapp.controller.event.occupantevent.ListOccupantEvent;
@@ -47,7 +48,6 @@ import djoleapp.controller.event.occupantevent.RemoveUserEvent;
 import djoleapp.controller.event.occupantevent.SearchUserEvent;
 import djoleapp.controller.event.occupantevent.SelectOccupantEvent;
 import djoleapp.controller.event.occupantevent.ShowSelectListsOccupantEvent;
-import djoleapp.gui.maingui.occupantgui.EditOccupantPane;
 
 /**
  *
@@ -101,6 +101,7 @@ public class ManagerEvent {
     private EditCalculationEvent editCalculationEvent = null;
     private ChangeCalculationEvent changeCalculationEvent = null;
     private EditOccupantEvent editOccupantEvent = null;
+    private ConfirmChangeOccupantEvent confirmChangeOccupantEvent = null;
 
     public ManagerEvent() {
 
@@ -150,7 +151,12 @@ public class ManagerEvent {
         editCalculationEvent = new EditCalculationEvent();
         changeCalculationEvent = new ChangeCalculationEvent();
         editOccupantEvent = new EditOccupantEvent();
+        confirmChangeOccupantEvent = new ConfirmChangeOccupantEvent();
 
+    }
+
+    public ConfirmChangeOccupantEvent getConfirmChangeOccupantEvent() {
+        return confirmChangeOccupantEvent;
     }
 
     public EditOccupantEvent getEditOccupantEvent() {

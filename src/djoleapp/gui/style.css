@@ -1,0 +1,55 @@
+.root{
+    -fx-background-color: #3d4956;
+    -fx-tick-label-fill:  #f2efef;
+}
+
+.label{
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #f2efef;
+    -fx-opacity: 0.6;
+}
+
+.text-field {
+    -fx-font-size: 14px;
+}
+
+.button{
+    -fx-padding: 5px 20px 5px 20px;
+    -fx-background-color: #eda678;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+}
+
+.button:hover{
+    -fx-background-color: #f2efef;
+}
+
+#gridLogin{
+    -fx-border-color: rgba(242, 239, 239, 0.6);
+    -fx-padding: 20px;
+    -fx-alignment: center;
+    -fx-vgap: 10px;
+    -fx-hgap: 10px;
+}
+
+#hBox1{
+    -fx-alignment: center;
+    -fx-padding: 0px 0px 100px 0px;
+    -fx-font-size: 14px;
+}
+
+#borderPaneLogin{
+    -fx-padding: 200;
+}
+
+#loginTitle{
+    -fx-font-size: 24px;
+    
+}
+
+
+
+
+
+

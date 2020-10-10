@@ -38,7 +38,7 @@ import javafx.scene.control.Alert.AlertType;
  * @author perica.simic
  */
 public class FacadeSER implements Facade {
-
+    
     @Override
     public boolean loginAdminCheck(String username, String password) {
         List<Administrator> list = Factory.getStorage().loadAdmin();
@@ -49,7 +49,7 @@ public class FacadeSER implements Facade {
         }
         return false;
     }
-
+    
     @Override
     public boolean chackExistOccupantBuilding(ResidentialCommunity r, Occupant o) {
         if (r != null && o != null) {
@@ -62,7 +62,7 @@ public class FacadeSER implements Facade {
         }
         return false;
     }
-
+    
     @Override
     public List<Occupant> getListfreeOccupants() {
         List<Occupant> list = new ArrayList<>();
@@ -73,12 +73,12 @@ public class FacadeSER implements Facade {
         }
         return list;
     }
-
+    
     @Override
     public double supportSum(double price, double area) {
         return price * area;
     }
-
+    
     @Override
     public String kindOfSection(SeparateSection section) {
         if (section instanceof ParkingBox) {
@@ -98,7 +98,7 @@ public class FacadeSER implements Facade {
         }
         return null;
     }
-
+    
     @Override
     public List<ResidentialCommunity> searchBuidingList(String word) {
         List<ResidentialCommunity> list = new ArrayList<>();
@@ -109,7 +109,7 @@ public class FacadeSER implements Facade {
         }
         return list;
     }
-
+    
     @Override
     public boolean checkAddBuildingFieldsEmpty(String name, String number, String city, String idNum, String taxNum, String mail) {
         if (name.isEmpty() || name == null || number.isEmpty() || number == null || city.isEmpty() || city == null || idNum.isEmpty() || idNum == null || taxNum.isEmpty() || taxNum == null || mail.isEmpty() || mail == null) {
@@ -118,10 +118,10 @@ public class FacadeSER implements Facade {
         }
         return false;
     }
-
+    
     @Override
     public boolean checkAddBuildingFieldExist(String name, String number, String city, String idNum, String taxNum, String mail) {
-
+        
         for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
             if ((rc.getName() + rc.getNumber()).replaceAll("\\s+", "").equalsIgnoreCase(name.replaceAll("\\s+", "")) || rc.getIdentificationNumber().replaceAll("\\s+", "").equalsIgnoreCase(idNum.replaceAll("\\s+", ""))
                     || rc.getTaxIdentificationNumber().replaceAll("\\s+", "").equalsIgnoreCase(taxNum.replaceAll("\\s+", "")) || rc.getMail().replaceAll("\\s+", "").equalsIgnoreCase(mail.replaceAll("\\s+", ""))) {
@@ -130,24 +130,24 @@ public class FacadeSER implements Facade {
             }
         }
         return false;
-
+        
     }
-
+    
     @Override
     public boolean removeBuilding(ResidentialCommunity rc) {
-
+        
         if (rc == null) {
             Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
             return false;
         }
-
+        
         Controller.getInstance().getTemporaryList().getResidentialCommunitys().remove(rc);
         return true;
     }
-
+    
     @Override
     public boolean removeBankAccount(BankAccount ba, ResidentialCommunity rc) {
-
+        
         if (ba == null) {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
             return false;
@@ -155,15 +155,15 @@ public class FacadeSER implements Facade {
         rc.getBankAccounts().remove(ba);
         return true;
     }
-
+    
     @Override
     public boolean checkBankAccount(String name, String number) {
-
+        
         if (name.isEmpty() || name == null || number.isEmpty() || number == null) {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
             return false;
         }
-
+        
         for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
             for (BankAccount ba : rc.getBankAccounts()) {
                 if (ba.getBankAccountNumber().equalsIgnoreCase(number)) {
@@ -180,22 +180,22 @@ public class FacadeSER implements Facade {
                 }
             }
         }
-
+        
         return true;
-
+        
     }
-
+    
     @Override
     public boolean addSeparateSection(boolean isAdd, ResidentialCommunity rc, String section, String number, String areaSection, String note, Occupant owner) {
-
+        
         SeparateSection sep = Controller.getInstance().getTemporarySeparateSection();
         double area = 0;
-
+        
         if (rc == null || section.isEmpty() || section == null || number.isEmpty() || number == null || areaSection == null || areaSection.isEmpty() || note.isEmpty() || note == null) {
             Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
             return false;
         }
-
+        
         try {
             double value = Double.valueOf(areaSection);
             area = value;
@@ -203,7 +203,7 @@ public class FacadeSER implements Facade {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.BAD_FORMAT_AREA);
             return false;
         }
-
+        
         if (section.equals(Constants.FLAT)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
                 if (s instanceof Flat) {
@@ -215,7 +215,7 @@ public class FacadeSER implements Facade {
                         Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
                         return false;
                     }
-
+                    
                 }
             }
             if (isAdd) {
@@ -241,9 +241,9 @@ public class FacadeSER implements Facade {
                 }
                 Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
-
+            
         }
-
+        
         if (section.equals(Constants.GARAGE)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
                 if (s.getNumber().equalsIgnoreCase(number)) {
@@ -280,9 +280,9 @@ public class FacadeSER implements Facade {
                 }
                 Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
-
+            
         }
-
+        
         if (section.equals(Constants.BUSINESS_SPACE)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
                 if (s.getNumber().equalsIgnoreCase(number)) {
@@ -319,9 +319,9 @@ public class FacadeSER implements Facade {
                 }
                 Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
-
+            
         }
-
+        
         if (section.equals(Constants.GARAGE_BOX)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
                 if (s.getNumber().equalsIgnoreCase(number)) {
@@ -358,9 +358,9 @@ public class FacadeSER implements Facade {
                 }
                 Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
-
+            
         }
-
+        
         if (section.equals(Constants.GARAGE_SPACE)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
                 if (s.getNumber().equalsIgnoreCase(number)) {
@@ -397,9 +397,9 @@ public class FacadeSER implements Facade {
                 }
                 Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
-
+            
         }
-
+        
         Controller.getInstance().getTemporaryStage().close();
         if (Controller.getInstance().getManagerEvent().getEditSeparationEvent().getStage() != null) {
             Controller.getInstance().getManagerEvent().getEditSeparationEvent().getStage().close();
@@ -407,30 +407,30 @@ public class FacadeSER implements Facade {
         Controller.getInstance().getManagerEvent().getAddSectionEvent().setScene();
         return true;
     }
-
+    
     @Override
     public void removeSeparateSection(SeparateSection ss, ResidentialCommunity rc) {
-
+        
         if (ss == null || rc == null) {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
             return;
         }
-
+        
         rc.getListSeparationSection().remove(ss);
         Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.SUCCESS_DELETE);
-
+        
     }
-
+    
     @Override
     public void addIndSection(String name, String note, Occupant owner, String price, ResidentialCommunity residentialCommunity) {
-
+        
         if (name == null || name.isEmpty()) {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.HAVE_TO_NAME_INDEPENDENT);
             return;
         }
         IndependentSection ipSection = new IndependentSection(name, residentialCommunity);
         ipSection.setNote(note);
-
+        
         if (price != null || !price.isEmpty()) {
             try {
                 double priceSec = Double.valueOf(price);
@@ -440,41 +440,41 @@ public class FacadeSER implements Facade {
                 return;
             }
         }
-
+        
         if (owner != null) {
             ipSection.setOwner(owner);
         }
-
+        
         Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListIndependentSections().add(ipSection);
         Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_NEW_SECTION);
         Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent().showSelectBuildTableEvent();
-
+        
     }
-
+    
     @Override
     public void removeIndSection(IndependentSection independentSection) {
         if (independentSection == null) {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
             return;
         }
-
+        
         Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListIndependentSections().remove(independentSection);
         Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.SUCCESS_DELETE);
         Controller.getInstance().getListIndependentSectionsPane().reload(Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListIndependentSections());
     }
-
+    
     @Override
     public void removeCommonSection(CommonSection commonSection) {
         if (commonSection == null) {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
             return;
         }
-
+        
         Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListCommonSections().remove(commonSection);
         Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.SUCCESS_DELETE);
         Controller.getInstance().getListCommonSectionPane().reload(Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListCommonSections());
     }
-
+    
     @Override
     public void addCommonSection(String name, String note, String price) {
         if (name == null || name.isEmpty()) {
@@ -483,7 +483,7 @@ public class FacadeSER implements Facade {
         }
         CommonSection commonSection = new CommonSection(name);
         commonSection.setNote(note);
-
+        
         if (price != null || !price.isEmpty()) {
             try {
                 double priceSec = Double.valueOf(price);
@@ -493,16 +493,16 @@ public class FacadeSER implements Facade {
                 return;
             }
         }
-
+        
         Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListCommonSections().add(commonSection);
         Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_NEW_SECTION);
         Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent().showSelectBuildTableEvent();
     }
-
+    
     @Override
     public List<Flat> getFlats(ResidentialCommunity r) {
         List<Flat> list = new ArrayList<>();
-
+        
         for (SeparateSection s : r.getListSeparationSection()) {
             if (s instanceof Flat) {
                 list.add((Flat) s);
@@ -510,34 +510,34 @@ public class FacadeSER implements Facade {
         }
         return list;
     }
-
+    
     @Override
     public void removeBuildingOccupant(ResidentialCommunity rc, Occupant o) {
         if (rc == null || o == null) {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
             return;
         }
-
+        
         rc.getListOccupants().remove(o);
         o.setIsAdd(false);
         o.setHome(null);
         Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.SUCCESS_DELETE);
     }
-
+    
     @Override
     public void addOccupantBuilding(ResidentialCommunity rc, Occupant o, SeparateSection ss) {
-
+        
         if (rc == null || o == null || ss == null) {
             Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_NOT_SELECT);
             return;
         }
-
+        
         o.setIsAdd(true);
         o.setHome((Flat) ss);
         rc.getListOccupants().add(o);
-
+        
     }
-
+    
     @Override
     public List<Occupant> searchUserList(String word) {
         List<Occupant> list = new ArrayList<>();
@@ -548,12 +548,12 @@ public class FacadeSER implements Facade {
         }
         return list;
     }
-
+    
     @Override
     public void removeOccupant(Occupant o) {
         if (o != null) {
             List<ResidentialCommunity> residentialCommunitys = new ArrayList<>();
-
+            
             for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
                 if (rc.getListOccupants().isEmpty() || rc.getListOccupants() != null) {
                     List<Occupant> resList = new ArrayList<>();
@@ -561,12 +561,12 @@ public class FacadeSER implements Facade {
                         if (oc.getId() != o.getId()) {
                             resList.add(oc);
                         }
-
+                        
                     }
                     rc.setListOccupants(resList);
                     residentialCommunitys.add(rc);
                 }
-
+                
                 for (SeparateSection ss : rc.getListSeparationSection()) {
                     if (ss.getOwner() != null) {
                         if (ss.getOwner().getId() == o.getId()) {
@@ -574,18 +574,18 @@ public class FacadeSER implements Facade {
                             ss.setOccupant(null);
                         }
                     }
-
+                    
                 }
-
+                
                 for (IndependentSection is : rc.getListIndependentSections()) {
                     if (is.getOwner() != null) {
                         if (is.getOwner().getId() == o.getId()) {
                             is.setOwner(null);
                         }
                     }
-
+                    
                 }
-
+                
             }
             Controller.getInstance().getTemporaryList().getOccupants().remove(o);
             Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.SUCCESS_DELETE);
@@ -594,7 +594,7 @@ public class FacadeSER implements Facade {
             return;
         }
     }
-
+    
     @Override
     public void writeId(long id) {
         File file = new File(Constants.COUNT_ID_OCCUPANT);
@@ -613,7 +613,7 @@ public class FacadeSER implements Facade {
             }
         }
     }
-
+    
     @Override
     public long readId() {
         long result = 0;
@@ -629,53 +629,53 @@ public class FacadeSER implements Facade {
             e.printStackTrace();
         }
         return result;
-
+        
     }
-
+    
     @Override
     public boolean addOccupant(long id, String firstName, String lastName, String idNum, String phone, String mail, String note) {
-
+        
         if (firstName == null || firstName.isEmpty() || lastName == null || lastName.isEmpty() || idNum.isEmpty() || idNum == null || phone.isEmpty() || phone == null || mail.isEmpty() || mail == null) {
             Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT_OCCUPANT);
             return false;
         }
-
+        
         for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
             if (o.getIdentificationNumber().equalsIgnoreCase(idNum)) {
                 Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.OCCUPANT_IDNUM_EXIST);
                 return false;
-
+                
             }
-
+            
         }
-
+        
         Occupant o = new Occupant(id, firstName, lastName, idNum, phone, mail);
-
+        
         if (!note.isEmpty()) {
             o.setNote(note);
         }
         Controller.getInstance().getTemporaryList().getOccupants().add(o);
         return true;
-
+        
     }
-
+    
     @Override
     public List<Occupant> getListOccupantsPerFlat(Flat flat) {
-
+        
         List<Occupant> result = new ArrayList<>();
-
+        
         for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
             if (o.getHome() != null && o.getHome().equals(flat)) {
                 result.add(o);
             }
         }
-
+        
         return result;
     }
-
+    
     @Override
     public boolean createBankAccountOccupant(String name, String number) {
-
+        
         if (name == null || name.isEmpty() || number == null || number.isEmpty()) {
             Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
             return false;
@@ -685,12 +685,12 @@ public class FacadeSER implements Facade {
         Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_BANK_ACCOUNT_SUCCESS);
         return true;
     }
-
+    
     @Override
     public List<SeparateSection> getSeparateSectionPerOccupant(Occupant o) {
-
+        
         List<SeparateSection> result = new ArrayList<>();
-
+        
         for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
             for (SeparateSection ss : rc.getListSeparationSection()) {
                 if (ss.getOwner() != null && ss.getOwner().getId() == o.getId()) {
@@ -698,14 +698,14 @@ public class FacadeSER implements Facade {
                 }
             }
         }
-
+        
         return result;
     }
-
+    
     @Override
     public List<IndependentSection> getIndSectionPerOccupant(Occupant o) {
         List<IndependentSection> result = new ArrayList<>();
-
+        
         for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
             for (IndependentSection is : rc.getListIndependentSections()) {
                 if (is.getOwner().getId() == o.getId()) {
@@ -713,13 +713,13 @@ public class FacadeSER implements Facade {
                 }
             }
         }
-
+        
         return result;
     }
-
+    
     @Override
     public double pricePerArea(SeparateSection section) {
-
+        
         if (section instanceof ParkingBox) {
             return Controller.getInstance().getPricePerMonthBox();
         }
@@ -735,42 +735,42 @@ public class FacadeSER implements Facade {
         if (section instanceof Flat) {
             return Controller.getInstance().getPricePerMonthFlat();
         }
-
+        
         return -1;
     }
-
+    
     @Override
     public List<PaymentItems> getListPayment(ResidentialCommunity residentialCommunity, Occupant occupant) {
-
+        
         List<SeparateSection> listSections = new ArrayList<>();
         List<PaymentItems> result = new ArrayList<>();
-
+        
         for (SeparateSection ss : residentialCommunity.getListSeparationSection()) {
             if (ss.getOwner().getId() == occupant.getId()) {
                 listSections.add(ss);
             }
         }
-
+        
         for (SeparateSection section : listSections) {
             result.add(new PaymentItems(section));
         }
-
+        
         return result;
     }
-
+    
     @Override
     public void createNewCalculations() {
-
+        
         for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
             o.getSections().clear();
         }
-
+        
         Date currentDate = new Date();
         Date deadlineDate = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
         deadlineDate = calendar.getTime();
-
+        
         for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
             for (SeparateSection ss : rc.getListSeparationSection()) {
                 for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
@@ -780,7 +780,7 @@ public class FacadeSER implements Facade {
                 }
             }
         }
-
+        
         for (ResidentialCommunity rc : Controller.getInstance().getTemporaryList().getResidentialCommunitys()) {
             for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
                 if (!o.getSections().isEmpty()) {
@@ -791,15 +791,15 @@ public class FacadeSER implements Facade {
                             itemses.add(paymentItems);
                         }
                     }
-
+                    
                     double sumItems = 0;
                     for (PaymentItems p : itemses) {
                         sumItems += p.getSum();
                     }
-
+                    
                     double preDebit = 0;
                     boolean empty = true;
-
+                    
                     for (Debit d : o.getDebits()) {
                         if (d.getResidentialCommunity().getTaxIdentificationNumber().equalsIgnoreCase(rc.getTaxIdentificationNumber())) {
                             preDebit = d.getDebit();
@@ -807,12 +807,12 @@ public class FacadeSER implements Facade {
                             empty = false;
                         }
                     }
-
+                    
                     if (empty == true) {
                         Debit debit = new Debit(rc, sumItems);
                         o.getDebits().add(debit);
                     }
-
+                    
                     AccountCalculation ac = new AccountCalculation(rc, o, Factory.getFacade().numberCalculation(rc, o,
                             currentDate), currentDate, deadlineDate, itemses, sumItems, preDebit, sumItems + preDebit);
                     ac.setMonth(Factory.getFacade().returnMonth(calendar.get(Calendar.MONTH)));
@@ -853,10 +853,10 @@ public class FacadeSER implements Facade {
         //
         //"Trenutno je " + curentDay + "-i dan u mesecu");
     }
-
+    
     @Override
     public String returnMonth(int num) {
-
+        
         switch (num) {
             case 1:
                 return Constants.JANUARY;
@@ -885,7 +885,7 @@ public class FacadeSER implements Facade {
         }
         return Constants.EMPTY_STRING;
     }
-
+    
     @Override
     public String numberCalculation(ResidentialCommunity residentialCommunity, Occupant o, Date date) {
         String firstTwo = "";
@@ -898,14 +898,14 @@ public class FacadeSER implements Facade {
         String todayAsString = df.format(date);
         return firstTwo.toUpperCase() + residentialCommunity.getNumber() + " - " + o.getId() + " - " + todayAsString;
     }
-
+    
     @Override
     public String getDateFormat(Date date) {
         String pattern = "dd/MM/yyyy";
         DateFormat df = new SimpleDateFormat(pattern);
         return df.format(date);
     }
-
+    
     @Override
     public void changeCalculationSum(AccountCalculation ac, double sum) {
         double curentNew = 0;
@@ -920,5 +920,36 @@ public class FacadeSER implements Facade {
         ac.setDebitCurentMonth(sum);
         ac.setSum(curentNew);
         
+    }
+    
+    @Override
+    public boolean editOccupant(String firstName, String lastName, String idNum, String phone, String mail, String note) {
+        
+        Occupant occupant = Controller.getInstance().getTemporaryOccupant();
+        if (firstName == null || firstName.isEmpty() || lastName == null || lastName.isEmpty() || idNum.isEmpty() || idNum == null || phone.isEmpty() || phone == null || mail.isEmpty() || mail == null) {
+            Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT_OCCUPANT);
+            return false;
+        }
+        
+        for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
+            if (o.getIdentificationNumber().equalsIgnoreCase(idNum) && o != occupant) {
+                Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.OCCUPANT_IDNUM_EXIST);
+                return false;
+                
+            }
+            
+        }
+        
+        occupant.setFirstNameOccupant(firstName);
+        occupant.setLastNameOccupant(lastName);
+        occupant.setIdentificationNumber(idNum);
+        occupant.setPhoneNumber(phone);
+        occupant.setMail(mail);
+        
+        if (!note.isEmpty()) {
+            occupant.setNote(note);
+        }
+        
+        return true;
     }
 }

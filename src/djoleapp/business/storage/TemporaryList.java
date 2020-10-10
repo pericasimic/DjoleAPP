@@ -2,11 +2,8 @@ package djoleapp.business.storage;
 
 import djoleapp.business.Factory;
 import djoleapp.business.model.Administrator;
-import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ResidentialCommunity;
-import djoleapp.business.model.SeparateSection;
-import djoleapp.controller.Controller;
 import java.util.List;
 
 public class TemporaryList {

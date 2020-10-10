@@ -70,6 +70,8 @@ public interface Facade {
     
     public boolean addOccupant(long id, String firstName, String lastName, String idNum, String phone, String mail, String note);
     
+    public boolean editOccupant(String firstName, String lastName, String idNum, String phone, String mail, String note);
+    
     public List<Occupant> getListOccupantsPerFlat(Flat flat);
     
     public List<SeparateSection> getSeparateSectionPerOccupant(Occupant o);

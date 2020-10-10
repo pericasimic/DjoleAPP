@@ -1,21 +1,12 @@
 package djoleapp.business.storage;
 
-import djoleapp.business.Factory;
-import djoleapp.business.facade.Facade;
 import djoleapp.business.model.Administrator;
-import djoleapp.business.model.BankAccount;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ResidentialCommunity;
-import djoleapp.business.model.SeparateSection;
-import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.controller.util.Message;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -37,7 +28,6 @@ public class SerStorage implements Storage {
             return new ArrayList<>();
         } catch (ClassNotFoundException ex) {
             Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_LOAD_ADMIN);
-            ex.printStackTrace();
             System.exit(0);
             return null;
         }
@@ -49,9 +39,8 @@ public class SerStorage implements Storage {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Constants.ADMIN_DAT));
             oos.writeObject(list);
             oos.close();
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_WRITE_ADMIN);
-            ex.printStackTrace();
             System.exit(0);
         }
     }
@@ -68,7 +57,6 @@ public class SerStorage implements Storage {
             return new ArrayList<>();
         } catch (ClassNotFoundException ex) {
             Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_LOAD_BUILDING);
-            ex.printStackTrace();
             System.exit(0);
             return null;
         }
@@ -81,9 +69,8 @@ public class SerStorage implements Storage {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Constants.BUILDINGS_DAT));
             oos.writeObject(list);
             oos.close();
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_WRITE_BUILDING);
-            ex.printStackTrace();
             System.exit(0);
         }
 
@@ -100,7 +87,6 @@ public class SerStorage implements Storage {
             return new ArrayList();
         } catch (ClassNotFoundException ex) {
             Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_LOAD_OCCUPANT);
-            ex.printStackTrace();
             System.exit(0);
             return null;
         }
@@ -112,8 +98,7 @@ public class SerStorage implements Storage {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Constants.OCCUPANTS_DAT));
             oos.writeObject(list);
             oos.close();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+        } catch (IOException ex) {
             Message.info(AlertType.ERROR, Constants.ALERT_ERROR_DIALOG, Constants.ERROR_STORAGE_WRITE_OCCUPANT);
             System.exit(0);
         }

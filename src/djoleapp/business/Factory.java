@@ -11,8 +11,8 @@ import djoleapp.business.storage.Storage;
  */
 public class Factory {
     
-    private static Facade facade = new FacadeSER();
-    private static Storage storage = new SerStorage();
+    private static final Facade facade = new FacadeSER();
+    private static final Storage storage = new SerStorage();
 
     public static Facade getFacade() {
         return facade;

@@ -7,12 +7,13 @@ public class Constants {
     public static final String TITLE_LOGIN = "Prijava na aplikaciju";
     public static final String COUNT_ID_ACCOUNT_BANK = "C:\\Users\\perica.simic\\Documents\\NetBeansProjects\\DjoleAPP\\countBankAccountId.txt";
     public static final String COUNT_ID_OCCUPANT = "C:\\Users\\perica.simic\\Documents\\NetBeansProjects\\DjoleAPP\\id.txt";
-    public static final int SCENE_WIDTH = 960;
-    public static final int SCENE_HEIGHT = 640;
+    public static final int SCENE_WIDTH = 1280;
+    public static final int SCENE_HEIGHT = 720;
+    public static final String STYLE_PATH = "gui/style.css";
     public static final int SCENE_WIDTH_TEMP = 800;
     public static final int SCENE_HEIGHT_TEMP = 600;
-    public static final String PRIMARY_STAGE_TITLE = "Aplikacija - Stambeni objekti";
-    public static final String USERNAME_LBL = "Korisnicko ime:";
+    public static final String PRIMARY_STAGE_TITLE = "Aplikacija - BuildMan";
+    public static final String USERNAME_LBL = "Korisničko ime:";
     public static final String PASSWORD_LBL = "Lozinka:";
     public static final String BUTTON_LOGIN = "Prijava";
     public static final String BUTTON_LOGOUT = "Odjava";
@@ -169,5 +170,6 @@ public class Constants {
     public static final String ACCOUNT_CALCULATION_FOR = "Račun-Obračun za ";
     public static final String DATE_DELIVERY = "Datum dostave:";
     public static final String DATE_DEADLINE = "Rok za plaćanje:";
+    public static final String EDIT_OCCUPANT_SUCCESS = "Uspešno izmenjen korisnik";
 
 }
