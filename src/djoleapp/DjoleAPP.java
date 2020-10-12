@@ -3,7 +3,6 @@ package djoleapp;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.gui.LoginPane;
-import java.awt.Dimension;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -19,7 +18,6 @@ public class DjoleAPP extends Application {
         Controller.getInstance().setPrimaryStage(primaryStage);
         LoginPane root = new LoginPane();
         Controller.getInstance().setLoginPane(root);
-        Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         Scene scene = new Scene(root, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
         scene.getStylesheets().add(DjoleAPP.class.getResource(Constants.STYLE_PATH).toExternalForm());
         Controller.getInstance().setLoginScene(scene);

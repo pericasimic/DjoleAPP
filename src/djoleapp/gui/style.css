@@ -25,7 +25,12 @@
     -fx-background-color: #f2efef;
 }
 
-#gridLogin{
+.loginTitle{
+    -fx-font-size: 24px;
+    
+}
+
+.gridLogin{
     -fx-border-color: rgba(242, 239, 239, 0.6);
     -fx-padding: 20px;
     -fx-alignment: center;
@@ -33,20 +38,17 @@
     -fx-hgap: 10px;
 }
 
-#hBox1{
+.hBox{
     -fx-alignment: center;
     -fx-padding: 0px 0px 100px 0px;
     -fx-font-size: 14px;
 }
 
-#borderPaneLogin{
+.borderPaneLogin{
     -fx-padding: 200;
 }
 
-#loginTitle{
-    -fx-font-size: 24px;
-    
-}
+
 
 
 

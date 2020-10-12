@@ -5,11 +5,9 @@ import djoleapp.business.model.Administrator;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.controller.util.Message;
-import djoleapp.gui.LoginPane;
 import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 
 public class AddAdminEvent implements EventHandler<ActionEvent> {
@@ -27,16 +25,7 @@ public class AddAdminEvent implements EventHandler<ActionEvent> {
         String conPass = Controller.getInstance().getAddAdminPane().getConfirmPasswordFld().getText();
         Controller.getInstance().getAddAdminPane().getConfirmPasswordFld().setText(null);
 
-        if (username == null || password == null || conPass == null || username.isEmpty() || password.isEmpty() || conPass.isEmpty()) {
-            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
-            return;
-        }
-        if (username.equalsIgnoreCase(Constants.ADMIN)) {
-            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ADMIN_DENY);
-            return;
-        }
-        if (!password.equals(conPass)) {
-            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_PASSWORD_NOT_SAME);
+        if (!Factory.getFacade().checkAddAdmin(username, password, conPass)) {
             return;
         }
 
@@ -46,10 +35,7 @@ public class AddAdminEvent implements EventHandler<ActionEvent> {
         Factory.getStorage().writeAdmins(list);
         Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_ADMIN);
 
-        LoginPane lp = new LoginPane();
-        Controller.getInstance().setLoginPane(lp);
-        Scene scena = new Scene(lp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
-        Controller.getInstance().getPrimaryStage().setScene(scena);
+        Controller.getInstance().getPrimaryStage().setScene(Controller.getInstance().getLoginScene());
     }
 
 }

@@ -19,6 +19,8 @@ import java.util.List;
 public interface Facade {
 
     public boolean loginAdminCheck(final String username, final String password);
+    
+    public boolean checkAddAdmin(String username, String password, String conPass);
 
     public boolean checkAddBuildingFieldsEmpty(String name, String number, String city, String idNum, String taxNum, String mail);
 
