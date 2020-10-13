@@ -7,7 +7,39 @@
     -fx-font-size: 14px;
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: #f2efef;
-    -fx-opacity: 0.6;
+    -fx-opacity: 0.9;
+}
+
+.main{
+    -fx-background-image: url(images/city_vector.jpg);
+    -fx-background-size: cover;
+}
+
+.menu-bar{
+    -fx-background-color: #3d4956;
+}
+
+.menu-bar .label{
+    -fx-text-fill: #fff;
+}
+
+.menu{
+    -fx-padding: 10px 20px 10px 20px;
+}
+
+
+.menu:hover {
+    -fx-background-color: #666b6e;
+}
+
+.menu-item{
+    -fx-background-color: #666b6e;
+    -fx-border-color: #3d4956;
+    -fx-border-width: 1px;
+}
+
+.menu-item:hover{
+    -fx-background-color: #3d4956;
 }
 
 .text-field {

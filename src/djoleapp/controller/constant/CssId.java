@@ -11,5 +11,5 @@ public class CssId {
     public static final String HBOX = "hBox";
     public static final String GRID_LOGIN = "gridLogin";
     public static final String BORDER_PANE_LOGIN = "borderPaneLogin";
-
+    public static final String MAIN_PANE = "main";
 }

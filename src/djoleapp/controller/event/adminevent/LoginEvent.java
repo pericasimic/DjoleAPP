@@ -5,6 +5,7 @@ import djoleapp.business.Factory;
 import djoleapp.business.storage.TemporaryList;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
+import djoleapp.controller.constant.CssId;
 import djoleapp.gui.maingui.MainPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -33,6 +34,7 @@ public class LoginEvent implements EventHandler<ActionEvent> {
         Controller.getInstance().setTemporaryList(temporaryList);
 
         MainPane gp = new MainPane();
+        gp.getStyleClass().add(CssId.MAIN_PANE);
         Controller.getInstance().setMainPane(gp);
         Scene scena = new Scene(gp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
         scena.getStylesheets().add(DjoleAPP.class.getResource(Constants.STYLE_PATH).toExternalForm());

@@ -2,6 +2,7 @@ package djoleapp.gui.maingui;
 
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
+import djoleapp.controller.constant.CssId;
 import javafx.scene.Node;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -23,6 +24,7 @@ public class MainPane extends BorderPane {
     }
     
     private MenuBar getMenuBar(){
+        
         MenuBar menuBar = new MenuBar();
         
         Menu files = new Menu(Constants.FILE);

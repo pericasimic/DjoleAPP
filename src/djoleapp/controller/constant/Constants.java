@@ -33,6 +33,7 @@ public class Constants {
     public static final String COUNT_ID_OCCUPANT = "C:\\Users\\perica.simic\\Documents\\NetBeansProjects\\DjoleAPP\\id.txt";
     public static final String ADMIN_EXISTS = "Kreiran je novi administrator";
     public static final String ADMIN_LOGIN_FAILD = "Pogrešno korisničko ime ili lozinka";
+    public static final String ADMIN = "admin";
 
     /*
      Login pane & AddAdminPane & AddAdminEvent
@@ -45,6 +46,23 @@ public class Constants {
     public static final String ADD_ADMIN = "Novi administrator je dodat";
     public static final String ADMIN_DENY = "Uneto korisničko ime nije dozvoljeno";
     public static final String ALERT_PASSWORD_NOT_SAME = "Lozinke se ne poklapaju";
+    public static final String TITLE_ADD_ADMIN = "Dodavanje administratora";
+
+    /*
+    Main Pane
+     */
+    public static final String FILE = "Fajl";
+    public static final String BUILDINGS = "Stambene zajednice";
+    public static final String MENU_ITEM_BUILDING_LIST = "Lista zgrada...";
+    public static final String ABOUT = "O programu";
+    public static final String SAVE = "Snimi";
+    public static final String EXIT = "Izlaz";
+    public static final String PRINT = "Štampaj";
+    public static final String FINANCE = "Finansije";
+    public static final String MENU_ITEM_BUILDING_DETAILS = "Detalji o zgradi...";
+    public static final String MENU_ITEM_OCCUPANT_DETAILS = "Detalji o stanarima...";
+    public static final String SECTION_DETAILS = "Detalji o sekciji...";
+    public static final String SECTION_DETAILS_TITLE = "Detalji o sekciji";
 
     public static final String BUTTON_CONFIRM = "Potvrdi";
     public static final String CITY = "Mesto";
@@ -60,8 +78,6 @@ public class Constants {
     public static final String LIST_ITEM = "Lista stavki za održavanje";
     public static final String ALERT_ACCOUNT_EXIST = "Racun vec postoji";
     public static final String ALERT_NOT_SELECT = "Morate izabrati stavku";
-    public static final String ADMIN = "admin";
-    public static final String TITLE_ADD_ADMIN = "Dodavanje administratora";
     public static final String TITLE_ADD_OCCUPANT = "Dodavanje stanara";
     public static final String TITLE_ADD_SECTION = "Dodavanje sekcije za ";
     public static final String TITLE_ADD_IND_SECTION = "Dodavanje samostalnog dela za ";
@@ -73,19 +89,12 @@ public class Constants {
     public static final String FONT_COMIC_SANS = "Comic Sans";
     public static final String FONT_ARIAL = "Arial";
     public static final String FX_BORDER_COLOR_BLACK = "-fx-border-color: black";
-    public static final String FILE = "Fajl";
-    public static final String BUILDINGS = "Stambene zajednice";
     public static final String BUILDINGS_LIST_TITLE = "Lista stambenih zajednica";
     public static final String OCCUPANT_LIST_TITLE = "Lista stanara";
     public static final String OCCUPANTS = "Stanari";
     public static final String OCCUPANT_COLON = "Stanar:";
-    public static final String ACCOUNTS = "Racuni";
-    public static final String FINANCE = "Finansije";
+    public static final String ACCOUNTS = "Računi";
     public static final String STATEMENTS = "Izvodi";
-    public static final String ABOUT = "O programu";
-    public static final String SAVE = "Snimi";
-    public static final String EXIT = "Izlaz";
-    public static final String PRINT = "Stampaj";
     public static final String EXPORT_TO_PDF = "Izvezi u PDF";
     public static final String SUCCESS_SAVE = "Uspesno je sacuvano";
     public static final String SUCCESS_DELETE = "Uspesno je obrisano";
@@ -93,11 +102,6 @@ public class Constants {
     public static final String DEBIT = "Zaduzenje";
     public static final String DEBIT_FOR = "Zaduženje za";
     public static final String FROM_PREVIOUS_PERIOD = "iz prethodnog perioda";
-    public static final String MENU_ITEM_BUILDING_LIST = "Lista zgrada...";
-    public static final String MENU_ITEM_BUILDING_DETAILS = "Detalji o zgradi...";
-    public static final String MENU_ITEM_OCCUPANT_DETAILS = "Detalji o stanarima...";
-    public static final String SECTION_DETAILS = "Detalji o sekciji...";
-    public static final String SECTION_DETAILS_TITLE = "Detalji o sekciji";
     public static final String SECTION_EDIT_TITLE = "Izmena sekcije";
     public static final String MENU_ITEM_OCCUPANT_LIST = "Lista stanara...";
     public static final String BUTTON_ADD = "Dodaj";
