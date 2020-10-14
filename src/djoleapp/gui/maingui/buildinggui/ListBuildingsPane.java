@@ -3,6 +3,7 @@ package djoleapp.gui.maingui.buildinggui;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
+import djoleapp.controller.constant.CssId;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
@@ -17,11 +18,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import static javafx.scene.layout.Region.USE_PREF_SIZE;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 
 public class ListBuildingsPane extends VBox {
 
-    private Label titleLbl = new Label(Constants.BUILDINGS_LIST_TITLE);
+    private final Label titleLbl = new Label(Constants.BUILDINGS_LIST_TITLE);
     private TableView<ResidentialCommunity> tableBuildings = new TableView<>();
     private List<ResidentialCommunity> listBuildings = null;
 
@@ -40,32 +40,34 @@ public class ListBuildingsPane extends VBox {
     private boolean isSearch = false;
 
     public ListBuildingsPane() {
-        titleLbl.setFont(new Font(Constants.FONT_ARIAL, 20));
+        titleLbl.getStyleClass().add(CssId.LOGIN_TITLE);
+
         setSpacing(5);
         setPadding(new Insets(10, 10, 10, 10));
 
+
         TableColumn nameBuildingCol = new TableColumn(Constants.NAME_OF_BUILDING);
-        nameBuildingCol.setMinWidth(150);
+        nameBuildingCol.setMinWidth(213);
         nameBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("name"));
-        
+
         TableColumn numBuildingCol = new TableColumn(Constants.NUMBER);
-        numBuildingCol.setMinWidth(150);
+        numBuildingCol.setMinWidth(213);
         numBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("number"));
 
         TableColumn idNumBuildingCol = new TableColumn(Constants.ID_NUM);
-        idNumBuildingCol.setMinWidth(150);
+        idNumBuildingCol.setMinWidth(213);
         idNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("identificationNumber"));
 
         TableColumn taxNumBuildingCol = new TableColumn(Constants.TAX_NUM_BUILDING);
-        taxNumBuildingCol.setMinWidth(150);
+        taxNumBuildingCol.setMinWidth(213);
         taxNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("taxIdentificationNumber"));
 
         TableColumn mailNumBuildingCol = new TableColumn(Constants.MAIL);
-        mailNumBuildingCol.setMinWidth(150);
+        mailNumBuildingCol.setMinWidth(213);
         mailNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("mail"));
-        
+
         TableColumn cityNumBuildingCol = new TableColumn(Constants.CITY);
-        cityNumBuildingCol.setMinWidth(150);
+        cityNumBuildingCol.setMinWidth(213);
         cityNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("city"));
 
         reload();
@@ -103,7 +105,7 @@ public class ListBuildingsPane extends VBox {
 
         nameBuildingFld.setMaxWidth(USE_PREF_SIZE);
         nameBuildingFld.setPromptText(Constants.NAME_OF_BUILDING);
-        
+
         numberBuildingFld.setMaxWidth(60);
         numberBuildingFld.setPromptText(Constants.NUMBER);
 
@@ -115,7 +117,7 @@ public class ListBuildingsPane extends VBox {
 
         mailBuildingFld.setMaxWidth(USE_PREF_SIZE);
         mailBuildingFld.setPromptText(Constants.MAIL);
-        
+
         cityBuildingFld.setMaxWidth(USE_PREF_SIZE);
         cityBuildingFld.setPromptText(Constants.CITY);
 
@@ -134,7 +136,7 @@ public class ListBuildingsPane extends VBox {
             }
 
         });
-        
+
         hbox.getChildren().addAll(nameBuildingFld, numberBuildingFld, cityBuildingFld, idNumBuildingFld, tidNumBuildingFld, mailBuildingFld, removeBuildingBtn, addBuildingBtn);
         return hbox;
     }
@@ -162,7 +164,6 @@ public class ListBuildingsPane extends VBox {
         this.numberBuildingFld = numberBuildingFld;
     }
 
-    
     public TextField getNameBuildingFld() {
         return nameBuildingFld;
     }
@@ -191,7 +192,6 @@ public class ListBuildingsPane extends VBox {
         this.isSearch = isSearch;
     }
 
-
     public void setListBuildings(List<ResidentialCommunity> listBuildings) {
         this.listBuildings = listBuildings;
     }
@@ -211,7 +211,5 @@ public class ListBuildingsPane extends VBox {
     public void setCityBuildingFld(TextField cityBuildingFld) {
         this.cityBuildingFld = cityBuildingFld;
     }
-    
-    
 
 }

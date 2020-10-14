@@ -17,10 +17,7 @@
 
 .menu-bar{
     -fx-background-color: #3d4956;
-}
-
-.menu-bar .label{
-    -fx-text-fill: #fff;
+    -fx-border-color: #f2efef;
 }
 
 .menu{
@@ -28,7 +25,7 @@
 }
 
 
-.menu:hover {
+.menu:hover{
     -fx-background-color: #666b6e;
 }
 
@@ -38,7 +35,8 @@
     -fx-border-width: 1px;
 }
 
-.menu-item:hover{
+.menu-item:hover,
+.menu-item:focused{
     -fx-background-color: #3d4956;
 }
 
@@ -53,13 +51,15 @@
     -fx-font-weight: 600;
 }
 
-.button:hover{
+.button:hover,
+.button:focused{
     -fx-background-color: #f2efef;
 }
 
+
 .loginTitle{
     -fx-font-size: 24px;
-    
+
 }
 
 .gridLogin{
@@ -80,6 +80,126 @@
     -fx-padding: 200;
 }
 
+.table-view{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background .filler{
+    -fx-background-color: #eda678;
+    -fx-border-color: #3d4956;
+}
+
+.table-view .column-header-background .label{
+    -fx-text-fill: #000;
+}
+
+.table-view .column-header {
+    -fx-background-color: #eda678;
+    -fx-border-color: #3d4956;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: #000;
+    -fx-alignment: center;
+    -fx-border-color: #3d4956;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #dbd5d5;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+    -fx-font-size: 14px;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #bab4b4;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #f4c9a4;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+/*TABLE STYLE*/
+/*
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color: #eda678;
+    -fx-border-color: #3d4956;
+    -fx-padding: 0;
+}
+.table-view .column-header .label{
+    -fx-text-fill: black;
+    -fx-font-weight: bold; 
+    -fx-alignment: CENTER;
+}
+
+.table-view .cell{
+    -fx-background-color: #f2efef;
+    -fx-border-color: #eda678;
+    -fx-alignment: CENTER;
+    -fx-font-size: 14px;
+}*/
+
+
+/*
+ 
+ 
+
+*/
+/*.table-row-cell:selected {
+    -fx-background-color: whitesmoke; 
+    -fx-text-background-color:  #6622CC;
+
+
+}
+
+ scroll bar starts here 
+
+ The increment and decrement button CSS class of scrollbar 
+.table-view .increment-button ,.table-view .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 2em;
+
+}
+
+ The main scrollbar **track** CSS class  
+.table-view .scroll-bar:horizontal .track,
+.table-view .scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color:derive( #6622CC,80%);
+
+    -fx-background-radius: 2em;
+    -fx-border-radius:2em;
+}
+
+ The main scrollbar **thumb** CSS class which we drag every time (movable) 
+.table-view .scroll-bar:horizontal .thumb,
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color:derive( #6622CC,90%);
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+
+}
+
+ chart properties 
+
+.chart {
+    -fx-padding: 10px;
+    -fx-background-color: transparent;
+    -fx-legend-visible: false;
+}
+.chart-plot-background {
+    -fx-background-color:transparent;
+}
+
+.chart-pie {
+    -fx-border-color: derive(-fx-pie-color, 1%);
+    -fx-border-width: 0px;
+}*/
 
 
 

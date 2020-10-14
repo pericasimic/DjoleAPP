@@ -2,7 +2,6 @@ package djoleapp.gui.maingui.buildinggui;
 
 import djoleapp.business.model.CommonSection;
 import djoleapp.business.model.IndependentSection;
-import djoleapp.business.model.Occupant;
 import djoleapp.controller.constant.Constants;
 import java.util.List;
 import javafx.beans.property.ReadOnlyObjectWrapper;
