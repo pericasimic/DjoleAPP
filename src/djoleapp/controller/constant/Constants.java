@@ -1,5 +1,7 @@
 package djoleapp.controller.constant;
 
+import java.util.regex.Pattern;
+
 public class Constants {
 
     public static final String STYLE_PATH = "gui/style.css";
@@ -11,6 +13,8 @@ public class Constants {
     public static final String ALERT_WARNING_DIALOG = "Upozorenje";
     public static final String ALERT_ERROR_DIALOG = "Greška";
     public static final String ALERT_INFORMATION_DIALOG = "Informacija";
+    public static final String BUTTON_SHOW = "Prikaži";
+
 
     /*
     SerStorage
@@ -34,6 +38,11 @@ public class Constants {
     public static final String ADMIN_EXISTS = "Kreiran je novi administrator";
     public static final String ADMIN_LOGIN_FAILD = "Pogrešno korisničko ime ili lozinka";
     public static final String ADMIN = "admin";
+    public static final String BAD_FORMAT_FOR_EMAIL = "Neispravan format za mejl adresu";
+    public static final String BAD_FORMAT_FOR_TAX_NUMBER = "Neispravan PIB";
+    public static final String BAD_FORMAT_FOR_ID_NUMBER = "Neispravan matični broj";
+    public static final String VALID_EMAIL_ADDRESS_REGEX = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+    public static final String VALID_NUMBER = "[0-9]+";
 
     /*
      Login pane & AddAdminPane & AddAdminEvent
@@ -64,8 +73,22 @@ public class Constants {
     public static final String SECTION_DETAILS = "Detalji o sekciji...";
     public static final String SECTION_DETAILS_TITLE = "Detalji o sekciji";
 
-    public static final String BUTTON_CONFIRM = "Potvrdi";
+    /*
+    List Building Pane
+     */
+    public static final String NAME_OF_BUILDING = "Naziv zgrade";
+    public static final String NUMBER = "Broj";
+    public static final String ID_NUM = "MB";
+    public static final String TAX_NUM_BUILDING = "PIB";
+    public static final String MAIL = "Mejl adresa";
     public static final String CITY = "Mesto";
+
+    /*
+    TopHBox Building Pane
+     */
+    public static final String SELECT_ITEM = "Izaberi stavku:";
+    
+    public static final String BUTTON_CONFIRM = "Potvrdi";
     public static final String HAVE_TO_NAME_INDEPENDENT = "Morate uneti naziv samostalnog dela";
     public static final String HAVE_TO_NAME_COMMON = "Morate uneti naziv zajednickog dela";
     public static final String BAD_FORMAT_PER_MONTH = "Neispravan format za Mesecno odrzavanje";
@@ -107,18 +130,15 @@ public class Constants {
     public static final String BUTTON_ADD = "Dodaj";
     public static final String BUTTON_REMOVE = "Obrisi";
     public static final String BUTTON_EDIT = "Izmeni";
-    public static final String BUTTON_SHOW = "Prikazi";
+    
     public static final String BUTTON_BACK = "Nazad";
     public static final String BUTTON_SEARCH = "Pretraga";
     public static final String BUTTON_CANCEL = "Otkazi";
-    public static final String NAME_OF_BUILDING = "Naziv zgrade";
     public static final String EDIT_OCCUPANT = "Promena podataka korisnika: ";
     public static final String ID = "ID";
-    public static final String ID_NUM = "MB";
-    public static final String TAX_NUM_BUILDING = "PIB";
-    public static final String MAIL = "Mejl adresa";
+
     public static final String NOTE = "Napomena";
-    public static final String BANK_ACCOUNT = "Tekuci racun";
+    public static final String BANK_ACCOUNT = "Tekući račun";
     public static final String BANK = "Naziv banke";
     public static final String RENTER = "Zakupac";
     public static final String BUILDING = "Stambena zajednica";
@@ -126,14 +146,14 @@ public class Constants {
     public static final String ADD_BANK_ACCOUNT_SUCCESS = "Bankovni racun je dodat";
     public static final String NOT_ADD_BUILDING = "Stambena zajednica nije dodata";
     public static final String SELECT_BUILDINGS = "Izaberi zgradu:";
-    public static final String SELECT_ITEM = "Izaberi stavku:";
+
     public static final String SELECT_LIST = "Izaberi listu:";
     public static final String FIRST_NAME = "Ime";
     public static final String NAME_OF_SECTION = "Naziv sekcije";
     public static final String PRICE_PER_MONTH = "Mesecno odrzavanje";
     public static final String LAST_NAME = "Prezime";
     public static final String PHONE_NUMBER = "Broj telefona";
-    public static final String NUMBER = "Broj";
+
     public static final String FLAT_AREA = "Povrsina(m2)";
     public static final String OWNER = "Vlasnik";
     public static final String OWNER_IF_EXIST = "Izabrati vlasnika (ako postoji)";

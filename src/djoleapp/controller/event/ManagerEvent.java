@@ -12,7 +12,7 @@ import djoleapp.controller.event.buildingevent.AddIndependentEvent;
 import djoleapp.controller.event.buildingevent.AddOccupantBuildingEvent;
 import djoleapp.controller.event.buildingevent.AddSectionEvent;
 import djoleapp.controller.event.buildingevent.BackListSeparateSections;
-import djoleapp.controller.event.buildingevent.BankDetailsBuildingEvent;
+import djoleapp.controller.event.buildingevent.DetailsBuildingEvent;
 import djoleapp.controller.event.buildingevent.ConfirmAddCommonEvent;
 import djoleapp.controller.event.buildingevent.ConfirmAddIndEvent;
 import djoleapp.controller.event.buildingevent.ConfirmAddSeparateEvent;
@@ -61,7 +61,7 @@ public class ManagerEvent {
     private SaveEvent saveEvent = null;
     private AddBuildingEvent addBuildingEvent = null;
     private ListBuildingEvent listBuildingEvent = null;
-    private BankDetailsBuildingEvent bankDetailsBuildingEvent = null;
+    private DetailsBuildingEvent detailsBuildingEvent = null;
     private ShowSelectBuildTableEvent showSelectBuildTableEvent = null;
     private AddBankAccountBuildEvent addBankAccountBuildEvent = null;
     private ListOccupantEvent listOccupantEvent = null;
@@ -111,7 +111,7 @@ public class ManagerEvent {
         saveEvent = new SaveEvent();
         addBuildingEvent = new AddBuildingEvent();
         listBuildingEvent = new ListBuildingEvent();
-        bankDetailsBuildingEvent = new BankDetailsBuildingEvent();
+        detailsBuildingEvent = new DetailsBuildingEvent();
         showSelectBuildTableEvent = new ShowSelectBuildTableEvent();
         addBankAccountBuildEvent = new AddBankAccountBuildEvent();
         listOccupantEvent = new ListOccupantEvent();
@@ -339,8 +339,8 @@ public class ManagerEvent {
         return addBuildingEvent;
     }
 
-    public BankDetailsBuildingEvent getBankDetailsBuildingEvent() {
-        return bankDetailsBuildingEvent;
+    public DetailsBuildingEvent getDetailsBuildingEvent() {
+        return detailsBuildingEvent;
     }
 
     public ShowSelectBuildTableEvent getShowSelectBuildTableEvent() {

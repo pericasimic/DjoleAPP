@@ -2,6 +2,7 @@ package djoleapp.controller.event.adminevent;
 
 import djoleapp.DjoleAPP;
 import djoleapp.business.Factory;
+import djoleapp.business.facade.Facade;
 import djoleapp.business.storage.TemporaryList;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
@@ -39,6 +40,8 @@ public class LoginEvent implements EventHandler<ActionEvent> {
         Scene scena = new Scene(gp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
         scena.getStylesheets().add(DjoleAPP.class.getResource(Constants.STYLE_PATH).toExternalForm());
         Controller.getInstance().getPrimaryStage().setScene(scena);
+        
+        Factory.getFacade().createNewCalculations();
 
     }
 

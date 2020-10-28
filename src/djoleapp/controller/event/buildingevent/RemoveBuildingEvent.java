@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 
 public class RemoveBuildingEvent implements EventHandler<ActionEvent> {
 
+    /*List Building Pane*/
     @Override
     public void handle(ActionEvent event) {
         removeBuildingEvent();
@@ -21,10 +22,10 @@ public class RemoveBuildingEvent implements EventHandler<ActionEvent> {
 
         ListBuildingsPane lbp = Controller.getInstance().getListBuildingsPane();
         ResidentialCommunity rc = lbp.getTableBuildings().getSelectionModel().getSelectedItem();
-        if(!Factory.getFacade().removeBuilding(rc)){
+        if (!Factory.getFacade().removeBuilding(rc)) {
             return;
         }
-        
+
         Message.info(Alert.AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.SUCCESS_DELETE);
         lbp.reload();
 

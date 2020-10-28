@@ -17,12 +17,10 @@ import djoleapp.business.model.ParkingSpace;
 import djoleapp.business.model.PaymentItems;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.business.model.SeparateSection;
-import djoleapp.business.storage.TemporaryList;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.controller.util.Message;
 import djoleapp.gui.admingui.AddAdminPane;
-import djoleapp.gui.maingui.MainPane;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -34,6 +32,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -144,6 +144,7 @@ public class FacadeSER implements Facade {
         return null;
     }
 
+    /*SearchBuildingEvent*/
     @Override
     public List<ResidentialCommunity> searchBuidingList(String word) {
         List<ResidentialCommunity> list = new ArrayList<>();
@@ -155,6 +156,7 @@ public class FacadeSER implements Facade {
         return list;
     }
 
+    /*AddBuildingEvent*/
     @Override
     public boolean checkAddBuildingFieldsEmpty(String name, String number, String city, String idNum, String taxNum, String mail) {
         if (name.isEmpty() || name == null || number.isEmpty() || number == null || city.isEmpty() || city == null || idNum.isEmpty() || idNum == null || taxNum.isEmpty() || taxNum == null || mail.isEmpty() || mail == null) {
@@ -164,6 +166,7 @@ public class FacadeSER implements Facade {
         return false;
     }
 
+    /*AddBuildingEvent*/
     @Override
     public boolean checkAddBuildingFieldExist(String name, String number, String city, String idNum, String taxNum, String mail) {
 
@@ -178,6 +181,43 @@ public class FacadeSER implements Facade {
 
     }
 
+    /*AddBuildingEvent*/
+    @Override
+    public boolean validateEmail(String emailStr) {
+        Pattern pattern = Pattern.compile(Constants.VALID_EMAIL_ADDRESS_REGEX, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(emailStr);
+        if (matcher.find()) {
+            return true;
+        } else {
+            Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.BAD_FORMAT_FOR_EMAIL);
+            return false;
+        }
+
+    }
+
+    /*AddBuildingEvent*/
+    @Override
+    public boolean validTaxNumber(String taxNumber) {
+        if (taxNumber.matches(Constants.VALID_NUMBER) && taxNumber.length() == 9) {
+            return true;
+        } else {
+            Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.BAD_FORMAT_FOR_TAX_NUMBER);
+            return false;
+        }
+    }
+
+    /*AddBuildingEvent*/
+    @Override
+    public boolean validIDNumber(String idNumber) {
+        if (idNumber.matches(Constants.VALID_NUMBER) && idNumber.length() == 8) {
+            return true;
+        } else {
+            Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.BAD_FORMAT_FOR_ID_NUMBER);
+            return false;
+        }
+    }
+
+    /*RemoveBuildingEvent*/
     @Override
     public boolean removeBuilding(ResidentialCommunity rc) {
 

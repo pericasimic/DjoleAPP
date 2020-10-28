@@ -3,8 +3,8 @@ package djoleapp.gui.maingui.buildinggui;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
+import djoleapp.controller.constant.CssId;
 import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -16,19 +16,16 @@ import javafx.scene.layout.VBox;
 
 public class TopHBoxBuildingPane extends HBox {
 
-    private Label selectBuildingLbl = new Label(Constants.SELECT_BUILDINGS);
-    private Label selectItemLbl = new Label(Constants.SELECT_ITEM);
-    private Label showLbl = new Label();
+    private final Label selectBuildingLbl = new Label(Constants.SELECT_BUILDINGS);
+    private final Label selectItemLbl = new Label(Constants.SELECT_ITEM);
+    private final Label showLbl = new Label();
     private ComboBox<ResidentialCommunity> buildingsBox = new ComboBox<>();
-    private ComboBox<String> selectItemBox = new ComboBox<>();
-    private Button showBtn = new Button(Constants.BUTTON_SHOW);
+    private final ComboBox<String> selectItemBox = new ComboBox<>();
+    private final Button showBtn = new Button(Constants.BUTTON_SHOW);
 
     public TopHBoxBuildingPane() {
 
-        this.setSpacing(50);
-        this.setStyle(Constants.FX_BORDER_COLOR_BLACK);
-        this.setPadding(new Insets(10, 10, 10, 10));
-        this.setAlignment(Pos.CENTER);
+        this.getStyleClass().add(CssId.HBOX_TOP_BOX);
 
         VBox vBox1 = new VBox();
         vBox1.setSpacing(10);

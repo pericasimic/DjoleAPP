@@ -19,19 +19,30 @@ import java.util.List;
 public interface Facade {
 
     public boolean loginAdminCheck(final String username, final String password);
-    
+
     public boolean checkAddAdmin(String username, String password, String conPass);
 
+    /*AddBuildingEvent*/
     public boolean checkAddBuildingFieldsEmpty(String name, String number, String city, String idNum, String taxNum, String mail);
 
+    /*AddBuildingEvent*/
     public boolean checkAddBuildingFieldExist(String name, String number, String city, String idNum, String taxNum, String mail);
 
+    /*AddBuildingEvent*/
+    public boolean validateEmail(String emailStr);
+
+    /*AddBuildingEvent*/
+    public boolean validTaxNumber(String taxNumber);
+
+    /*AddBuildingEvent*/
+    public boolean validIDNumber(String idNumber);
+
     public boolean chackExistOccupantBuilding(ResidentialCommunity r, Occupant o);
-    
+
     public void createNewCalculations();
-    
+
     public void writeId(long id);
-    
+
     public long readId();
 
     public List<Occupant> getListfreeOccupants();
@@ -40,10 +51,12 @@ public interface Facade {
 
     public String kindOfSection(SeparateSection section);
 
+    /*SearchBuildingEvent*/
     public List<ResidentialCommunity> searchBuidingList(String word);
 
     public List<Occupant> searchUserList(String word);
 
+    /*RemoveBuildingEvent*/
     public boolean removeBuilding(ResidentialCommunity rc);
 
     public void removeBuildingOccupant(ResidentialCommunity rc, Occupant o);
@@ -69,29 +82,29 @@ public interface Facade {
     public void addOccupantBuilding(ResidentialCommunity rc, Occupant o, SeparateSection ss);
 
     public void removeOccupant(Occupant o);
-    
+
     public boolean addOccupant(long id, String firstName, String lastName, String idNum, String phone, String mail, String note);
-    
+
     public boolean editOccupant(String firstName, String lastName, String idNum, String phone, String mail, String note);
-    
+
     public List<Occupant> getListOccupantsPerFlat(Flat flat);
-    
+
     public List<SeparateSection> getSeparateSectionPerOccupant(Occupant o);
-    
+
     public List<IndependentSection> getIndSectionPerOccupant(Occupant o);
-    
+
     public boolean createBankAccountOccupant(String name, String number);
-    
+
     public double pricePerArea(SeparateSection section);
-    
+
     public List<PaymentItems> getListPayment(ResidentialCommunity residentialCommunity, Occupant o);
-    
+
     public String returnMonth(int num);
-    
+
     public String numberCalculation(ResidentialCommunity residentialCommunity, Occupant o, Date date);
-    
+
     public String getDateFormat(Date date);
-    
+
     public void changeCalculationSum(AccountCalculation ac, double sum);
-    
+
 }

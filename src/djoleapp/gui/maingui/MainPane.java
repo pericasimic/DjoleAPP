@@ -49,7 +49,7 @@ public class MainPane extends BorderPane {
         buildingList.setOnAction(Controller.getInstance().getManagerEvent().getListBuildingEvent());
         MenuItem detailsBuilding = new MenuItem(Constants.MENU_ITEM_BUILDING_DETAILS);
         detailsBuilding.setAccelerator(new KeyCodeCombination(KeyCode.B, KeyCombination.CONTROL_DOWN));
-        detailsBuilding.setOnAction(Controller.getInstance().getManagerEvent().getBankDetailsBuildingEvent());
+        detailsBuilding.setOnAction(Controller.getInstance().getManagerEvent().getDetailsBuildingEvent());
         
         buildings.getItems().addAll(buildingList, detailsBuilding);
         

@@ -6,8 +6,6 @@ import djoleapp.controller.constant.Constants;
 import djoleapp.controller.constant.CssId;
 import java.util.List;
 import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -16,7 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
-import static javafx.scene.layout.Region.USE_PREF_SIZE;
 import javafx.scene.layout.VBox;
 
 public class ListBuildingsPane extends VBox {
@@ -42,9 +39,7 @@ public class ListBuildingsPane extends VBox {
     public ListBuildingsPane() {
         titleLbl.getStyleClass().add(CssId.LOGIN_TITLE);
 
-        setSpacing(5);
-        setPadding(new Insets(10, 10, 10, 10));
-
+        this.getStyleClass().add(CssId.VBOX);
 
         TableColumn nameBuildingCol = new TableColumn(Constants.NAME_OF_BUILDING);
         nameBuildingCol.setMinWidth(213);
@@ -79,12 +74,8 @@ public class ListBuildingsPane extends VBox {
     private HBox getSearch() {
 
         HBox hSearch = new HBox();
-        hSearch.setSpacing(3);
-        hSearch.setPadding(new Insets(10, 10, 10, 10));
-        hSearch.setAlignment(Pos.CENTER);
-
-        searchBuildingFld.setMaxWidth(USE_PREF_SIZE);
-
+        hSearch.getStyleClass().add(CssId.HBOX_LIST_BUILDING_PANE);
+        
         searchBuildingBtn.setOnAction(Controller.getInstance().getManagerEvent().getSearchBuildingEvent());
         searchBuildingBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
@@ -99,26 +90,24 @@ public class ListBuildingsPane extends VBox {
     private HBox getForm() {
 
         HBox hbox = new HBox();
-        hbox.setSpacing(3);
-        hbox.setPadding(new Insets(10, 10, 10, 10));
-        hbox.setAlignment(Pos.CENTER);
+        hbox.getStyleClass().add(CssId.HBOX_LIST_BUILDING_PANE);
 
-        nameBuildingFld.setMaxWidth(USE_PREF_SIZE);
+        nameBuildingFld.setMaxWidth(200);
         nameBuildingFld.setPromptText(Constants.NAME_OF_BUILDING);
 
-        numberBuildingFld.setMaxWidth(60);
+        numberBuildingFld.setMaxWidth(200);
         numberBuildingFld.setPromptText(Constants.NUMBER);
 
-        idNumBuildingFld.setMaxWidth(80);
+        idNumBuildingFld.setMaxWidth(200);
         idNumBuildingFld.setPromptText(Constants.ID_NUM);
 
-        tidNumBuildingFld.setMaxWidth(80);
+        tidNumBuildingFld.setMaxWidth(200);
         tidNumBuildingFld.setPromptText(Constants.TAX_NUM_BUILDING);
 
-        mailBuildingFld.setMaxWidth(USE_PREF_SIZE);
+        mailBuildingFld.setMaxWidth(200);
         mailBuildingFld.setPromptText(Constants.MAIL);
 
-        cityBuildingFld.setMaxWidth(USE_PREF_SIZE);
+        cityBuildingFld.setMaxWidth(200);
         cityBuildingFld.setPromptText(Constants.CITY);
 
         addBuildingBtn.setOnAction(Controller.getInstance().getManagerEvent().getAddBuildingEvent());
@@ -143,6 +132,7 @@ public class ListBuildingsPane extends VBox {
 
     public void clearAllFields() {
         nameBuildingFld.setText(Constants.EMPTY_STRING);
+        numberBuildingFld.setText(Constants.EMPTY_STRING);
         idNumBuildingFld.setText(Constants.EMPTY_STRING);
         tidNumBuildingFld.setText(Constants.EMPTY_STRING);
         mailBuildingFld.setText(Constants.EMPTY_STRING);

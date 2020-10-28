@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 
 public class AddBuildingEvent implements EventHandler<ActionEvent> {
 
+    /*List Building Pane*/
     @Override
     public void handle(ActionEvent event) {
         addBuildingEvent();
@@ -36,6 +37,21 @@ public class AddBuildingEvent implements EventHandler<ActionEvent> {
         }
 
         if (Factory.getFacade().checkAddBuildingFieldExist(name, number, city, idNumber, taxNumber, mail)) {
+            lp.clearAllFields();
+            return;
+        }
+        
+        if (!Factory.getFacade().validIDNumber(idNumber)) {
+            lp.clearAllFields();
+            return;
+        }
+
+        if (!Factory.getFacade().validTaxNumber(taxNumber)) {
+            lp.clearAllFields();
+            return;
+        }
+
+        if (!Factory.getFacade().validateEmail(mail)) {
             lp.clearAllFields();
             return;
         }
