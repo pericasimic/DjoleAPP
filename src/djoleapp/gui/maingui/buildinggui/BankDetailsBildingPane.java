@@ -3,10 +3,10 @@ package djoleapp.gui.maingui.buildinggui;
 import djoleapp.business.model.BankAccount;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
+import djoleapp.controller.constant.CssId;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,27 +22,25 @@ public class BankDetailsBildingPane extends VBox {
     private TableView<BankAccount> bankAccountTable = new TableView<>();
     private TextField nameBankFld = new TextField();
     private TextField numAccountFld = new TextField();
-    private Button addAccountBtn = new Button(Constants.BUTTON_ADD);
-    private Button removeAccountBtn = new Button(Constants.BUTTON_REMOVE);
+    private final Button addAccountBtn = new Button(Constants.BUTTON_ADD);
+    private final Button removeAccountBtn = new Button(Constants.BUTTON_REMOVE);
 
     public BankDetailsBildingPane(List<BankAccount> bankAccounts, HBox box) {
         this.setPadding(new Insets(10, 10, 10, 10));
 
         TableColumn nameBankCol = new TableColumn(Constants.BANK);
-        nameBankCol.setMinWidth(150);
+        nameBankCol.setMinWidth(640);
         nameBankCol.setCellValueFactory(new PropertyValueFactory<BankAccount, String>("bankName"));
 
         TableColumn numAccountCol = new TableColumn(Constants.BANK_ACCOUNT);
-        numAccountCol.setMinWidth(150);
+        numAccountCol.setMinWidth(640);
         numAccountCol.setCellValueFactory(new PropertyValueFactory<BankAccount, String>("bankAccountNumber"));
 
         bankAccountTable.setItems(FXCollections.observableArrayList(bankAccounts));
         bankAccountTable.getColumns().addAll(nameBankCol, numAccountCol);
 
         HBox hbox = new HBox();
-        hbox.setSpacing(3);
-        hbox.setPadding(new Insets(10, 10, 10, 10));
-        hbox.setAlignment(Pos.CENTER);
+        hbox.getStyleClass().add(CssId.HBOX_BANK_DETAILS_BUILD_PANE);
         nameBankFld.setMaxWidth(USE_PREF_SIZE);
         nameBankFld.setPromptText(Constants.BANK);
 
@@ -56,7 +54,7 @@ public class BankDetailsBildingPane extends VBox {
             }
 
         });
-        
+
         removeAccountBtn.setOnAction(Controller.getInstance().getManagerEvent().getRemoveBankAccountEvent());
         removeAccountBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
@@ -85,7 +83,5 @@ public class BankDetailsBildingPane extends VBox {
     public TableView<BankAccount> getBankAccountTable() {
         return bankAccountTable;
     }
-    
-    
 
 }

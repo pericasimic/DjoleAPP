@@ -60,7 +60,7 @@ public class Controller {
     private BuildingDetailsPane buildingDetailsPane;
     private OccupantDetailsBuildingPane occupantDetailsBuildingPane;
     private ListOccupantsPane listOccupantsPane;
-    private TableOccupant tableOccupant;
+//    private TableOccupant tableOccupant;
     private TableSection tableSection;
     private TableIndependent tableIndependent;
     private TableCommon tableCommon;
@@ -368,13 +368,13 @@ public class Controller {
         this.listOccupantsPane = listOccupantsPane;
     }
 
-    public void setTableOccupant(TableOccupant tableOccupant) {
-        this.tableOccupant = tableOccupant;
-    }
+//    public void setTableOccupant(TableOccupant tableOccupant) {
+//        this.tableOccupant = tableOccupant;
+//    }
 
-    public TableOccupant getTableOccupant() {
-        return tableOccupant;
-    }
+//    public TableOccupant getTableOccupant() {
+//        return tableOccupant;
+//    }
 
     public void setAddAdminPane(AddAdminPane addAdminPane) {
         this.addAdminPane = addAdminPane;

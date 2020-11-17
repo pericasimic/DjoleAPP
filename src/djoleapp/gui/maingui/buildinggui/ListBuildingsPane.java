@@ -2,19 +2,23 @@ package djoleapp.gui.maingui.buildinggui;
 
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.Controller;
-import djoleapp.controller.constant.Constants;
 import djoleapp.controller.constant.CssId;
-import java.util.List;
-import javafx.collections.FXCollections;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import djoleapp.controller.constant.Constants;
+import java.util.List;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 public class ListBuildingsPane extends VBox {
 
@@ -40,33 +44,42 @@ public class ListBuildingsPane extends VBox {
         titleLbl.getStyleClass().add(CssId.LOGIN_TITLE);
 
         this.getStyleClass().add(CssId.VBOX);
+        
+        TableColumn numOrder = new TableColumn(Constants.HASH_KEY);
+        numOrder.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ResidentialCommunity, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<ResidentialCommunity, String> o) {
+                return new ReadOnlyObjectWrapper(Controller.getInstance().getTemporaryList().getResidentialCommunitys().indexOf(o.getValue()) + 1 + "");
+            }
+        });
+        numOrder.setMinWidth(30);
 
         TableColumn nameBuildingCol = new TableColumn(Constants.NAME_OF_BUILDING);
         nameBuildingCol.setMinWidth(213);
         nameBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("name"));
 
         TableColumn numBuildingCol = new TableColumn(Constants.NUMBER);
-        numBuildingCol.setMinWidth(213);
+        numBuildingCol.setMinWidth(212);
         numBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("number"));
 
         TableColumn idNumBuildingCol = new TableColumn(Constants.ID_NUM);
-        idNumBuildingCol.setMinWidth(213);
+        idNumBuildingCol.setMinWidth(212);
         idNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("identificationNumber"));
 
         TableColumn taxNumBuildingCol = new TableColumn(Constants.TAX_NUM_BUILDING);
-        taxNumBuildingCol.setMinWidth(213);
+        taxNumBuildingCol.setMinWidth(202);
         taxNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("taxIdentificationNumber"));
 
         TableColumn mailNumBuildingCol = new TableColumn(Constants.MAIL);
-        mailNumBuildingCol.setMinWidth(213);
+        mailNumBuildingCol.setMinWidth(202);
         mailNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("mail"));
 
         TableColumn cityNumBuildingCol = new TableColumn(Constants.CITY);
-        cityNumBuildingCol.setMinWidth(213);
+        cityNumBuildingCol.setMinWidth(207);
         cityNumBuildingCol.setCellValueFactory(new PropertyValueFactory<ResidentialCommunity, String>("city"));
 
         reload();
-        tableBuildings.getColumns().addAll(nameBuildingCol, numBuildingCol, idNumBuildingCol, taxNumBuildingCol, mailNumBuildingCol, cityNumBuildingCol);
+        tableBuildings.getColumns().addAll(numOrder, nameBuildingCol, numBuildingCol, idNumBuildingCol, taxNumBuildingCol, mailNumBuildingCol, cityNumBuildingCol);
         getChildren().addAll(titleLbl, getSearch(), tableBuildings, getForm());
 
     }
@@ -95,19 +108,19 @@ public class ListBuildingsPane extends VBox {
         nameBuildingFld.setMaxWidth(200);
         nameBuildingFld.setPromptText(Constants.NAME_OF_BUILDING);
 
-        numberBuildingFld.setMaxWidth(200);
+        numberBuildingFld.setMaxWidth(50);
         numberBuildingFld.setPromptText(Constants.NUMBER);
 
-        idNumBuildingFld.setMaxWidth(200);
+        idNumBuildingFld.setMaxWidth(100);
         idNumBuildingFld.setPromptText(Constants.ID_NUM);
 
-        tidNumBuildingFld.setMaxWidth(200);
+        tidNumBuildingFld.setMaxWidth(100);
         tidNumBuildingFld.setPromptText(Constants.TAX_NUM_BUILDING);
 
         mailBuildingFld.setMaxWidth(200);
         mailBuildingFld.setPromptText(Constants.MAIL);
 
-        cityBuildingFld.setMaxWidth(200);
+        cityBuildingFld.setMaxWidth(150);
         cityBuildingFld.setPromptText(Constants.CITY);
 
         addBuildingBtn.setOnAction(Controller.getInstance().getManagerEvent().getAddBuildingEvent());

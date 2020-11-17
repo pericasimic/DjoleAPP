@@ -96,19 +96,6 @@ public class FacadeSER implements Facade {
     }
 
     @Override
-    public boolean chackExistOccupantBuilding(ResidentialCommunity r, Occupant o) {
-        if (r != null && o != null) {
-            for (Occupant oc : r.getListOccupants()) {
-                if (oc.getId() == o.getId()) {
-                    Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_OCCUPANT_BUILDING_EXIST);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    @Override
     public List<Occupant> getListfreeOccupants() {
         List<Occupant> list = new ArrayList<>();
         for (Occupant o : Controller.getInstance().getTemporaryList().getOccupants()) {
@@ -272,7 +259,7 @@ public class FacadeSER implements Facade {
 
     @Override
     public boolean addSeparateSection(boolean isAdd, ResidentialCommunity rc, String section, String number, String areaSection, String note, Occupant owner) {
-
+        
         SeparateSection sep = Controller.getInstance().getTemporarySeparateSection();
         double area = 0;
 
@@ -584,6 +571,7 @@ public class FacadeSER implements Facade {
         Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent().showSelectBuildTableEvent();
     }
 
+    /*OccupantDetailsBuildingPane*/
     @Override
     public List<Flat> getFlats(ResidentialCommunity r) {
         List<Flat> list = new ArrayList<>();
@@ -596,6 +584,7 @@ public class FacadeSER implements Facade {
         return list;
     }
 
+    /*RemoveBuildingOccupantEvent*/
     @Override
     public void removeBuildingOccupant(ResidentialCommunity rc, Occupant o) {
         if (rc == null || o == null) {
@@ -606,9 +595,11 @@ public class FacadeSER implements Facade {
         rc.getListOccupants().remove(o);
         o.setIsAdd(false);
         o.setHome(null);
+
         Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.SUCCESS_DELETE);
     }
 
+    /*AddOccupantBuildingEvent*/
     @Override
     public void addOccupantBuilding(ResidentialCommunity rc, Occupant o, SeparateSection ss) {
 
@@ -617,9 +608,11 @@ public class FacadeSER implements Facade {
             return;
         }
 
+        
         o.setIsAdd(true);
         o.setHome((Flat) ss);
         rc.getListOccupants().add(o);
+        Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.ADD_OCCUPANT_SUCCESS);
 
     }
 

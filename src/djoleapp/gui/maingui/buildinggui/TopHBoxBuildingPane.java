@@ -4,8 +4,8 @@ import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.controller.constant.CssId;
+import java.util.List;
 import javafx.collections.FXCollections;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -28,18 +28,15 @@ public class TopHBoxBuildingPane extends HBox {
         this.getStyleClass().add(CssId.HBOX_TOP_BOX);
 
         VBox vBox1 = new VBox();
-        vBox1.setSpacing(10);
-        vBox1.setAlignment(Pos.CENTER);
+        vBox1.getStyleClass().add(CssId.VBOX_TOP_BOX);
         vBox1.getChildren().addAll(selectBuildingLbl, buildingsBox);
 
         VBox vBox2 = new VBox();
-        vBox2.setSpacing(10);
-        vBox2.setAlignment(Pos.CENTER);
+        vBox2.getStyleClass().add(CssId.VBOX_TOP_BOX);
         vBox2.getChildren().addAll(selectItemLbl, selectItemBox);
 
         VBox vBox3 = new VBox();
-        vBox3.setSpacing(10);
-        vBox3.setAlignment(Pos.CENTER);
+        vBox3.getStyleClass().add(CssId.VBOX_TOP_BOX);
         vBox3.getChildren().addAll(showLbl, showBtn);
 
         buildingsBox.setMaxWidth(USE_PREF_SIZE);
@@ -61,8 +58,16 @@ public class TopHBoxBuildingPane extends HBox {
 
     }
 
+    public void reloadBuildingBox(List<ResidentialCommunity> list) {
+        buildingsBox.setItems(FXCollections.observableArrayList(list));
+    }
+
     public ComboBox<ResidentialCommunity> getBuildingsBox() {
         return buildingsBox;
+    }
+
+    public void setBuildingsBox(ComboBox<ResidentialCommunity> buildingsBox) {
+        this.buildingsBox = buildingsBox;
     }
 
     public ComboBox<String> getSelectItemBox() {

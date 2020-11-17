@@ -46,7 +46,7 @@ public class ListOccupantsPane extends VBox {
             return row;
         });
         
-        Controller.getInstance().setTableOccupant(tableOccupant);
+//        Controller.getInstance().setTableOccupant(tableOccupant);
         
         getChildren().addAll(titleLbl, getSearch(), tableOccupant, getForm());
         

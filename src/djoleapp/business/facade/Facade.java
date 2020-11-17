@@ -37,14 +37,13 @@ public interface Facade {
     /*AddBuildingEvent*/
     public boolean validIDNumber(String idNumber);
 
-    public boolean chackExistOccupantBuilding(ResidentialCommunity r, Occupant o);
-
     public void createNewCalculations();
 
     public void writeId(long id);
 
     public long readId();
 
+    /*OccupantDetailsBuildingPane*/
     public List<Occupant> getListfreeOccupants();
 
     public double supportSum(double price, double area);
@@ -59,12 +58,15 @@ public interface Facade {
     /*RemoveBuildingEvent*/
     public boolean removeBuilding(ResidentialCommunity rc);
 
+    /*RemoveBuildingOccupantEvent*/
     public void removeBuildingOccupant(ResidentialCommunity rc, Occupant o);
 
+    /*RemoveBankAccountEvent*/
     public boolean removeBankAccount(BankAccount ba, ResidentialCommunity rc);
 
     public void removeSeparateSection(SeparateSection ss, ResidentialCommunity rc);
 
+    /*AddBankAccountBuildEvent*/
     public boolean checkBankAccount(String name, String number);
 
     public boolean addSeparateSection(boolean isAdd, ResidentialCommunity rc, String section, String number, String area, String note, Occupant owner);
@@ -77,8 +79,10 @@ public interface Facade {
 
     public void addCommonSection(String name, String note, String price);
 
+    /*OccupantDetailsBuildingPane*/
     public List<Flat> getFlats(ResidentialCommunity r);
 
+    /*AddOccupantBuildingEvent*/
     public void addOccupantBuilding(ResidentialCommunity rc, Occupant o, SeparateSection ss);
 
     public void removeOccupant(Occupant o);

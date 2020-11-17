@@ -2,7 +2,6 @@ package djoleapp.controller.event.buildingevent;
 
 import djoleapp.business.Factory;
 import djoleapp.business.model.BankAccount;
-import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.controller.util.Message;
@@ -12,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert.AlertType;
 
+/*BankDetailsBildingPane*/
 public class RemoveBankAccountEvent implements EventHandler<ActionEvent> {
 
     @Override

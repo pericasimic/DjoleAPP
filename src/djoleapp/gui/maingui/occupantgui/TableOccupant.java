@@ -2,7 +2,6 @@ package djoleapp.gui.maingui.occupantgui;
 
 import djoleapp.business.model.Flat;
 import djoleapp.business.model.Occupant;
-import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.constant.Constants;
 import java.util.List;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -27,29 +26,30 @@ public class TableOccupant extends TableView<Occupant> {
             }
         });
         numOrder.setSortable(false);
+        numOrder.setMinWidth(30);
 
         TableColumn firstNameCol = new TableColumn(Constants.FIRST_NAME);
-        firstNameCol.setMinWidth(150);
+        firstNameCol.setMinWidth(195);
         firstNameCol.setCellValueFactory(new PropertyValueFactory<Occupant, String>("firstNameOccupant"));
 
         TableColumn lastNameCol = new TableColumn(Constants.LAST_NAME);
-        lastNameCol.setMinWidth(150);
+        lastNameCol.setMinWidth(195);
         lastNameCol.setCellValueFactory(new PropertyValueFactory<Occupant, String>("lastNameOccupant"));
 
         TableColumn idNumberCol = new TableColumn(Constants.ID_NUM);
-        idNumberCol.setMinWidth(150);
+        idNumberCol.setMinWidth(195);
         idNumberCol.setCellValueFactory(new PropertyValueFactory<Occupant, String>("identificationNumber"));
 
         TableColumn phoneNumberCol = new TableColumn(Constants.PHONE_NUMBER);
-        phoneNumberCol.setMinWidth(150);
+        phoneNumberCol.setMinWidth(195);
         phoneNumberCol.setCellValueFactory(new PropertyValueFactory<Occupant, String>("phoneNumber"));
 
         TableColumn mailCol = new TableColumn(Constants.MAIL);
-        mailCol.setMinWidth(150);
+        mailCol.setMinWidth(195);
         mailCol.setCellValueFactory(new PropertyValueFactory<Occupant, String>("mail"));
         
         TableColumn homeCol = new TableColumn(Constants.FLAT);
-        homeCol.setMinWidth(150);
+        homeCol.setMinWidth(200);
         homeCol.setCellValueFactory(new PropertyValueFactory<Occupant, Flat>("home"));
 
         this.setItems(FXCollections.observableArrayList(list));

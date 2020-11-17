@@ -14,6 +14,16 @@ public class Constants {
     public static final String ALERT_ERROR_DIALOG = "Greška";
     public static final String ALERT_INFORMATION_DIALOG = "Informacija";
     public static final String BUTTON_SHOW = "Prikaži";
+    public static final String BUTTON_ADD = "Dodaj";
+    public static final String BUTTON_REMOVE = "Obriši";
+    public static final String BUTTON_EDIT = "Izmeni";
+    public static final String SUCCESS_SAVE = "Uspešno je sačuvano";
+    public static final String SUCCESS_DELETE = "Uspešno je obrisano";
+    public static final String ADD_BANK_ACCOUNT_SUCCESS = "Bankovni račun je dodat";
+    public static final String ALERT_EMPTY_INPUT_TEXT = "Polja moraju biti popunjena";
+    public static final String ALERT_NOT_SELECT = "Morate izabrati stavku";
+    public static final String BANK_ACCOUNT = "Tekući račun";
+    public static final String OCCUPANTS = "Stanari";
 
 
     /*
@@ -43,6 +53,7 @@ public class Constants {
     public static final String BAD_FORMAT_FOR_ID_NUMBER = "Neispravan matični broj";
     public static final String VALID_EMAIL_ADDRESS_REGEX = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
     public static final String VALID_NUMBER = "[0-9]+";
+    public static final String ALERT_ACCOUNT_EXIST = "Račun vec postoji";
 
     /*
      Login pane & AddAdminPane & AddAdminEvent
@@ -87,20 +98,19 @@ public class Constants {
     TopHBox Building Pane
      */
     public static final String SELECT_ITEM = "Izaberi stavku:";
-    
+
     public static final String BUTTON_CONFIRM = "Potvrdi";
     public static final String HAVE_TO_NAME_INDEPENDENT = "Morate uneti naziv samostalnog dela";
     public static final String HAVE_TO_NAME_COMMON = "Morate uneti naziv zajednickog dela";
     public static final String BAD_FORMAT_PER_MONTH = "Neispravan format za Mesecno odrzavanje";
     public static final String BAD_FORMAT_AREA = "Neispravan format za površinu";
-    public static final String ALERT_EMPTY_INPUT_TEXT = "Polja moraju biti popunjena";
+
     public static final String ALERT_EMPTY_INPUT_TEXT_OCCUPANT = "Sva polja moraju biti popunjena osim polja *Napomena";
     public static final String ALERT_BUILDING_EXIST = "Zgrada vec postoji u bazi";
-    public static final String ALERT_OCCUPANT_BUILDING_EXIST = "Izabrani stanar je već u zgradi";
+//    public static final String ALERT_OCCUPANT_BUILDING_EXIST = "Izabrani stanar je već u zgradi";
     public static final String INVESTEMENT_MAINTENANCE = "Investiciono održavanje";
     public static final String LIST_ITEM = "Lista stavki za održavanje";
-    public static final String ALERT_ACCOUNT_EXIST = "Racun vec postoji";
-    public static final String ALERT_NOT_SELECT = "Morate izabrati stavku";
+
     public static final String TITLE_ADD_OCCUPANT = "Dodavanje stanara";
     public static final String TITLE_ADD_SECTION = "Dodavanje sekcije za ";
     public static final String TITLE_ADD_IND_SECTION = "Dodavanje samostalnog dela za ";
@@ -114,23 +124,19 @@ public class Constants {
     public static final String FX_BORDER_COLOR_BLACK = "-fx-border-color: black";
     public static final String BUILDINGS_LIST_TITLE = "Lista stambenih zajednica";
     public static final String OCCUPANT_LIST_TITLE = "Lista stanara";
-    public static final String OCCUPANTS = "Stanari";
+
     public static final String OCCUPANT_COLON = "Stanar:";
     public static final String ACCOUNTS = "Računi";
     public static final String STATEMENTS = "Izvodi";
     public static final String EXPORT_TO_PDF = "Izvezi u PDF";
-    public static final String SUCCESS_SAVE = "Uspesno je sacuvano";
-    public static final String SUCCESS_DELETE = "Uspesno je obrisano";
+
     public static final String EMPTY_STRING = "";
     public static final String DEBIT = "Zaduzenje";
     public static final String DEBIT_FOR = "Zaduženje za";
     public static final String FROM_PREVIOUS_PERIOD = "iz prethodnog perioda";
     public static final String SECTION_EDIT_TITLE = "Izmena sekcije";
     public static final String MENU_ITEM_OCCUPANT_LIST = "Lista stanara...";
-    public static final String BUTTON_ADD = "Dodaj";
-    public static final String BUTTON_REMOVE = "Obrisi";
-    public static final String BUTTON_EDIT = "Izmeni";
-    
+
     public static final String BUTTON_BACK = "Nazad";
     public static final String BUTTON_SEARCH = "Pretraga";
     public static final String BUTTON_CANCEL = "Otkazi";
@@ -138,12 +144,12 @@ public class Constants {
     public static final String ID = "ID";
 
     public static final String NOTE = "Napomena";
-    public static final String BANK_ACCOUNT = "Tekući račun";
+
     public static final String BANK = "Naziv banke";
     public static final String RENTER = "Zakupac";
     public static final String BUILDING = "Stambena zajednica";
     public static final String ADD_BUILDING = "Stambena zajednica je dodata";
-    public static final String ADD_BANK_ACCOUNT_SUCCESS = "Bankovni racun je dodat";
+
     public static final String NOT_ADD_BUILDING = "Stambena zajednica nije dodata";
     public static final String SELECT_BUILDINGS = "Izaberi zgradu:";
 
@@ -200,5 +206,6 @@ public class Constants {
     public static final String DATE_DELIVERY = "Datum dostave:";
     public static final String DATE_DEADLINE = "Rok za plaćanje:";
     public static final String EDIT_OCCUPANT_SUCCESS = "Uspešno izmenjen korisnik";
+    public static final String ADD_OCCUPANT_SUCCESS = "Uspešno dodat stanar";
 
 }

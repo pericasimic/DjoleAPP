@@ -9,10 +9,16 @@ import djoleapp.gui.maingui.buildinggui.TopHBoxBuildingPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+/*OccupantDetailsBuildingPane*/
 public class RemoveBuildingOccupantEvent implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+        removeBuildingOccupantEvent();
+
+    }
+
+    public void removeBuildingOccupantEvent() {
 
         OccupantDetailsBuildingPane odbp = Controller.getInstance().getOccupantDetailsBuildingPane();
         TopHBoxBuildingPane thbbp = Controller.getInstance().getTopHBoxBuildingPane();
@@ -22,7 +28,7 @@ public class RemoveBuildingOccupantEvent implements EventHandler<ActionEvent> {
 
         Factory.getFacade().removeBuildingOccupant(rc, o);
         odbp.reload(rc.getListOccupants());
-
+        odbp.reloadBox();
     }
 
 }
