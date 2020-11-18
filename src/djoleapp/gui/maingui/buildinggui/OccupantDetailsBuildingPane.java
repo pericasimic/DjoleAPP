@@ -29,7 +29,7 @@ public class OccupantDetailsBuildingPane extends VBox {
 
     public OccupantDetailsBuildingPane(List<Occupant> list, HBox hBox) {
 
-        this.getStyleClass().add(CssId.OCCUPANT_DETAILS_BUILD_PANE);
+        this.getStyleClass().add(CssId.MAIN_PADDING);
 
         reloadBox();
 
@@ -37,7 +37,7 @@ public class OccupantDetailsBuildingPane extends VBox {
 //        Controller.getInstance().setTableOccupant(tableOccupant);
 
         HBox box = new HBox();
-        box.getStyleClass().add(CssId.HBOX_OCCUPANT_DETAILS_BUILD_PANE);
+        box.getStyleClass().add(CssId.HBOX_BOTTOM_MAIN);
 
         addOccupant.setOnAction(Controller.getInstance().getManagerEvent().getAddOccupantBuildingEvent());
         addOccupant.setOnKeyPressed(e -> {

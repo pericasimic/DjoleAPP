@@ -10,6 +10,11 @@
     -fx-opacity: 0.9;
 }
 
+.labelTittle{
+    -fx-font-size: 20px;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
 .combo-box{
     -fx-border-color:#E6E6E6;
     -fx-border-style:solid;
@@ -180,11 +185,11 @@
     -fx-border-color: white;
 }
 
-.occupantDetailsBuildingPane{
+.mainPadding{
     -fx-padding: 10;
 }
 
-.hBoxOcupantDetailsBuildingPane{
+.hBoxBottomMain{
     -fx-spacing: 30;
     -fx-padding: 30;
     -fx-alignment: CENTER;

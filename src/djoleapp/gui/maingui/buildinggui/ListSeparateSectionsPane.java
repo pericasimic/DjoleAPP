@@ -3,6 +3,7 @@ package djoleapp.gui.maingui.buildinggui;
 import djoleapp.business.model.SeparateSection;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
+import djoleapp.controller.constant.CssId;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
@@ -13,7 +14,6 @@ import javafx.scene.control.TableRow;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 
 public class ListSeparateSectionsPane extends VBox {
 
@@ -24,9 +24,9 @@ public class ListSeparateSectionsPane extends VBox {
     private Label title = new Label(Constants.SEPARATE_SECTIONS);
 
     public ListSeparateSectionsPane(List<SeparateSection> list) {
-        
-        title.setFont(new Font(Constants.FONT_ARIAL, 20));
-        
+
+        title.getStyleClass().add(CssId.LABEL_TITTLE);
+
         commonMade();
         tableSection = new TableSection(list);
 
@@ -53,9 +53,7 @@ public class ListSeparateSectionsPane extends VBox {
         tableSection = new TableSection(list);
 
         HBox hBox1 = new HBox();
-        hBox1.setSpacing(10);
-        hBox1.setPadding(new Insets(10, 10, 10, 10));
-        hBox1.setAlignment(Pos.CENTER);
+        hBox1.getStyleClass().add(CssId.HBOX_BOTTOM_MAIN);
         hBox1.getChildren().addAll(deleteBtn, addBtn);
 
         tableSection.setRowFactory(tv -> {
@@ -90,7 +88,7 @@ public class ListSeparateSectionsPane extends VBox {
     }
 
     private void commonMade() {
-        this.setPadding(new Insets(10, 10, 10, 10));
+        this.getStyleClass().add(CssId.MAIN_PADDING);
         Controller.getInstance().setTableSection(tableSection);
 
     }

@@ -31,6 +31,7 @@ public class TableSection extends TableView<SeparateSection> {
                 return new ReadOnlyObjectWrapper(getItems().indexOf(o.getValue()) + 1 + "");
             }
         });
+        numOrder.setMinWidth(30);
         numOrder.setSortable(false);
 
         TableColumn kindCol = new TableColumn(Constants.KIND_SECTION);
@@ -40,21 +41,22 @@ public class TableSection extends TableView<SeparateSection> {
                 return new ReadOnlyObjectWrapper(valueString(o.getValue()));
             }
         });
+        kindCol.setMinWidth(250);
 
         TableColumn numberCol = new TableColumn(Constants.NUMBER);
         numberCol.setMinWidth(150);
         numberCol.setCellValueFactory(new PropertyValueFactory<SeparateSection, Integer>("number"));
 
         TableColumn areaCol = new TableColumn(Constants.FLAT_AREA);
-        areaCol.setMinWidth(150);
+        areaCol.setMinWidth(250);
         areaCol.setCellValueFactory(new PropertyValueFactory<SeparateSection, Double>("surfaceArea"));
 
         TableColumn ownerCol = new TableColumn(Constants.OWNER);
-        ownerCol.setMinWidth(150);
+        ownerCol.setMinWidth(250);
         ownerCol.setCellValueFactory(new PropertyValueFactory<SeparateSection, Occupant>("owner"));
         
         TableColumn buildingCol = new TableColumn(Constants.BUILDING);
-        buildingCol.setMinWidth(150);
+        buildingCol.setMinWidth(350);
         buildingCol.setCellValueFactory(new PropertyValueFactory<SeparateSection, ResidentialCommunity>("residentialCommunity"));
 
         this.setItems(FXCollections.observableArrayList(list));
