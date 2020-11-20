@@ -42,6 +42,7 @@ import djoleapp.gui.maingui.occupantgui.EditOccupantPane;
 import djoleapp.gui.maingui.occupantgui.ListOccupantsPane;
 import djoleapp.gui.maingui.occupantgui.SelectOcupantPane;
 import djoleapp.gui.maingui.occupantgui.TableOccupant;
+import java.text.DecimalFormat;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -61,7 +62,7 @@ public class Controller {
     private OccupantDetailsBuildingPane occupantDetailsBuildingPane;
     private ListOccupantsPane listOccupantsPane;
 //    private TableOccupant tableOccupant;
-    private TableSection tableSection;
+//    private TableSection tableSection;
     private TableIndependent tableIndependent;
     private TableCommon tableCommon;
     private TemporaryList temporaryList;
@@ -320,14 +321,6 @@ public class Controller {
         this.listSeparateSectionsPane = listSeparateSectionsPane;
     }
 
-    public TableSection getTableSection() {
-        return tableSection;
-    }
-
-    public void setTableSection(TableSection tableSection) {
-        this.tableSection = tableSection;
-    }
-
     public Stage getPrimaryStage() {
         return primaryStage;
     }
@@ -469,7 +462,8 @@ public class Controller {
     }
 
     public double getPricePerMonthFlat() {
-        return pricePerMonthFlat;
+        DecimalFormat df = new DecimalFormat("#.##");
+        return Double.valueOf(df.format(pricePerMonthBox));
     }
 
     public void setPricePerMonthFlat(double pricePerMonthFlat) {
@@ -477,7 +471,8 @@ public class Controller {
     }
 
     public double getPricePerMonthBox() {
-        return pricePerMonthBox;
+        DecimalFormat df = new DecimalFormat("#.##");
+        return Double.valueOf(df.format(pricePerMonthBox));
     }
 
     public void setPricePerMonthBox(double pricePerMonthBox) {
@@ -485,7 +480,8 @@ public class Controller {
     }
 
     public double getPricePerMonthSpace() {
-        return pricePerMonthSpace;
+        DecimalFormat df = new DecimalFormat("#.##");
+        return Double.valueOf(df.format(pricePerMonthSpace));
     }
 
     public void setPricePerMonthSpace(double pricePerMonthSpace) {
@@ -493,7 +489,8 @@ public class Controller {
     }
 
     public double getPricePerMonthGarage() {
-        return pricePerMonthGarage;
+        DecimalFormat df = new DecimalFormat("#.##");
+        return Double.valueOf(df.format(pricePerMonthGarage));
     }
 
     public void setPricePerMonthGarage(double pricePerMonthGarage) {
@@ -501,7 +498,8 @@ public class Controller {
     }
 
     public double getPricePerMonthBusiness() {
-        return pricePerMonthBusiness;
+        DecimalFormat df = new DecimalFormat("#.##");
+        return Double.valueOf(df.format(pricePerMonthBusiness));
     }
 
     public void setPricePerMonthBusiness(double pricePerMonthBusiness) {

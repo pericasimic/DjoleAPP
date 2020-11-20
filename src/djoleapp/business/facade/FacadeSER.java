@@ -257,6 +257,7 @@ public class FacadeSER implements Facade {
 
     }
 
+    /*ConfirmEditSeparateEvent*/
     @Override
     public boolean addSeparateSection(boolean isAdd, ResidentialCommunity rc, String section, String number, String areaSection, String note, Occupant owner) {
         

@@ -27,7 +27,7 @@ public class ListSeparateSectionsPane extends VBox {
 
         title.getStyleClass().add(CssId.LABEL_TITTLE);
 
-        commonMade();
+        this.getStyleClass().add(CssId.MAIN_PADDING);
         tableSection = new TableSection(list);
 
         HBox hBox1 = new HBox();
@@ -49,7 +49,7 @@ public class ListSeparateSectionsPane extends VBox {
 
     public ListSeparateSectionsPane(List<SeparateSection> list, HBox hBox) {
 
-        commonMade();
+        this.getStyleClass().add(CssId.MAIN_PADDING);
         tableSection = new TableSection(list);
 
         HBox hBox1 = new HBox();
@@ -84,12 +84,6 @@ public class ListSeparateSectionsPane extends VBox {
         });
 
         this.getChildren().addAll(hBox, tableSection, hBox1);
-
-    }
-
-    private void commonMade() {
-        this.getStyleClass().add(CssId.MAIN_PADDING);
-        Controller.getInstance().setTableSection(tableSection);
 
     }
 

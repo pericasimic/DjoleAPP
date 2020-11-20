@@ -19,4 +19,5 @@ public class CssId {
     public static final String HBOX_BANK_DETAILS_BUILD_PANE = "hBoxBankDetailsBildingPane";
     public static final String MAIN_PADDING = "mainPadding";
     public static final String HBOX_BOTTOM_MAIN = "hBoxBottomMain";
+    public static final String BORDER_PANE_DETAILS_SEP_PANE = "detailsSeparatePane";
 }

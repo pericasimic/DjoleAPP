@@ -1,5 +1,6 @@
 package djoleapp.controller.event.buildingevent;
 
+import djoleapp.DjoleAPP;
 import djoleapp.business.model.SeparateSection;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
@@ -12,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+/*ListSeparateSectionsPane*/
 public class DetailsSeparateEvent implements EventHandler<ActionEvent> {
 
     @Override
@@ -24,6 +26,7 @@ public class DetailsSeparateEvent implements EventHandler<ActionEvent> {
         DetailsSeparatePane dsp = new DetailsSeparatePane(section);
         Controller.getInstance().setDetailsSeparatePane(dsp);
         Scene scena = new Scene(dsp, Constants.SCENE_WIDTH_TEMP, Constants.SCENE_HEIGHT_TEMP);
+        scena.getStylesheets().add(DjoleAPP.class.getResource(Constants.STYLE_PATH).toExternalForm());
         Stage stage = new Stage();
         Controller.getInstance().setTemporaryStage(stage);
         stage.setScene(scena);
@@ -47,6 +50,7 @@ public class DetailsSeparateEvent implements EventHandler<ActionEvent> {
         ListSeparateSectionsPane lssp = Controller.getInstance().getListSeparateSectionsPane();
         MainPane mp = new MainPane(lssp);
         Scene scene = new Scene(mp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
+        scene.getStylesheets().add(DjoleAPP.class.getResource(Constants.STYLE_PATH).toExternalForm());
         Controller.getInstance().getPrimaryStage().setScene(scene);
     }
 

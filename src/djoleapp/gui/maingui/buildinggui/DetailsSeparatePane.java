@@ -10,11 +10,8 @@ import djoleapp.business.model.ParkingSpace;
 import djoleapp.business.model.SeparateSection;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
+import djoleapp.controller.constant.CssId;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -24,11 +21,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
 
 public class DetailsSeparatePane extends BorderPane {
     
-    private Label title = new Label();
+    private final Label title = new Label();
     
     private TextField buildingFld = new TextField();
     private TextField ownerFld = new TextField();
@@ -37,19 +33,19 @@ public class DetailsSeparatePane extends BorderPane {
     private TextArea noteFld = new TextArea();
     private TextField investmentMaintenanceFld = new TextField();
     
-    private Label buildingLbl = new Label(Constants.SELECT_BUILDINGS);
-    private Label ownerLbl = new Label(Constants.OWNER);
-    private Label numberLbl = new Label(Constants.NUMBER);
-    private Label areaLbl = new Label(Constants.FLAT_AREA);
-    private Label noteLbl = new Label(Constants.NOTE);
-    private Label occupants = new Label(Constants.OCCUPANTS);
-    private Label investmentMaintenanceLbl = new Label();
+    private final Label buildingLbl = new Label(Constants.SELECT_BUILDINGS);
+    private final Label ownerLbl = new Label(Constants.OWNER);
+    private final Label numberLbl = new Label(Constants.NUMBER);
+    private final Label areaLbl = new Label(Constants.FLAT_AREA);
+    private final Label noteLbl = new Label(Constants.NOTE);
+    private final Label occupants = new Label(Constants.OCCUPANTS);
+    private final Label investmentMaintenanceLbl = new Label();
     
     private ComboBox<Occupant> occupantsBox = new ComboBox<>();
     
-    private Button editBtn = new Button(Constants.BUTTON_EDIT);
-    private Button confirmBtn = new Button(Constants.BUTTON_CONFIRM);
-    private Button cancelBtn = new Button(Constants.BUTTON_CANCEL);
+    private final Button editBtn = new Button(Constants.BUTTON_EDIT);
+    private final Button confirmBtn = new Button(Constants.BUTTON_CONFIRM);
+    private final Button cancelBtn = new Button(Constants.BUTTON_CANCEL);
     
     private SeparateSection separateSection;
     
@@ -59,17 +55,13 @@ public class DetailsSeparatePane extends BorderPane {
         
         setSeparateSection(section);
         
-        title.setFont(new Font(Constants.FONT_ARIAL, 20));
+        title.getStyleClass().add(CssId.LABEL_TITTLE);
         
         this.setTop(title);
         
         GridPane gp = new GridPane();
-        gp.setStyle(Constants.FX_BORDER_COLOR_BLACK);
-        gp.setAlignment(Pos.CENTER);
-        
-        gp.setVgap(5);
-        gp.setHgap(5);
-        
+        gp.getStyleClass().add(CssId.GRID_LOGIN);
+
         gp.add(buildingLbl, 0, 1);
         gp.add(buildingFld, 1, 1);
         buildingFld.setText(section.getResidentialCommunity().getName());
@@ -135,9 +127,7 @@ public class DetailsSeparatePane extends BorderPane {
             
         });
         
-        hBox.setAlignment(Pos.CENTER);
-        hBox.setSpacing(3);
-        hBox.setPadding(new Insets(30, 30, 30, 30));
+        hBox.getStyleClass().add(CssId.HBOX_BOTTOM_MAIN);
         
         editBtn.setOnAction(Controller.getInstance().getManagerEvent().getEditSeparationEvent());
         editBtn.setOnKeyPressed(e -> {
@@ -148,7 +138,7 @@ public class DetailsSeparatePane extends BorderPane {
         });
         hBox.getChildren().addAll(cancelBtn, editBtn);
         
-        this.setPadding(new Insets(60, 60, 60, 60));
+        this.getStyleClass().add(CssId.BORDER_PANE_DETAILS_SEP_PANE);
         this.setCenter(gp);
         this.setBottom(hBox);
     }

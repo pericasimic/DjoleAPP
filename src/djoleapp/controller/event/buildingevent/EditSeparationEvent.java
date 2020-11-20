@@ -1,10 +1,9 @@
 package djoleapp.controller.event.buildingevent;
 
-import djoleapp.business.model.SeparateSection;
+import djoleapp.DjoleAPP;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
 import djoleapp.gui.maingui.MainPane;
-import djoleapp.gui.maingui.buildinggui.DetailsSeparatePane;
 import djoleapp.gui.maingui.buildinggui.EditSeparatePane;
 import djoleapp.gui.maingui.buildinggui.ListSeparateSectionsPane;
 import javafx.event.ActionEvent;
@@ -13,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+/*DetailsSeparatePane*/
 public class EditSeparationEvent implements EventHandler<ActionEvent> {
 
     Stage stage = new Stage();
@@ -26,6 +26,7 @@ public class EditSeparationEvent implements EventHandler<ActionEvent> {
         EditSeparatePane esp = new EditSeparatePane();
         Controller.getInstance().setEditSeparatePane(esp);
         Scene scena = new Scene(esp, Constants.SCENE_WIDTH_TEMP, Constants.SCENE_HEIGHT_TEMP);
+        scena.getStylesheets().add(DjoleAPP.class.getResource(Constants.STYLE_PATH).toExternalForm());
         stage.setScene(scena);
         stage.setTitle(Constants.SECTION_EDIT_TITLE);
         stage.setResizable(false);
@@ -47,12 +48,12 @@ public class EditSeparationEvent implements EventHandler<ActionEvent> {
         ListSeparateSectionsPane lssp = Controller.getInstance().getListSeparateSectionsPane();
         MainPane mp = new MainPane(lssp);
         Scene scene = new Scene(mp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
+        scene.getStylesheets().add(DjoleAPP.class.getResource(Constants.STYLE_PATH).toExternalForm());
         Controller.getInstance().getPrimaryStage().setScene(scene);
     }
 
     public Stage getStage() {
         return stage;
     }
-    
-    
+
 }

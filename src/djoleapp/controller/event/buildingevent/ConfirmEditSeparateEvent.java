@@ -8,6 +8,7 @@ import djoleapp.gui.maingui.buildinggui.EditSeparatePane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+/*EditSeparatePane*/
 public class ConfirmEditSeparateEvent implements EventHandler<ActionEvent>{
 
     @Override

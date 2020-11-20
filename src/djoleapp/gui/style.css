@@ -94,7 +94,7 @@
 }
 
 .gridLogin{
-    -fx-border-color: rgba(242, 239, 239, 0.6);
+    -fx-border-color: white;
     -fx-padding: 20px;
     -fx-alignment: center;
     -fx-vgap: 10px;
@@ -133,6 +133,10 @@
 
 .borderPaneLogin{
     -fx-padding: 200;
+}
+
+.detailsSeparatePane{
+    -fx-padding: 20;
 }
 
 .table-view{
