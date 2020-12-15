@@ -106,6 +106,7 @@ public class FacadeSER implements Facade {
         return list;
     }
 
+    /*DetailsSeparatePane*/
     @Override
     public double supportSum(double price, double area) {
         return price * area;
@@ -260,11 +261,11 @@ public class FacadeSER implements Facade {
     /*ConfirmEditSeparateEvent*/
     @Override
     public boolean addSeparateSection(boolean isAdd, ResidentialCommunity rc, String section, String number, String areaSection, String note, Occupant owner) {
-        
+
         SeparateSection sep = Controller.getInstance().getTemporarySeparateSection();
         double area = 0;
 
-        if (rc == null || section.isEmpty() || section == null || number.isEmpty() || number == null || areaSection == null || areaSection.isEmpty() || note.isEmpty() || note == null) {
+        if (number.isEmpty() || number == null || areaSection == null || areaSection.isEmpty() || note.isEmpty() || note == null) {
             Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.ALERT_EMPTY_INPUT_TEXT);
             return false;
         }
@@ -277,7 +278,7 @@ public class FacadeSER implements Facade {
             return false;
         }
 
-        if (section.equals(Constants.FLAT)) {
+        if (section.equalsIgnoreCase(Constants.FLAT)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
                 if (s instanceof Flat) {
                     if (s.getNumber().equalsIgnoreCase(number) && isAdd) {
@@ -307,11 +308,6 @@ public class FacadeSER implements Facade {
                     sep.setOccupant(owner);
                     sep.setHasOwner(true);
                 }
-                if (sep.getResidentialCommunity() != rc) {
-                    sep.setResidentialCommunity(rc);
-                    rc.getListSeparationSection().add(sep);
-                    Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListSeparationSection().remove(sep);
-                }
                 Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
 
@@ -319,8 +315,8 @@ public class FacadeSER implements Facade {
 
         if (section.equals(Constants.GARAGE)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
-                if (s.getNumber().equalsIgnoreCase(number)) {
-                    if (s instanceof Garage) {
+                if (s instanceof Garage) {
+                    if (s.getNumber().equalsIgnoreCase(number) && isAdd) {
                         Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
                         return false;
                     }
@@ -346,11 +342,6 @@ public class FacadeSER implements Facade {
                     sep.setOccupant(owner);
                     sep.setHasOwner(true);
                 }
-                if (sep.getResidentialCommunity() != rc) {
-                    sep.setResidentialCommunity(rc);
-                    rc.getListSeparationSection().add(sep);
-                    Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListSeparationSection().remove(sep);
-                }
                 Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
 
@@ -358,8 +349,8 @@ public class FacadeSER implements Facade {
 
         if (section.equals(Constants.BUSINESS_SPACE)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
-                if (s.getNumber().equalsIgnoreCase(number)) {
-                    if (s instanceof BusinessSpace) {
+                if (s instanceof BusinessSpace) {
+                    if (s.getNumber().equalsIgnoreCase(number) && isAdd) {
                         Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
                         return false;
                     }
@@ -385,11 +376,6 @@ public class FacadeSER implements Facade {
                     sep.setOccupant(owner);
                     sep.setHasOwner(true);
                 }
-                if (sep.getResidentialCommunity() != rc) {
-                    sep.setResidentialCommunity(rc);
-                    rc.getListSeparationSection().add(sep);
-                    Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListSeparationSection().remove(sep);
-                }
                 Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
 
@@ -397,8 +383,8 @@ public class FacadeSER implements Facade {
 
         if (section.equals(Constants.GARAGE_BOX)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
-                if (s.getNumber().equalsIgnoreCase(number)) {
-                    if (s instanceof ParkingBox) {
+                if (s instanceof ParkingBox) {
+                    if (s.getNumber().equalsIgnoreCase(number) && isAdd) {
                         Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
                         return false;
                     }
@@ -424,11 +410,6 @@ public class FacadeSER implements Facade {
                     sep.setOccupant(owner);
                     sep.setHasOwner(true);
                 }
-                if (sep.getResidentialCommunity() != rc) {
-                    sep.setResidentialCommunity(rc);
-                    rc.getListSeparationSection().add(sep);
-                    Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListSeparationSection().remove(sep);
-                }
                 Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
 
@@ -436,8 +417,8 @@ public class FacadeSER implements Facade {
 
         if (section.equals(Constants.GARAGE_SPACE)) {
             for (SeparateSection s : rc.getListSeparationSection()) {
-                if (s.getNumber().equalsIgnoreCase(number)) {
-                    if (s instanceof ParkingSpace) {
+                if (s instanceof ParkingSpace) {
+                    if (s.getNumber().equalsIgnoreCase(number) && isAdd) {
                         Message.info(Alert.AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.NUMBER_SECTION_EXIST);
                         return false;
                     }
@@ -463,24 +444,16 @@ public class FacadeSER implements Facade {
                     sep.setOccupant(owner);
                     sep.setHasOwner(true);
                 }
-                if (sep.getResidentialCommunity() != rc) {
-                    sep.setResidentialCommunity(rc);
-                    rc.getListSeparationSection().add(sep);
-                    Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListSeparationSection().remove(sep);
-                }
                 Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
             }
 
         }
 
-        Controller.getInstance().getTemporaryStage().close();
-        if (Controller.getInstance().getManagerEvent().getEditSeparationEvent().getStage() != null) {
-            Controller.getInstance().getManagerEvent().getEditSeparationEvent().getStage().close();
-        }
-        Controller.getInstance().getManagerEvent().getAddSectionEvent().setScene();
+        Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent().showSelectBuildTableEvent();
         return true;
     }
 
+    /*RemoveSeparateSectionEvent*/
     @Override
     public void removeSeparateSection(SeparateSection ss, ResidentialCommunity rc) {
 
@@ -609,7 +582,6 @@ public class FacadeSER implements Facade {
             return;
         }
 
-        
         o.setIsAdd(true);
         o.setHome((Flat) ss);
         rc.getListOccupants().add(o);

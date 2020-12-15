@@ -4,13 +4,11 @@ import djoleapp.business.Factory;
 import djoleapp.business.model.Occupant;
 import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.Controller;
-import djoleapp.controller.constant.Constants;
-import djoleapp.controller.util.Message;
 import djoleapp.gui.maingui.buildinggui.AddSeparatePane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
 
+/*AddSeparatePane*/
 public class ConfirmAddSeparateEvent implements EventHandler<ActionEvent> {
 
     @Override
@@ -32,7 +30,7 @@ public class ConfirmAddSeparateEvent implements EventHandler<ActionEvent> {
         if (!Factory.getFacade().addSeparateSection(true, rc, section, number, area, note, owner)) {
             return;
         }
-        Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent().showSelectBuildTableEvent();
+
     }
 
 }

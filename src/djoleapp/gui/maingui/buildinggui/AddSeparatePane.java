@@ -1,16 +1,10 @@
 package djoleapp.gui.maingui.buildinggui;
 
 import djoleapp.business.model.Occupant;
-import djoleapp.business.model.ResidentialCommunity;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
-import java.util.ArrayList;
-import java.util.List;
-import javafx.application.Platform;
+import djoleapp.controller.constant.CssId;
 import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -20,9 +14,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.stage.WindowEvent;
 
 public class AddSeparatePane extends BorderPane {
 
@@ -46,15 +37,11 @@ public class AddSeparatePane extends BorderPane {
     private Button cancelBtn = new Button(Constants.BUTTON_CANCEL);
 
     public AddSeparatePane() {
-        title.setFont(new Font(Constants.FONT_ARIAL, 20));
+        title.getStyleClass().add(CssId.LABEL_TITTLE);
         this.setTop(title);
 
         GridPane gp = new GridPane();
-        gp.setStyle(Constants.FX_BORDER_COLOR_BLACK);
-        gp.setAlignment(Pos.CENTER);
-
-        gp.setVgap(5);
-        gp.setHgap(5);
+        gp.getStyleClass().add(CssId.GRID_LOGIN);
 
         gp.add(kindLbl, 0, 0);
         gp.add(sectionsBox, 1, 0);
@@ -68,9 +55,7 @@ public class AddSeparatePane extends BorderPane {
         gp.add(noteFld, 1, 4);
 
         HBox hBox = new HBox();
-        hBox.setAlignment(Pos.CENTER);
-        hBox.setSpacing(3);
-        hBox.setPadding(new Insets(30, 30, 30, 30));
+        hBox.getStyleClass().add(CssId.HBOX_BOTTOM_MAIN);
 
         confirmBtn.setOnAction(Controller.getInstance().getManagerEvent().getConfirmAddSeparateEvent());
         confirmBtn.setOnKeyPressed(e -> {
@@ -80,10 +65,10 @@ public class AddSeparatePane extends BorderPane {
 
         });
 
-        cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getBackListSeparateSections());
+        cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent());
         cancelBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getBackListSeparateSections().backListSeparateSections();
+                Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent().showSelectBuildTableEvent();
             }
 
         });
@@ -96,7 +81,7 @@ public class AddSeparatePane extends BorderPane {
 
         hBox.getChildren().addAll(cancelBtn, confirmBtn);
 
-        this.setPadding(new Insets(60, 60, 60, 60));
+        this.getStyleClass().add(CssId.BORDER_PANE_DETAILS_SEP_PANE);
         this.setCenter(gp);
         this.setBottom(hBox);
 

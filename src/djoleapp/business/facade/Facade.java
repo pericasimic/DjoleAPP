@@ -46,6 +46,7 @@ public interface Facade {
     /*OccupantDetailsBuildingPane*/
     public List<Occupant> getListfreeOccupants();
 
+    /*DetailsSeparatePane*/
     public double supportSum(double price, double area);
 
     public String kindOfSection(SeparateSection section);
@@ -64,12 +65,14 @@ public interface Facade {
     /*RemoveBankAccountEvent*/
     public boolean removeBankAccount(BankAccount ba, ResidentialCommunity rc);
 
+    /*RemoveSeparateSectionEvent*/
     public void removeSeparateSection(SeparateSection ss, ResidentialCommunity rc);
 
     /*AddBankAccountBuildEvent*/
     public boolean checkBankAccount(String name, String number);
 
     /*ConfirmEditSeparateEvent*/
+    /*ConfirmAddSeparateEvent*/
     public boolean addSeparateSection(boolean isAdd, ResidentialCommunity rc, String section, String number, String area, String note, Occupant owner);
 
     public void addIndSection(String name, String note, Occupant owner, String price, ResidentialCommunity residentialCommunity);

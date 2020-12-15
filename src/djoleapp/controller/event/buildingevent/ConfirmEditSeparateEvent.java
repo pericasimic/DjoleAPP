@@ -15,7 +15,7 @@ public class ConfirmEditSeparateEvent implements EventHandler<ActionEvent>{
     public void handle(ActionEvent event) {
         EditSeparatePane esp = Controller.getInstance().getEditSeparatePane();
         
-        ResidentialCommunity rc = esp.getBuildingsBox().getValue();
+        ResidentialCommunity rc = Controller.getInstance().getTemporarySeparateSection().getResidentialCommunity();
         String section = esp.getSectionFld().getText();
         String number = esp.getNumberFld().getText();
         String note = esp.getNoteFld().getText();
@@ -25,7 +25,7 @@ public class ConfirmEditSeparateEvent implements EventHandler<ActionEvent>{
         if (!Factory.getFacade().addSeparateSection(false, rc, section, number, area, note, owner)) {
             return;
         }
-        Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent().showSelectBuildTableEvent();
+
         
     }
     

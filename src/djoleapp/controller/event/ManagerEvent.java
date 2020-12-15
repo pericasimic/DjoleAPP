@@ -11,7 +11,6 @@ import djoleapp.controller.event.buildingevent.AddCommonEvent;
 import djoleapp.controller.event.buildingevent.AddIndependentEvent;
 import djoleapp.controller.event.buildingevent.AddOccupantBuildingEvent;
 import djoleapp.controller.event.buildingevent.AddSectionEvent;
-import djoleapp.controller.event.buildingevent.BackListSeparateSections;
 import djoleapp.controller.event.buildingevent.DetailsBuildingEvent;
 import djoleapp.controller.event.buildingevent.ConfirmAddCommonEvent;
 import djoleapp.controller.event.buildingevent.ConfirmAddIndEvent;
@@ -80,7 +79,6 @@ public class ManagerEvent {
     private SearchBuildingEvent searchBuildingEvent = null;
     private RemoveBuildingEvent removeBuildingEvent = null;
     private RemoveBankAccountEvent removeBankAccountEvent = null;
-    private BackListSeparateSections backListSeparateSections = null;
     private RemoveSeparateSectionEvent removeSeparateSectionEvent = null;
     private ConfirmEditSeparateEvent confirmEditSeparateEvent = null;
     private DetailsIndependentEvent detailsIndependentEvent = null;
@@ -102,6 +100,7 @@ public class ManagerEvent {
     private ChangeCalculationEvent changeCalculationEvent = null;
     private EditOccupantEvent editOccupantEvent = null;
     private ConfirmChangeOccupantEvent confirmChangeOccupantEvent = null;
+    private CloseAppEvent closeAppEvent = null;
 
     public ManagerEvent() {
 
@@ -130,7 +129,6 @@ public class ManagerEvent {
         searchBuildingEvent = new SearchBuildingEvent();
         removeBuildingEvent = new RemoveBuildingEvent();
         removeBankAccountEvent = new RemoveBankAccountEvent();
-        backListSeparateSections = new BackListSeparateSections();
         removeSeparateSectionEvent = new RemoveSeparateSectionEvent();
         confirmEditSeparateEvent = new ConfirmEditSeparateEvent();
         detailsIndependentEvent = new DetailsIndependentEvent();
@@ -152,9 +150,15 @@ public class ManagerEvent {
         changeCalculationEvent = new ChangeCalculationEvent();
         editOccupantEvent = new EditOccupantEvent();
         confirmChangeOccupantEvent = new ConfirmChangeOccupantEvent();
+        closeAppEvent = new CloseAppEvent();
 
     }
 
+    public CloseAppEvent getCloseAppEvent() {
+        return closeAppEvent;
+    }
+
+    
     public ConfirmChangeOccupantEvent getConfirmChangeOccupantEvent() {
         return confirmChangeOccupantEvent;
     }
@@ -245,10 +249,6 @@ public class ManagerEvent {
 
     public RemoveSeparateSectionEvent getRemoveSeparateSectionEvent() {
         return removeSeparateSectionEvent;
-    }
-
-    public BackListSeparateSections getBackListSeparateSections() {
-        return backListSeparateSections;
     }
 
     public RemoveBankAccountEvent getRemoveBankAccountEvent() {

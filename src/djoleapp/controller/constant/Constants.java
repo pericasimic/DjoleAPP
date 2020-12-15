@@ -24,6 +24,7 @@ public class Constants {
     public static final String ALERT_NOT_SELECT = "Morate izabrati stavku";
     public static final String BANK_ACCOUNT = "Tekući račun";
     public static final String OCCUPANTS = "Stanari";
+    public static final String CLOSE_APP_DIALOG_TEXT = "Da li želiš da zatvoriš aplikaciju?";
 
 
     /*

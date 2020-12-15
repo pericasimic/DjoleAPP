@@ -70,7 +70,7 @@ public class ListSeparateSectionsPane extends VBox {
         deleteBtn.setOnAction(Controller.getInstance().getManagerEvent().getRemoveSeparateSectionEvent());
         deleteBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getRemoveSeparateSectionEvent();
+                Controller.getInstance().getManagerEvent().getRemoveSeparateSectionEvent().removeSeparateSectionEvent();
             }
 
         });

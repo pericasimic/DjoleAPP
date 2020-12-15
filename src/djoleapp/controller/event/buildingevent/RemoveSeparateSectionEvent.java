@@ -9,6 +9,7 @@ import djoleapp.gui.maingui.buildinggui.TopHBoxBuildingPane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+/*ListSeparateSectionsPane*/
 public class RemoveSeparateSectionEvent implements EventHandler<ActionEvent>{
 
     @Override

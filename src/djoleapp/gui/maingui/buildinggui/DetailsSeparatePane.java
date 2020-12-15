@@ -119,10 +119,10 @@ public class DetailsSeparatePane extends BorderPane {
             investmentMaintenanceFld.setText(String.valueOf(Factory.getFacade().supportSum(Controller.getInstance().getPricePerMonthSpace(), section.getSurfaceArea())));
         }
         
-        cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getBackListSeparateSections());
+        cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent());
         cancelBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getBackListSeparateSections();
+                Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent().showSelectBuildTableEvent();
             }
             
         });
