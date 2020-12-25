@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 /*AddSeparatePane*/
+
 public class ConfirmAddSeparateEvent implements EventHandler<ActionEvent> {
 
     @Override

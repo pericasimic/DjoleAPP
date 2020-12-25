@@ -18,7 +18,6 @@ public class DetailsSeparateEvent implements EventHandler<ActionEvent> {
     }
 
     public void detailsSeparateEvent(SeparateSection section) {
-        Controller.getInstance().setTemporarySeparateSection(section);
         DetailsSeparatePane dsp = new DetailsSeparatePane(section);
         Controller.getInstance().setDetailsSeparatePane(dsp);
         Scene scena = new Scene(dsp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);

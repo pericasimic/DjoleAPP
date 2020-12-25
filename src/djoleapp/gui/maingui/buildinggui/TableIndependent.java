@@ -27,21 +27,22 @@ public class TableIndependent extends TableView<IndependentSection> {
             }
         });
         numOrder.setSortable(false);
+        numOrder.setMinWidth(30);
 
         TableColumn nameCol = new TableColumn(Constants.NAME_OF_SECTION);
-        nameCol.setMinWidth(150);
+        nameCol.setMinWidth(250);
         nameCol.setCellValueFactory(new PropertyValueFactory<IndependentSection, String>("name"));
 
         TableColumn ownerCol = new TableColumn(Constants.OWNER);
-        ownerCol.setMinWidth(150);
+        ownerCol.setMinWidth(250);
         ownerCol.setCellValueFactory(new PropertyValueFactory<IndependentSection, Occupant>("owner"));
         
         TableColumn priceCol = new TableColumn(Constants.PRICE_PER_MONTH);
-        priceCol.setMinWidth(150);
+        priceCol.setMinWidth(350);
         priceCol.setCellValueFactory(new PropertyValueFactory<IndependentSection, Double>("pricePerMonth"));
         
         TableColumn buildingCol = new TableColumn(Constants.BUILDING);
-        buildingCol.setMinWidth(150);
+        buildingCol.setMinWidth(400);
         buildingCol.setCellValueFactory(new PropertyValueFactory<IndependentSection, ResidentialCommunity>("residentialCommunity"));
 
         this.setItems(FXCollections.observableArrayList(list));

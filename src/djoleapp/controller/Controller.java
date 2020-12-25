@@ -24,6 +24,7 @@ import djoleapp.gui.maingui.buildinggui.BuildingDetailsPane;
 import djoleapp.gui.maingui.buildinggui.DetailsCommonPane;
 import djoleapp.gui.maingui.buildinggui.DetailsIndependentPane;
 import djoleapp.gui.maingui.buildinggui.DetailsSeparatePane;
+import djoleapp.gui.maingui.buildinggui.EditIndependentPane;
 import djoleapp.gui.maingui.buildinggui.EditSeparatePane;
 import djoleapp.gui.maingui.buildinggui.ListBuildingsPane;
 import djoleapp.gui.maingui.buildinggui.ListCommonSectionPane;
@@ -93,6 +94,7 @@ public class Controller {
     private CalculationPane calculationPane;
     private EditCalculationPane editCalculationPane;
     private EditOccupantPane editOccupantPane;
+    private EditIndependentPane editIndependentPane;
     private double pricePerMonthFlat = 7.82;
     private double pricePerMonthBox = 4.69;
     private double pricePerMonthSpace = 5.69;
@@ -109,6 +111,14 @@ public class Controller {
             instance = new Controller();
         }
         return instance;
+    }
+
+    public void setEditIndependentPane(EditIndependentPane editIndependentPane) {
+        this.editIndependentPane = editIndependentPane;
+    }
+
+    public EditIndependentPane getEditIndependentPane() {
+        return editIndependentPane;
     }
 
     public EditOccupantPane getEditOccupantPane() {

@@ -4,6 +4,7 @@ import djoleapp.business.model.IndependentSection;
 import djoleapp.business.model.SeparateSection;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
+import djoleapp.controller.constant.CssId;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
@@ -26,7 +27,7 @@ public class ListIndependentSectionsPane extends VBox {
 
     public ListIndependentSectionsPane(List<IndependentSection> list) {
         
-        title.setFont(new Font(Constants.FONT_ARIAL, 20));
+        title.getStyleClass().add(CssId.LABEL_TITTLE);
         commonMade();
         tableIndependent = new TableIndependent(list);
 
@@ -54,9 +55,7 @@ public class ListIndependentSectionsPane extends VBox {
         tableIndependent = new TableIndependent(list);
 
         HBox hBox1 = new HBox();
-        hBox1.setSpacing(10);
-        hBox1.setPadding(new Insets(10, 10, 10, 10));
-        hBox1.setAlignment(Pos.CENTER);
+        hBox1.getStyleClass().add(CssId.HBOX_BOTTOM_MAIN);
         hBox1.getChildren().addAll(deleteBtn, addBtn);
 
         tableIndependent.setRowFactory(tv -> {
@@ -69,11 +68,11 @@ public class ListIndependentSectionsPane extends VBox {
             return row;
 
         });
-
+        
         deleteBtn.setOnAction(Controller.getInstance().getManagerEvent().getRemoveIndSectionEvent());
         deleteBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getRemoveIndSectionEvent();
+                Controller.getInstance().getManagerEvent().getRemoveIndSectionEvent().removeIndSectionEvent();
             }
 
         });
@@ -91,7 +90,7 @@ public class ListIndependentSectionsPane extends VBox {
     }
 
     private void commonMade() {
-        this.setPadding(new Insets(10, 10, 10, 10));
+        this.getStyleClass().add(CssId.MAIN_PADDING);
         Controller.getInstance().setTableIndependent(tableIndependent);
 
     }

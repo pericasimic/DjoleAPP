@@ -17,7 +17,7 @@ import javafx.scene.layout.HBox;
 
 public class AddSeparatePane extends BorderPane {
 
-    private Label title = new Label(Constants.TITLE_ADD_SECTION + Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getName());
+    private final Label title = new Label(Constants.TITLE_ADD_SECTION + Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getName());
 
     private TextField numberFld = new TextField();
     private TextField areaFld = new TextField();
@@ -26,15 +26,15 @@ public class AddSeparatePane extends BorderPane {
     private ComboBox<String> sectionsBox = new ComboBox<>();
     private ComboBox<Occupant> ownerBox = new ComboBox<>();
 
-    private Label kindLbl = new Label(Constants.KIND_SECTION);
-    private Label ownerLbl = new Label(Constants.OWNER_IF_EXIST);
-    private Label numberLbl = new Label(Constants.NUMBER);
-    private Label areaLbl = new Label(Constants.FLAT_AREA);
-    private Label noteLbl = new Label(Constants.NOTE);
-    private Label listOccupantLbl = new Label(Constants.OCCUPANT_LIST_TITLE);
+    private final Label kindLbl = new Label(Constants.KIND_SECTION);
+    private final Label ownerLbl = new Label(Constants.OWNER_IF_EXIST);
+    private final Label numberLbl = new Label(Constants.NUMBER);
+    private final Label areaLbl = new Label(Constants.FLAT_AREA);
+    private final Label noteLbl = new Label(Constants.NOTE);
+    private final Label listOccupantLbl = new Label(Constants.OCCUPANT_LIST_TITLE);
 
-    private Button confirmBtn = new Button(Constants.BUTTON_CONFIRM);
-    private Button cancelBtn = new Button(Constants.BUTTON_CANCEL);
+    private final Button confirmBtn = new Button(Constants.BUTTON_CONFIRM);
+    private final Button cancelBtn = new Button(Constants.BUTTON_CANCEL);
 
     public AddSeparatePane() {
         title.getStyleClass().add(CssId.LABEL_TITTLE);

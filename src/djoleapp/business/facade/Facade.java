@@ -75,8 +75,13 @@ public interface Facade {
     /*ConfirmAddSeparateEvent*/
     public boolean addSeparateSection(boolean isAdd, ResidentialCommunity rc, String section, String number, String area, String note, Occupant owner);
 
+    /*ConfirmAddIndEvent*/
     public void addIndSection(String name, String note, Occupant owner, String price, ResidentialCommunity residentialCommunity);
+    
+    /*ConfirmEditIndependentEvent*/
+    public void editIndSection(String name, String note, Occupant owner, String price, ResidentialCommunity residentialCommunity);
 
+    /*RemoveIndSectionEvent*/
     public void removeIndSection(IndependentSection independentSection);
 
     public void removeCommonSection(CommonSection commonSection);

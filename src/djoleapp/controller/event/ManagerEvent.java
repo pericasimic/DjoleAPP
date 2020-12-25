@@ -15,10 +15,12 @@ import djoleapp.controller.event.buildingevent.DetailsBuildingEvent;
 import djoleapp.controller.event.buildingevent.ConfirmAddCommonEvent;
 import djoleapp.controller.event.buildingevent.ConfirmAddIndEvent;
 import djoleapp.controller.event.buildingevent.ConfirmAddSeparateEvent;
+import djoleapp.controller.event.buildingevent.ConfirmEditIndependentEvent;
 import djoleapp.controller.event.buildingevent.ConfirmEditSeparateEvent;
 import djoleapp.controller.event.buildingevent.DetailsCommonSectionEvent;
 import djoleapp.controller.event.buildingevent.DetailsIndependentEvent;
 import djoleapp.controller.event.buildingevent.DetailsSeparateEvent;
+import djoleapp.controller.event.buildingevent.EditIndependentEvent;
 import djoleapp.controller.event.buildingevent.EditSeparationEvent;
 import djoleapp.controller.event.buildingevent.ListBuildingEvent;
 import djoleapp.controller.event.buildingevent.RemoveBankAccountEvent;
@@ -101,6 +103,8 @@ public class ManagerEvent {
     private EditOccupantEvent editOccupantEvent = null;
     private ConfirmChangeOccupantEvent confirmChangeOccupantEvent = null;
     private CloseAppEvent closeAppEvent = null;
+    private EditIndependentEvent editIndependentEvent = null;
+    private ConfirmEditIndependentEvent confirmEditIndependentEvent = null;
 
     public ManagerEvent() {
 
@@ -151,14 +155,22 @@ public class ManagerEvent {
         editOccupantEvent = new EditOccupantEvent();
         confirmChangeOccupantEvent = new ConfirmChangeOccupantEvent();
         closeAppEvent = new CloseAppEvent();
+        editIndependentEvent = new EditIndependentEvent();
+        confirmEditIndependentEvent = new ConfirmEditIndependentEvent();
+    }
 
+    public ConfirmEditIndependentEvent getConfirmEditIndependentEvent() {
+        return confirmEditIndependentEvent;
+    }
+
+    public EditIndependentEvent getEditIndependentEvent() {
+        return editIndependentEvent;
     }
 
     public CloseAppEvent getCloseAppEvent() {
         return closeAppEvent;
     }
 
-    
     public ConfirmChangeOccupantEvent getConfirmChangeOccupantEvent() {
         return confirmChangeOccupantEvent;
     }

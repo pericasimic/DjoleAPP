@@ -115,10 +115,11 @@ public class Constants {
     public static final String TITLE_ADD_OCCUPANT = "Dodavanje stanara";
     public static final String TITLE_ADD_SECTION = "Dodavanje sekcije za ";
     public static final String TITLE_ADD_IND_SECTION = "Dodavanje samostalnog dela za ";
-    public static final String TITLE_ADD_COMMON_SECTION = "Dodavanje zajednickog dela za ";
+    public static final String TITLE_EDIT_IND_SECTION = "Izmena samostalnog dela: ";
+    public static final String TITLE_ADD_COMMON_SECTION = "Dodavanje zajedničkog dela za ";
     public static final String INFO_OCCUPANT = "Informacije o korisniku: ";
     public static final String ADD_NEW_SECTION = "Nova sekcija je dodata";
-    public static final String MODIFIED_SECTION = "Sekcija je uspesno izmenjena";
+    public static final String MODIFIED_SECTION = "Sekcija je uspešno izmenjena";
     public static final String ADD_ADMIN_LABEL_PASSWORD_CONFIRM = "Potvrdi lozinku:";
     public static final String FONT_COMIC_SANS = "Comic Sans";
     public static final String FONT_ARIAL = "Arial";
@@ -132,7 +133,7 @@ public class Constants {
     public static final String EXPORT_TO_PDF = "Izvezi u PDF";
 
     public static final String EMPTY_STRING = "";
-    public static final String DEBIT = "Zaduzenje";
+    public static final String DEBIT = "Zaduženje";
     public static final String DEBIT_FOR = "Zaduženje za";
     public static final String FROM_PREVIOUS_PERIOD = "iz prethodnog perioda";
     public static final String SECTION_EDIT_TITLE = "Izmena sekcije";
@@ -140,7 +141,7 @@ public class Constants {
 
     public static final String BUTTON_BACK = "Nazad";
     public static final String BUTTON_SEARCH = "Pretraga";
-    public static final String BUTTON_CANCEL = "Otkazi";
+    public static final String BUTTON_CANCEL = "Otkaži";
     public static final String EDIT_OCCUPANT = "Promena podataka korisnika: ";
     public static final String ID = "ID";
 
@@ -157,7 +158,7 @@ public class Constants {
     public static final String SELECT_LIST = "Izaberi listu:";
     public static final String FIRST_NAME = "Ime";
     public static final String NAME_OF_SECTION = "Naziv sekcije";
-    public static final String PRICE_PER_MONTH = "Mesecno odrzavanje";
+    public static final String PRICE_PER_MONTH = "Mesecno odrzavanje (din/m2)";
     public static final String LAST_NAME = "Prezime";
     public static final String PHONE_NUMBER = "Broj telefona";
 

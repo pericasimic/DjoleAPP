@@ -467,6 +467,7 @@ public class FacadeSER implements Facade {
 
     }
 
+    /*ConfirmAddIndEvent*/
     @Override
     public void addIndSection(String name, String note, Occupant owner, String price, ResidentialCommunity residentialCommunity) {
 
@@ -497,6 +498,7 @@ public class FacadeSER implements Facade {
 
     }
 
+    /*RemoveIndSectionEvent*/
     @Override
     public void removeIndSection(IndependentSection independentSection) {
         if (independentSection == null) {
@@ -1002,6 +1004,34 @@ public class FacadeSER implements Facade {
         }
 
         return true;
+    }
+
+    @Override
+    public void editIndSection(String name, String note, Occupant owner, String price, ResidentialCommunity residentialCommunity) {
+       
+        if (name == null || name.isEmpty()) {
+            Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.HAVE_TO_NAME_INDEPENDENT);
+            return;
+        }
+        IndependentSection ipSection = Controller.getInstance().getTemporaryIndependentSection();
+        ipSection.setNote(note);
+
+        if (price != null || !price.isEmpty()) {
+            try {
+                double priceSec = Double.valueOf(price);
+                ipSection.setPricePerMonth(priceSec);
+            } catch (NumberFormatException nfe) {
+                Message.info(AlertType.WARNING, Constants.ALERT_WARNING_DIALOG, Constants.BAD_FORMAT_PER_MONTH);
+                return;
+            }
+        }
+
+        if (owner != null) {
+            ipSection.setOwner(owner);
+        }
+
+        Message.info(AlertType.INFORMATION, Constants.ALERT_INFORMATION_DIALOG, Constants.MODIFIED_SECTION);
+        Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent().showSelectBuildTableEvent();
     }
 
 }
