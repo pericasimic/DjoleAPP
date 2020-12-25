@@ -511,6 +511,7 @@ public class FacadeSER implements Facade {
         Controller.getInstance().getListIndependentSectionsPane().reload(Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListIndependentSections());
     }
 
+    /*RemoveCommonEvent*/
     @Override
     public void removeCommonSection(CommonSection commonSection) {
         if (commonSection == null) {
@@ -523,6 +524,7 @@ public class FacadeSER implements Facade {
         Controller.getInstance().getListCommonSectionPane().reload(Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getListCommonSections());
     }
 
+    /*ConfirmAddCommonEvent*/
     @Override
     public void addCommonSection(String name, String note, String price) {
         if (name == null || name.isEmpty()) {

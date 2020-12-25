@@ -24,7 +24,6 @@ public class DetailsIndependentEvent implements EventHandler<ActionEvent> {
         Scene scena = new Scene(dip, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
         scena.getStylesheets().add(DjoleAPP.class.getResource(Constants.STYLE_PATH).toExternalForm());
         Controller.getInstance().getPrimaryStage().setScene(scena);
-        Controller.getInstance().getPrimaryStage().setOnCloseRequest(Controller.getInstance().getManagerEvent().getCloseAppEvent());
     }
 
 }

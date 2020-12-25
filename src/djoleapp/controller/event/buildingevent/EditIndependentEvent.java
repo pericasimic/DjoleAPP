@@ -21,7 +21,6 @@ public class EditIndependentEvent implements EventHandler<ActionEvent>{
         Scene scena = new Scene(eip, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
         Controller.getInstance().getPrimaryStage().setScene(scena);
         scena.getStylesheets().add(DjoleAPP.class.getResource(Constants.STYLE_PATH).toExternalForm());
-        Controller.getInstance().getPrimaryStage().setOnCloseRequest(Controller.getInstance().getManagerEvent().getCloseAppEvent());
     }
     
 }

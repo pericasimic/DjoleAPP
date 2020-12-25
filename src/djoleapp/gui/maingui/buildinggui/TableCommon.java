@@ -24,13 +24,14 @@ public class TableCommon extends TableView<CommonSection> {
             }
         });
         numOrder.setSortable(false);
+        numOrder.setMinWidth(30);
 
         TableColumn nameCol = new TableColumn(Constants.NAME_OF_SECTION);
-        nameCol.setMinWidth(150);
+        nameCol.setMinWidth(625);
         nameCol.setCellValueFactory(new PropertyValueFactory<IndependentSection, String>("name"));
 
         TableColumn priceCol = new TableColumn(Constants.PRICE_PER_MONTH);
-        priceCol.setMinWidth(150);
+        priceCol.setMinWidth(625);
         priceCol.setCellValueFactory(new PropertyValueFactory<IndependentSection, Double>("pricePerMonth"));
 
         this.setItems(FXCollections.observableArrayList(list));

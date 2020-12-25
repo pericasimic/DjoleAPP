@@ -25,6 +25,7 @@ public class Constants {
     public static final String BANK_ACCOUNT = "Tekući račun";
     public static final String OCCUPANTS = "Stanari";
     public static final String CLOSE_APP_DIALOG_TEXT = "Da li želiš da zatvoriš aplikaciju?";
+    public static final String BUTTON_CONFIRM = "Potvrdi";
 
 
     /*
@@ -55,6 +56,11 @@ public class Constants {
     public static final String VALID_EMAIL_ADDRESS_REGEX = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
     public static final String VALID_NUMBER = "[0-9]+";
     public static final String ALERT_ACCOUNT_EXIST = "Račun vec postoji";
+    public static final String HAVE_TO_NAME_INDEPENDENT = "Morate uneti naziv samostalnog dela";
+    public static final String HAVE_TO_NAME_COMMON = "Morate uneti naziv zajedničkog dela";
+    public static final String BAD_FORMAT_PER_MONTH = "Neispravan format za Mesečno održavanje";
+    public static final String ALERT_EMPTY_INPUT_TEXT_OCCUPANT = "Sva polja moraju biti popunjena osim polja *Napomena";
+    public static final String ALERT_BUILDING_EXIST = "Zgrada vec postoji u bazi";
 
     /*
      Login pane & AddAdminPane & AddAdminEvent
@@ -100,16 +106,19 @@ public class Constants {
      */
     public static final String SELECT_ITEM = "Izaberi stavku:";
 
-    public static final String BUTTON_CONFIRM = "Potvrdi";
-    public static final String HAVE_TO_NAME_INDEPENDENT = "Morate uneti naziv samostalnog dela";
-    public static final String HAVE_TO_NAME_COMMON = "Morate uneti naziv zajednickog dela";
-    public static final String BAD_FORMAT_PER_MONTH = "Neispravan format za Mesecno odrzavanje";
+    /*
+    FacadeSER & ChangeCalculationEvent
+     */
     public static final String BAD_FORMAT_AREA = "Neispravan format za površinu";
 
-    public static final String ALERT_EMPTY_INPUT_TEXT_OCCUPANT = "Sva polja moraju biti popunjena osim polja *Napomena";
-    public static final String ALERT_BUILDING_EXIST = "Zgrada vec postoji u bazi";
-//    public static final String ALERT_OCCUPANT_BUILDING_EXIST = "Izabrani stanar je već u zgradi";
+    /*
+    DetailsSeparatePane
+     */
     public static final String INVESTEMENT_MAINTENANCE = "Investiciono održavanje";
+
+    /*
+    CalculationPane
+     */
     public static final String LIST_ITEM = "Lista stavki za održavanje";
 
     public static final String TITLE_ADD_OCCUPANT = "Dodavanje stanara";
@@ -171,7 +180,7 @@ public class Constants {
     public static final String BUTTON_ADD_OCCUPANT = "Dodaj stanara";
     public static final String SEPARATE_SECTIONS = "Posebni delovi";
     public static final String INDEPENDENT_SECTIONS = "Samostalni delovi";
-    public static final String COMMON_SECTIONS = "Zajednicki delovi";
+    public static final String COMMON_SECTIONS = "Zajednički delovi";
     public static final String SHOW_ALL_OCCUPANTS = "Prikazi sve stanare u listi";
     public static final String PAYMENT_ITEM_STRING_I = "Investiciono odrzavanje za ";
     public static final String PAYMENT_ITEM_STRING_II = "din./m2)";

@@ -1,13 +1,11 @@
 package djoleapp.gui.maingui.buildinggui;
 
 import djoleapp.business.model.CommonSection;
-import djoleapp.business.model.IndependentSection;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
+import djoleapp.controller.constant.CssId;
 import java.util.List;
 import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableRow;
 import javafx.scene.input.KeyCode;
@@ -22,15 +20,13 @@ public class ListCommonSectionPane extends VBox {
 
     public ListCommonSectionPane(List<CommonSection> list, HBox hBox) {
 
-        this.setPadding(new Insets(10, 10, 10, 10));
+        this.getStyleClass().add(CssId.MAIN_PADDING);
 
         tableCommon = new TableCommon(list);
         Controller.getInstance().setTableCommon(tableCommon);
 
         HBox hBox1 = new HBox();
-        hBox1.setSpacing(10);
-        hBox1.setPadding(new Insets(10, 10, 10, 10));
-        hBox1.setAlignment(Pos.CENTER);
+        hBox1.getStyleClass().add(CssId.HBOX_BOTTOM_MAIN);
         hBox1.getChildren().addAll(deleteBtn, addBtn);
 
         tableCommon.setRowFactory(tv -> {
@@ -47,7 +43,7 @@ public class ListCommonSectionPane extends VBox {
         deleteBtn.setOnAction(Controller.getInstance().getManagerEvent().getRemoveCommonEvent());
         deleteBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getRemoveCommonEvent();
+                Controller.getInstance().getManagerEvent().getRemoveCommonEvent().removeCommonEvent();
             }
 
         });
@@ -55,7 +51,7 @@ public class ListCommonSectionPane extends VBox {
         addBtn.setOnAction(Controller.getInstance().getManagerEvent().getAddCommonEvent());
         addBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getAddCommonEvent();
+                Controller.getInstance().getManagerEvent().getAddCommonEvent().addCommonEvent();
             }
 
         });

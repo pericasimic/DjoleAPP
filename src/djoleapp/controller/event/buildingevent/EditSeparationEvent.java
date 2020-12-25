@@ -22,7 +22,6 @@ public class EditSeparationEvent implements EventHandler<ActionEvent> {
         Scene scena = new Scene(esp, Constants.SCENE_WIDTH, Constants.SCENE_HEIGHT);
         scena.getStylesheets().add(DjoleAPP.class.getResource(Constants.STYLE_PATH).toExternalForm());
         Controller.getInstance().getPrimaryStage().setScene(scena);
-        Controller.getInstance().getPrimaryStage().setOnCloseRequest(Controller.getInstance().getManagerEvent().getCloseAppEvent());
 
     }
 

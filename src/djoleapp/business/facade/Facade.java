@@ -84,8 +84,10 @@ public interface Facade {
     /*RemoveIndSectionEvent*/
     public void removeIndSection(IndependentSection independentSection);
 
+    /*RemoveCommonEvent*/
     public void removeCommonSection(CommonSection commonSection);
 
+    /*ConfirmAddCommonEvent*/
     public void addCommonSection(String name, String note, String price);
 
     /*OccupantDetailsBuildingPane*/

@@ -1,13 +1,9 @@
 package djoleapp.gui.maingui.buildinggui;
 
-import djoleapp.business.model.Occupant;
 import djoleapp.controller.Controller;
 import djoleapp.controller.constant.Constants;
-import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import djoleapp.controller.constant.CssId;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -15,34 +11,28 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import static javafx.scene.layout.Region.USE_PREF_SIZE;
-import javafx.scene.text.Font;
 
 public class AddCommonPane extends BorderPane {
 
-    private Label title = new Label(Constants.TITLE_ADD_COMMON_SECTION + Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getName());
+    private final Label title = new Label(Constants.TITLE_ADD_COMMON_SECTION + Controller.getInstance().getTopHBoxBuildingPane().getBuildingsBox().getValue().getName());
 
     private TextField nameFld = new TextField();
     private TextArea noteFld = new TextArea();
     private TextField pricePerMonth = new TextField();
 
-    private Label nameLbl = new Label(Constants.NAME_OF_SECTION);
-    private Label priceLbl = new Label(Constants.PRICE_PER_MONTH);
-    private Label noteLbl = new Label(Constants.NOTE);
+    private final Label nameLbl = new Label(Constants.NAME_OF_SECTION);
+    private final Label priceLbl = new Label(Constants.PRICE_PER_MONTH);
+    private final Label noteLbl = new Label(Constants.NOTE);
 
-    private Button confirmBtn = new Button(Constants.BUTTON_CONFIRM);
-    private Button cancelBtn = new Button(Constants.BUTTON_CANCEL);
+    private final Button confirmBtn = new Button(Constants.BUTTON_CONFIRM);
+    private final Button cancelBtn = new Button(Constants.BUTTON_CANCEL);
 
     public AddCommonPane() {
-        title.setFont(new Font(Constants.FONT_ARIAL, 20));
+        title.getStyleClass().add(CssId.LABEL_TITTLE);
         this.setTop(title);
 
         GridPane gp = new GridPane();
-        gp.setStyle(Constants.FX_BORDER_COLOR_BLACK);
-        gp.setAlignment(Pos.CENTER);
-
-        gp.setVgap(5);
-        gp.setHgap(5);
+        gp.getStyleClass().add(CssId.GRID_LOGIN);
 
         gp.add(nameLbl, 0, 0);
         gp.add(nameFld, 1, 0);
@@ -52,28 +42,26 @@ public class AddCommonPane extends BorderPane {
         gp.add(pricePerMonth, 1, 2);
 
         HBox hBox = new HBox();
-        hBox.setAlignment(Pos.CENTER);
-        hBox.setSpacing(3);
-        hBox.setPadding(new Insets(30, 30, 30, 30));
+        hBox.getStyleClass().add(CssId.HBOX_BOTTOM_MAIN);
 
         confirmBtn.setOnAction(Controller.getInstance().getManagerEvent().getConfirmAddCommonEvent());
         confirmBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getConfirmAddCommonEvent();
+                Controller.getInstance().getManagerEvent().getConfirmAddCommonEvent().confirmAddCommonEvent();
             }
 
         });
         cancelBtn.setOnAction(Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent());
         cancelBtn.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent();
+                Controller.getInstance().getManagerEvent().getShowSelectBuildTableEvent().showSelectBuildTableEvent();
             }
 
         });
 
         hBox.getChildren().addAll(cancelBtn, confirmBtn);
 
-        this.setPadding(new Insets(60, 60, 60, 60));
+        this.getStyleClass().add(CssId.BORDER_PANE_DETAILS_SEP_PANE);
         this.setCenter(gp);
         this.setBottom(hBox);
 

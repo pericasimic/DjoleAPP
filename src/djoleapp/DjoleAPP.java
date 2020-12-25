@@ -22,6 +22,7 @@ public class DjoleAPP extends Application {
         scene.getStylesheets().add(DjoleAPP.class.getResource(Constants.STYLE_PATH).toExternalForm());
         Controller.getInstance().setLoginScene(scene);
         primaryStage.setScene(scene);
+        primaryStage.setOnCloseRequest(Controller.getInstance().getManagerEvent().getCloseAppEvent());
         primaryStage.setTitle(Constants.PRIMARY_STAGE_TITLE);
         primaryStage.setResizable(false);
         primaryStage.centerOnScreen();
